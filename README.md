@@ -6,4 +6,4 @@ I am a frontend developer with core experience in React/Redux/Node.js, and I am 
 
 ## Contact
 
-[LinkedIn](https://www.linkedin.com/in/peter-millspaugh/) | [Email](mailto:peterdgmillspaugh@gmail.com)
+[LinkedIn](https://www.linkedin.com/in/peter-millspaugh/) | [Email](mailto:peterdgmillspaugh@gmail.com) | [Twitter](https://twitter.com/pete_millspaugh)
