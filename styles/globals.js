@@ -85,4 +85,10 @@ const CSSReset = createGlobalStyle`
   }
 `;
 
-export { CSSReset };
+const GlobalStyle = createGlobalStyle`
+  html, body, #__next {
+    height: 100%;
+  }
+`;
+
+export { CSSReset, GlobalStyle };
