@@ -21,6 +21,11 @@ const ToggleButton = styled.button`
   background-color: ${(p) => p.theme.buttonBg};
   border: none;
   border-radius: 4px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: ${(p) => p.theme.buttonBgHover};
+  }
 `;
 
 const SunIcon = styled(Sun)`
