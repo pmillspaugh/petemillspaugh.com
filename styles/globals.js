@@ -88,6 +88,11 @@ const CSSReset = createGlobalStyle`
 const GlobalStyle = createGlobalStyle`
   html, body, #__next {
     height: 100%;
+    font-family: 'Ubuntu', sans-serif;
+  }
+
+  p, a {
+    font-family: 'Lora', serif;
   }
 `;
 
