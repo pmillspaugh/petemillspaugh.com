@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import mountains from '../public/images/mountainFooter.png';
+import Spacer from '../components/Spacer';
 
 const Home = () => {
   return (
@@ -15,18 +16,30 @@ const Home = () => {
         />
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
-      <Link href='/about'>
-        <a>About</a>
-      </Link>
-      <Link href='/work'>
-        <a>Work</a>
-      </Link>
-      <Link href='/talks'>
-        <a>Talks</a>
-      </Link>
-      <Link href='#'>
-        <a>Contact</a>
-      </Link>
+      <TextWrapper>
+        <Firstname>PETE</Firstname>
+        <Lastname>MILLSPAUGH</Lastname>
+        <Spacer size='24px' />
+        <Divider />
+        <Spacer size='24px' />
+        <LinkWrapper>
+          <Link href='/about' passHref>
+            <NavLink>About</NavLink>
+          </Link>
+          <Spacer size='16px' />
+          <Link href='/work' passHref>
+            <NavLink>Work</NavLink>
+          </Link>
+          <Spacer size='16px' />
+          <Link href='/talks' passHref>
+            <NavLink>Talks</NavLink>
+          </Link>
+          <Spacer size='16px' />
+          <Link href='#' passHref>
+            <NavLink>Contact</NavLink>
+          </Link>
+        </LinkWrapper>
+      </TextWrapper>
       <ImageWrapper>
         <Image
           src={mountains}
@@ -46,9 +59,57 @@ const Wrapper = styled.div`
   overflow: hidden;
 `;
 
+const TextWrapper = styled.main`
+  flex-grow: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const Names = styled.h1`
+  color: ${(p) => p.theme.textColor};
+  text-align: center;
+`;
+
+const Firstname = styled(Names)`
+  font-size: 3.5rem;
+  line-height: 3rem;
+`;
+const Lastname = styled(Names)`
+  font-size: 2rem;
+`;
+
+const Divider = styled.hr`
+  width: 50%;
+  border-color: ${(p) => p.theme.textColor};
+`;
+
+const LinkWrapper = styled.nav`
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 1200px) {
+    flex-direction: row;
+    gap: 24px;
+  }
+`;
+
+const NavLink = styled.a`
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  color: ${(p) => p.theme.linkTextColor};
+
+  &:hover {
+    text-decoration: underline;
+    color: ${(p) => p.theme.linkTextColorHover};
+  }
+`;
+
 const ImageWrapper = styled.div`
+  flex-grow: 0;
   position: relative;
-  margin-top: auto;
   height: 35vh;
   min-width: calc((1920 / 492) * 35vh);
   overflow: hidden;
