@@ -3,50 +3,53 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import mountains from '../public/images/mountainFooter.png';
-import Spacer from '../components/Spacer';
+import Spacer from '../components/utils/Spacer';
+import Divider from '../components/utils/Divider';
 
 const Home = () => {
   return (
-    <Wrapper>
+    <>
       <Head>
         <title>Peter Millspaugh</title>
         <meta
           name='description'
           content='Peter Millspaugh - Frontend Developer'
         />
-        {/* <link rel="icon" href="/favicon.ico" /> */}
+        <link rel='icon' href='/favicon.ico' />
       </Head>
-      <TextWrapper>
-        <Firstname>PETE</Firstname>
-        <Lastname>MILLSPAUGH</Lastname>
-        <Spacer size='24px' />
-        <Divider />
-        <Spacer size='24px' />
-        <LinkWrapper>
-          <Link href='/about' passHref>
-            <NavLink>About</NavLink>
-          </Link>
-          <Spacer size='16px' />
-          <Link href='/work' passHref>
-            <NavLink>Work</NavLink>
-          </Link>
-          <Spacer size='16px' />
-          <Link href='/talks' passHref>
-            <NavLink>Talks</NavLink>
-          </Link>
-          <Spacer size='16px' />
-          <Link href='#' passHref>
-            <NavLink>Contact</NavLink>
-          </Link>
-        </LinkWrapper>
-      </TextWrapper>
-      <ImageWrapper>
-        <Image
-          src={mountains}
-          alt='Graphic illustration of mountains and pine trees'
-        />
-      </ImageWrapper>
-    </Wrapper>
+      <Wrapper>
+        <TextWrapper>
+          <Firstname>PETER</Firstname>
+          <Lastname>MILLSPAUGH</Lastname>
+          <Spacer size='24px' />
+          <Divider />
+          <Spacer size='24px' />
+          <LinkWrapper>
+            <Link href='/about' passHref>
+              <NavLink>About</NavLink>
+            </Link>
+            <Spacer size='16px' />
+            <Link href='/work' passHref>
+              <NavLink>Work</NavLink>
+            </Link>
+            <Spacer size='16px' />
+            <Link href='/talks' passHref>
+              <NavLink>Talks</NavLink>
+            </Link>
+            <Spacer size='16px' />
+            <Link href='#' passHref>
+              <NavLink>Contact</NavLink>
+            </Link>
+          </LinkWrapper>
+        </TextWrapper>
+        <ImageWrapper>
+          <Image
+            src={mountains}
+            alt='Graphic illustration of mountains and pine trees'
+          />
+        </ImageWrapper>
+      </Wrapper>
+    </>
   );
 };
 
@@ -56,6 +59,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 60px;
+  background-color: ${(p) => p.theme.primaryBg};
   overflow: hidden;
 `;
 
@@ -77,11 +81,6 @@ const Firstname = styled(Names)`
 `;
 const Lastname = styled(Names)`
   font-size: 2rem;
-`;
-
-const Divider = styled.hr`
-  width: 50%;
-  border-color: ${(p) => p.theme.textColor};
 `;
 
 const LinkWrapper = styled.nav`
