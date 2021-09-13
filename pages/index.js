@@ -37,7 +37,7 @@ const Home = () => {
               <NavLink>Talks</NavLink>
             </Link>
             <Spacer size='16px' />
-            <Link href='#' passHref>
+            <Link href='/about#contact' passHref>
               <NavLink>Contact</NavLink>
             </Link>
           </LinkWrapper>
