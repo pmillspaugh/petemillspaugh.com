@@ -78,6 +78,7 @@ const About = () => {
           <IconWrapper>
             <IconLink
               href='mailto:peterdgmillspaugh@gmail.com'
+              target='_blank'
               aria-label="Peter's email address"
             >
               <Mail size={24} />
@@ -85,6 +86,7 @@ const About = () => {
             <Spacer size='20px' />
             <IconLink
               href='https://www.linkedin.com/in/peter-millspaugh/'
+              target='_blank'
               aria-label="Peter's LinkedIn profile"
             >
               <Linkedin size={24} />
@@ -92,6 +94,7 @@ const About = () => {
             <Spacer size='20px' />
             <IconLink
               href='https://github.com/pmillspaugh'
+              target='_blank'
               aria-label="Peter's GitHub profile"
             >
               <GitHub size={24} />
