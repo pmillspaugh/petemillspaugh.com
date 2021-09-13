@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import Head from 'next/head';
 import Link from 'next/link';
-import Image from 'next/image';
-import mountainsIcon from '../public/images/mountainsIcon.png';
 import { Mail, Linkedin, GitHub } from 'react-feather';
 import HomeLink from '../components/HomeLink';
+import Layout from '../components/utils/Layout';
+import MaxWidthWrapper from '../components/utils/MaxWidthWrapper';
 import Spacer from '../components/utils/Spacer';
-import Divider from '../components/utils/Divider';
+import PageHeader from '../components/utils/PageHeader';
 
 const About = () => {
   return (
@@ -20,20 +20,9 @@ const About = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <HomeLink />
-      <Wrapper>
-        <ContentWrapper>
-          <Spacer size='24px' />
-          <ImageWrapper>
-            <Image
-              src={mountainsIcon}
-              alt='Graphic of two snow-capped mountains with pine trees'
-            />
-          </ImageWrapper>
-          <Spacer size='30px' />
-          <Heading>About</Heading>
-          <Spacer size='24px' />
-          <Divider />
-          <Spacer size='36px' />
+      <Layout>
+        <MaxWidthWrapper>
+          <PageHeader page='About' />
           <SubHeading>Hi there 👋</SubHeading>
           <Spacer size='20px' />
           <Paragraph>Thanks for visiting my site!</Paragraph>
@@ -100,51 +89,11 @@ const About = () => {
               <GitHub size={24} />
             </IconLink>
           </IconWrapper>
-        </ContentWrapper>
-      </Wrapper>
+        </MaxWidthWrapper>
+      </Layout>
     </>
   );
 };
-
-const Wrapper = styled.div`
-  min-height: 100%;
-  background-color: ${(p) => p.theme.primaryBg};
-  display: flex;
-  justify-content: center;
-`;
-
-const ContentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 72px 36px;
-
-  @media (min-width: 592px) {
-    padding: 72px;
-  }
-
-  @media (min-width: 768px) {
-    padding: 72px 108px;
-  }
-
-  @media (min-width: 992px) {
-    padding: 72px 144px;
-  }
-
-  @media (min-width: 1200px) {
-    padding: 72px 180px;
-    max-width: 1380px;
-  }
-`;
-
-const ImageWrapper = styled.div`
-  width: 250px;
-`;
-
-const Heading = styled.h1`
-  font-size: 2.5rem;
-  color: ${(p) => p.theme.headingColor};
-`;
 
 const SubHeading = styled.h2`
   font-size: 2rem;
