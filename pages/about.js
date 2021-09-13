@@ -5,8 +5,11 @@ import { Mail, Linkedin, GitHub } from 'react-feather';
 import HomeLink from '../components/HomeLink';
 import Layout from '../components/utils/Layout';
 import MaxWidthWrapper from '../components/utils/MaxWidthWrapper';
-import Spacer from '../components/utils/Spacer';
 import PageHeader from '../components/utils/PageHeader';
+import Paragraph from '../components/utils/Paragraph';
+import SubHeading from '../components/utils/SubHeading';
+import AnchorLink from '../components/utils/AnchorLink';
+import Spacer from '../components/utils/Spacer';
 
 const About = () => {
   return (
@@ -94,31 +97,6 @@ const About = () => {
     </>
   );
 };
-
-const SubHeading = styled.h2`
-  font-size: 2rem;
-  width: 100%;
-  color: ${(p) => p.theme.textColor};
-`;
-
-const Paragraph = styled.p`
-  width: 100%;
-  font-size: 1.25rem;
-  line-height: 1.6;
-  color: ${(p) => p.theme.textColor};
-
-  @media (min-width: 1200px) {
-    font-size: 1.5rem;
-  }
-`;
-
-const AnchorLink = styled.a`
-  color: ${(p) => p.theme.linkTextColor};
-
-  &:hover {
-    color: ${(p) => p.theme.linkTextColorHover};
-  }
-`;
 
 const IconWrapper = styled.div`
   width: 100%;
