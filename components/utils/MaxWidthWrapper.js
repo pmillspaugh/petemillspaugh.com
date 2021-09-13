@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const MaxWidthWrapper = styled.div`
   display: flex;
@@ -7,20 +7,19 @@ const MaxWidthWrapper = styled.div`
   padding: 72px 36px;
 
   @media (min-width: 592px) {
-    padding: 72px;
+    width: 520px;
   }
 
   @media (min-width: 768px) {
-    padding: 72px 108px;
+    width: 660px;
   }
 
   @media (min-width: 992px) {
-    padding: 72px 144px;
+    width: 848px;
   }
 
   @media (min-width: 1200px) {
-    padding: 72px 180px;
-    max-width: 1380px;
+    width: 1020px;
   }
 `;
 
