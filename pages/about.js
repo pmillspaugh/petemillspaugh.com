@@ -40,7 +40,7 @@ const About = () => {
             ecosystem (React, Redux, Node.js) with a core focus on frontend
             technologies. I&apos;m especially excited about Accessibility and
             PWAs. In July, I gave a{' '}
-            <Link href='/talks' passHref>
+            <Link href='/talks/accessibility' passHref>
               <AnchorLink>talk on Web Accessibility</AnchorLink>
             </Link>{' '}
             – let me know what you think!
@@ -48,12 +48,12 @@ const About = () => {
           <Spacer size='20px' />
           <Paragraph>
             Recently, I&apos;ve been working with a terrific team on{' '}
-            <Link href='/work' passHref>
+            <Link href='/work#tulo' passHref>
               <AnchorLink>tulo.js</AnchorLink>
             </Link>
             , an open-source developer tool for client-side caching via service
             workers. I&apos;m also building{' '}
-            <Link href='/work' passHref>
+            <Link href='/work#non-prophet' passHref>
               <AnchorLink>non-prophet</AnchorLink>
             </Link>
             , an e-commerce brand. Once it officially launches, all profit will
