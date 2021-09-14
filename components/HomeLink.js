@@ -5,7 +5,7 @@ import { Home } from 'react-feather';
 const HomeLink = () => {
   return (
     <Link href='/' passHref>
-      <AnchorLink>
+      <AnchorLink aria-label='Home'>
         <Home />
       </AnchorLink>
     </Link>

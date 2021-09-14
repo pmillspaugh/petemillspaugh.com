@@ -3,7 +3,10 @@ import { Sun, Moon } from 'react-feather';
 
 const ThemeToggle = ({ lightMode, setLightMode }) => {
   return (
-    <ToggleButton onClick={() => setLightMode(!lightMode)}>
+    <ToggleButton
+      onClick={() => setLightMode(!lightMode)}
+      aria-label='Theme Toggle'
+    >
       {lightMode ? <SunIcon /> : <MoonIcon />}
     </ToggleButton>
   );
