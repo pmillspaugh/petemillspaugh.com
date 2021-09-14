@@ -41,6 +41,7 @@ const Home = () => {
               <NavLink>Contact</NavLink>
             </Link>
           </LinkWrapper>
+          <Spacer size='24px' />
         </TextWrapper>
         <ImageWrapper>
           <Image
