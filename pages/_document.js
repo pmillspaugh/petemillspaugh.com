@@ -1,5 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
+import socialBanner from '../public/images/socialBanner.png';
 
 class Doc extends Document {
   static async getInitialProps(ctx) {
@@ -42,6 +43,10 @@ class Doc extends Document {
           href='https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap'
           rel='stylesheet'
         />
+        <meta property='og:title' content='Peter Millspaugh' />
+        <meta property='og:description' content='Frontend developer' />
+        <meta property='og:url' content='https://www.petermillspaugh.com/' />
+        <meta property='og:image' content={socialBanner} />
         <body>
           <Main />
           <NextScript />
