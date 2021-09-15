@@ -1,6 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
-import socialBanner from '../public/images/socialBanner.png';
 
 class Doc extends Document {
   static async getInitialProps(ctx) {
@@ -46,7 +45,7 @@ class Doc extends Document {
         <meta property='og:title' content='Peter Millspaugh' />
         <meta property='og:description' content='Frontend developer' />
         <meta property='og:url' content='https://www.petermillspaugh.com/' />
-        <meta property='og:image' content={socialBanner} />
+        <meta property='og:image' content='/images/socialBanner.png' />
         <body>
           <Main />
           <NextScript />
