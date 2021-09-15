@@ -14,8 +14,11 @@ class Doc extends Document {
         });
 
       const initialProps = await Document.getInitialProps(ctx);
+      const deploymentURL = process.env.VERCEL_URL;
+
       return {
         ...initialProps,
+        deploymentURL,
         styles: (
           <>
             {initialProps.styles}
@@ -45,7 +48,10 @@ class Doc extends Document {
         <meta property='og:title' content='Peter Millspaugh' />
         <meta property='og:description' content='Frontend developer' />
         <meta property='og:url' content='https://www.petermillspaugh.com/' />
-        <meta property='og:image' content='/images/socialBanner.png' />
+        <meta
+          property='og:image'
+          content={`${this.props.deploymentURL}/images/socialBanner.png`}
+        />
         <body>
           <Main />
           <NextScript />
