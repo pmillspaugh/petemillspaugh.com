@@ -45,12 +45,18 @@ class Doc extends Document {
           href='https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap'
           rel='stylesheet'
         />
-        <meta property='og:title' content='Peter Millspaugh' />
-        <meta property='og:description' content='Frontend developer' />
+        <meta name='title' property='og:title' content='Peter Millspaugh' />
+        <meta property='og:type' content='website' />
+        <meta
+          name='description'
+          property='og:description'
+          content='Peter Millspaugh - Frontend Developer excited about Web Accessibility and PWAs'
+        />
         <meta property='og:url' content='https://www.petermillspaugh.com/' />
         <meta
+          name='image'
           property='og:image'
-          content={`https://${this.props.deploymentURL}/images/socialBanner.png?1`}
+          content={`https://${this.props.deploymentURL}/images/socialBanner.png`}
         />
         <body>
           <Main />

@@ -11,9 +11,18 @@ const Home = () => {
     <>
       <Head>
         <title>Peter Millspaugh</title>
+        <meta name='title' property='og:title' content='Peter Millspaugh' />
+        <meta property='og:type' content='website' />
         <meta
           name='description'
-          content='Peter Millspaugh - Frontend Developer'
+          property='og:description'
+          content='Peter Millspaugh - Frontend Developer excited about Web Accessibility and PWAs'
+        />
+        <meta property='og:url' content='https://www.petermillspaugh.com/' />
+        <meta
+          name='image'
+          property='og:image'
+          content={`https://${this.props.deploymentURL}/images/socialBanner.png`}
         />
         <link rel='icon' href='/favicon.ico' />
       </Head>
