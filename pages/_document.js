@@ -50,7 +50,7 @@ class Doc extends Document {
         <meta property='og:url' content='https://www.petermillspaugh.com/' />
         <meta
           property='og:image'
-          content={`https://${this.props.deploymentURL}/images/socialBanner.png`}
+          content={`https://${this.props.deploymentURL}/images/socialBanner.png?1`}
         />
         <body>
           <Main />
