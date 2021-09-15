@@ -129,10 +129,6 @@ const ImageWrapper = styled.div`
   max-width: 300px;
   display: flex;
   align-items: center;
-
-  &:hover {
-    cursor: pointer;
-  }
 `;
 
 const ProjectHeading = styled.h2`

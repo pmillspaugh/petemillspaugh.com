@@ -486,9 +486,11 @@ const TranscriptSummary = styled.summary`
   font-weight: 600;
   color: ${(p) => p.theme.linkTextColor};
 
-  &:hover {
-    cursor: pointer;
-    color: ${(p) => p.theme.linkTextColorHover};
+  @media (hover: hover) {
+    &:hover {
+      cursor: pointer;
+      color: ${(p) => p.theme.linkTextColorHover};
+    }
   }
 `;
 

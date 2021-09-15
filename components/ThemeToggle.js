@@ -25,9 +25,11 @@ const ToggleButton = styled.button`
   border: none;
   border-radius: 4px;
 
-  &:hover {
-    cursor: pointer;
-    background-color: ${(p) => p.theme.buttonBgHover};
+  @media (hover: hover) {
+    &:hover {
+      cursor: pointer;
+      background-color: ${(p) => p.theme.buttonBgHover};
+    }
   }
 `;
 
