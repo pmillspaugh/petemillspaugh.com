@@ -14,7 +14,7 @@ class Doc extends Document {
         });
 
       const initialProps = await Document.getInitialProps(ctx);
-      const deploymentURL = process.env.VERCEL_URL;
+      const deploymentURL = process.env.NEXT_PUBLIC_VERCEL_URL;
 
       return {
         ...initialProps,

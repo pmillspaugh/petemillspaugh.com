@@ -6,7 +6,17 @@ import mountains from '../public/images/mountainFooter.png';
 import Spacer from '../components/utils/Spacer';
 import Divider from '../components/utils/Divider';
 
-const Home = () => {
+export async function getStaticProps() {
+  const deploymentURL = String(process.env.NEXT_PUBLIC_VERCEL_URL);
+
+  return {
+    props: {
+      deploymentURL,
+    },
+  };
+}
+
+const Home = ({ deploymentURL }) => {
   return (
     <>
       <Head>
@@ -22,7 +32,7 @@ const Home = () => {
         <meta
           name='image'
           property='og:image'
-          content={`https://${this.props.deploymentURL}/images/socialBanner.png`}
+          content={`https://${deploymentURL}/images/socialBanner.png`}
         />
         <link rel='icon' href='/favicon.ico' />
       </Head>
