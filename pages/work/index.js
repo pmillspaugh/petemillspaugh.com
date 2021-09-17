@@ -55,6 +55,13 @@ const Work = () => {
                 >
                   GitHub repo <LinkIcon size={12} />
                 </ProjectLink>
+                <Spacer size='8px' />
+                <TechStack>
+                  <Tech>React</Tech>
+                  <Tech>Redux</Tech>
+                  <Tech>Styled Components</Tech>
+                  <Tech>Firebase</Tech>
+                </TechStack>
               </TextWrapper>
             </ProjectBlurb>
             <Spacer size='48px' />
@@ -88,6 +95,17 @@ const Work = () => {
                 >
                   GitHub repo <LinkIcon size={12} />
                 </ProjectLink>
+                <Spacer size='8px' />
+                <TechStack>
+                  <Tech>TypeScript</Tech>
+                  <Tech>Next.js</Tech>
+                  <Tech>React</Tech>
+                  <Tech>Redux</Tech>
+                  <Tech>Styled Components</Tech>
+                  <Tech>NextAuth.js</Tech>
+                  <Tech>MongoDB</Tech>
+                  <Tech>Vercel</Tech>
+                </TechStack>
               </TextWrapper>
             </ProjectBlurb>
           </ProjectWrapper>
@@ -144,7 +162,6 @@ const TextWrapper = styled.div`
   text-align: center;
 
   @media (min-width: 768px) {
-    padding: 0 36px;
     text-align: revert;
   }
 `;
@@ -152,6 +169,26 @@ const TextWrapper = styled.div`
 const ProjectLink = styled(AnchorLink)`
   font-weight: 800;
   font-size: 1.2rem;
+`;
+
+const TechStack = styled.ul`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  @media (min-width: 768px) {
+    justify-content: flex-start;
+  }
+`;
+
+const Tech = styled.li`
+  padding: 4px 8px;
+  background-color: ${(p) => p.theme.primaryBg};
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  font-size: 0.8rem;
+  color: ${(p) => p.theme.linkTextColorHover};
 `;
 
 export default Work;
