@@ -61,6 +61,21 @@ const About = () => {
           </Paragraph>
           <Spacer size='20px' />
           <Paragraph>
+            I designed this site with{' '}
+            <AnchorLink href='https://www.figma.com/'>Figma</AnchorLink> and
+            built it out using{' '}
+            <AnchorLink href='https://nextjs.org/'>Next.js</AnchorLink> and{' '}
+            <AnchorLink href='https://styled-components.com/'>
+              Styled Components
+            </AnchorLink>
+            . The iconography is from the{' '}
+            <AnchorLink href='https://feathericons.com/'>Feather</AnchorLink>{' '}
+            open-source library. The developer experience working with those
+            tools is fantastic – I&apos;d love to chat more about it if
+            you&apos;re interested!
+          </Paragraph>
+          <Spacer size='20px' />
+          <Paragraph>
             When I&apos;m not coding, I do a lot of cooking (
             <em>read: pasta</em>) and running.
           </Paragraph>
