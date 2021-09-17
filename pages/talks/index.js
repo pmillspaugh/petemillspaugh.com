@@ -26,9 +26,16 @@ const Talks = () => {
           <TalkWrapper>
             <TalkBlurb>
               <ThumbnailandHeadingWrapper>
-                <Link href='/talks/accessibility' passHref>
-                  <TalkLink>Web Accessibility for Frontend Developers</TalkLink>
-                </Link>
+                <div>
+                  <Link href='/talks/accessibility' passHref>
+                    <TalkLink>
+                      Web Accessibility for Frontend Developers
+                    </TalkLink>
+                  </Link>
+                  <Link href='/talks/accessibility#transcript' passHref>
+                    <TranscriptLink>Read transcript &rarr;</TranscriptLink>
+                  </Link>
+                </div>
                 <Spacer size='24px' />
                 <ThumbnailWrapper>
                   <Thumbnail
@@ -64,6 +71,18 @@ const TalkLink = styled(AnchorLink)`
   font-size: 1.5rem;
   font-weight: 800;
   font-family: 'Ubuntu', sans-serif;
+`;
+
+const TranscriptLink = styled.a`
+  display: block;
+  margin-top: 8px;
+  text-decoration: none;
+  color: ${(p) => p.theme.textColor};
+  font-weight: 800;
+
+  &:hover {
+    color: ${(p) => p.theme.linkTextColorHover};
+  }
 `;
 
 const ThumbnailandHeadingWrapper = styled.div`

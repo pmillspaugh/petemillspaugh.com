@@ -32,7 +32,7 @@ const Accessibility = () => {
               allowFullScreen
             />
             <Spacer size='36px' />
-            <Transcript>
+            <Transcript id='transcript'>
               <TranscriptSummary>Transcript</TranscriptSummary>
               <TranscriptParagraph>
                 <strong>(AKI, host)</strong> Thank you for coming out tonight
