@@ -62,14 +62,21 @@ const About = () => {
           <Spacer size='20px' />
           <Paragraph>
             I designed this site with{' '}
-            <AnchorLink href='https://www.figma.com/'>Figma</AnchorLink> and
-            built it out using{' '}
-            <AnchorLink href='https://nextjs.org/'>Next.js</AnchorLink> and{' '}
-            <AnchorLink href='https://styled-components.com/'>
+            <AnchorLink href='https://www.figma.com/' target='_blank'>
+              Figma
+            </AnchorLink>{' '}
+            and built it out using{' '}
+            <AnchorLink href='https://nextjs.org/' target='_blank'>
+              Next.js
+            </AnchorLink>{' '}
+            and{' '}
+            <AnchorLink href='https://styled-components.com/' target='_blank'>
               Styled Components
             </AnchorLink>
             . The iconography is from the{' '}
-            <AnchorLink href='https://feathericons.com/'>Feather</AnchorLink>{' '}
+            <AnchorLink href='https://feathericons.com/' target='_blank'>
+              Feather
+            </AnchorLink>{' '}
             open-source library. The developer experience working with those
             tools is fantastic – I&apos;d love to chat more about it if
             you&apos;re interested!
