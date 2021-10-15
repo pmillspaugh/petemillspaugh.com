@@ -50,7 +50,7 @@ class Doc extends Document {
         <meta
           name='description'
           property='og:description'
-          content='Peter Millspaugh - Frontend Developer excited about Web Accessibility and PWAs'
+          content='Peter Millspaugh – Frontend Developer excited about Web Accessibility and PWAs'
         />
         <meta property='og:url' content='https://www.petermillspaugh.com/' />
         <meta
