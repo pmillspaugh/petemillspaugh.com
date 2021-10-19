@@ -66,6 +66,7 @@ const Home = ({ deploymentURL }) => {
           <Image
             src={mountains}
             alt='Graphic illustration of mountains and pine trees'
+            layout='responsive'
           />
         </ImageWrapper>
       </Wrapper>
@@ -130,6 +131,7 @@ const ImageWrapper = styled.div`
   flex-grow: 0;
   position: relative;
   height: 35vh;
+  width: 100vw;
   min-width: calc((1920 / 492) * 35vh);
   overflow: hidden;
   line-height: 0;
