@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@types/react': 18.2.14
   babel-plugin-styled-components: ^1.13.2
   eslint: 7.32.0
   eslint-config-next: 13.4.9
@@ -9,6 +10,7 @@ specifiers:
   react-dom: 18.2.0
   react-feather: ^2.0.9
   styled-components: ^5.3.1
+  typescript: 5.1.6
 
 dependencies:
   next: 13.4.9_biqbaboplfbrettd7655fr4n2y
@@ -18,9 +20,11 @@ dependencies:
   styled-components: 5.3.11_biqbaboplfbrettd7655fr4n2y
 
 devDependencies:
+  '@types/react': 18.2.14
   babel-plugin-styled-components: 1.13.3_styled-components@5.3.11
   eslint: 7.32.0
-  eslint-config-next: 13.4.9_eslint@7.32.0
+  eslint-config-next: 13.4.9_gsjcde7vtyx77zujqq4bik42o4
+  typescript: 5.1.6
 
 packages:
 
@@ -360,7 +364,23 @@ packages:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
 
-  /@typescript-eslint/parser/5.61.0_eslint@7.32.0:
+  /@types/prop-types/15.7.5:
+    resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
+    dev: true
+
+  /@types/react/18.2.14:
+    resolution: {integrity: sha512-A0zjq+QN/O0Kpe30hA1GidzyFjatVvrpIvWLxD+xv67Vt91TWWgco9IvrJBkeyHm1trGaFS/FSGqPlhyeZRm0g==}
+    dependencies:
+      '@types/prop-types': 15.7.5
+      '@types/scheduler': 0.16.3
+      csstype: 3.1.2
+    dev: true
+
+  /@types/scheduler/0.16.3:
+    resolution: {integrity: sha512-5cJ8CB4yAx7BH1oMvdU0Jh9lrEXyPkar6F9G/ERswkCuvP4KQZfZkSjcMbAICCpQTN4OuZn8tz0HiKv9TGZgrQ==}
+    dev: true
+
+  /@typescript-eslint/parser/5.61.0_gsjcde7vtyx77zujqq4bik42o4:
     resolution: {integrity: sha512-yGr4Sgyh8uO6fSi9hw3jAFXNBHbCtKKFMdX2IkT3ZqpKmtAq3lHS4ixB/COFuAIJpwl9/AqF7j72ZDWYKmIfvg==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
@@ -372,9 +392,10 @@ packages:
     dependencies:
       '@typescript-eslint/scope-manager': 5.61.0
       '@typescript-eslint/types': 5.61.0
-      '@typescript-eslint/typescript-estree': 5.61.0
+      '@typescript-eslint/typescript-estree': 5.61.0_typescript@5.1.6
       debug: 4.3.4
       eslint: 7.32.0
+      typescript: 5.1.6
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -392,7 +413,7 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@typescript-eslint/typescript-estree/5.61.0:
+  /@typescript-eslint/typescript-estree/5.61.0_typescript@5.1.6:
     resolution: {integrity: sha512-Fud90PxONnnLZ36oR5ClJBLTLfU4pIWBmnvGwTbEa2cXIqj70AEDEmOmpkFComjBZ/037ueKrOdHuYmSFVD7Rw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
@@ -407,7 +428,8 @@ packages:
       globby: 11.1.0
       is-glob: 4.0.3
       semver: 7.5.4
-      tsutils: 3.21.0
+      tsutils: 3.21.0_typescript@5.1.6
+      typescript: 5.1.6
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -705,6 +727,10 @@ packages:
       css-color-keywords: 1.0.0
       postcss-value-parser: 4.2.0
 
+  /csstype/3.1.2:
+    resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
+    dev: true
+
   /damerau-levenshtein/1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
     dev: true
@@ -901,7 +927,7 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /eslint-config-next/13.4.9_eslint@7.32.0:
+  /eslint-config-next/13.4.9_gsjcde7vtyx77zujqq4bik42o4:
     resolution: {integrity: sha512-0fLtKRR268NArpqeXXwnLgMXPvF64YESQvptVg+RMLCaijKm3FICN9Y7Jc1p2o+yrWwE4DufJXDM/Vo53D1L7g==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
@@ -912,7 +938,7 @@ packages:
     dependencies:
       '@next/eslint-plugin-next': 13.4.9
       '@rushstack/eslint-patch': 1.3.2
-      '@typescript-eslint/parser': 5.61.0_eslint@7.32.0
+      '@typescript-eslint/parser': 5.61.0_gsjcde7vtyx77zujqq4bik42o4
       eslint: 7.32.0
       eslint-import-resolver-node: 0.3.7
       eslint-import-resolver-typescript: 3.5.5_qox42jpbugnklhdm7i4uhztjoq
@@ -920,6 +946,7 @@ packages:
       eslint-plugin-jsx-a11y: 6.7.1_eslint@7.32.0
       eslint-plugin-react: 7.32.2_eslint@7.32.0
       eslint-plugin-react-hooks: 5.0.0-canary-7118f5dd7-20230705_eslint@7.32.0
+      typescript: 5.1.6
     transitivePeerDependencies:
       - eslint-import-resolver-webpack
       - supports-color
@@ -980,7 +1007,7 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 5.61.0_eslint@7.32.0
+      '@typescript-eslint/parser': 5.61.0_gsjcde7vtyx77zujqq4bik42o4
       debug: 3.2.7
       eslint: 7.32.0
       eslint-import-resolver-node: 0.3.7
@@ -999,7 +1026,7 @@ packages:
       '@typescript-eslint/parser':
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 5.61.0_eslint@7.32.0
+      '@typescript-eslint/parser': 5.61.0_gsjcde7vtyx77zujqq4bik42o4
       array-includes: 3.1.6
       array.prototype.flat: 1.3.1
       array.prototype.flatmap: 1.3.1
@@ -2444,13 +2471,14 @@ packages:
   /tslib/2.6.0:
     resolution: {integrity: sha512-7At1WUettjcSRHXCyYtTselblcHl9PJFFVKiCAy/bY97+BPZXSQ2wbq0P9s8tK2G7dFQfNnlJnPAiArVBVBsfA==}
 
-  /tsutils/3.21.0:
+  /tsutils/3.21.0_typescript@5.1.6:
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}
     engines: {node: '>= 6'}
     peerDependencies:
       typescript: '>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta'
     dependencies:
       tslib: 1.14.1
+      typescript: 5.1.6
     dev: true
 
   /type-check/0.4.0:
@@ -2471,6 +2499,12 @@ packages:
       call-bind: 1.0.2
       for-each: 0.3.3
       is-typed-array: 1.1.10
+    dev: true
+
+  /typescript/5.1.6:
+    resolution: {integrity: sha512-zaWCozRZ6DLEWAWFrVDz1H6FVXzUSfTy5FUMWsQlU8Ym5JP9eO4xkTIROFCQvhQf61z6O/G6ugw3SgAnvvm+HA==}
+    engines: {node: '>=14.17'}
+    hasBin: true
     dev: true
 
   /unbox-primitive/1.0.2:

@@ -16,8 +16,10 @@
     "styled-components": "^5.3.1"
   },
   "devDependencies": {
+    "@types/react": "18.2.14",
     "babel-plugin-styled-components": "^1.13.2",
     "eslint": "7.32.0",
-    "eslint-config-next": "13.4.9"
+    "eslint-config-next": "13.4.9",
+    "typescript": "5.1.6"
   }
 }
