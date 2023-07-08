@@ -1,11 +1,11 @@
-import styled from 'styled-components';
-import Link from 'next/link';
-import { Home } from 'react-feather';
+import styled from "styled-components";
+import Link from "next/link";
+import { Home } from "react-feather";
 
 const HomeLink = () => {
   return (
-    <Link href='/' passHref>
-      <AnchorLink aria-label='Home'>
+    <Link href="/" passHref legacyBehavior>
+      <AnchorLink aria-label="Home">
         <Home />
       </AnchorLink>
     </Link>

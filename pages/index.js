@@ -17,61 +17,59 @@ export async function getStaticProps() {
 }
 
 const Home = ({ deploymentURL }) => {
-  return (
-    <>
-      <Head>
-        <title>Peter Millspaugh</title>
-        <meta name='title' property='og:title' content='Peter Millspaugh' />
-        <meta property='og:type' content='website' />
-        <meta
-          name='description'
-          property='og:description'
-          content='Peter Millspaugh - Frontend Developer excited about Web Accessibility and PWAs'
+  return <>
+    <Head>
+      <title>Peter Millspaugh</title>
+      <meta name='title' property='og:title' content='Peter Millspaugh' />
+      <meta property='og:type' content='website' />
+      <meta
+        name='description'
+        property='og:description'
+        content='Peter Millspaugh - Frontend Developer excited about Web Accessibility and PWAs'
+      />
+      <meta property='og:url' content='https://www.petermillspaugh.com/' />
+      <meta
+        name='image'
+        property='og:image'
+        content={`https://${deploymentURL}/images/socialBanner.png`}
+      />
+      <link rel='icon' href='/favicon.ico' />
+    </Head>
+    <Wrapper>
+      <TextWrapper>
+        <Firstname>PETER</Firstname>
+        <Lastname>MILLSPAUGH</Lastname>
+        <Spacer size='24px' />
+        <Divider />
+        <Spacer size='24px' />
+        <LinkWrapper>
+          <Link href='/about' passHref legacyBehavior>
+            <NavLink>About</NavLink>
+          </Link>
+          <Spacer size='16px' />
+          <Link href='/work' passHref legacyBehavior>
+            <NavLink>Work</NavLink>
+          </Link>
+          <Spacer size='16px' />
+          <Link href='/talks' passHref legacyBehavior>
+            <NavLink>Talks</NavLink>
+          </Link>
+          <Spacer size='16px' />
+          <Link href='/about#contact' passHref legacyBehavior>
+            <NavLink>Contact</NavLink>
+          </Link>
+        </LinkWrapper>
+        <Spacer size='24px' />
+      </TextWrapper>
+      <ImageWrapper>
+        <Image
+          src={mountains}
+          alt='Graphic illustration of mountains and pine trees'
+          layout='responsive'
         />
-        <meta property='og:url' content='https://www.petermillspaugh.com/' />
-        <meta
-          name='image'
-          property='og:image'
-          content={`https://${deploymentURL}/images/socialBanner.png`}
-        />
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
-      <Wrapper>
-        <TextWrapper>
-          <Firstname>PETER</Firstname>
-          <Lastname>MILLSPAUGH</Lastname>
-          <Spacer size='24px' />
-          <Divider />
-          <Spacer size='24px' />
-          <LinkWrapper>
-            <Link href='/about' passHref>
-              <NavLink>About</NavLink>
-            </Link>
-            <Spacer size='16px' />
-            <Link href='/work' passHref>
-              <NavLink>Work</NavLink>
-            </Link>
-            <Spacer size='16px' />
-            <Link href='/talks' passHref>
-              <NavLink>Talks</NavLink>
-            </Link>
-            <Spacer size='16px' />
-            <Link href='/about#contact' passHref>
-              <NavLink>Contact</NavLink>
-            </Link>
-          </LinkWrapper>
-          <Spacer size='24px' />
-        </TextWrapper>
-        <ImageWrapper>
-          <Image
-            src={mountains}
-            alt='Graphic illustration of mountains and pine trees'
-            layout='responsive'
-          />
-        </ImageWrapper>
-      </Wrapper>
-    </>
-  );
+      </ImageWrapper>
+    </Wrapper>
+  </>;
 };
 
 const Wrapper = styled.div`

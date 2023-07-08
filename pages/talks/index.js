@@ -11,45 +11,43 @@ import AnchorLink from '../../components/utils/AnchorLink';
 import Spacer from '../../components/utils/Spacer';
 
 const Talks = () => {
-  return (
-    <>
-      <Head>
-        <title>Peter Millspaugh | Talks</title>
-        <meta name='description' content='Peter Millspaugh - Talks' />
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
-      <HomeLink />
-      <Layout>
-        <MaxWidthWrapper>
-          <PageHeader page='Talks' />
-          <Spacer size='8px' />
-          <TalkWrapper>
-            <TalkBlurb>
-              <ThumbnailandHeadingWrapper>
-                <div>
-                  <Link href='/talks/accessibility' passHref>
-                    <TalkLink>
-                      Web Accessibility for Frontend Developers
-                    </TalkLink>
-                  </Link>
-                  <Link href='/talks/accessibility#transcript' passHref>
-                    <TranscriptLink>Read transcript &rarr;</TranscriptLink>
-                  </Link>
-                </div>
-                <Spacer size='24px' />
-                <ThumbnailWrapper>
-                  <Thumbnail
-                    src={accessibilityThumbnail}
-                    alt="Cover slide of Peter's talk on Web Accessibility"
-                  />
-                </ThumbnailWrapper>
-              </ThumbnailandHeadingWrapper>
-            </TalkBlurb>
-          </TalkWrapper>
-        </MaxWidthWrapper>
-      </Layout>
-    </>
-  );
+  return <>
+    <Head>
+      <title>Peter Millspaugh | Talks</title>
+      <meta name='description' content='Peter Millspaugh - Talks' />
+      <link rel='icon' href='/favicon.ico' />
+    </Head>
+    <HomeLink />
+    <Layout>
+      <MaxWidthWrapper>
+        <PageHeader page='Talks' />
+        <Spacer size='8px' />
+        <TalkWrapper>
+          <TalkBlurb>
+            <ThumbnailandHeadingWrapper>
+              <div>
+                <Link href='/talks/accessibility' passHref legacyBehavior>
+                  <TalkLink>
+                    Web Accessibility for Frontend Developers
+                  </TalkLink>
+                </Link>
+                <Link href='/talks/accessibility#transcript' passHref legacyBehavior>
+                  <TranscriptLink>Read transcript &rarr;</TranscriptLink>
+                </Link>
+              </div>
+              <Spacer size='24px' />
+              <ThumbnailWrapper>
+                <Thumbnail
+                  src={accessibilityThumbnail}
+                  alt="Cover slide of Peter's talk on Web Accessibility"
+                />
+              </ThumbnailWrapper>
+            </ThumbnailandHeadingWrapper>
+          </TalkBlurb>
+        </TalkWrapper>
+      </MaxWidthWrapper>
+    </Layout>
+  </>;
 };
 
 const TalkWrapper = styled.main`
