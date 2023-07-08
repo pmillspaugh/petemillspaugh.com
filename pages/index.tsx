@@ -69,6 +69,7 @@ const Home = ({ deploymentURL }) => {
             height={492}
             alt="Graphic illustration of mountains and pine trees"
             style={{ minWidth: "100%", height: "auto" }}
+            priority={true}
           />
         </ImageWrapper>
       </Wrapper>
