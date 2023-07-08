@@ -1,61 +1,64 @@
-import styled from 'styled-components';
-import Head from 'next/head';
-import Image from 'next/image';
-import nonProphetThumbnail from '../../public/images/nonProphetThumbnail.png';
-import tuloThumbnail from '../../public/images/tuloThumbnail.png';
-import { Link as LinkIcon, GitHub } from 'react-feather';
-import HomeLink from '../../components/HomeLink';
-import Layout from '../../components/utils/Layout';
-import MaxWidthWrapper from '../../components/utils/MaxWidthWrapper';
-import PageHeader from '../../components/utils/PageHeader';
-import Spacer from '../../components/utils/Spacer';
-import AnchorLink from '../../components/utils/AnchorLink';
+import styled from "styled-components";
+import Head from "next/head";
+import Image from "next/image";
+import nonProphetThumbnail from "../../public/images/nonProphetThumbnail.png";
+import tuloThumbnail from "../../public/images/tuloThumbnail.png";
+import { Link as LinkIcon, GitHub } from "react-feather";
+import HomeLink from "../../components/HomeLink";
+import Layout from "../../components/utils/Layout";
+import MaxWidthWrapper from "../../components/utils/MaxWidthWrapper";
+import PageHeader from "../../components/utils/PageHeader";
+import Spacer from "../../components/utils/Spacer";
+import AnchorLink from "../../components/utils/AnchorLink";
 
 const Work = () => {
   return (
     <>
       <Head>
         <title>Peter Millspaugh | Work</title>
-        <meta name='description' content='Peter Millspaugh - Work' />
-        <link rel='icon' href='/favicon.ico' />
+        <meta name="description" content="Peter Millspaugh - Work" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeLink />
       <Layout>
         <MaxWidthWrapper>
-          <PageHeader page='Work' />
-          <Spacer size='8px' />
+          <PageHeader page="Work" />
+          <Spacer size="8px" />
           <ProjectWrapper>
-            <ProjectBlurb id='non-prophet'>
+            <ProjectBlurb id="non-prophet">
               <ImageWrapper>
                 <Image
+                  width={1000}
+                  height={1000}
                   src={nonProphetThumbnail}
-                  alt='Product thumbnail for the beanie sold on non-prophet, an e-commerce site where all profit is donated to the EJI'
+                  alt="Product thumbnail for the beanie sold on non-prophet, an e-commerce site where all profit is donated to the EJI"
+                  style={{ height: "auto" }}
                 />
               </ImageWrapper>
               <TextWrapper>
                 <ProjectHeading>non-prophet</ProjectHeading>
-                <Spacer size='16px' />
+                <Spacer size="16px" />
                 <p>
                   e-commerce brand, all profit donated to the Equal Justice
                   Initiative
                 </p>
-                <Spacer size='16px' />
+                <Spacer size="16px" />
                 <ProjectLink
-                  href='https://non-prophet.dev/'
-                  target='_blank'
-                  rel='noreferrer'
+                  href="https://non-prophet.dev/"
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   non-prophet.dev <LinkIcon size={12} />
                 </ProjectLink>
-                <Spacer size='8px' />
+                <Spacer size="8px" />
                 <ProjectLink
-                  href='https://github.com/pmillspaugh/non-prophet'
-                  target='_blank'
-                  rel='noreferrer'
+                  href="https://github.com/pmillspaugh/non-prophet"
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   GitHub repo <LinkIcon size={12} />
                 </ProjectLink>
-                <Spacer size='8px' />
+                <Spacer size="8px" />
                 <TechStack>
                   <Tech>React</Tech>
                   <Tech>Redux</Tech>
@@ -64,38 +67,41 @@ const Work = () => {
                 </TechStack>
               </TextWrapper>
             </ProjectBlurb>
-            <Spacer size='48px' />
-            <ProjectBlurb id='tulo'>
+            <Spacer size="48px" />
+            <ProjectBlurb id="tulo">
               <ImageWrapper>
                 <Image
+                  width={640}
+                  height={640}
                   src={tuloThumbnail}
-                  alt='Logo of tulo.js, an open-source developer tool for client-side caching via service workers'
+                  alt="Logo of tulo.js, an open-source developer tool for client-side caching via service workers"
+                  style={{ height: "auto" }}
                 />
               </ImageWrapper>
               <TextWrapper>
                 <ProjectHeading>tulo.js</ProjectHeading>
-                <Spacer size='16px' />
+                <Spacer size="16px" />
                 <p>
                   open-source npm package & monitoring tool to implement
                   client-side caching via service workers
                 </p>
-                <Spacer size='16px' />
+                <Spacer size="16px" />
                 <ProjectLink
-                  href='https://www.tulojs.com/'
-                  target='_blank'
-                  rel='noreferrer'
+                  href="https://www.tulojs.com/"
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   tulojs.com <LinkIcon size={12} />
                 </ProjectLink>
-                <Spacer size='8px' />
+                <Spacer size="8px" />
                 <ProjectLink
-                  href='https://github.com/oslabs-beta/tulo-js'
-                  target='_blank'
-                  rel='noreferrer'
+                  href="https://github.com/oslabs-beta/tulo-js"
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   GitHub repo <LinkIcon size={12} />
                 </ProjectLink>
-                <Spacer size='8px' />
+                <Spacer size="8px" />
                 <TechStack>
                   <Tech>TypeScript</Tech>
                   <Tech>Next.js</Tech>

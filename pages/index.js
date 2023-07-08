@@ -1,10 +1,10 @@
-import styled from 'styled-components';
-import Head from 'next/head';
-import Link from 'next/link';
-import Image from 'next/image';
-import mountains from '../public/images/mountainFooter.png';
-import Spacer from '../components/utils/Spacer';
-import Divider from '../components/utils/Divider';
+import styled from "styled-components";
+import Head from "next/head";
+import Link from "next/link";
+import Image from "next/image";
+import mountains from "../public/images/mountainFooter.png";
+import Spacer from "../components/utils/Spacer";
+import Divider from "../components/utils/Divider";
 
 export async function getStaticProps() {
   const deploymentURL = String(process.env.NEXT_PUBLIC_VERCEL_URL);
@@ -17,59 +17,63 @@ export async function getStaticProps() {
 }
 
 const Home = ({ deploymentURL }) => {
-  return <>
-    <Head>
-      <title>Peter Millspaugh</title>
-      <meta name='title' property='og:title' content='Peter Millspaugh' />
-      <meta property='og:type' content='website' />
-      <meta
-        name='description'
-        property='og:description'
-        content='Peter Millspaugh - Frontend Developer excited about Web Accessibility and PWAs'
-      />
-      <meta property='og:url' content='https://www.petermillspaugh.com/' />
-      <meta
-        name='image'
-        property='og:image'
-        content={`https://${deploymentURL}/images/socialBanner.png`}
-      />
-      <link rel='icon' href='/favicon.ico' />
-    </Head>
-    <Wrapper>
-      <TextWrapper>
-        <Firstname>PETER</Firstname>
-        <Lastname>MILLSPAUGH</Lastname>
-        <Spacer size='24px' />
-        <Divider />
-        <Spacer size='24px' />
-        <LinkWrapper>
-          <Link href='/about' passHref legacyBehavior>
-            <NavLink>About</NavLink>
-          </Link>
-          <Spacer size='16px' />
-          <Link href='/work' passHref legacyBehavior>
-            <NavLink>Work</NavLink>
-          </Link>
-          <Spacer size='16px' />
-          <Link href='/talks' passHref legacyBehavior>
-            <NavLink>Talks</NavLink>
-          </Link>
-          <Spacer size='16px' />
-          <Link href='/about#contact' passHref legacyBehavior>
-            <NavLink>Contact</NavLink>
-          </Link>
-        </LinkWrapper>
-        <Spacer size='24px' />
-      </TextWrapper>
-      <ImageWrapper>
-        <Image
-          src={mountains}
-          alt='Graphic illustration of mountains and pine trees'
-          layout='responsive'
+  return (
+    <>
+      <Head>
+        <title>Peter Millspaugh</title>
+        <meta name="title" property="og:title" content="Peter Millspaugh" />
+        <meta property="og:type" content="website" />
+        <meta
+          name="description"
+          property="og:description"
+          content="Peter Millspaugh - Frontend Developer excited about Web Accessibility and PWAs"
         />
-      </ImageWrapper>
-    </Wrapper>
-  </>;
+        <meta property="og:url" content="https://www.petermillspaugh.com/" />
+        <meta
+          name="image"
+          property="og:image"
+          content={`https://${deploymentURL}/images/socialBanner.png`}
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Wrapper>
+        <TextWrapper>
+          <Firstname>PETER</Firstname>
+          <Lastname>MILLSPAUGH</Lastname>
+          <Spacer size="24px" />
+          <Divider />
+          <Spacer size="24px" />
+          <LinkWrapper>
+            <Link href="/about" passHref legacyBehavior>
+              <NavLink>About</NavLink>
+            </Link>
+            <Spacer size="16px" />
+            <Link href="/work" passHref legacyBehavior>
+              <NavLink>Work</NavLink>
+            </Link>
+            <Spacer size="16px" />
+            <Link href="/talks" passHref legacyBehavior>
+              <NavLink>Talks</NavLink>
+            </Link>
+            <Spacer size="16px" />
+            <Link href="/about#contact" passHref legacyBehavior>
+              <NavLink>Contact</NavLink>
+            </Link>
+          </LinkWrapper>
+          <Spacer size="24px" />
+        </TextWrapper>
+        <ImageWrapper>
+          <Image
+            src={mountains}
+            width={1920}
+            height={492}
+            alt="Graphic illustration of mountains and pine trees"
+            style={{ minWidth: "100%", height: "auto" }}
+          />
+        </ImageWrapper>
+      </Wrapper>
+    </>
+  );
 };
 
 const Wrapper = styled.div`
