@@ -1,4 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
+import { openSans, petrona } from "./fonts";
 
 // CSS reset adapted from Piccalilli: https://piccalil.li/blog/a-modern-css-reset
 // Some resets adopted from Josh Comeau's CSS-for-JS course: https://courses.joshwcomeau.com/css-for-js
@@ -86,13 +87,27 @@ const CSSReset = createGlobalStyle`
 `;
 
 const GlobalStyle = createGlobalStyle`
+  /* LAYOUT */
   html, body, #__next {
     height: 100%;
-    font-family: 'Ubuntu', sans-serif;
   }
 
-  p, a {
-    font-family: 'Lora', serif;
+  /* TYPOGRAPHY */
+  html, body, #__next {
+    --font-open-sans: ${openSans.style.fontFamily};
+    --font-petrona: ${petrona.style.fontFamily};
+  }
+
+  html, body, #__next {
+    font-family: var(--font-petrona), serif;
+  }
+  
+  nav, button {
+    font-family: var(--font-open-sans), sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 200;
   }
 `;
 

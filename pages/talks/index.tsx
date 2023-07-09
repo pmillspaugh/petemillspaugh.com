@@ -76,8 +76,6 @@ const TalkBlurb = styled.article`
 
 const TalkLink = styled(AnchorLink)`
   font-size: 1.5rem;
-  font-weight: 800;
-  font-family: "Ubuntu", sans-serif;
 `;
 
 const TranscriptLink = styled.a`
@@ -85,7 +83,6 @@ const TranscriptLink = styled.a`
   margin-top: 8px;
   text-decoration: none;
   color: ${(p) => p.theme.textColor};
-  font-weight: 800;
 
   &:hover {
     color: ${(p) => p.theme.linkTextColorHover};

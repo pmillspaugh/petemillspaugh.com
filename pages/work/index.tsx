@@ -156,8 +156,6 @@ const ImageWrapper = styled.div`
 `;
 
 const ProjectHeading = styled.h2`
-  font-family: Ubuntu, sans-serif;
-  font-weight: 600;
   font-size: 2rem;
 `;
 
@@ -173,7 +171,6 @@ const TextWrapper = styled.div`
 `;
 
 const ProjectLink = styled(AnchorLink)`
-  font-weight: 800;
   font-size: 1.2rem;
 `;
 

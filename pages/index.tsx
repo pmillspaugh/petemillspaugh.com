@@ -38,8 +38,8 @@ const Home = ({ deploymentURL }) => {
       </Head>
       <Wrapper>
         <TextWrapper>
-          <Firstname>PETER</Firstname>
-          <Lastname>MILLSPAUGH</Lastname>
+          <Firstname>Peter</Firstname>
+          <Lastname>Millspaugh</Lastname>
           <Spacer size="24px" />
           <Divider />
           <Spacer size="24px" />
@@ -100,11 +100,12 @@ const Names = styled.h1`
 `;
 
 const Firstname = styled(Names)`
-  font-size: 3.5rem;
+  font-size: 5rem;
+  font-weight: 400;
   line-height: 3rem;
 `;
 const Lastname = styled(Names)`
-  font-size: 2rem;
+  font-size: 3rem;
 `;
 
 const LinkWrapper = styled.nav`
@@ -120,7 +121,6 @@ const LinkWrapper = styled.nav`
 const NavLink = styled.a`
   text-decoration: none;
   font-size: 1.5rem;
-  font-weight: 600;
   text-align: center;
   color: ${(p) => p.theme.linkTextColor};
 

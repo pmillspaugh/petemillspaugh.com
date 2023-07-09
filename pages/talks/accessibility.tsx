@@ -1,11 +1,11 @@
-import styled from 'styled-components';
-import Head from 'next/head';
-import HomeLink from '../../components/HomeLink';
-import Layout from '../../components/utils/Layout';
-import MaxWidthWrapper from '../../components/utils/MaxWidthWrapper';
-import PageHeader from '../../components/utils/PageHeader';
-import Paragraph from '../../components/utils/Paragraph';
-import Spacer from '../../components/utils/Spacer';
+import styled from "styled-components";
+import Head from "next/head";
+import HomeLink from "../../components/HomeLink";
+import Layout from "../../components/utils/Layout";
+import MaxWidthWrapper from "../../components/utils/MaxWidthWrapper";
+import PageHeader from "../../components/utils/PageHeader";
+import Paragraph from "../../components/utils/Paragraph";
+import Spacer from "../../components/utils/Spacer";
 
 const Accessibility = () => {
   return (
@@ -13,26 +13,26 @@ const Accessibility = () => {
       <Head>
         <title>Peter Millspaugh | Web Accessibility</title>
         <meta
-          name='description'
-          content='Peter Millspaugh - Web Accessibility for Frontend Developers'
+          name="description"
+          content="Peter Millspaugh - Web Accessibility for Frontend Developers"
         />
-        <link rel='icon' href='/favicon.ico' />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeLink />
       <Layout>
         <MaxWidthWrapper>
-          <PageHeader page='Accessibility' />
-          <Spacer size='12px' />
+          <PageHeader page="Accessibility" />
+          <Spacer size="12px" />
           <ContentWrapper>
             <YouTube
-              src='https://www.youtube.com/embed/pPX0Gk0l6Vo'
-              title='Peter Millspaugh - Web Accessibility for Frontend Developers'
-              frameBorder='0'
-              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+              src="https://www.youtube.com/embed/pPX0Gk0l6Vo"
+              title="Peter Millspaugh - Web Accessibility for Frontend Developers"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
-            <Spacer size='36px' />
-            <Transcript id='transcript'>
+            <Spacer size="36px" />
+            <Transcript id="transcript">
               <TranscriptSummary>Transcript</TranscriptSummary>
               <TranscriptParagraph>
                 <strong>(AKI, host)</strong> Thank you for coming out tonight
@@ -427,13 +427,13 @@ const Accessibility = () => {
                 Millspaugh. Thanks for coming out, and have a wonderful evening.
               </TranscriptParagraph>
             </Transcript>
-            <Spacer size='32px' />
+            <Spacer size="32px" />
             <Paragraph>
               Thanks for checking out my talk on a11y! The content is meant to
               serve as an introduction to Web Accessibility for frontend
               software engineers.
             </Paragraph>
-            <Spacer size='20px' />
+            <Spacer size="20px" />
             <Paragraph>
               Topics covered include: assistive technologies (e.g. screen
               readers), semantic HTML, ARIA, keyboard navigation, visual
@@ -477,13 +477,11 @@ const YouTube = styled.iframe`
 
 const Transcript = styled.details`
   width: 100%;
-  font-family: Ubuntu, sans-serif;
   font-size: 1.25rem;
   color: ${(p) => p.theme.textColor};
 `;
 
 const TranscriptSummary = styled.summary`
-  font-weight: 600;
   color: ${(p) => p.theme.linkTextColor};
 
   @media (hover: hover) {
