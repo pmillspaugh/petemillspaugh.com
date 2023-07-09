@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import Head from "next/head";
-import HomeLink from "../../components/HomeLink";
-import Layout from "../../components/utils/Layout";
-import MaxWidthWrapper from "../../components/utils/MaxWidthWrapper";
-import PageHeader from "../../components/utils/PageHeader";
-import Paragraph from "../../components/utils/Paragraph";
-import Spacer from "../../components/utils/Spacer";
+import HomeLink from "@/components/HomeLink";
+import Layout from "@/components/utils/Layout";
+import MaxWidthWrapper from "@/components/utils/MaxWidthWrapper";
+import PageHeader from "@/components/utils/PageHeader";
+import Paragraph from "@/components/utils/Paragraph";
+import Spacer from "@/components/utils/Spacer";
 
 const Accessibility = () => {
   return (

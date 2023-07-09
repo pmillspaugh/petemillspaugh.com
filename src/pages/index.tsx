@@ -2,9 +2,9 @@ import styled from "styled-components";
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
-import mountains from "../public/images/mountainFooter.png";
-import Spacer from "../components/utils/Spacer";
-import Divider from "../components/utils/Divider";
+import mountains from "@/images/mountainFooter.png";
+import Spacer from "@/components/utils/Spacer";
+import Divider from "@/components/utils/Divider";
 
 export async function getStaticProps() {
   const deploymentURL = String(process.env.NEXT_PUBLIC_VERCEL_URL);

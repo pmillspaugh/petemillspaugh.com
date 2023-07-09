@@ -2,14 +2,14 @@ import styled from "styled-components";
 import Head from "next/head";
 import Link from "next/link";
 import { Mail, Linkedin, GitHub } from "react-feather";
-import HomeLink from "../components/HomeLink";
-import Layout from "../components/utils/Layout";
-import MaxWidthWrapper from "../components/utils/MaxWidthWrapper";
-import PageHeader from "../components/utils/PageHeader";
-import Paragraph from "../components/utils/Paragraph";
-import SubHeading from "../components/utils/SubHeading";
-import AnchorLink from "../components/utils/AnchorLink";
-import Spacer from "../components/utils/Spacer";
+import HomeLink from "@/components/HomeLink";
+import Layout from "@/components/utils/Layout";
+import MaxWidthWrapper from "@/components/utils/MaxWidthWrapper";
+import PageHeader from "@/components/utils/PageHeader";
+import Paragraph from "@/components/utils/Paragraph";
+import SubHeading from "@/components/utils/SubHeading";
+import AnchorLink from "@/components/utils/AnchorLink";
+import Spacer from "@/components/utils/Spacer";
 
 const About = () => {
   return (

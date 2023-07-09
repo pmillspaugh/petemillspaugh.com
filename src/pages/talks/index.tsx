@@ -2,13 +2,13 @@ import styled from "styled-components";
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
-import accessibilityThumbnail from "../../public/images/accessibilityThumbnail.png";
-import HomeLink from "../../components/HomeLink";
-import Layout from "../../components/utils/Layout";
-import MaxWidthWrapper from "../../components/utils/MaxWidthWrapper";
-import PageHeader from "../../components/utils/PageHeader";
-import AnchorLink from "../../components/utils/AnchorLink";
-import Spacer from "../../components/utils/Spacer";
+import accessibilityThumbnail from "@/images/accessibilityThumbnail.png";
+import HomeLink from "@/components/HomeLink";
+import Layout from "@/components/utils/Layout";
+import MaxWidthWrapper from "@/components/utils/MaxWidthWrapper";
+import PageHeader from "@/components/utils/PageHeader";
+import AnchorLink from "@/components/utils/AnchorLink";
+import Spacer from "@/components/utils/Spacer";
 
 const Talks = () => {
   return (

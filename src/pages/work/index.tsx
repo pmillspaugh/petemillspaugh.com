@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import Head from "next/head";
 import Image from "next/image";
-import nonProphetThumbnail from "../../public/images/nonProphetThumbnail.png";
-import tuloThumbnail from "../../public/images/tuloThumbnail.png";
+import nonProphetThumbnail from "@/images/nonProphetThumbnail.png";
+import tuloThumbnail from "@/images/tuloThumbnail.png";
 import { Link as LinkIcon, GitHub } from "react-feather";
-import HomeLink from "../../components/HomeLink";
-import Layout from "../../components/utils/Layout";
-import MaxWidthWrapper from "../../components/utils/MaxWidthWrapper";
-import PageHeader from "../../components/utils/PageHeader";
-import Spacer from "../../components/utils/Spacer";
-import AnchorLink from "../../components/utils/AnchorLink";
+import HomeLink from "@/components/HomeLink";
+import Layout from "@/components/utils/Layout";
+import MaxWidthWrapper from "@/components/utils/MaxWidthWrapper";
+import PageHeader from "@/components/utils/PageHeader";
+import Spacer from "@/components/utils/Spacer";
+import AnchorLink from "@/components/utils/AnchorLink";
 
 const Work = () => {
   return (

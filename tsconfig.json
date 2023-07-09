@@ -1,5 +1,11 @@
 {
   "compilerOptions": {
+    "baseUrl": "src/",
+    "paths": {
+      "@/images/*": ["../public/images/*"],
+      "@/components/*": ["components/*"],
+      "@/styles/*": ["styles/*"]
+    },
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
