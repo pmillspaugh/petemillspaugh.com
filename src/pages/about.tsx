@@ -31,15 +31,15 @@ const About = () => {
           <Paragraph>Thanks for visiting my site!</Paragraph>
           <Spacer size="20px" />
           <Paragraph>
-            I&apos;m Peter (or Pete – your call), and I&apos;m a developer based
-            in New York.
+            I'm Peter (or Pete – your call), and I'm a developer based in New
+            York.
           </Paragraph>
           <Spacer size="20px" />
           <Paragraph>
             I enjoy working across the stack in the TypeScript/JavaScript
             ecosystem (React, Redux, Node.js) with a core focus on frontend
-            technologies. I&apos;m especially excited about Accessibility and
-            PWAs. In July, I gave a{" "}
+            technologies. I'm especially excited about Accessibility and PWAs.
+            In July, I gave a{" "}
             <Link href="/talks/accessibility" passHref legacyBehavior>
               <AnchorLink>talk on Web Accessibility</AnchorLink>
             </Link>{" "}
@@ -47,12 +47,12 @@ const About = () => {
           </Paragraph>
           <Spacer size="20px" />
           <Paragraph>
-            Recently, I&apos;ve been working with a terrific team on{" "}
+            Recently, I've been working with a terrific team on{" "}
             <Link href="/work#tulo" passHref legacyBehavior>
               <AnchorLink>tulo.js</AnchorLink>
             </Link>
             , an open-source developer tool for client-side caching via service
-            workers. I&apos;m also building{" "}
+            workers. I'm also building{" "}
             <Link href="/work#non-prophet" passHref legacyBehavior>
               <AnchorLink>non-prophet</AnchorLink>
             </Link>
@@ -78,16 +78,16 @@ const About = () => {
               Feather
             </AnchorLink>{" "}
             open-source library. The developer experience working with those
-            tools is fantastic – I&apos;d love to chat more about it if
-            you&apos;re interested!
+            tools is fantastic – I'd love to chat more about it if you're
+            interested!
           </Paragraph>
           <Spacer size="20px" />
           <Paragraph>
-            When I&apos;m not coding, I do a lot of cooking (
-            <em>read: pasta</em>) and running.
+            When I'm not coding, I do a lot of cooking (<em>read: pasta</em>)
+            and running.
           </Paragraph>
           <Spacer size="28px" />
-          <SubHeading id="contact">Let&apos;s connect! ☕</SubHeading>
+          <SubHeading id="contact">Let's connect! ☕</SubHeading>
           <Spacer size="20px" />
           <IconWrapper>
             <IconLink

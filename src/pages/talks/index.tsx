@@ -37,7 +37,7 @@ const Talks = () => {
                     passHref
                     legacyBehavior
                   >
-                    <TranscriptLink>Read transcript &rarr;</TranscriptLink>
+                    <TranscriptLink>Read transcript →</TranscriptLink>
                   </Link>
                 </div>
                 <Spacer size="24px" />
