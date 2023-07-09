@@ -92,6 +92,20 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
   }
 
+  h1 {
+    font-size: 4rem;
+    padding-bottom: 24px;
+  }
+
+  h2 {
+    font-size: 2rem;
+    padding-bottom: 20px;
+  }
+
+  p {
+    padding-bottom: 16px;
+  }
+
   /* TYPOGRAPHY */
   html, body, #__next {
     --font-open-sans: ${openSans.style.fontFamily};

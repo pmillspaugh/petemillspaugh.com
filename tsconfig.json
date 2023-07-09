@@ -4,7 +4,8 @@
     "paths": {
       "@/images/*": ["../public/images/*"],
       "@/components/*": ["components/*"],
-      "@/styles/*": ["styles/*"]
+      "@/styles/*": ["styles/*"],
+      "@/helpers/*": ["helpers/*"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
