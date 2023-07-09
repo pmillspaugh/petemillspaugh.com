@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const SubHeading = styled.h2`
   font-size: 2rem;

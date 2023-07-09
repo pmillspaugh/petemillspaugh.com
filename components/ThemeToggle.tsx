@@ -1,11 +1,11 @@
-import styled from 'styled-components';
-import { Sun, Moon } from 'react-feather';
+import styled from "styled-components";
+import { Sun, Moon } from "react-feather";
 
 const ThemeToggle = ({ lightMode, setLightMode }) => {
   return (
     <ToggleButton
       onClick={() => setLightMode(!lightMode)}
-      aria-label='Theme Toggle'
+      aria-label="Theme Toggle"
     >
       {lightMode ? <SunIcon /> : <MoonIcon />}
     </ToggleButton>

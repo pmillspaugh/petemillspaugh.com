@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prettify": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\""
   },
   "dependencies": {
     "next": "13.4.9",
@@ -20,6 +21,8 @@
     "babel-plugin-styled-components": "^1.13.2",
     "eslint": "7.32.0",
     "eslint-config-next": "13.4.9",
+    "eslint-config-prettier": "^8.8.0",
+    "prettier": "^3.0.0",
     "typescript": "5.1.6"
   }
 }
