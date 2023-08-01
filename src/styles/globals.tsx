@@ -123,6 +123,13 @@ const GlobalStyle = createGlobalStyle`
   h1, h2, h3, h4, h5, h6 {
     font-weight: 200;
   }
+
+  /* COLOR */
+  html, body, #__next {
+    /* TODO: sync with themes.ts */
+    --forrest-green: hsl(165, 41.94%, 24.31%);
+    --white: hsl(209, 33%, 96%);
+  }
 `;
 
 export { CSSReset, GlobalStyle };

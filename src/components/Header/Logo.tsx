@@ -1,35 +1,38 @@
 import styled from "styled-components";
 import Link from "next/link";
-import { Home } from "react-feather";
+import Image from "next/image";
+import logo from "@/images/logo.svg";
 
-const HomeLink = () => {
+const Logo = () => {
   return (
     <Link href="/" passHref legacyBehavior>
       <AnchorLink aria-label="Home">
-        <Home />
+        <Image
+          src={logo}
+          width={48}
+          height={48}
+          alt="Logo for the website, a stylized letter 'P'"
+        />
       </AnchorLink>
     </Link>
   );
 };
 
 const AnchorLink = styled.a`
-  position: absolute;
-  top: 12px;
-  left: 12px;
   width: 48px;
   height: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
   border: none;
-  border-radius: 50%;
   color: ${(p) => p.theme.linkTextColor};
 
   &:hover {
     cursor: pointer;
-    background-color: ${(p) => p.theme.buttonBgHover};
+    border: 2px solid ${(p) => p.theme.buttonBgHover};
+    border-radius: 8px;
     color: ${(p) => p.theme.primaryBg};
   }
 `;
 
-export default HomeLink;
+export default Logo;

@@ -8,7 +8,6 @@ const BlogPage = ({ postsMetadata }: BlogProps) => {
       <Head>
         <title>Peter Millspaugh | Blog</title>
         <meta name="description" content="Peter Millspaugh - Blog" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Blog postsMetadata={postsMetadata} />
     </>

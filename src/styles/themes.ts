@@ -1,3 +1,5 @@
+// TODO: create constants from hsl colors so that they can also be used one-off (e.g. in Footer)
+
 export const lightTheme = {
   primaryBg: "hsl(209, 33%, 96%)",
   secondaryBg: "hsl(210, 66%, 92%)",

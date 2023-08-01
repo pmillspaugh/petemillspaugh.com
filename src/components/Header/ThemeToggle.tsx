@@ -1,7 +1,12 @@
 import styled from "styled-components";
 import { Sun, Moon } from "react-feather";
 
-const ThemeToggle = ({ lightMode, setLightMode }) => {
+export interface ThemeToggleProps {
+  lightMode: boolean;
+  setLightMode: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const ThemeToggle = ({ lightMode, setLightMode }: ThemeToggleProps) => {
   return (
     <ToggleButton
       onClick={() => setLightMode(!lightMode)}
@@ -13,9 +18,6 @@ const ThemeToggle = ({ lightMode, setLightMode }) => {
 };
 
 const ToggleButton = styled.button`
-  position: absolute;
-  top: 12px;
-  right: 12px;
   width: 48px;
   height: 48px;
   display: flex;

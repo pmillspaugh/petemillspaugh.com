@@ -1,7 +1,3 @@
-import Layout from "@/components/utils/Layout";
-import MaxWidthWrapper from "@/components/utils/MaxWidthWrapper";
-import HomeLink from "@/components/HomeLink";
-
 export interface PostMetadata {
   slug: string;
   title: string;
@@ -18,15 +14,12 @@ export interface PostProps {
 const Post = ({ post }: PostProps) => {
   return (
     <>
-      <HomeLink />
-      <Layout>
-        <MaxWidthWrapper>
-          <main>
-            <div>{post.metadata.date}</div>
-            <div dangerouslySetInnerHTML={{ __html: post.htmlContent }} />
-          </main>
-        </MaxWidthWrapper>
-      </Layout>
+      <>
+        <>
+          <div>{post.metadata.date}</div>
+          <div dangerouslySetInnerHTML={{ __html: post.htmlContent }} />
+        </>
+      </>
     </>
   );
 };

@@ -44,7 +44,7 @@ class PMDocument extends Document<PMDocumentProps> {
         <meta
           name="description"
           property="og:description"
-          content="Peter Millspaugh – Frontend Developer excited about Web Accessibility and PWAs"
+          content="Peter Millspaugh — Software Engineer"
         />
         <meta property="og:url" content="https://www.petermillspaugh.com/" />
         <meta
@@ -52,6 +52,7 @@ class PMDocument extends Document<PMDocumentProps> {
           property="og:image"
           content={`https://${this.props.deploymentURL}/images/socialBanner.png`}
         />
+        <link rel="icon" href="/favicon.ico" />
         <body>
           <Main />
           <NextScript />
