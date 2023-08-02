@@ -1,5 +1,5 @@
-import Projects from "@/components/Projects";
 import Head from "next/head";
+import Projects from "@/components/Projects";
 
 const ProjectsPage = () => {
   return (

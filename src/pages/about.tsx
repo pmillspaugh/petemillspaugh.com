@@ -1,5 +1,5 @@
-import About from "@/components/About";
 import Head from "next/head";
+import About from "@/components/About";
 
 const AboutPage = () => {
   return (

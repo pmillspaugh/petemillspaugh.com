@@ -1,9 +1,9 @@
 import { readFileSync, readdirSync } from "fs";
-import { join } from "path";
 import matter from "gray-matter";
-import { unified } from "unified";
-import remarkParse from "remark-parse";
+import { join } from "path";
 import remarkHtml from "remark-html";
+import remarkParse from "remark-parse";
+import { unified } from "unified";
 
 const POSTS_DIR = join(process.cwd(), "src/_posts");
 

@@ -1,10 +1,10 @@
+import Head from "next/head";
 import Post, { PostProps } from "@/components/Blog/Post";
 import {
   getAllPosts,
   getPostData,
   markdownToHtml,
 } from "@/helpers/blog.helpers";
-import Head from "next/head";
 
 const PostPage = ({ post }: PostProps) => {
   return (

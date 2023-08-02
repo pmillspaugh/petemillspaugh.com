@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Header, { HeaderProps } from "./Header";
 import Footer from "./Footer";
+import Header, { HeaderProps } from "./Header";
 
 interface LayoutProps extends HeaderProps {
   children: React.ReactNode;

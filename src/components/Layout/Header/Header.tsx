@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Logo from "./Logo";
 import ThemeToggle, { ThemeToggleProps } from "./ThemeToggle";
+import Footer from "../Footer/";
 
 export interface HeaderProps extends ThemeToggleProps {}
 

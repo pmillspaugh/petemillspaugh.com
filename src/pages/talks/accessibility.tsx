@@ -1,5 +1,5 @@
-import Accessibility from "@/components/Talks/Accessibility";
 import Head from "next/head";
+import Accessibility from "@/components/Talks/Accessibility";
 
 const AccessibilityPage = () => {
   return (

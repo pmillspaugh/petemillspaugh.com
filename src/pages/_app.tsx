@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme } from "@/styles/themes";
+import Layout from "@/components/Layout";
 import { CSSReset } from "@/styles/cssReset";
 import { GlobalStyle } from "@/styles/globals";
-import Layout from "@/components/Layout";
+import { lightTheme, darkTheme } from "@/styles/themes";
 
 const App = ({ Component, pageProps }) => {
   const [lightMode, setLightMode] = useState(true);

@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import styled from "styled-components";
 import accessibilityThumbnail from "@/images/accessibilityThumbnail.png";
 
 const Talks = () => {

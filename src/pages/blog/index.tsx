@@ -1,6 +1,6 @@
+import Head from "next/head";
 import Blog, { BlogProps } from "@/components/Blog";
 import { getAllPosts } from "@/helpers/blog.helpers";
-import Head from "next/head";
 
 const BlogPage = ({ postsMetadata }: BlogProps) => {
   return (

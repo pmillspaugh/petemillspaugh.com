@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import Image from "next/image";
+import styled from "styled-components";
 import nonProphetThumbnail from "@/images/nonProphetThumbnail.png";
 import tuloThumbnail from "@/images/tuloThumbnail.png";
 
