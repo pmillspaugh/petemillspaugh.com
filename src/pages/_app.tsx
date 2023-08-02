@@ -1,7 +1,8 @@
 import { useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "@/styles/themes";
-import { CSSReset, GlobalStyle } from "@/styles/globals";
+import { CSSReset } from "@/styles/cssReset";
+import { GlobalStyle } from "@/styles/globals";
 import Layout from "@/components/Layout";
 
 const App = ({ Component, pageProps }) => {

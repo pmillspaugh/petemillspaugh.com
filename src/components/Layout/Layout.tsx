@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import { ThemeToggleProps } from "@/components/Header/ThemeToggle";
+import Header, { HeaderProps } from "./Header";
+import Footer from "./Footer";
 
-interface LayoutProps extends ThemeToggleProps {
+interface LayoutProps extends HeaderProps {
   children: React.ReactNode;
 }
 
@@ -12,14 +11,12 @@ const Layout = ({ lightMode, setLightMode, children }: LayoutProps) => {
     <Wrapper>
       <Header lightMode={lightMode} setLightMode={setLightMode} />
       <MaxWidthWrapper>
-        <StyledMain>{children}</StyledMain>
+        <main>{children}</main>
       </MaxWidthWrapper>
       <Footer />
     </Wrapper>
   );
 };
-
-const StyledMain = styled.main``;
 
 const Wrapper = styled.div`
   min-height: 100%;
@@ -36,7 +33,8 @@ const MaxWidthWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 72px 16px;
+  justify-content: center;
+  padding: 16px;
 
   @media (min-width: 592px) {
     width: 520px;

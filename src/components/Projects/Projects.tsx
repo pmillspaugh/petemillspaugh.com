@@ -2,16 +2,11 @@ import styled from "styled-components";
 import Image from "next/image";
 import nonProphetThumbnail from "@/images/nonProphetThumbnail.png";
 import tuloThumbnail from "@/images/tuloThumbnail.png";
-import { Link as LinkIcon, GitHub } from "react-feather";
-import PageHeader from "@/components/lib/PageHeader";
-import Spacer from "@/components/lib/Spacer";
-import AnchorLink from "@/components/lib/AnchorLink";
 
 const Projects = () => {
   return (
     <>
-      <PageHeader page="Work" />
-      <Spacer size="8px" />
+      <h1>Work</h1>
       <ProjectWrapper>
         <ProjectBlurb id="non-prophet">
           <ImageWrapper>
@@ -25,28 +20,24 @@ const Projects = () => {
           </ImageWrapper>
           <TextWrapper>
             <ProjectHeading>non-prophet</ProjectHeading>
-            <Spacer size="16px" />
             <p>
               e-commerce brand, all profit donated to the Equal Justice
               Initiative
             </p>
-            <Spacer size="16px" />
             <ProjectLink
               href="https://non-prophet.dev/"
               target="_blank"
               rel="noreferrer"
             >
-              non-prophet.dev <LinkIcon size={12} />
+              non-prophet.dev
             </ProjectLink>
-            <Spacer size="8px" />
             <ProjectLink
               href="https://github.com/pmillspaugh/non-prophet"
               target="_blank"
               rel="noreferrer"
             >
-              GitHub repo <LinkIcon size={12} />
+              GitHub repo
             </ProjectLink>
-            <Spacer size="8px" />
             <TechStack>
               <Tech>React</Tech>
               <Tech>Redux</Tech>
@@ -55,7 +46,6 @@ const Projects = () => {
             </TechStack>
           </TextWrapper>
         </ProjectBlurb>
-        <Spacer size="48px" />
         <ProjectBlurb id="tulo">
           <ImageWrapper>
             <Image
@@ -68,28 +58,24 @@ const Projects = () => {
           </ImageWrapper>
           <TextWrapper>
             <ProjectHeading>tulo.js</ProjectHeading>
-            <Spacer size="16px" />
             <p>
               open-source npm package & monitoring tool to implement client-side
               caching via service workers
             </p>
-            <Spacer size="16px" />
             <ProjectLink
               href="https://www.tulojs.com/"
               target="_blank"
               rel="noreferrer"
             >
-              tulojs.com <LinkIcon size={12} />
+              tulojs.com
             </ProjectLink>
-            <Spacer size="8px" />
             <ProjectLink
               href="https://github.com/oslabs-beta/tulo-js"
               target="_blank"
               rel="noreferrer"
             >
-              GitHub repo <LinkIcon size={12} />
+              GitHub repo
             </ProjectLink>
-            <Spacer size="8px" />
             <TechStack>
               <Tech>TypeScript</Tech>
               <Tech>Next.js</Tech>
@@ -156,7 +142,7 @@ const TextWrapper = styled.div`
   }
 `;
 
-const ProjectLink = styled(AnchorLink)`
+const ProjectLink = styled.a`
   font-size: 1.2rem;
 `;
 

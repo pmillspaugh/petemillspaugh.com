@@ -1,22 +1,16 @@
 import styled from "styled-components";
-import PageHeader from "@/components/lib/PageHeader";
-import Paragraph from "@/components/lib/Paragraph";
-import Spacer from "@/components/lib/Spacer";
 
 const Accessibility = () => {
   return (
     <>
-      <PageHeader page="Accessibility" />
-      <Spacer size="12px" />
+      <h1>Accessibility</h1>
       <ContentWrapper>
         <YouTube
           src="https://www.youtube.com/embed/pPX0Gk0l6Vo"
           title="Peter Millspaugh - Web Accessibility for Frontend Developers"
-          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />
-        <Spacer size="36px" />
         <Transcript id="transcript">
           <TranscriptSummary>Transcript</TranscriptSummary>
           <TranscriptParagraph>
@@ -384,18 +378,16 @@ const Accessibility = () => {
             for coming out, and have a wonderful evening.
           </TranscriptParagraph>
         </Transcript>
-        <Spacer size="32px" />
-        <Paragraph>
+        <p>
           Thanks for checking out my talk on a11y! The content is meant to serve
           as an introduction to Web Accessibility for frontend software
           engineers.
-        </Paragraph>
-        <Spacer size="20px" />
-        <Paragraph>
+        </p>
+        <p>
           Topics covered include: assistive technologies (e.g. screen readers),
           semantic HTML, ARIA, keyboard navigation, visual concerns (e.g. color
           contrast), and developer tooling for a11y.
-        </Paragraph>
+        </p>
       </ContentWrapper>
     </>
   );
@@ -447,7 +439,7 @@ const TranscriptSummary = styled.summary`
   }
 `;
 
-const TranscriptParagraph = styled(Paragraph)`
+const TranscriptParagraph = styled.p`
   font-size: 1rem;
   margin-top: 20px;
 `;

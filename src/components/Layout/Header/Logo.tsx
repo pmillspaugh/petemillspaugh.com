@@ -5,20 +5,18 @@ import logo from "@/images/logo.svg";
 
 const Logo = () => {
   return (
-    <Link href="/" passHref legacyBehavior>
-      <AnchorLink aria-label="Home">
-        <Image
-          src={logo}
-          width={48}
-          height={48}
-          alt="Logo for the website, a stylized letter 'P'"
-        />
-      </AnchorLink>
-    </Link>
+    <LogoLink href="/" aria-label="Home">
+      <Image
+        src={logo}
+        width={48}
+        height={48}
+        alt="Logo for the website, a stylized letter 'P'"
+      />
+    </LogoLink>
   );
 };
 
-const AnchorLink = styled.a`
+const LogoLink = styled(Link)`
   width: 48px;
   height: 48px;
   display: flex;

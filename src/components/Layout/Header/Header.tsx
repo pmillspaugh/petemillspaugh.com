@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Logo from "./Logo";
 import ThemeToggle, { ThemeToggleProps } from "./ThemeToggle";
 
-interface HeaderProps extends ThemeToggleProps {}
+export interface HeaderProps extends ThemeToggleProps {}
 
 const Header = ({ lightMode, setLightMode }: HeaderProps) => {
   return (

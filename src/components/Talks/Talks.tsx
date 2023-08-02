@@ -2,15 +2,11 @@ import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
 import accessibilityThumbnail from "@/images/accessibilityThumbnail.png";
-import PageHeader from "@/components/lib/PageHeader";
-import AnchorLink from "@/components/lib/AnchorLink";
-import Spacer from "@/components/lib/Spacer";
 
 const Talks = () => {
   return (
     <>
-      <PageHeader page="Talks" />
-      <Spacer size="8px" />
+      <h1>Talks</h1>
       <TalkWrapper>
         <TalkBlurb>
           <ThumbnailandHeadingWrapper>
@@ -26,7 +22,6 @@ const Talks = () => {
                 <TranscriptLink>Read transcript →</TranscriptLink>
               </Link>
             </div>
-            <Spacer size="24px" />
             <ThumbnailWrapper>
               <Image
                 width={1920}
@@ -58,7 +53,7 @@ const TalkBlurb = styled.article`
   border-radius: 8px;
 `;
 
-const TalkLink = styled(AnchorLink)`
+const TalkLink = styled.a`
   font-size: 1.5rem;
 `;
 
