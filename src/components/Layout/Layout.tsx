@@ -8,19 +8,20 @@ interface LayoutProps extends HeaderProps {
 
 const Layout = ({ lightMode, setLightMode, children }: LayoutProps) => {
   return (
-    <Wrapper>
-      <Header lightMode={lightMode} setLightMode={setLightMode} />
-      <MaxWidthWrapper>
-        <main>{children}</main>
-      </MaxWidthWrapper>
-      <Footer />
-    </Wrapper>
+    <div style={{ height: "100%" }}>
+      <FlexContainer>
+        <Header lightMode={lightMode} setLightMode={setLightMode} />
+        <MaxWidthWrapper>
+          <main>{children}</main>
+        </MaxWidthWrapper>
+        <Footer />
+      </FlexContainer>
+    </div>
   );
 };
 
-const Wrapper = styled.div`
+const FlexContainer = styled.div`
   min-height: 100%;
-  background-color: ${(p) => p.theme.primaryBg};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,6 +30,7 @@ const Wrapper = styled.div`
 `;
 
 const MaxWidthWrapper = styled.div`
+  min-height: 400px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;

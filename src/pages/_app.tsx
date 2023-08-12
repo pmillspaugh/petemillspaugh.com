@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styled, { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components";
 import Layout from "@/components/Layout";
 import { CSSReset } from "@/styles/cssReset";
 import { GlobalStyle } from "@/styles/globals";
@@ -10,20 +10,13 @@ const App = ({ Component, pageProps }) => {
 
   return (
     <ThemeProvider theme={lightMode ? lightTheme : darkTheme}>
-      <AppWrapper>
-        <Layout lightMode={lightMode} setLightMode={setLightMode}>
-          <Component {...pageProps} />
-        </Layout>
-      </AppWrapper>
+      <Layout lightMode={lightMode} setLightMode={setLightMode}>
+        <Component {...pageProps} />
+      </Layout>
       <CSSReset />
       <GlobalStyle />
     </ThemeProvider>
   );
 };
-
-const AppWrapper = styled.div`
-  height: 100%;
-  background-color: ${(p) => p.theme.primaryBg};
-`;
 
 export default App;

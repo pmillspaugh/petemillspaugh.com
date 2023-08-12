@@ -58,7 +58,7 @@ const StyledNav = styled.nav`
   width: 100vw;
   padding: 48px;
   margin: auto;
-  background-color: var(--forrest-green);
+  background-color: var(--dark-green);
   color: var(--white);
 `;
 

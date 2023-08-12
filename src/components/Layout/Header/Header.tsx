@@ -1,23 +1,21 @@
 import styled from "styled-components";
 import Logo from "./Logo";
-import ThemeToggle, { ThemeToggleProps } from "./ThemeToggle";
-import Footer from "../Footer/";
+import LightSwitch, { LightSwitchProps } from "./LightSwitch";
 
-export interface HeaderProps extends ThemeToggleProps {}
+export interface HeaderProps extends LightSwitchProps {}
 
 const Header = ({ lightMode, setLightMode }: HeaderProps) => {
   return (
     <StyledHeader>
       <Logo />
       <nav>{/* TODO: */}</nav>
-      {/* TODO: update toggle design */}
-      <ThemeToggle lightMode={lightMode} setLightMode={setLightMode} />
+      <LightSwitch lightMode={lightMode} setLightMode={setLightMode} />
     </StyledHeader>
   );
 };
 
 const StyledHeader = styled.header`
-  height: 64px;
+  height: 72px;
   width: 100%;
   padding: 8px 16px;
   display: flex;
