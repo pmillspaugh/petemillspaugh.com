@@ -52,7 +52,17 @@ class PMDocument extends Document<PMDocumentProps> {
           property="og:image"
           content={`https://${this.props.deploymentURL}/images/socialBanner.png`}
         />
-        <link rel="icon" href="/favicon.ico" />
+        {/* TODO: add other favicon formats for Apple/Android/etc? */}
+        <link
+          rel="icon"
+          href="/icons/favicon-light.ico"
+          media="(prefers-color-scheme: light)"
+        />
+        <link
+          rel="icon"
+          href="/icons/favicon-dark.ico"
+          media="(prefers-color-scheme: dark)"
+        />
         <body>
           <Main />
           <NextScript />

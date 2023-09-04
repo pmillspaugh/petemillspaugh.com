@@ -13,11 +13,11 @@ export const GlobalStyle = createGlobalStyle`
     --font-petrona: ${petrona.style.fontFamily};
 
     /* Colors */
-    --white: ${COLORS.White};
+    --white: ${COLORS.Frost};
     --blue: ${COLORS.Blue};
     --green: ${COLORS.Green};
     --dark-green: ${COLORS.DarkGreen};
-    --black: ${COLORS.Black};
+    --charcoal: ${COLORS.Charcoal};
     --gold: ${COLORS.Gold};
     --aqua: ${COLORS.Aqua};
 

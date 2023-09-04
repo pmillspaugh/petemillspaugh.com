@@ -7,7 +7,7 @@ export interface HeaderProps extends LightSwitchProps {}
 const Header = ({ lightMode, setLightMode }: HeaderProps) => {
   return (
     <StyledHeader>
-      <Logo />
+      <Logo lightMode={lightMode} />
       <nav>{/* TODO: */}</nav>
       <LightSwitch lightMode={lightMode} setLightMode={setLightMode} />
     </StyledHeader>
