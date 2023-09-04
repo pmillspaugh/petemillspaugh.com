@@ -51,6 +51,11 @@ export const GlobalStyle = createGlobalStyle`
   */
   html, body, #__next {
     font-family: var(--font-petrona), serif;
+
+    ::selection {
+      background-color: var(--gold);
+      color: var(--dark-green);
+    }
   }
   
   nav, button {
