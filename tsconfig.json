@@ -3,9 +3,12 @@
     "baseUrl": "src/",
     "paths": {
       "@/images/*": ["../public/images/*"],
+      "@/audio/*": ["../public/audio/*"],
       "@/components/*": ["components/*"],
       "@/styles/*": ["styles/*"],
-      "@/helpers/*": ["helpers/*"]
+      "@/helpers/*": ["helpers/*"],
+      "@/hooks/*": ["hooks/*"],
+      "@/constants": ["constants"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

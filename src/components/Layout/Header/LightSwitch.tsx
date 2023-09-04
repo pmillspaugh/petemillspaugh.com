@@ -1,22 +1,24 @@
-import { useEffect, useState } from "react";
+import { useState, useRef } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import styled from "styled-components";
+import useLightMode from "@/hooks/useLightMode.hook";
+import { LocalStorageKey } from "@/constants";
 import EdisonBulb from "./EdisonBulb";
 
-export interface LightSwitchProps {
-  lightMode: boolean;
-  setLightMode: React.Dispatch<React.SetStateAction<boolean>>;
-}
+export type LightSwitchProps = ReturnType<typeof useLightMode>;
 
 const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
   const OFFSET = -20;
   const BOUNCE = 0;
   const RANGE = 32;
+
   const [dragging, setDragging] = useState(false);
   const [mouseDownY, setMouseDownY] = useState(0);
   const [currentY, setCurrentY] = useState(0);
   const [clicked, setClicked] = useState(false);
+
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const springProps = useSpring({
     transform: clicked
@@ -55,11 +57,17 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
       setCurrentY(0);
       setMouseDownY(0);
     }
+
+    if (JSON.parse(localStorage.getItem(LocalStorageKey.AudioEnabled))) {
+      audioRef.current?.play();
+    }
   };
 
   const handleKeyUp = (event: React.KeyboardEvent<HTMLButtonElement>) => {
     if (event.key === "Enter" || event.key === " ") {
       handleMouseUp();
+      setClicked(true);
+      setTimeout(() => setClicked(false), 250);
     }
   };
 
@@ -72,6 +80,9 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
       aria-label="Theme Toggle"
       style={springProps}
     >
+      <audio ref={audioRef}>
+        <source src="./audio/light-switch.m4a" type="audio/mp4" />
+      </audio>
       <VisuallyHidden.Root>
         {lightMode ? "Switch to dark mode" : "Switch to light mode"}
       </VisuallyHidden.Root>
