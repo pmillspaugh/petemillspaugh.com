@@ -7,7 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     CSS VARIABLES
   */
 
-  html, body, #__next {
+    :root {
     /* Fonts */
     --font-open-sans: ${openSans.style.fontFamily};
     --font-petrona: ${petrona.style.fontFamily};

@@ -61,6 +61,10 @@ const StyledLink = styled(Link)`
   margin-left: -4px;
   margin-top: 4px;
 
+  @media (min-width: 768px) {
+    margin-left: 0px;
+  }
+
   .front-p {
     transition: transform 0.2s ease-in-out;
     transform: translate(0);

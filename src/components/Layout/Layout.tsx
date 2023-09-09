@@ -14,7 +14,7 @@ const Layout = ({ lightMode, setLightMode, children }: LayoutProps) => {
         <MaxWidthWrapper>
           <main>{children}</main>
         </MaxWidthWrapper>
-        <Footer />
+        <Footer lightMode={lightMode} />
       </FlexContainer>
     </div>
   );
@@ -30,7 +30,6 @@ const FlexContainer = styled.div`
 `;
 
 const MaxWidthWrapper = styled.div`
-  min-height: 400px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
