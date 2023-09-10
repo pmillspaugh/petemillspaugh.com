@@ -6,7 +6,7 @@
       "@/audio/*": ["../public/audio/*"],
       "@/components/*": ["components/*"],
       "@/styles/*": ["styles/*"],
-      "@/helpers/*": ["helpers/*"],
+      "@/helpers/*": ["server/helpers/*"],
       "@/hooks/*": ["hooks/*"],
       "@/constants": ["constants"]
     },
@@ -24,6 +24,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.mdx"],
   "exclude": ["node_modules"]
 }

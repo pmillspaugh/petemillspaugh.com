@@ -7,7 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     CSS VARIABLES
   */
 
-    :root {
+  :root {
     /* Fonts */
     --font-open-sans: ${openSans.style.fontFamily};
     --font-petrona: ${petrona.style.fontFamily};
@@ -66,6 +66,7 @@ export const GlobalStyle = createGlobalStyle`
     THEME
   */
   html, body, #__next {
+    color: ${(p) => p.theme.textColor};
     background-color: ${(p) => p.theme.primaryBg};
     transition: all var(--base-timing) ease-in-out;
   }
@@ -84,10 +85,4 @@ export const GlobalStyle = createGlobalStyle`
     color: ${(p) => p.theme.headingColor};
     transition: all var(--base-timing) ease-in-out;
   }
-
-  p {
-    color: ${(p) => p.theme.textColor};
-    transition: all var(--base-timing) ease-in-out;
-  }
-  
 `;

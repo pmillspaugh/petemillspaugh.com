@@ -1,0 +1,51 @@
+---
+slug: only-the-platform
+title: Only the platform
+createdAt: September 10, 2023
+updatedAt: September 10, 2023
+format: Essay
+status: Seedling
+---
+
+_Very rough draft opener:_
+
+I wanted to build a website without a web framework as a learning exercise to play with native browser stuff.
+Then I took it a step further and asked what it'd be like to build a website without any external dependencies whatsoever.
+No open-source code, no vendor code. Yada, yada, yada.
+
+- link to: https://en.wikipedia.org/wiki/Web_platform
+
+## Things I missed at some point building this
+
+- nodemon / HMR
+  - Restarting my server manually is super annoying
+  - But it's kinda fun to build it yourself
+  - Although it doesn't totally work. It works well for HTML/CSS updates, I've found, but is more finicky with JS and occasionally crashes.
+  - Weird thing I noticed (and still haven't solved about `_next/hmr`)
+- TypeScript
+  - Tons of careless errors only caught at runtime w/out TS
+- React
+  - Reusability, duh
+  - I missed the component paradigm of markup/styling/logic all co-located
+- webpack
+  - Can’t just import all my modules into one root and ship that to the browser
+
+## Constraints breed creativity
+
+- ...
+
+## Service workers
+
+- This is probably the most exciting to me of the features I played around with
+- So powerful [give examples]
+- I am interested in what an abstraction would look like for SPAs
+  - next/offline already exists and looks terrific
+  - I am thinking a hook for a Next.js page, e.g. useOffline
+  - **careful here because I maybe don't want someone to take my useOffline idea!**
+
+## Resources
+
+- Shout out Syntax
+
+  1. https://syntax.fm/show/456/10-nifty-browser-apis
+  2. https://syntax.fm/show/522/use-the-platform

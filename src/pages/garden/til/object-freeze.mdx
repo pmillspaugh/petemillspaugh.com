@@ -1,0 +1,18 @@
+---
+slug: object-freeze
+title: Object.freeze
+createdAt: September 8, 2023
+updatedAt: September 8, 2023
+format: TIL
+status: Evergreen
+---
+
+_Draft:_
+
+`Object.freeze()` makes a JavaScript object immutable.
+Once an object is frozen you cannot add properties, update properties, remove properties, or update its prototype.
+Freezing the is the highest level of integrity in JavaScript.
+
+Note that the method only applies to top-level properties. To deep freeze an object you would have to recursively call `Object.freeze` on each nested object.
+
+[MDN docs on Object.freeze](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)
