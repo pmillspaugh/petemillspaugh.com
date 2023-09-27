@@ -9,9 +9,7 @@
     "prettify": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\""
   },
   "dependencies": {
-    "@mdx-js/loader": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
-    "@next/mdx": "^13.4.19",
     "@radix-ui/react-visually-hidden": "^1.0.3",
     "@react-spring/web": "^9.7.3",
     "next": "13.4.9",
