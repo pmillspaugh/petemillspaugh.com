@@ -47,6 +47,7 @@ export const CSSReset = createGlobalStyle`
   */
   input, button, textarea, select {
     font: inherit;
+    color: inherit;
   }
 
   /*

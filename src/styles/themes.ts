@@ -2,7 +2,6 @@ export enum COLORS {
   Black = "hsl(0, 0%, 0%)",
   Charcoal = "hsl(207, 43%, 16%)",
   Frost = "hsl(209, 33%, 96%)",
-  Blue = "hsl(209, 91%, 45%)",
   Green = "hsl(172, 54%, 32%)",
   DarkGreen = "hsl(165, 41.94%, 24.31%)",
   Gold = "hsl(43, 60%, 68%)",
@@ -20,22 +19,22 @@ export enum COLORS {
 
 export const lightTheme = {
   primaryBg: COLORS.Frost,
-  buttonBg: COLORS.Green,
-  buttonBgHover: COLORS.Blue,
-  buttonTextColor: COLORS.Frost,
   textColor: COLORS.Charcoal,
-  headingColor: COLORS.Charcoal,
   linkTextColor: COLORS.Green,
-  linkTextColorHover: COLORS.Blue,
+  linkTextColorHover: COLORS.Gold,
+  tagBorderColor: COLORS.Gold,
+  tagBorderColorHover: COLORS.Green,
+  tooltipBg: COLORS.Frost,
+  tooltipBorderColor: COLORS.Green,
 };
 
 export const darkTheme = {
   primaryBg: COLORS.Charcoal,
-  buttonBg: COLORS.Gold,
-  buttonBgHover: COLORS.Aqua,
-  buttonTextColor: COLORS.Charcoal,
   textColor: COLORS.Frost,
-  headingColor: COLORS.Frost,
   linkTextColor: COLORS.Gold,
-  linkTextColorHover: COLORS.Aqua,
+  linkTextColorHover: COLORS.Green,
+  tagBorderColor: COLORS.Green,
+  tagBorderColorHover: COLORS.Gold,
+  tooltipBg: COLORS.Charcoal,
+  tooltipBorderColor: COLORS.Gold,
 };

@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
 
     /* Colors */
     --white: ${COLORS.Frost};
-    --blue: ${COLORS.Blue};
+    --black: ${COLORS.Black};
     --green: ${COLORS.Green};
     --dark-green: ${COLORS.DarkGreen};
     --charcoal: ${COLORS.Charcoal};
@@ -23,6 +23,7 @@ export const GlobalStyle = createGlobalStyle`
 
     /* Animations */
     --base-timing: 500ms;
+    --fast-timing: 150ms;
   }
 
   /*
@@ -44,6 +45,10 @@ export const GlobalStyle = createGlobalStyle`
 
   p {
     padding-bottom: 16px;
+  }
+
+  ul {
+    padding-left: 0;
   }
 
   /*
@@ -72,17 +77,15 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   a {
+    font-weight: 500;
     color: ${(p) => p.theme.linkTextColor};
-    transition: all var(--base-timing) ease-in-out;
+    text-decoration: none;
+    box-shadow: 0px 1.25px 0px ${(p) => p.theme.linkTextColor};
+    transition: all var(--fast-timing) ease-in-out;
 
     &:hover {
       color: ${(p) => p.theme.linkTextColorHover};
+      box-shadow: none;
     }
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: 200;
-    color: ${(p) => p.theme.headingColor};
-    transition: all var(--base-timing) ease-in-out;
   }
 `;
