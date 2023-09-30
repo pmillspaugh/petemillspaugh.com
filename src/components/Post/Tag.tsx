@@ -27,9 +27,9 @@ const Tag = ({ label }: { label: PostFormat | PostStatus }) => {
 const OuterWrapper = styled.div`
   border-radius: 4px;
   border: 1px solid var(--black);
-  background-color: ${(p) => p.theme.tagBorderColor};
   padding: 3px;
-  transition: all var(--base-timing) ease-in-out;
+  background-color: ${(p) => p.theme.tagBorderColor};
+  transition: background-color var(--base-timing) ease-in-out;
 
   &:hover {
     background-color: ${(p) => p.theme.tagBorderColorHover};
@@ -41,6 +41,7 @@ const InnerWrapper = styled.div`
   border-radius: 2px;
   border: 1px solid var(--black);
   background-color: ${(p) => p.theme.primaryBg};
+  transition: background-color var(--base-timing) ease-in-out;
   font-family: var(--font-open-sans);
   font-size: 0.875rem;
   font-weight: 700;
