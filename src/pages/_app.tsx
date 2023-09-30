@@ -1,8 +1,8 @@
 import { createContext } from "react";
 import { ThemeProvider } from "styled-components";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
-import { MDXProvider } from "@mdx-js/react";
-import { components } from "@/components/index";
+import "@code-hike/mdx/dist/index.css";
+
 import Layout from "@/components/Layout";
 import { CSSReset } from "@/styles/cssReset";
 import { GlobalStyle } from "@/styles/globals";
@@ -18,13 +18,11 @@ const App = ({ Component, pageProps }) => {
     <LightModeContext.Provider value={{ lightMode, setLightMode }}>
       <ThemeProvider theme={lightMode ? lightTheme : darkTheme}>
         <TooltipProvider delayDuration={150}>
-          <MDXProvider components={components}>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-            <CSSReset />
-            <GlobalStyle />
-          </MDXProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+          <CSSReset />
+          <GlobalStyle />
         </TooltipProvider>
       </ThemeProvider>
     </LightModeContext.Provider>
