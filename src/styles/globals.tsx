@@ -84,31 +84,4 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${(p) => p.theme.primaryBg};
     transition: all var(--base-timing) ease-in-out;
   }
-
-  code {
-    /* display: inline-block;
-    transform: translateY(-1px);
-    font-family: var(--font-mono), monospace;
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 2px 4px 1px 4px;
-    border-radius: 4px;
-    background-color: ${(p) => p.theme.codeBg};
-    color: ${(p) => p.theme.codeColor};
-    transition: all var(--base-timing) ease-in-out; */
-  }
-
-  blockquote {
-    font-size: 0.875rem;
-    font-style: italic;
-    margin-bottom: 16px;
-    padding-left: 16px;
-    color: ${(p) => p.theme.blockquoteColor};
-    border-left: 3px solid ${(p) => p.theme.blockquoteColor};
-    transition: all var(--base-timing) ease-in-out;
-    
-    p {
-      padding-bottom: 0px;
-    }
-  }
 `;
