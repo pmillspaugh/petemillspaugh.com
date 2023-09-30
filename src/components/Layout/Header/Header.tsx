@@ -1,10 +1,12 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import { LightModeContext } from "pages/_app";
 import Logo from "./Logo";
-import LightSwitch, { LightSwitchProps } from "./LightSwitch";
+import LightSwitch from "./LightSwitch";
 
-export interface HeaderProps extends LightSwitchProps {}
+const Header = () => {
+  const { lightMode, setLightMode } = useContext(LightModeContext);
 
-const Header = ({ lightMode, setLightMode }: HeaderProps) => {
   return (
     <StyledHeader>
       <Logo lightMode={lightMode} />

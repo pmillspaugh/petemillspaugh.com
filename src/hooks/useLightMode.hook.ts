@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { LocalStorageKey } from "@/constants";
 
 const useLightMode = (): {
@@ -32,7 +32,7 @@ const useLightMode = (): {
     );
   };
 
-  return { lightMode, setLightMode };
+  return useMemo(() => ({ lightMode, setLightMode }), [lightMode]);
 };
 
 export default useLightMode;

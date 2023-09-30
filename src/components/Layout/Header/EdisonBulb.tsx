@@ -1,10 +1,6 @@
 import { COLORS } from "@/styles/themes";
 
-interface EdisonBulbProps {
-  lightMode: boolean;
-}
-
-const EdisonBulb = ({ lightMode }: EdisonBulbProps) => {
+const EdisonBulb = ({ lightMode }: { lightMode: boolean }) => {
   return (
     <svg
       width="24"

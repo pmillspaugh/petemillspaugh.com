@@ -1,20 +1,16 @@
 import styled from "styled-components";
 import Footer from "./Footer";
-import Header, { HeaderProps } from "./Header";
+import Header from "./Header";
 
-interface LayoutProps extends HeaderProps {
-  children: React.ReactNode;
-}
-
-const Layout = ({ lightMode, setLightMode, children }: LayoutProps) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div style={{ height: "100%" }}>
       <FlexContainer>
-        <Header lightMode={lightMode} setLightMode={setLightMode} />
+        <Header />
         <MaxWidthWrapper>
           <main>{children}</main>
         </MaxWidthWrapper>
-        <Footer lightMode={lightMode} />
+        <Footer />
       </FlexContainer>
     </div>
   );
@@ -31,6 +27,8 @@ const FlexContainer = styled.div`
 
 const MaxWidthWrapper = styled.div`
   flex-grow: 1;
+  /* Vertically fill the space between the header and footer */
+  min-height: calc(100vh - 300px - 72px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,14 +41,8 @@ const MaxWidthWrapper = styled.div`
 
   @media (min-width: 768px) {
     width: 660px;
-  }
-
-  @media (min-width: 992px) {
-    width: 848px;
-  }
-
-  @media (min-width: 1200px) {
-    width: 1020px;
+    /* Vertically fill the space between the header and footer */
+    min-height: calc(100vh - 393px - 72px);
   }
 `;
 

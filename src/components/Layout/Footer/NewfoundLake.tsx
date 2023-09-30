@@ -1,10 +1,7 @@
 import { COLORS } from "@/styles/themes";
 import styled from "styled-components";
 
-export interface NewfoundLakeProps {
-  lightMode: boolean;
-}
-const NewfoundLake = ({ lightMode }: NewfoundLakeProps) => {
+const NewfoundLake = ({ lightMode }: { lightMode: boolean }) => {
   return (
     <StyledSVG
       viewBox="0 0 1512 393"
