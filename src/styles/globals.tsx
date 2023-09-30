@@ -34,19 +34,6 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
   }
 
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-
-  p {
-    margin-bottom: 16px;
-  }
-
-  ul {
-    padding-left: 0;
-  }
-
   /*
     TYPOGRAPHY
   */

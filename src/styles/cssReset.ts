@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-// CSS reset from Josh Comeau's awesome CSS-for-JS-devs course:
+// CSS reset adapted from Josh Comeau's awesome CSS-for-JS-devs course:
 // https://courses.joshwcomeau.com/css-for-js
 export const CSSReset = createGlobalStyle`
   /*
@@ -11,10 +11,14 @@ export const CSSReset = createGlobalStyle`
   }
 
   /*
-    2. Remove default margin
+    2. Remove default margin and padding
   */
   * {
     margin: 0;
+  }
+
+  ul {
+    padding: 0;
   }
 
   /*
