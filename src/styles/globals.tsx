@@ -86,7 +86,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   code {
-    display: inline-block;
+    /* display: inline-block;
     transform: translateY(-1px);
     font-family: var(--font-mono), monospace;
     font-size: 0.75rem;
@@ -95,7 +95,7 @@ export const GlobalStyle = createGlobalStyle`
     border-radius: 4px;
     background-color: ${(p) => p.theme.codeBg};
     color: ${(p) => p.theme.codeColor};
-    transition: all var(--base-timing) ease-in-out;
+    transition: all var(--base-timing) ease-in-out; */
   }
 
   blockquote {

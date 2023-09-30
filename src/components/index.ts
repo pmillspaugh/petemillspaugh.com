@@ -1,5 +1,5 @@
-import Button from "./Button";
+import Code from "./Code";
 
 export const components = {
-  Button,
+  code: Code,
 };
