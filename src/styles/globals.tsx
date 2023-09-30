@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { openSans, petrona } from "./fonts";
+import { openSans, petrona, overpassMono } from "./fonts";
 import { COLORS } from "./themes";
 
 export const GlobalStyle = createGlobalStyle`
@@ -11,6 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     /* Fonts */
     --font-open-sans: ${openSans.style.fontFamily};
     --font-petrona: ${petrona.style.fontFamily};
+    --font-mono: ${overpassMono.style.fontFamily};
 
     /* Colors */
     --white: ${COLORS.Frost};
@@ -87,5 +88,18 @@ export const GlobalStyle = createGlobalStyle`
       color: ${(p) => p.theme.linkTextColorHover};
       box-shadow: none;
     }
+  }
+
+  code {
+    display: inline-block;
+    transform: translateY(-1px);
+    font-family: var(--font-mono), monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 4px 1px 4px;
+    border-radius: 4px;
+    background-color: ${(p) => p.theme.codeBg};
+    color: ${(p) => p.theme.codeColor};
+    transition: all var(--base-timing) ease-in-out;
   }
 `;
