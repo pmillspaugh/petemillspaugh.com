@@ -24,7 +24,8 @@ const EdisonBulb = ({ lightMode }: { lightMode: boolean }) => {
       {/* Rope */}
       <path
         d="M9.88232 1V55.4865H14.1176V1H9.88232Z"
-        fill="#F0F4F8"
+        // fill="#F0F4F8"
+        fill={lightMode ? COLORS.Frost : COLORS.Mountains2}
         stroke={COLORS.Black}
       />
       <path
