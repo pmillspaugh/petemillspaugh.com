@@ -1,0 +1,37 @@
+---
+slug: map-in-the-woods
+title: Downloading a 30MB map in the woods
+createdAt: June 29, 2023
+updatedAt: September 10, 2023
+format: Brainstorm
+status: Budding
+---
+
+## Raw transcription
+
+Trips are a good time to think about websites web dev, actually. Because I use different websites in different situations. Hotel booking sites, a lot of Maps, and Strava/AllTrails. Ok, so that's mostly mobile apps. But part of the point is that mobile apps feel—and are—more reliable. Traveling with low/no network connection is the perfect chance to think about service workers and caching. Also btw (quick aside): downloading the map for our hike today was 30 MB. Like, I mean the size of the map file (what file type is that?). 30 megabytes for a map file. Is there a good way to think about size of images and maps? Are they different? Like, if I think of a PDF that is only plaintext as 1-4 bytes per character (depending on the encoding), then a 1000 char document is like 1-4 KB/kilobytes, which is like 250 4-letter words. So a document with 7,500 to 30,000 chars would be like 30KB (what's the typical encoding so I don't have to have such a wide range? 2 bytes per char? Let's assume that). So 15,000 char for 30KB, or 3,000 5-letter words. So a 3,000 word document, which is what like 10 pages? Sure. So anyway the map file is 10x that big, i.e 30KB x 10 = 30MB. So can I think of that as X bytes per pixel? Or is pixels not the right unit? Is it the right unit for images? Also of course you have some metadata stored. Ok so anyway, 30MB. And how long does that take to download? 30MB/s is considered solid WiFi, like you-can-stream-Netflix-or-Zoom. But there's a gotcha, I think. Download/upload speeds are megabits per second—not megabytes. Something about how digital data is stored/measured at rest versus in transit, right? So could I just say 30 megabits per second = 7.5 megabytes per second? And if so, it should take 4 seconds to download my 30 MB map at 30 mb/s?
+
+## Stupid stuff
+
+“Or is pixels not the right unit? Is it the right unit for images?”
+
+- Literally duh dude
+
+“So anyway the map file is 10x that big, i.e 30KB x 10 = 30MB”
+
+- Wrong! 30KB x 10 = 300KB ya dingus
+
+“So could I just say 30 megabits per second = 7.5 megabytes per second?”
+
+- Again, dingus! 30 mb/s divided by 8 bits per byte = 3.75
+- Careless error
+
+## Answers
+
+### Map file type
+
+### PDF size
+
+### etc
+
+- …
