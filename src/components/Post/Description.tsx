@@ -166,8 +166,9 @@ function EvergreenDescription() {
 
 const StyledP = styled.p`
   font-size: 0.875rem;
+  margin-bottom: 12px;
 
   &:last-child {
-    padding: 0;
+    margin-bottom: 0px;
   }
 `;

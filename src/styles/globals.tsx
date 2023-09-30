@@ -34,18 +34,13 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
   }
 
-  h1 {
-    font-size: 4rem;
-    padding-bottom: 24px;
-  }
-
   h2 {
     font-size: 2rem;
-    padding-bottom: 20px;
+    margin-bottom: 20px;
   }
 
   p {
-    padding-bottom: 16px;
+    margin-bottom: 16px;
   }
 
   ul {
@@ -67,15 +62,6 @@ export const GlobalStyle = createGlobalStyle`
   nav, button {
     font-family: var(--font-open-sans), sans-serif;
   }
-
-  /*
-    THEME
-  */
-  html, body, #__next {
-    color: ${(p) => p.theme.textColor};
-    background-color: ${(p) => p.theme.primaryBg};
-    transition: all var(--base-timing) ease-in-out;
-  }
   
   a {
     font-weight: 500;
@@ -90,6 +76,15 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
+  /*
+    THEME
+  */
+  html, body, #__next {
+    color: ${(p) => p.theme.textColor};
+    background-color: ${(p) => p.theme.primaryBg};
+    transition: all var(--base-timing) ease-in-out;
+  }
+
   code {
     display: inline-block;
     transform: translateY(-1px);
@@ -101,5 +96,19 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${(p) => p.theme.codeBg};
     color: ${(p) => p.theme.codeColor};
     transition: all var(--base-timing) ease-in-out;
+  }
+
+  blockquote {
+    font-size: 0.875rem;
+    font-style: italic;
+    margin-bottom: 16px;
+    padding-left: 16px;
+    color: ${(p) => p.theme.blockquoteColor};
+    border-left: 3px solid ${(p) => p.theme.blockquoteColor};
+    transition: all var(--base-timing) ease-in-out;
+    
+    p {
+      padding-bottom: 0px;
+    }
   }
 `;

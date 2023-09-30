@@ -13,6 +13,6 @@ The `<Image>` component from Next.js automatically converts PNG images to [WebP]
 
 > **Size Optimization:** Automatically serve correctly sized images for each device, using modern image formats like WebP and AVIF.
 
-While refreshing this website, I created an SVG footer illustration to replace the PNG image I was using before. Out of curiosity, I checked how large the PNG file is both locally and in DevTools → Network. It's a 34KB `.png` file locally and a ~29KB `.webp` file over the network. Interestingly, the file size is further optimized based on how much of the image is visible in the viewport: ~14KB on mobile up to ~29KB on desktop.
+While updating this website's design, I created an SVG footer illustration to replace the PNG image I was using before. Out of curiosity, I checked how large the PNG file was both locally and in DevTools → Network. It was a 34KB `.png` file locally and a ~29KB `.webp` file over the network. Interestingly, the file size is further optimized based on how much of the image is visible in the viewport: ~14KB on mobile up to ~29KB on desktop.
 
 As a side note, the SVG I replaced it with is actually larger 😬, but it removes one network call since the `<svg>` is rendered inline rather than importing an `<img src={'mountains.png'} />`. The SVG is also more flexible (e.g. dynamic fill color based on theme) and crisper on large screens.
