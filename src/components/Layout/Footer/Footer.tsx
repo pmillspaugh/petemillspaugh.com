@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import styled from "styled-components";
 import { LightModeContext } from "pages/_app";
@@ -12,85 +11,80 @@ import TwitterIcon from "./TwitterIcon";
 
 const Footer = () => {
   const { lightMode } = useContext(LightModeContext);
-  const isHomePage = useRouter().pathname === "/";
 
   return (
     <footer>
       <NewfoundLake lightMode={lightMode} />
-      {!isHomePage && (
-        <StyledWrapper>
-          <StyledNav>
-            <StyledUl>
-              <StyledGardenLi>
-                <StyledLink href="/garden">Garden</StyledLink>
-                <StyledGardenLink href={`/garden?format=${PostFormat.Essay}`}>
-                  Essays
-                </StyledGardenLink>
-                <StyledGardenLink
-                  href={`/garden?format=${PostFormat.Brainstorm}`}
-                >
-                  Brainstorms
-                </StyledGardenLink>
-                <StyledGardenLink
-                  href={`/garden?format=${PostFormat.ShowNTell}`}
-                >
-                  Show 'n tells
-                </StyledGardenLink>
-                <StyledGardenLink href={`/garden?format=${PostFormat.TIL}`}>
-                  TILs
-                </StyledGardenLink>
-              </StyledGardenLi>
+      <StyledWrapper>
+        <StyledNav>
+          <StyledGardenUl>
+            <StyledGardenLi>
+              <StyledLink href="/garden">Garden</StyledLink>
+              <StyledGardenLink href={`/garden?format=${PostFormat.Essay}`}>
+                Essays
+              </StyledGardenLink>
+              <StyledGardenLink
+                href={`/garden?format=${PostFormat.Brainstorm}`}
+              >
+                Brainstorms
+              </StyledGardenLink>
+              <StyledGardenLink href={`/garden?format=${PostFormat.ShowNTell}`}>
+                Show 'n tells
+              </StyledGardenLink>
+              <StyledGardenLink href={`/garden?format=${PostFormat.TIL}`}>
+                TILs
+              </StyledGardenLink>
+            </StyledGardenLi>
+          </StyledGardenUl>
+          <StyledSecondarySection>
+            <StyledNavUl>
               <li>
                 <StyledLink href="/about">About</StyledLink>
               </li>
-              <li>
-                <StyledLink href="/talks">Talks</StyledLink>
-              </li>
+              <li></li>
               <li>
                 <StyledLink href="/wishlist">Wishlist</StyledLink>
               </li>
-            </StyledUl>
-            <StyledPeteCorner>
-              <StyledIconUl>
-                <li>
-                  <StyledIconLink
-                    href="https://github.com/pmillspaugh"
-                    target="_blank"
-                  >
-                    <GitHubIcon />
-                    <VisuallyHidden.Root>
-                      Pete Millspaugh on GitHub
-                    </VisuallyHidden.Root>
-                  </StyledIconLink>
-                </li>
-                <li>
-                  <StyledIconLink
-                    href="https://twitter.com/pete_millspaugh"
-                    target="_blank"
-                  >
-                    <TwitterIcon />
-                    <VisuallyHidden.Root>
-                      Pete Millspaugh on Twitter
-                    </VisuallyHidden.Root>
-                  </StyledIconLink>
-                </li>
-                <li>
-                  <StyledIconLink
-                    href="https://www.val.town/u/petermillspaugh"
-                    target="_blank"
-                  >
-                    <ValTownIcon />
-                    <VisuallyHidden.Root>
-                      Pete Millspaugh on Val Town
-                    </VisuallyHidden.Root>
-                  </StyledIconLink>
-                </li>
-              </StyledIconUl>
-              <StyledCopyright>© 2023 Pete Millspaugh</StyledCopyright>
-            </StyledPeteCorner>
-          </StyledNav>
-        </StyledWrapper>
-      )}
+            </StyledNavUl>
+            <StyledIconUl>
+              <li>
+                <StyledIconLink
+                  href="https://github.com/pmillspaugh"
+                  target="_blank"
+                >
+                  <GitHubIcon />
+                  <VisuallyHidden.Root>
+                    Pete Millspaugh on GitHub
+                  </VisuallyHidden.Root>
+                </StyledIconLink>
+              </li>
+              <li>
+                <StyledIconLink
+                  href="https://twitter.com/pete_millspaugh"
+                  target="_blank"
+                >
+                  <TwitterIcon />
+                  <VisuallyHidden.Root>
+                    Pete Millspaugh on Twitter
+                  </VisuallyHidden.Root>
+                </StyledIconLink>
+              </li>
+              <li>
+                <StyledIconLink
+                  href="https://www.val.town/u/petermillspaugh"
+                  target="_blank"
+                >
+                  <ValTownIcon />
+                  <VisuallyHidden.Root>
+                    Pete Millspaugh on Val Town
+                  </VisuallyHidden.Root>
+                </StyledIconLink>
+              </li>
+            </StyledIconUl>
+            <StyledCopyright>© 2023 Pete Millspaugh</StyledCopyright>
+          </StyledSecondarySection>
+        </StyledNav>
+      </StyledWrapper>
     </footer>
   );
 };
@@ -128,7 +122,7 @@ const StyledNav = styled.nav`
   }
 `;
 
-const StyledUl = styled.ul`
+const StyledGardenUl = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -157,11 +151,17 @@ const StyledGardenLink = styled(Link)`
   box-shadow: none;
 `;
 
-const StyledPeteCorner = styled.div`
+const StyledSecondarySection = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: space-between;
   gap: 12px;
+`;
+
+const StyledNavUl = styled.ul`
+  flex-grow: 1;
+  margin-left: auto;
+  text-align: right;
 `;
 
 const StyledIconUl = styled.ul`

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
-import { PostFormat, PostStatus } from "../Garden";
+import { PostFormat, PostStatus } from "./types";
 
 export const LABEL_TO_DESCRIPTION = {
   [PostFormat.Essay]: EssayDescription,
@@ -16,9 +16,9 @@ function EssayDescription() {
   return (
     <>
       <StyledP>
-        <b>Essays</b> are long-form pieces that I've been thinking about and
-        iterating on for a while. They are typically less technical and more
-        opinionated than a Show 'n tell.
+        <strong>Essays</strong> are long-form pieces that I've been thinking
+        about and iterating on for a while. They are typically less technical
+        and more opinionated than a Show 'n tell.
       </StyledP>
       <StyledP>
         You can find all Essays{" "}
@@ -34,10 +34,10 @@ function BrainstormDescription() {
   return (
     <>
       <StyledP>
-        <b>Brainstorms</b> are raw thought streams that I initially wrote down
-        without consulting the Internet, letting my train of thought run
-        uninterrupted, followed by a debrief answering my questions and pointing
-        out what I was right or wrong about.
+        <strong>Brainstorms</strong> are raw thought streams that I initially
+        wrote down without consulting the Internet, letting my train of thought
+        run uninterrupted, followed by a debrief answering my questions and
+        pointing out what I was right or wrong about.
       </StyledP>
       <StyledP>
         This is an experimental (and vulnerable 😅) format that I came up with
@@ -63,9 +63,9 @@ function ShowNTellDescription() {
   return (
     <>
       <StyledP>
-        <b>Show n' tells</b> are write-ups detailing how I built something. They
-        aren't quite as step-by-step and broadly applicable as a classic
-        "tutorial", and they are typically more technical with more code
+        <strong>Show n' tells</strong> are write-ups detailing how I built
+        something. They aren't quite as step-by-step and broadly applicable as a
+        classic "tutorial", and they are typically more technical with more code
         snippets than my Essays.
         <StyledP></StyledP>
         You can find all Show n' tells{" "}
@@ -83,7 +83,7 @@ function TILDescription() {
   return (
     <>
       <StyledP>
-        <b>TIL</b> stands for <i>Today I Learned</i>.
+        <strong>TIL</strong> stands for <em>Today I Learned</em>.
       </StyledP>
       <StyledP>
         TILs are small tidbits that I come across and jot down quickly. They may
@@ -109,9 +109,9 @@ function SeedlingDescription() {
   return (
     <>
       <StyledP>
-        <b>Seedlings</b> are young, unrefined ideas that I've just planted—or
-        old, unrefined ideas that need watering. If I am a diligent, caring
-        gardener, they'll grow into Buddings and maybe even Evergreens.
+        <strong>Seedlings</strong> are young, unrefined ideas that I've just
+        planted—or old, unrefined ideas that need watering. If I am a diligent,
+        caring gardener, they'll grow into Buddings and maybe even Evergreens.
       </StyledP>
       <StyledP>
         You can find all Seedlings{" "}
@@ -129,10 +129,10 @@ function BuddingDescription() {
   return (
     <>
       <StyledP>
-        <b>Buddings</b> are maturing works that I have spent considerable time
-        and energy cultivating but have not finished. They are teenageers who
-        have outgrown their Seedling status and may someday grow into
-        Evergreens.
+        <strong>Buddings</strong> are maturing works that I have spent
+        considerable time and energy cultivating but have not finished. They are
+        teenageers who have outgrown their Seedling status and may someday grow
+        into Evergreens.
       </StyledP>
       <StyledP>
         You can find all Buddings{" "}
@@ -148,9 +148,9 @@ function EvergreenDescription() {
   return (
     <>
       <StyledP>
-        <b>Evergreens</b> are complete works that I have edited and published as
-        a cohesive whole. They are similar to a traditional blog post published
-        at a point in time in that way.
+        <strong>Evergreens</strong> are complete works that I have edited and
+        published as a cohesive whole. They are similar to a traditional blog
+        post published at a point in time in that way.
       </StyledP>
       <StyledP>
         You can find all Evergreens{" "}
