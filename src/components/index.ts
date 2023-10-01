@@ -2,7 +2,6 @@ import Blockquote from "./Blockquote";
 import Code from "./Code";
 import { H2, H3 } from "./H";
 import P from "./P";
-import Ul from "./Ul";
 
 export const components = {
   blockquote: Blockquote,
@@ -10,5 +9,4 @@ export const components = {
   h2: H2,
   h3: H3,
   p: P,
-  ul: Ul,
 };

@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { LightModeContext } from "pages/_app";
-import styled from "styled-components";
-import NewfoundLake from "./NewfoundLake";
-import { PostFormat } from "@/components/Post";
-import GitHubIcon from "./GithubIcon";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
+import styled from "styled-components";
+import { LightModeContext } from "pages/_app";
+import { PostFormat } from "@/components/Post";
+import NewfoundLake from "./NewfoundLake";
+import GitHubIcon from "./GitHubIcon";
 import ValTownIcon from "./ValTownIcon";
 import TwitterIcon from "./TwitterIcon";
 
@@ -132,10 +132,6 @@ const StyledUl = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 4px;
-
-  li {
-    list-style: none;
-  }
 `;
 
 const StyledLink = styled(Link)`
@@ -169,10 +165,6 @@ const StyledPeteCorner = styled.div`
 `;
 
 const StyledIconUl = styled.ul`
-  li {
-    list-style: none;
-  }
-
   display: flex;
   justify-content: end;
   gap: 16px;

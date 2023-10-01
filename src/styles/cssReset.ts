@@ -21,6 +21,10 @@ export const CSSReset = createGlobalStyle`
     padding: 0;
   }
 
+  li {
+    list-style: none;
+  }
+
   /*
     3. Allow percentage-based heights in the application
   */
