@@ -37,7 +37,7 @@ const OuterWrapper = styled.div`
 
 const InnerWrapper = styled.div`
   padding: 2px 8px;
-  border-radius: 2px;
+  border-radius: 4px;
   border: 1px solid var(--black);
   background-color: ${(p) => p.theme.primaryBg};
   transition: background-color var(--base-timing) ease-in-out;

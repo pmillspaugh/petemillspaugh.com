@@ -1,73 +1,78 @@
 import Link from "next/link";
 import styled from "styled-components";
+import LeafIcon from "./LeafIcon";
 
-const Home = () => {
+const Home = ({ randomSlug }: { randomSlug: string }) => {
   return (
     <>
       <StyledH1>
-        <Firstname>Peter</Firstname>
+        <Firstname>Pete</Firstname>
         <Lastname>Millspaugh</Lastname>
       </StyledH1>
-      <Divider />
       <StyledNav>
-        <Link href="/about" passHref legacyBehavior>
-          <NavLink>About</NavLink>
-        </Link>
-        <Link href="/projects" passHref legacyBehavior>
-          <NavLink>Projects</NavLink>
-        </Link>
-        <Link href="/talks" passHref legacyBehavior>
-          <NavLink>Talks</NavLink>
-        </Link>
+        <StyledGardenLinkWrapper>
+          <StyledGardenLink href="/garden">
+            Visit the garden <LeafIcon size="20" />
+          </StyledGardenLink>
+        </StyledGardenLinkWrapper>
+        <i>
+          Or, read <Link href={`/${randomSlug}`}>something random</Link>
+        </i>
       </StyledNav>
     </>
   );
 };
 
 const StyledH1 = styled.h1`
-  padding-bottom: 16px;
-  color: ${(p) => p.theme.textColor};
+  padding-bottom: 32px;
   text-align: center;
 `;
 
 const Firstname = styled.div`
   font-size: 5rem;
   font-weight: 400;
-  line-height: 1;
+  line-height: 0.875;
 `;
 
 const Lastname = styled.div`
   font-size: 3rem;
-`;
-
-const Divider = styled.hr`
-  width: 50%;
-  margin: 0 auto;
-  border-color: ${(p) => p.theme.textColor};
+  font-weight: 200;
 `;
 
 const StyledNav = styled.nav`
-  padding-top: 16px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 16px;
+`;
+
+const StyledGardenLink = styled(Link)`
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: 1px solid var(--black);
+  box-shadow: none;
+  background-color: ${(p) => p.theme.tooltipBg};
+  color: ${(p) => p.theme.textColor};
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
   gap: 8px;
 
-  @media (min-width: 1200px) {
-    flex-direction: row;
-    gap: 32px;
+  &:hover {
+    font-weight: 800;
+
+    svg {
+      stroke-width: 3;
+      transition: stroke-width var(--base-timing) ease-out;
+    }
   }
 `;
 
-const NavLink = styled.a`
-  text-decoration: none;
-  font-size: 1.25rem;
-  text-align: center;
-  color: ${(p) => p.theme.linkTextColor};
-
-  &:hover {
-    text-decoration: underline;
-    color: ${(p) => p.theme.linkTextColorHover};
-  }
+const StyledGardenLinkWrapper = styled.div`
+  border-radius: 4px;
+  border: 1px solid var(--black);
+  background-color: ${(p) => p.theme.tagBorderColor};
+  padding: 3px;
 `;
 
 export default Home;

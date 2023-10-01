@@ -69,7 +69,7 @@ const Content = styled(RadixTooltip.Content)`
 `;
 
 const InnerContent = styled.div`
-  border-radius: 2px;
+  border-radius: 4px;
   border: 1px solid var(--black);
   padding: 12px 16px;
   background-color: ${(p) => p.theme.tooltipBg};
