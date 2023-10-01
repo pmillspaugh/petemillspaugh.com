@@ -4,7 +4,7 @@ import LeafIcon from "./LeafIcon";
 
 const Home = ({ randomSlug }: { randomSlug: string }) => {
   return (
-    <>
+    <StyledHome>
       <StyledH1>
         <Firstname>Pete</Firstname>
         <Lastname>Millspaugh</Lastname>
@@ -19,9 +19,17 @@ const Home = ({ randomSlug }: { randomSlug: string }) => {
           Or, read <Link href={`/${randomSlug}`}>something random</Link>
         </em>
       </StyledNav>
-    </>
+    </StyledHome>
   );
 };
+
+const StyledHome = styled.div`
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 
 const StyledH1 = styled.h1`
   padding-bottom: 32px;

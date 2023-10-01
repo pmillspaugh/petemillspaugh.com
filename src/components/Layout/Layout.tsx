@@ -30,10 +30,14 @@ const MaxWidthWrapper = styled.div`
   /* Vertically fill the space between the header and footer */
   min-height: calc(100vh - 300px - 72px);
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   padding: 16px;
+
+  main {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
 
   @media (min-width: 592px) {
     width: 520px;
