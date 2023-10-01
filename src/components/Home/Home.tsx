@@ -44,6 +44,7 @@ const StyledNav = styled.nav`
   flex-direction: column;
   align-items: center;
   gap: 16px;
+  font-family: var(--font-petrona);
 `;
 
 const StyledGardenLink = styled(Link)`
@@ -52,8 +53,9 @@ const StyledGardenLink = styled(Link)`
   border: 1px solid var(--black);
   box-shadow: none;
   background-color: ${(p) => p.theme.tooltipBg};
+  font-family: var(--font-open-sans);
   color: ${(p) => p.theme.textColor};
-  font-weight: 600;
+  font-weight: 500;
   display: inline-flex;
   align-items: center;
   gap: 8px;
