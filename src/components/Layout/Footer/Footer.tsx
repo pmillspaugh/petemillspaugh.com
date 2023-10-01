@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { LightModeContext } from "pages/_app";
 import styled from "styled-components";
 import NewfoundLake from "./NewfoundLake";
-import { PostFormat } from "@/components/Garden";
+import { PostFormat } from "@/components/Post";
 import GitHubIcon from "./GithubIcon";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import ValTownIcon from "./ValTownIcon";
@@ -50,42 +50,44 @@ const Footer = () => {
                 <StyledLink href="/wishlist">Wishlist</StyledLink>
               </li>
             </StyledUl>
-            <StyledIconUl>
-              <li>
-                <StyledIconLink
-                  href="https://github.com/pmillspaugh"
-                  target="_blank"
-                >
-                  <GitHubIcon />
-                  <VisuallyHidden.Root>
-                    Pete Millspaugh on GitHub
-                  </VisuallyHidden.Root>
-                </StyledIconLink>
-              </li>
-              <li>
-                <StyledIconLink
-                  href="https://www.val.town/u/petermillspaugh"
-                  target="_blank"
-                >
-                  <ValTownIcon />
-                  <VisuallyHidden.Root>
-                    Pete Millspaugh on Val Town
-                  </VisuallyHidden.Root>
-                </StyledIconLink>
-              </li>
-              <li>
-                <StyledIconLink
-                  href="https://twitter.com/pete_millspaugh"
-                  target="_blank"
-                >
-                  <TwitterIcon />
-                  <VisuallyHidden.Root>
-                    Pete Millspaugh on Twitter
-                  </VisuallyHidden.Root>
-                </StyledIconLink>
-              </li>
-            </StyledIconUl>
-            {/* TODO: © 2023 Peter Millspaugh */}
+            <StyledPeteCorner>
+              <StyledIconUl>
+                <li>
+                  <StyledIconLink
+                    href="https://github.com/pmillspaugh"
+                    target="_blank"
+                  >
+                    <GitHubIcon />
+                    <VisuallyHidden.Root>
+                      Pete Millspaugh on GitHub
+                    </VisuallyHidden.Root>
+                  </StyledIconLink>
+                </li>
+                <li>
+                  <StyledIconLink
+                    href="https://twitter.com/pete_millspaugh"
+                    target="_blank"
+                  >
+                    <TwitterIcon />
+                    <VisuallyHidden.Root>
+                      Pete Millspaugh on Twitter
+                    </VisuallyHidden.Root>
+                  </StyledIconLink>
+                </li>
+                <li>
+                  <StyledIconLink
+                    href="https://www.val.town/u/petermillspaugh"
+                    target="_blank"
+                  >
+                    <ValTownIcon />
+                    <VisuallyHidden.Root>
+                      Pete Millspaugh on Val Town
+                    </VisuallyHidden.Root>
+                  </StyledIconLink>
+                </li>
+              </StyledIconUl>
+              <StyledCopyright>© 2023 Pete Millspaugh</StyledCopyright>
+            </StyledPeteCorner>
           </StyledNav>
         </StyledWrapper>
       )}
@@ -159,21 +161,34 @@ const StyledGardenLink = styled(Link)`
   box-shadow: none;
 `;
 
+const StyledPeteCorner = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 12px;
+`;
+
 const StyledIconUl = styled.ul`
   li {
     list-style: none;
   }
 
   display: flex;
-  flex-direction: column;
   justify-content: end;
-  gap: 8px;
+  gap: 16px;
 `;
 
 const StyledIconLink = styled.a`
   width: 48px;
   height: 48px;
   color: var(--white);
+`;
+
+const StyledCopyright = styled.p`
+  color: var(--white);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
 `;
 
 export default Footer;
