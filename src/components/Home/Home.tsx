@@ -15,9 +15,9 @@ const Home = ({ randomSlug }: { randomSlug: string }) => {
             Visit the garden <LeafIcon size="20" />
           </StyledGardenLink>
         </StyledGardenLinkWrapper>
-        <i>
+        <em>
           Or, read <Link href={`/${randomSlug}`}>something random</Link>
-        </i>
+        </em>
       </StyledNav>
     </>
   );
