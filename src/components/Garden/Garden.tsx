@@ -133,8 +133,8 @@ const StyledGarden = styled.div`
 const StyledH1 = styled.h1`
   font-size: 4rem;
   font-weight: 300;
-  transform: translateX(-3px);
   margin-top: 16px;
+  margin-left: -3px;
 `;
 
 const StyledBarWrapper = styled.div`
