@@ -2,16 +2,7 @@ import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
 import { serialize } from "next-mdx-remote/serialize";
 
-const POSTS_DIR = join(process.cwd(), "src/pages/garden");
-
-export interface PostMetadata {
-  slug: string;
-  title: string;
-  createdAt: string;
-  updatedAt: string;
-  format: string;
-  status: string;
-}
+const POSTS_DIR = join(process.cwd(), "src/writing");
 
 export interface PostParams {
   params: { slug: string };
@@ -20,7 +11,7 @@ export interface PostParams {
 export function getPostPaths() {
   const postFilenames = [];
 
-  const subdirs = readdirSync(POSTS_DIR).filter((path) => path !== "index.tsx");
+  const subdirs = readdirSync(POSTS_DIR);
   for (const subdir of subdirs) {
     const filenames = readdirSync(join(POSTS_DIR, subdir));
     postFilenames.push(...filenames);
@@ -35,28 +26,40 @@ export function getPostPaths() {
 }
 
 export async function getPostData(slug: string) {
+  let foundPost = false;
   let postPath: string;
   let dir: string;
 
-  const subdirs = readdirSync(POSTS_DIR).filter((path) => path !== "index.tsx");
+  const subdirs = readdirSync(POSTS_DIR);
   for (const subdir of subdirs) {
     const match = readdirSync(join(POSTS_DIR, subdir)).find((path) =>
       path.includes(slug)
     );
+
     if (match) {
+      foundPost = true;
       dir = subdir;
       postPath = match;
       break;
     }
   }
 
+  if (!foundPost) throw new Error(`No post found for slug: ${slug}`);
+
   const postFileBuffer = readFileSync(join(POSTS_DIR, dir, postPath));
   const serializedMDX = await serialize(postFileBuffer.toString(), {
+    mdxOptions: { remarkPlugins: [] },
     parseFrontmatter: true,
   });
 
   return {
-    body: serializedMDX,
+    mdxSource: serializedMDX,
     metadata: serializedMDX.frontmatter,
   };
+}
+
+export function getRandomPostPath() {
+  const postPaths = getPostPaths();
+  const randomIndex = Math.floor(Math.random() * postPaths.length);
+  return postPaths[randomIndex].params.slug;
 }

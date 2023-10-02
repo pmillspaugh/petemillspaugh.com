@@ -70,5 +70,6 @@ export const GlobalStyle = createGlobalStyle`
     color: ${(p) => p.theme.textColor};
     background-color: ${(p) => p.theme.primaryBg};
     transition: all var(--base-timing) ease-in-out;
+    transition: overflow 0s;
   }
 `;
