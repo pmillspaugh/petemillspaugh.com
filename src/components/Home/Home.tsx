@@ -1,6 +1,5 @@
 import Link from "next/link";
 import styled from "styled-components";
-import LeafIcon from "./LeafIcon";
 
 const Home = ({ randomSlug }: { randomSlug: string }) => {
   return (
@@ -11,9 +10,7 @@ const Home = ({ randomSlug }: { randomSlug: string }) => {
       </StyledH1>
       <StyledNav>
         <StyledGardenLinkWrapper>
-          <StyledGardenLink href="/garden">
-            Visit the garden <LeafIcon size="20" />
-          </StyledGardenLink>
+          <StyledGardenLink href="/garden">Visit the garden</StyledGardenLink>
         </StyledGardenLinkWrapper>
         <em>
           Or, read <Link href={`/${randomSlug}`}>something random</Link>
