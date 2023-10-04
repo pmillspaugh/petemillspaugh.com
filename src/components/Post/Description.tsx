@@ -88,8 +88,8 @@ function TILDescription() {
       <StyledP>
         TILs are small tidbits that I come across and jot down quickly. They may
         not connect to anything I'm currently working on, but if I think
-        something is neat enough to stash away for later, I'll write a TIL.
-        Inspired by Josh Branchaud's{" "}
+        something is neat enough to share and stash away for later, I'll write a
+        TIL. Inspired by Josh Branchaud's{" "}
         <a href="https://github.com/jbranchaud/til" target="_blank">
           til
         </a>{" "}
