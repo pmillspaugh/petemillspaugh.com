@@ -1,24 +1,18 @@
 import Tooltip from "@/components/Tooltip";
-import {
-  PostFormat,
-  PostFormatDescription,
-  PostStatus,
-  OuterWrapper,
-  InnerWrapper,
-} from "@/components/Garden";
+import { PostFormat, PostStatus } from "./types";
 import { LABEL_TO_DESCRIPTION } from "./Description";
 
-const Tag = ({ label }: { label: PostFormat | PostStatus }) => {
+const Tag = ({
+  label,
+  trigger,
+}: {
+  label: PostFormat | PostStatus;
+  trigger: JSX.Element;
+}) => {
   const Description = LABEL_TO_DESCRIPTION[label];
 
   return (
-    <Tooltip
-      trigger={
-        <OuterWrapper>
-          <InnerWrapper>{PostFormatDescription[label] ?? label}</InnerWrapper>
-        </OuterWrapper>
-      }
-    >
+    <Tooltip trigger={trigger}>
       <Description />
     </Tooltip>
   );
