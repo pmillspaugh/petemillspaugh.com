@@ -16,9 +16,9 @@ function EssayDescription() {
   return (
     <>
       <StyledP>
-        <strong>Essays</strong> are long-form pieces that I've been thinking
-        about and iterating on for a while. They are typically less technical
-        and more opinionated than a Show 'n tell.
+        <strong>Essays</strong> are long-form pieces that I've usually been
+        thinking about for a while. They are typically less technical and more
+        opinionated than a Show 'n tell.
       </StyledP>
       <StyledP>
         You can find all Essays{" "}
