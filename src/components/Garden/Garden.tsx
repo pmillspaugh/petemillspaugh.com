@@ -42,10 +42,6 @@ const Garden = ({ posts }: GardenProps) => {
   useEffect(() => {
     if (!format && !status && !queryFormat && !queryStatus) {
       setFilteredPosts(posts);
-      router.push({
-        pathname: router.pathname,
-        query: {},
-      });
       return;
     }
 
