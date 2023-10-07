@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { openSans, petrona, overpassMono } from "./fonts";
+import { openSans, petrona, jetbrainsMono } from "./fonts";
 import { COLORS } from "./themes";
 
 export const GlobalStyle = createGlobalStyle`
@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     /* Fonts */
     --font-open-sans: ${openSans.style.fontFamily};
     --font-petrona: ${petrona.style.fontFamily};
-    --font-mono: ${overpassMono.style.fontFamily};
+    --font-mono: ${jetbrainsMono.style.fontFamily};
 
     /* Colors */
     --white: ${COLORS.Frost};
