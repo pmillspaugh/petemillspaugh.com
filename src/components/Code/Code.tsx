@@ -16,6 +16,32 @@ const StyledCode = styled.code`
   background-color: ${(p) => p.theme.codeBg};
   color: ${(p) => p.theme.codeColor};
   transition: all var(--base-timing) ease-in-out;
+
+  a > & {
+    color: ${(p) => p.theme.linkTextColor};
+    box-shadow: 0px 1.25px 0px ${(p) => p.theme.linkTextColor};
+    transition: all var(--fast-timing) ease-in-out;
+  }
+
+  a:hover > & {
+    color: ${(p) => p.theme.linkTextColorHover};
+    box-shadow: none;
+  }
+
+  pre > & {
+    display: block;
+    width: calc(100vw - 32px);
+    overflow-x: auto;
+    margin-top: 24px;
+    margin-bottom: 28px;
+    padding: 16px;
+  }
+
+  @media (min-width: 592px) {
+    pre > & {
+      width: 100%;
+    }
+  }
 `;
 
 export default Code;

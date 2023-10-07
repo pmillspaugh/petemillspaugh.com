@@ -54,7 +54,7 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 500;
     color: ${(p) => p.theme.linkTextColor};
     text-decoration: none;
-    box-shadow: 0px 1.25px 0px ${(p) => p.theme.linkTextColor};
+    box-shadow: 0px 1.25px 0px 0px ${(p) => p.theme.linkTextColor};
     transition: all var(--fast-timing) ease-in-out;
 
     &:hover {
@@ -69,7 +69,6 @@ export const GlobalStyle = createGlobalStyle`
   html, body, #__next {
     color: ${(p) => p.theme.textColor};
     background-color: ${(p) => p.theme.primaryBg};
-    transition: all var(--base-timing) ease-in-out;
-    transition: overflow 0s;
+    transition: color var(--base-timing) ease-in-out, background-color var(--base-timing) ease-in-out;
   }
 `;

@@ -131,7 +131,7 @@ function BuddingDescription() {
       <StyledP>
         <strong>Buddings</strong> are maturing works that I have spent
         considerable time and energy cultivating but have not finished. They are
-        teenageers who have outgrown their Seedling status and may someday grow
+        teenagers who have outgrown their Seedling status and may someday grow
         into Evergreens.
       </StyledP>
       <StyledP>

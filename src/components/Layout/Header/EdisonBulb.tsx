@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { COLORS } from "@/styles/themes";
 
 const EdisonBulb = ({ lightMode }: { lightMode: boolean }) => {
@@ -10,9 +11,8 @@ const EdisonBulb = ({ lightMode }: { lightMode: boolean }) => {
       xmlns="http://www.w3.org/2000/svg"
     >
       {/* Bulb */}
-      <path
+      <StyledPath
         d="M8.21141 108.329L6.70588 107.883C2.77306 106.168 0.528975 101.981 1.27918 97.7563L5.4609 74.2097C5.57824 73.5489 5.99655 72.9804 6.5925 72.6719C6.8989 72.5132 7.23891 72.4304 7.58395 72.4304H16.416C16.7611 72.4304 17.1011 72.5132 17.4075 72.6719C18.0035 72.9804 18.4218 73.5489 18.5391 74.2097L22.7208 97.7563C23.471 101.981 21.2269 106.168 17.2941 107.883L15.7886 108.329C15.166 108.513 14.6302 108.914 14.2788 109.46C13.2117 111.118 10.7883 111.118 9.72125 109.46C9.36979 108.914 8.83401 108.513 8.21141 108.329Z"
-        style={{ transition: "fill var(--base-timing) ease-out" }}
         fill={lightMode ? COLORS.Frost : COLORS.Gold}
         stroke={COLORS.Black}
       />
@@ -22,9 +22,8 @@ const EdisonBulb = ({ lightMode }: { lightMode: boolean }) => {
         stroke={COLORS.Black}
       />
       {/* Rope */}
-      <path
+      <StyledPath
         d="M9.88232 1V55.4865H14.1176V1H9.88232Z"
-        // fill="#F0F4F8"
         fill={lightMode ? COLORS.Frost : COLORS.Mountains2}
         stroke={COLORS.Black}
       />
@@ -72,5 +71,9 @@ const EdisonBulb = ({ lightMode }: { lightMode: boolean }) => {
     </svg>
   );
 };
+
+const StyledPath = styled.path`
+  transition: fill var(--base-timing) ease-out;
+`;
 
 export default EdisonBulb;

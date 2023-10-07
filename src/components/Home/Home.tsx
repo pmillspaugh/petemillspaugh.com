@@ -67,11 +67,6 @@ const StyledGardenLink = styled(Link)`
 
   &:hover {
     font-weight: 800;
-
-    svg {
-      stroke-width: 3;
-      transition: stroke-width var(--base-timing) ease-out;
-    }
   }
 `;
 
