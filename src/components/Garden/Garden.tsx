@@ -28,6 +28,7 @@ const Garden = ({ posts }: GardenProps) => {
     if (!queryFormat && !queryStatus) {
       setFormat("");
       setStatus("");
+      return;
     }
 
     if (Object.values(PostFormat).includes(queryFormat as PostFormat)) {
@@ -39,7 +40,7 @@ const Garden = ({ posts }: GardenProps) => {
   }, [queryFormat, queryStatus]);
 
   useEffect(() => {
-    if (!format && !status) {
+    if (!format && !status && !queryFormat && !queryStatus) {
       setFilteredPosts(posts);
       router.push({
         pathname: router.pathname,
