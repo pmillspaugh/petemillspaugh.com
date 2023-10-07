@@ -43,7 +43,7 @@ function BrainstormDescription() {
         This is an experimental (and vulnerable 😅) format that I came up with
         while{" "}
         <Link href="/map-in-the-woods" target="_blank">
-          downloading an offline map with poor network connection
+          downloading a map
         </Link>{" "}
         on a hiking trip.
       </StyledP>
