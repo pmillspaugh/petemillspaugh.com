@@ -1,51 +1,39 @@
 import Head from "next/head";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import type { GetStaticProps, GetStaticPaths } from "next";
 import {
   getPostPaths,
   getPostData,
-  PostMetadata,
   PostParams,
 } from "@/helpers/garden.helpers";
+import Post, { PostProps } from "@/components/Post";
 
-const PostPage = ({
-  body,
-  metadata,
-}: {
-  body: MDXRemoteSerializeResult;
-  metadata: PostMetadata;
-}) => {
-  const { title, createdAt, updatedAt, format, status } = metadata;
-
+const PostPage = ({ mdxSource, metadata }: PostProps) => {
   return (
     <>
       <Head>
-        <title>{title}</title>
-        <meta name="description" content={title} />
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.title} />
       </Head>
-      <h1>{title}</h1>
-      <p>
-        {createdAt} | {updatedAt} | {format} | {status}
-      </p>
-      <MDXRemote {...body} />
+      <Post mdxSource={mdxSource} metadata={metadata} />
     </>
   );
 };
 
-export async function getStaticPaths() {
+export const getStaticPaths = (async () => {
   const paths = getPostPaths();
 
   return {
     paths,
     fallback: false,
   };
-}
+}) satisfies GetStaticPaths;
 
-export async function getStaticProps({ params }: PostParams) {
-  const { body, metadata } = await getPostData(params.slug);
+export const getStaticProps = (async ({ params }: PostParams) => {
+  const { mdxSource, metadata } = await getPostData(params.slug);
 
   return {
-    props: { body, metadata },
+    props: { mdxSource, metadata },
   };
-}
+}) satisfies GetStaticProps;
 
 export default PostPage;
