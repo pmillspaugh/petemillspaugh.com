@@ -30,6 +30,7 @@ export const lightTheme = {
   tagBorderColorHover: COLORS.Green,
   tooltipBg: COLORS.Frost,
   tooltipBorderColor: COLORS.Green,
+  switchEnabledBg: COLORS.Gold,
 };
 
 export const darkTheme = {
@@ -44,4 +45,5 @@ export const darkTheme = {
   tagBorderColorHover: COLORS.Gold,
   tooltipBg: COLORS.Charcoal,
   tooltipBorderColor: COLORS.Gold,
+  switchEnabledBg: COLORS.Green,
 };
