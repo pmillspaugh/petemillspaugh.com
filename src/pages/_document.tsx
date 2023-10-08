@@ -39,12 +39,12 @@ class PMDocument extends Document<PMDocumentProps> {
     return (
       <Html lang="en">
         <Head />
-        <meta name="title" property="og:title" content="Peter Millspaugh" />
+        <meta name="title" property="og:title" content="Pete Millspaugh" />
         <meta property="og:type" content="website" />
         <meta
           name="description"
           property="og:description"
-          content="Peter Millspaugh — Software Engineer"
+          content="Pete Millspaugh"
         />
         <meta property="og:url" content="https://www.petermillspaugh.com/" />
         <meta
