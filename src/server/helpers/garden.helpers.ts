@@ -57,9 +57,3 @@ export async function getPostData(slug: string) {
     metadata: serializedMDX.frontmatter,
   };
 }
-
-export function getRandomPostPath() {
-  const postPaths = getPostPaths();
-  const randomIndex = Math.floor(Math.random() * postPaths.length);
-  return postPaths[randomIndex].params.slug;
-}

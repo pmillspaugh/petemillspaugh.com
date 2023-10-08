@@ -1,23 +1,23 @@
 import Head from "next/head";
 import type { GetStaticProps } from "next";
-import { getRandomPostPath } from "@/helpers/garden.helpers";
+import { getPostPaths } from "@/helpers/garden.helpers";
 import Home from "@/components/Home";
 import { ComponentProps } from "react";
 
-const HomePage = ({ randomSlug }: ComponentProps<typeof Home>) => {
+const HomePage = ({ postPaths }: ComponentProps<typeof Home>) => {
   return (
     <>
       <Head>
         <title>Peter Millspaugh</title>
       </Head>
-      <Home randomSlug={randomSlug} />
+      <Home postPaths={postPaths} />
     </>
   );
 };
 
 export const getStaticProps = (async () => {
-  const randomSlug = getRandomPostPath();
-  return { props: { randomSlug } };
+  const postPaths = getPostPaths();
+  return { props: { postPaths } };
 }) satisfies GetStaticProps;
 
 export default HomePage;

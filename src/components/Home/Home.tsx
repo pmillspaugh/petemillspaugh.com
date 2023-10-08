@@ -1,7 +1,11 @@
+import { PostParams } from "@/helpers/garden.helpers";
 import Link from "next/link";
 import styled from "styled-components";
 
-const Home = ({ randomSlug }: { randomSlug: string }) => {
+const Home = ({ postPaths }: { postPaths: PostParams[] }) => {
+  const randomIndex = Math.floor(Math.random() * postPaths.length);
+  const randomSlug = postPaths[randomIndex].params.slug;
+
   return (
     <StyledHome>
       <StyledH1>
