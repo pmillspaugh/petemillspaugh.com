@@ -1,4 +1,4 @@
-# ![P logo](./public/images/p-logo-green.png)
+<h1 align="center"><img src="./public/images/p-logo-green.png" width="100" height="100" /></h1>
 
 Hey, thanks for poking around my repo! I wrote about myself and my digital garden on [petemillspaugh.com/about](https://petemillspaugh.com/about), so I'll use this space to touch on some technical things about my garden.
 
