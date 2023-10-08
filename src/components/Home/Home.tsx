@@ -62,18 +62,15 @@ const StyledGardenLink = styled(Link)`
   border: 1px solid var(--black);
   box-shadow: none;
   background-color: ${(p) => p.theme.popoverBg};
-  font-family: var(--font-open-sans);
   color: ${(p) => p.theme.textColor};
-  font-weight: 500;
+  font-family: var(--font-open-sans);
+  font-weight: 400;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition:
-    color var(--base-timing) ease-in-out,
-    background-color var(--base-timing) ease-in-out;
 
   &:hover {
-    font-weight: 800;
+    font-weight: 600;
   }
 `;
 
@@ -82,7 +79,6 @@ const StyledGardenLinkWrapper = styled.div`
   border: 1px solid var(--black);
   background-color: ${(p) => p.theme.tagBorderColor};
   padding: 3px;
-  transition: background-color var(--base-timing) ease-in-out;
 `;
 
 export default Home;
