@@ -1,0 +1,16 @@
+---
+slug: nextjs-automatic-webp
+title: Next.js automatically converts PNGs to WebP
+createdAt: September 11, 2023
+updatedAt: September 11, 2023
+format: TIL
+status: Evergreen
+---
+
+The `<Image>` component from Next.js automatically converts PNG images to <a href="https://web.dev/learn/images/webp/" target="_blank">WebP</a>. From the <a href="https://nextjs.org/docs/app/building-your-application/optimizing/images" target="_blank">Image Optimization docs</a>:
+
+> **Size Optimization:** Automatically serve correctly sized images for each device, using modern image formats like WebP and AVIF.
+
+While updating this website’s design, I created an SVG footer illustration to replace the PNG image I was using before. Out of curiosity, I checked how large the PNG file was both locally and in browser DevTools → Network panel. It was a 34KB `.png` file locally and a ~29KB `.webp` file over the network. Interestingly, the file size is further optimized based on how much of the image is visible in the viewport: from ~14KB on mobile up to ~29KB on desktop.
+
+As a side note, the SVG I replaced it with is actually larger 😬, but it removes one network call since the `<svg>` is rendered inline rather than serving a separate image file rendered in an `<img>` tag. The SVG is also more flexible (e.g. dynamic fill color based on theme) and crisper on large screens.

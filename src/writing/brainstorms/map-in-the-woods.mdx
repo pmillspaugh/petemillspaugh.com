@@ -1,0 +1,101 @@
+---
+slug: map-in-the-woods
+title: Downloading a 30MB map in the woods
+createdAt: June 26, 2023
+updatedAt: October 8, 2023
+format: Brainstorm
+status: Evergreen
+---
+
+This is my first attempt at a new, experimental writing format I’m calling Brainstorms. I like to walk and think or sit and write without my phone or computer nearby, so the idea is to record those offline thought streams and revisit them later with the help of the Internet. A few months after coming up with the idea, I read this quotation from <a href="https://www.platformer.news/p/why-note-taking-apps-dont-make-us" target="_blank">Casey Newton</a> (via <a href="https://chriscoyier.net/2023/10/03/its-not-the-app-its-the-apptitude/" target="_blank">Chris Coyier</a>) that articulates my aim:
+
+> ...thinking is an active pursuit — one that often happens when you are spending long stretches of time staring into space, then writing a bit, and then staring into space a bit more. It’s here that the connections are made and the insights are formed.
+
+I wrote this Brainstorm on a hiking trip after downloading a map for our route that day, a process that spanned minutes and required a couple retries.
+
+## Raw transcription
+
+<Transcription>
+[June 26, 2023 - early in the morning]
+
+Trips are a good time to think about web dev, actually. Because I use different websites in different situations. Hotel booking sites, a lot of Maps, and Strava/AllTrails. Ok, so that’s mostly mobile apps. But part of the point is that mobile apps feel—and are—more reliable. Traveling with low/no network connection is the perfect chance to think about service workers and caching. Also btw (quick aside): downloading the map for our hike today was 30 MB. Like, I mean the size of the map file (what file type is that?). 30 megabytes for a map file. Is there a good way to think about size of images and maps? Are they different? Like, if I think of a PDF that is only plaintext as 1-4 bytes per character (depending on the encoding), then a 1,000 char document is like 1-4 KB/kilobytes, which is like 250 4-letter words. So a document with 7,500 to 30,000 chars would be like 30KB (what’s the typical encoding so I don’t have to have such a wide range? 2 bytes per char? Let’s assume that). So 15,000 char for 30KB, or 3,000 5-letter words. So a 3,000 word document, which is what like 10 pages? Sure. So anyway the map file is 10x that big, i.e 30KB x 10 = 30MB. So can I think of that as X bytes per pixel? Or is pixels not the right unit? Is it the right unit for images? Also of course you have some metadata stored. Ok so anyway, 30MB. And how long does that take to download? 30MB/s is considered solid WiFi, like you-can-stream-Netflix-or-Zoom. But there’s a gotcha, I think. Download/upload speeds are megabits per second—not megabytes. Something about how digital data is stored/measured at rest versus in transit, right? So could I just say 30 megabits per second = 7.5 megabytes per second? And if so, it should take 4 seconds to download my 30 MB map at 30 mb/s?
+
+</Transcription>
+
+## Silly stuff
+
+Before diving into the full research, let me call out a couple silly mistakes to clear the air.
+
+> So anyway the map file is 10x that big, i.e 30KB x 10 = 30MB
+
+Wrong! 30KB x 10 = 300KB, ya dingus. 30MB would be 30KB x 1,000. This is an embarrassing careless error 😅, and I wish I could say I wrote this before drinking coffee that day, but I didn’t.
+
+> So could I just say 30 megabits per second = 7.5 megabytes per second? And if so, it should take 4 seconds to download my 30 MB map at 30 mb/s?
+
+Again, careless error. 30 mega*bits* per second divided by 8 bits per byte = 3.75 mega*bytes* per second. So by my initial logic that would be 8 seconds to download (or would it be...read on below).
+
+## Answers
+
+With my obvious misteps out of the way, we can turn to the Internet for answers.
+
+### Map file formats
+
+> ...the size of the map file (what file type is that?)
+
+There are _a ton_ of map file formats, as it turns out. The most common seem to be vector-based formats like <a href="https://en.wikipedia.org/wiki/Shapefile" target="_blank">Shapefile</a> and <a href="https://en.wikipedia.org/wiki/GeoJSON" target="_blank">GeoJSON</a>, but there are also raster-based formats, e.g., PNG and JPEG. Map data, aka geospatial data, fits under the umbrella of <a href="https://en.wikipedia.org/wiki/GIS_file_format" target="_blank">geographic information system (GIS) file formats</a>. Vector formats rely on coordinate geometry to store points, lines, and polygons that represent map features. Raster formats are used for <a href="https://en.wikipedia.org/wiki/Tiled_web_map" target="_blank">map tiles</a>, which are smaller sections of a larger map like the currently visible portion on your phone in Google Maps—although it sounds like vector tiles are a better option, so I’m not sure how relevant raster tiles are anymore.
+
+I went back and opened AllTrails to see what map download format they use, and they offer a pretty staggering number of options. The mobile app surfaces seven formats (one not visible in my screenshot), but on desktop there were 33 available by my count.
+
+<Figure.AllTrails />
+
+Our hike that day was <a href="https://www.alltrails.com/trail/england/cumbria/scafell-pike-from-seathwaite-circular" target="_blank">Scaffell Pike</a> in England’s Lake District, in case anyone is curious. I was there for a wedding, so my friend and I took the chance to do some backpacking in the Lake District and Wales (which was especially stunning).
+
+As an aside, these screenshots were originally a 1.3 megabyte JPEG (left) and a 688 kilobyte PNG (right). I initially opened up <a href="https://squoosh.app/" target="_blank">Squoosh</a> to compress and convert them before remembering that <a href="/nextjs-automatic-webp" target="_blank">Next automatically compresses and converts images</a>. So handy! Looks like they are about 49KB and 24KB on my laptop viewport.
+
+> So can I think of [the map file] as X bytes per pixel? Or is pixels not the right unit? Is it the right unit for images?
+
+With newfound context on map files, this is more clear. It sounds like X bytes per pixel _is not_ the right mental model for thinking about map file size, in most cases.
+
+For images though, pixels are more relevant (obviously, I guess). <a href="https://en.wikipedia.org/wiki/Raster_graphics" target="_blank">Raster graphics</a> are represented as a grid of pixels. Image size and resolution correlate with file size, so larger images and sharper resolution require more bytes. PNG, JPEG, GIF, and WebP are examples of raster formats. Raster images are also referred to as <a href="https://en.wikipedia.org/wiki/Bitmap" target="_blank">bitmaps</a> (like, a map of bits). The simplest version of a bitmap would require just one bit for each pixel, representing black or white. The number of bits per pixel (bpp) is known as <a href="https://en.wikipedia.org/wiki/Color_depth" target="_blank">_bit depth_ or _color depth_</a>. An 8-bit/1-byte pixel could represent 256 (2^8) different colors, for example. It sounds like 24-bit "True color" is most common for modern computer and phone displays, and some graphics-oriented applications use higher bit depths, e.g., 48-bit color in Photoshop.
+
+{/* prettier-ignore */}
+<a href="https://en.wikipedia.org/wiki/Vector_graphics" target="_blank">Vector graphics</a> are represented as a collection of geometric shapes and coordinates/paths. Vector images can be scaled without losing image quality at a roughly constant file size. <a href="https://en.wikipedia.org/wiki/SVG" target="_blank">SVG</a> is, of course, the big name when it comes to vector graphics on the Web. The flexibility of SVGs is really cool, unlocking things like animation and dynamic fill or stroke color. There are other vector formats like Adobe Illustrator’s proprietary `.ai`.
+
+> Is there a good way to think about size of images and maps? Are they different?
+
+My takeaway here is that it depends on whether the image/map is a raster or vector graphic. For raster graphics, size is in pixels, driven by scale and resolution. For vector graphics, it depends on the complexity of the subject. A company logo SVG might only have a few simple paths and shapes whereas a city map would hold dense, complex polygons and lines.
+
+### Text encoding, file size
+
+> ...what’s the typical encoding so I don’t have to have such a wide range? 2 bytes per char?
+
+{/* prettier-ignore */}
+<a href="https://en.wikipedia.org/wiki/UTF-8" target="_blank">UTF-8</a> is the <a href="https://en.wikipedia.org/wiki/Popularity_of_text_encodings" target="_blank">most common encoding on the Web</a> by far at 98% of all web pages. UTF-8 is a variable-length character encoding where more common (English) characters tend to require fewer bytes. The first 128 characters of Unicode, for example, exactly match <a href="https://en.wikipedia.org/wiki/ASCII" target="_blank">ASCII</a> and take up one byte per char. On the other end of the spectrum, newer characters like emojis require 4 bytes per char, so choose your emojis wisely 🔮. I just discovered while choosing that last emoji that you can find all sorts of special symbols on a Mac by pressing `⌃⌘Space` and scrolling down past the emojis.
+
+So I think it’s fair to say the average bytes per character is pretty close to one for most English content.
+
+> So 15,000 char for 30KB, or 3,000 5-letter words. So a 3,000 word document, which is what like 10 pages?
+
+This is a decent estimate, although I’d revise it to ~15-20KB based on the encoding summary above. A typical Microsoft Word document with 12pt Times New Roman font and standard margins might fit ~500-600 words single-spaced, or ~250-300 double-spaced (I should confirm with my brother who is a middle school English teacher — I bet his students could’ve quickly offered an excellent estimate without me having to look it up). A cursory Google search confirms that 5-letter words on average is fair, or 6 counting spaces (which take up one byte).
+
+### Download speed
+
+> 30MB/s is considered solid WiFi, like you-can-stream-Netflix-or-Zoom.
+
+To clarify, I should have written 30 Mbps for mega*bits* per second. 30 MB/s would be mega*bytes* per second, so 240 Mbps, which is a rather fast connection. <a href="https://help.netflix.com/en/node/306" target="_blank">Netflix recommends 15 Mbps or higher</a> for their top video quality, and <a href="https://support.zoom.us/hc/en-us/articles/201362023-System-requirements-for-Windows-macOS-and-Linux" target="_blank">Zoom suggests 4 Mbps</a> as sufficient bandwidth.
+
+My current download speed is a bit over 50 Mbps as measured by <a href="https://speed.cloudflare.com/" target="_blank">Cloudflare’s speed test</a>, which is my favorite way to test your connection (I love how clearly they explain and display the data).
+
+> Download/upload speeds are megabits per second—not megabytes. Something about how digital data is stored/measured at rest versus in transit, right?
+
+This is about right. Network communications (i.e. data in transit) have historically been measured in bits, which offer more granularity (and sounds better for ISPs advertising high speeds). Data is transmitted bit by bit over a network. Data at rest (e.g. on a hard drive or in memory) is typically thought of in terms of files measured in bytes or kilobytes, megabytes, etc.
+
+> Ok so anyway, 30MB. And how long does that take to download?
+
+At 30 Mbps, the 30MB map should take about 8 seconds to download. 30 megabits per second = 3.75 megabytes per second. Divide 30 by 3.75 and you get 8 seconds. That’s not considering any potential network overhead or competing resources and interruptions, so it’s more like a theoretical maximum speed best-case scenario.
+
+A more realistic estimate should consider factors that add friction: data sent over a network will travel in packets with each chunk including some metadata in its headers, so the aggregate data transmitted should be over 30MB; some packets could also get lost and require retransmission; there could be some latency from signal interference or other devices on the network competing for bandwidth; the server itself could slow down with heavy load. I am only scratching the surface, and I don’t know much about networking, so I’ll update my mental model to bake in a buffer over the theoretical max speed.
+
+## Feedback
+
+Thanks for reading! It’s likely that I didn’t get everything quite right in my follow-up, so please feel free to <a href="https://twitter.com/pete_millspaugh" target="_blank">let me know on Twitter</a> — I’d love to learn more about this stuff!
