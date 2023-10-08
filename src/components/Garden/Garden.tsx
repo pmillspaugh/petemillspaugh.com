@@ -67,6 +67,7 @@ const Garden = ({ posts }: GardenProps) => {
         pathname: router.pathname,
         query: { ...router.query, format: PostFormat.ShowNTell },
       });
+      return;
     }
 
     setFormat(value as PostFormat);
@@ -119,6 +120,12 @@ const Garden = ({ posts }: GardenProps) => {
           </li>
         ))}
       </ul>
+      {!filteredPosts.length && (
+        <StyledP>
+          I haven't published anything matching this format + status just yet.
+          Try resetting or choosing another filter.
+        </StyledP>
+      )}
     </StyledGarden>
   );
 };
@@ -149,6 +156,11 @@ const StyledFiltersWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+`;
+
+const StyledP = styled.p`
+  font-family: var(--font-open-sans);
+  font-style: italic;
 `;
 
 export const OuterWrapper = styled.div`
