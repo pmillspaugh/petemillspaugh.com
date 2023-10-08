@@ -103,7 +103,7 @@ const StyledNav = styled.nav`
   color: var(--white);
 
   @media (min-width: 592px) {
-    width: 520px;
+    width: 592px;
   }
 
   @media (min-width: 768px) {

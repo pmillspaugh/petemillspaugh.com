@@ -40,7 +40,7 @@ const MaxWidthWrapper = styled.div`
   }
 
   @media (min-width: 592px) {
-    width: 520px;
+    width: 592px;
   }
 
   @media (min-width: 768px) {
