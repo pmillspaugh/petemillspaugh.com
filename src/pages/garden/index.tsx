@@ -6,8 +6,8 @@ const GardenPage = ({ posts }: GardenProps) => {
   return (
     <>
       <Head>
-        <title>Peter Millspaugh | Garden</title>
-        <meta name="description" content="Peter Millspaugh - Garden" />
+        <title>Pete Millspaugh | Garden</title>
+        <meta name="description" content="Pete Millspaugh - Garden" />
       </Head>
       <Garden posts={posts} />
     </>
