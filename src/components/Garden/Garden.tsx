@@ -58,7 +58,7 @@ const Garden = ({ posts }: GardenProps) => {
     });
 
     setFilteredPosts(filtered);
-  }, [format, status]);
+  }, [posts, format, status, queryFormat, queryStatus]);
 
   const handleFormatChange = (value: string) => {
     if (value === PostFormatDescription[PostFormat.ShowNTell]) {

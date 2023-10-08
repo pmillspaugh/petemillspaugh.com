@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styled from "styled-components";
 
 const WhatsThis = () => {
@@ -17,7 +18,7 @@ const WhatsThis = () => {
       </StyledP>
       <StyledP>
         I cover my gardening habits in full on the{" "}
-        <a href="/about#this-site">About</a> page. Or, if you want to jump
+        <Link href="/about#this-site">About</Link> page. Or, if you want to jump
         directly to a historical tour of digital gardening, read{" "}
         <a href="https://maggieappleton.com/garden-history" target="_blank">
           Maggie Appleton's wonderful essay
