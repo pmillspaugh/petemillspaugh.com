@@ -8,7 +8,7 @@ const HomePage = ({ postPaths }: ComponentProps<typeof Home>) => {
   return (
     <>
       <Head>
-        <title>Peter Millspaugh</title>
+        <title>Pete Millspaugh</title>
       </Head>
       <Home postPaths={postPaths} />
     </>

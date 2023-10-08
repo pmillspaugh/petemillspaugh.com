@@ -29,8 +29,8 @@ export const lightTheme = {
   blockquoteColor: COLORS.DarkGreen,
   tagBorderColor: COLORS.Gold,
   tagBorderColorHover: COLORS.Green,
-  tooltipBg: COLORS.Frost,
-  tooltipBorderColor: COLORS.Green,
+  popoverBg: COLORS.Frost,
+  popoverBorderColor: COLORS.Green,
   switchEnabledBg: COLORS.Gold,
 };
 
@@ -45,7 +45,7 @@ export const darkTheme = {
   blockquoteColor: COLORS.Mountains2,
   tagBorderColor: COLORS.Green,
   tagBorderColorHover: COLORS.Gold,
-  tooltipBg: COLORS.Charcoal,
-  tooltipBorderColor: COLORS.Gold,
+  popoverBg: COLORS.Charcoal,
+  popoverBorderColor: COLORS.Gold,
   switchEnabledBg: COLORS.Green,
 };

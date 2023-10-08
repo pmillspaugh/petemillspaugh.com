@@ -1,4 +1,4 @@
-import Tooltip from "@/components/Tooltip";
+import Popover from "@/components/Popover";
 import { PostFormat, PostStatus } from "./types";
 import { LABEL_TO_DESCRIPTION } from "./Description";
 
@@ -12,9 +12,9 @@ const Tag = ({
   const Description = LABEL_TO_DESCRIPTION[label];
 
   return (
-    <Tooltip trigger={trigger}>
+    <Popover trigger={trigger}>
       <Description />
-    </Tooltip>
+    </Popover>
   );
 };
 

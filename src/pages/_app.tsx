@@ -1,7 +1,5 @@
 import { createContext } from "react";
 import { ThemeProvider } from "styled-components";
-import { TooltipProvider } from "@radix-ui/react-tooltip";
-
 import Layout from "@/components/Layout";
 import { CSSReset } from "@/styles/cssReset";
 import { GlobalStyle } from "@/styles/globals";
@@ -16,13 +14,11 @@ const App = ({ Component, pageProps }) => {
   return (
     <LightModeContext.Provider value={{ lightMode, setLightMode }}>
       <ThemeProvider theme={lightMode ? lightTheme : darkTheme}>
-        <TooltipProvider delayDuration={150}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-          <CSSReset />
-          <GlobalStyle />
-        </TooltipProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+        <CSSReset />
+        <GlobalStyle />
       </ThemeProvider>
     </LightModeContext.Provider>
   );

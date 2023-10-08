@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import Tooltip from "@/components/Tooltip";
+import Popover from "@/components/Popover";
 import {
   PostMetadata,
   PostFormat,
@@ -89,7 +89,7 @@ const Garden = ({ posts }: GardenProps) => {
     <StyledGarden>
       <StyledH1>Garden</StyledH1>
       <StyledBarWrapper>
-        <Tooltip
+        <Popover
           trigger={
             <OuterWrapper>
               <InnerWrapper>What's this?</InnerWrapper>
@@ -97,7 +97,7 @@ const Garden = ({ posts }: GardenProps) => {
           }
         >
           <WhatsThis />
-        </Tooltip>
+        </Popover>
         <StyledFiltersWrapper>
           <Select
             placeholder="Format"

@@ -5,8 +5,8 @@ const WishlistPage = () => {
   return (
     <>
       <Head>
-        <title>Peter Millspaugh | Wishlist</title>
-        <meta name="description" content="Peter Millspaugh - Wishlist" />
+        <title>Pete Millspaugh | Wishlist</title>
+        <meta name="description" content="Pete Millspaugh - Wishlist" />
       </Head>
       <Wishlist />
     </>

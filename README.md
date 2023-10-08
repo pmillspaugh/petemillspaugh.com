@@ -1,4 +1,4 @@
-# ![P logo](./public/images/p-logo-green.png)
+<h1 align="center"><img src="./public/images/p-logo-green.png" width="100" height="100" /></h1>
 
 Hey, thanks for poking around my repo! I wrote about myself and my digital garden on [petemillspaugh.com/about](https://petemillspaugh.com/about), so I'll use this space to touch on some technical things about my garden.
 
@@ -10,7 +10,7 @@ React and Next are the web framework and meta framework I know best. I really en
 
 Components are a spectrum from primitives like `Blockquote` to highly composed components like `Garden`. It's hard to draw a line in the sand between component-library-components that might live in `/components/lib` and bespoke components that are reused just once or not at all. So I mixed them all in one `/components` folder. I settled on this structure based on Josh Comeau's opinion on the subject in his React course.
 
-I rely on unstyled component libraries like [Radix UI](https://radix-ui.com) for my underlying component primitives when it comes to complex implementations like `Tooltip` and `Switch`. I love getting accessibilty and usability out of the box with these sorts of libraries.
+I rely on unstyled component libraries like [Radix UI](https://radix-ui.com) for my underlying component primitives when it comes to complex implementations like `Popover` and `Switch`. I love getting accessibilty and usability out of the box with these sorts of libraries.
 
 ## Styled Components
 

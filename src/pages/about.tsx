@@ -5,8 +5,8 @@ const AboutPage = () => {
   return (
     <>
       <Head>
-        <title>Peter Millspaugh | About</title>
-        <meta name="description" content="Peter Millspaugh - About" />
+        <title>Pete Millspaugh | About</title>
+        <meta name="description" content="Pete Millspaugh - About" />
       </Head>
       <About />
     </>
