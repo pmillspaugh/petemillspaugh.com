@@ -68,6 +68,9 @@ const StyledGardenLink = styled(Link)`
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  transition:
+    color var(--base-timing) ease-in-out,
+    background-color var(--base-timing) ease-in-out;
 
   &:hover {
     font-weight: 800;
@@ -79,6 +82,7 @@ const StyledGardenLinkWrapper = styled.div`
   border: 1px solid var(--black);
   background-color: ${(p) => p.theme.tagBorderColor};
   padding: 3px;
+  transition: background-color var(--base-timing) ease-in-out;
 `;
 
 export default Home;
