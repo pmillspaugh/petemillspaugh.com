@@ -1,7 +1,7 @@
-import * as RadixTooltip from "@radix-ui/react-tooltip";
+import * as RadixPopover from "@radix-ui/react-popover";
 import styled from "styled-components";
 
-const Tooltip = ({
+const Popover = ({
   trigger,
   children,
 }: {
@@ -9,16 +9,16 @@ const Tooltip = ({
   children: JSX.Element;
 }) => {
   return (
-    <RadixTooltip.Root>
-      <RadixTooltip.Trigger asChild>
+    <RadixPopover.Root>
+      <RadixPopover.Trigger asChild>
         <TriggerButton>{trigger}</TriggerButton>
-      </RadixTooltip.Trigger>
-      <RadixTooltip.Portal>
-        <Content side="bottom" sideOffset={4}>
+      </RadixPopover.Trigger>
+      <RadixPopover.Portal>
+        <Content side="bottom" sideOffset={4} collisionPadding={16}>
           <InnerContent>{children}</InnerContent>
         </Content>
-      </RadixTooltip.Portal>
-    </RadixTooltip.Root>
+      </RadixPopover.Portal>
+    </RadixPopover.Root>
   );
 };
 
@@ -28,17 +28,17 @@ const TriggerButton = styled.button`
   background-color: transparent;
 
   &:hover {
-    cursor: help;
+    cursor: pointer;
   }
 `;
 
-const Content = styled(RadixTooltip.Content)`
+const Content = styled(RadixPopover.Content)`
   max-width: 300px;
   border-radius: 4px;
   border: 1px solid var(--black);
-  background-color: ${(p) => p.theme.tooltipBorderColor};
+  background-color: ${(p) => p.theme.popoverBorderColor};
   padding: 3px;
-  transform-origin: var(--radix-tooltip-content-transform-origin);
+  transform-origin: var(--radix-popover-content-transform-origin);
   animation: scaleIn var(--base-timing) ease-out;
 
   &[data-state="closed"] {
@@ -72,7 +72,7 @@ const InnerContent = styled.div`
   border-radius: 4px;
   border: 1px solid var(--black);
   padding: 12px 16px;
-  background-color: ${(p) => p.theme.tooltipBg};
+  background-color: ${(p) => p.theme.popoverBg};
 `;
 
-export default Tooltip;
+export default Popover;

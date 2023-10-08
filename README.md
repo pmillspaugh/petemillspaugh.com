@@ -10,7 +10,7 @@ React and Next are the web framework and meta framework I know best. I really en
 
 Components are a spectrum from primitives like `Blockquote` to highly composed components like `Garden`. It's hard to draw a line in the sand between component-library-components that might live in `/components/lib` and bespoke components that are reused just once or not at all. So I mixed them all in one `/components` folder. I settled on this structure based on Josh Comeau's opinion on the subject in his React course.
 
-I rely on unstyled component libraries like [Radix UI](https://radix-ui.com) for my underlying component primitives when it comes to complex implementations like `Tooltip` and `Switch`. I love getting accessibilty and usability out of the box with these sorts of libraries.
+I rely on unstyled component libraries like [Radix UI](https://radix-ui.com) for my underlying component primitives when it comes to complex implementations like `Popover` and `Switch`. I love getting accessibilty and usability out of the box with these sorts of libraries.
 
 ## Styled Components
 

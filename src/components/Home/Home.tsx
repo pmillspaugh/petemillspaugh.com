@@ -61,7 +61,7 @@ const StyledGardenLink = styled(Link)`
   border-radius: 4px;
   border: 1px solid var(--black);
   box-shadow: none;
-  background-color: ${(p) => p.theme.tooltipBg};
+  background-color: ${(p) => p.theme.popoverBg};
   font-family: var(--font-open-sans);
   color: ${(p) => p.theme.textColor};
   font-weight: 500;
