@@ -35,9 +35,8 @@ function BrainstormDescription() {
     <>
       <StyledP>
         <strong>Brainstorms</strong> are raw thought streams that I initially
-        wrote down without consulting the Internet, letting my train of thought
-        run uninterrupted, followed by a debrief answering my questions and
-        pointing out what I was right or wrong about.
+        wrote down without consulting the Internet, followed by a debrief
+        answering my questions and pointing out what I was right or wrong about.
       </StyledP>
       <StyledP>
         This is an experimental (and vulnerable 😅) format that I came up with

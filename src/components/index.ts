@@ -4,6 +4,8 @@ import { H2, H3 } from "./H";
 import P from "./P";
 
 import AudioSwitch from "./AudioSwitch";
+import Figure from "./Figure";
+import Transcription from "./Transcription";
 
 export const components = {
   // native HTML elements
@@ -14,4 +16,6 @@ export const components = {
   p: P,
   // custom components
   AudioSwitch,
+  Figure,
+  Transcription,
 };

@@ -57,10 +57,10 @@ const About = () => {
         </li>
         <li>
           <strong>Brainstorms:</strong> raw thought streams that I initially
-          wrote down without consulting the Internet, letting my train of
-          thought run uninterrupted, followed by a debrief answering my
-          questions and pointing out where I was right or wrong. This is an
-          experimental (and vulnerable 😅 ) format that I came up with while{" "}
+          wrote down without consulting the Internet, followed by a debrief
+          answering my questions and pointing out where I was right or wrong.
+          This is an experimental (and vulnerable 😅) format that I came up with
+          while{" "}
           <Link href="/map-in-the-woods" target="_blank">
             downloading a map
           </Link>{" "}
