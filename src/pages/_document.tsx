@@ -1,6 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
-import { Analytics } from "@vercel/analytics/react";
 
 interface PMDocumentProps {
   deploymentURL: string;
@@ -67,7 +66,6 @@ class PMDocument extends Document<PMDocumentProps> {
         <body>
           <Main />
           <NextScript />
-          <Analytics />
         </body>
       </Html>
     );
