@@ -49,7 +49,7 @@ I’ve resisted the urge to `npm install` so far, but I’ve missed a lot of lib
 
 As mentioned up top, restarting my server manually is rather annoying. _But_ it’s an interesting exercise to build automatic server restart from scratch. I’m using `fs.watch` to listen for file events and trigger a server restart whenever a file changes. This quick and dirty approach isn’t perfect, though. It works well for HTML/CSS updates, I’ve found, but it’s more finicky with JS and occasionally crashes. The abriged version looks like this:
 
-```js
+```js server.js
 import http from "http";
 import fs from "fs";
 import path from "path";

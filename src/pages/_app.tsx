@@ -1,5 +1,6 @@
 import { createContext } from "react";
 import { ThemeProvider } from "styled-components";
+import "@code-hike/mdx/dist/index.css";
 import Layout from "@/components/Layout";
 import { CSSReset } from "@/styles/cssReset";
 import { GlobalStyle } from "@/styles/globals";

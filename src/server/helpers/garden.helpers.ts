@@ -1,6 +1,7 @@
+import { serialize } from "next-mdx-remote/serialize";
+import { remarkCodeHike } from "@code-hike/mdx";
 import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
-import { serialize } from "next-mdx-remote/serialize";
 
 const POSTS_DIR = join(process.cwd(), "src/writing");
 
@@ -48,7 +49,20 @@ export async function getPostData(slug: string) {
 
   const postFileBuffer = readFileSync(join(POSTS_DIR, dir, postPath));
   const serializedMDX = await serialize(postFileBuffer.toString(), {
-    mdxOptions: { remarkPlugins: [] },
+    mdxOptions: {
+      remarkPlugins: [
+        [
+          remarkCodeHike,
+          {
+            autoImport: false,
+            // lineNumbers: true,
+            showCopyButton: true,
+            theme: "nord",
+          },
+        ],
+      ],
+      useDynamicImport: true,
+    },
     parseFrontmatter: true,
   });
 

@@ -15,7 +15,7 @@ Upon your first visit, an effect hook runs that taps into OS settings via the `p
 
 When you click or drag the light bulb, your selection gets persisted in `localStorage` so that upon returning to my garden it’ll be either day or night, just like when you last visited.
 
-```tsx
+```tsx useLightMode.hook.ts
 useEffect(() => {
   const storedThemePreference = JSON.parse(
     localStorage.getItem(LocalStorageKey.PreferredTheme)
@@ -42,7 +42,7 @@ The drag ’n pull animation relies on <a href="https://www.react-spring.dev/" t
 
 React Spring exposes a `useSpring` hook that returns a style object for the element you want to animate. Its config accepts fields like `tension` and `friction` that mirror those real world properties.
 
-```tsx
+```tsx LightSwitch.tsx
 const springProps = useSpring({
   transform: clicked
     ? `translateY(${BOUNCE}px)`
@@ -60,7 +60,7 @@ I could have achieved a similar drag ’n release effect with vanilla CSS transi
 
 I _am_ using CSS transitions for a smooth fade between day and night. The SVG Edison bulb, which I sketched on paper then created in Figma, also transitions `fill` color between theme states. The mountain silhouettes in the footer also fade fill color as you turn off the lights (easiest to see on the <a href="/" target="_blank">homepage</a>). And finally, my favicon is dynamic based on your OS-level theme preference, which is surprisingly easy to add with a `media` attribute.
 
-```html
+```html _document.tsx
 <link
   rel="icon"
   href="/icons/favicon-light.ico"
@@ -82,7 +82,7 @@ My <a href="https://en.wikipedia.org/wiki/Skeuomorph" target="_blank">skeuomorph
 
 I’m using an `<audio>` tag with a React `ref` to rig up sound.
 
-```tsx
+```tsx LightSwitch.tsx
 /* runs on mount */
 const audioRef = useRef<HTMLAudioElement>(null);
 
