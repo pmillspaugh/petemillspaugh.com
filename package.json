@@ -15,6 +15,7 @@
     "@radix-ui/react-switch": "^1.0.3",
     "@radix-ui/react-visually-hidden": "^1.0.3",
     "@react-spring/web": "^9.7.3",
+    "@vercel/analytics": "^1.1.0",
     "next": "13.4.9",
     "next-mdx-remote": "^4.4.1",
     "react": "18.2.0",

@@ -1,5 +1,6 @@
 import { createContext } from "react";
 import { ThemeProvider } from "styled-components";
+import { Analytics } from "@vercel/analytics/react";
 import "@code-hike/mdx/dist/index.css";
 import Layout from "@/components/Layout";
 import { CSSReset } from "@/styles/cssReset";
@@ -17,6 +18,7 @@ const App = ({ Component, pageProps }) => {
       <ThemeProvider theme={lightMode ? lightTheme : darkTheme}>
         <Layout>
           <Component {...pageProps} />
+          <Analytics />
         </Layout>
         <CSSReset />
         <GlobalStyle />
