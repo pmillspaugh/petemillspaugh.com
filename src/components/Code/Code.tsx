@@ -29,21 +29,6 @@ const StyledCode = styled.code`
     color: ${(p) => p.theme.linkTextColorHover};
     box-shadow: none;
   }
-
-  pre > & {
-    display: block;
-    width: calc(100vw - 32px);
-    overflow-x: auto;
-    margin-top: 24px;
-    margin-bottom: 28px;
-    padding: 16px;
-  }
-
-  @media (min-width: 592px) {
-    pre > & {
-      width: 100%;
-    }
-  }
 `;
 
 export default Code;

@@ -1,3 +1,5 @@
+import { CH } from "@code-hike/mdx/components";
+
 import Blockquote from "./Blockquote";
 import Code from "./Code";
 import { H2, H3 } from "./H";
@@ -18,4 +20,6 @@ export const components = {
   AudioSwitch,
   Figure,
   Transcription,
+  // external components
+  CH,
 };

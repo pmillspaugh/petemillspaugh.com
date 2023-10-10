@@ -71,4 +71,23 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${(p) => p.theme.primaryBg};
     transition: color var(--base-timing) ease-in-out, background-color var(--base-timing) ease-in-out;
   }
+
+  /*
+    OVERRIDES
+  */
+
+  /* Code Hike */
+  code, .ch-editor-frame, .ch-codegroup, .ch-codeblock, .ch-code-scroll-parent {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.75rem;
+    box-shadow: none;
+  }
+  .ch-frame-title-bar {
+    font-family: var(--font-open-sans), sans-serif;
+    font-size: 0.75rem;
+  }
+  .ch-codegroup, .ch-codeblock {
+    margin-top: 24px;
+    margin-bottom: 36px;
+  }
 `;
