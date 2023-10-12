@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import Link from "next/link";
+import { PostMetadata } from "./types";
 
-const Backlinks = ({ backlinks }) => {
+const Backlinks = ({ backlinks }: { backlinks: PostMetadata[] }) => {
   return (
     <StyledSection>
       <StyledDivider />
