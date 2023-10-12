@@ -52,7 +52,6 @@ const StyledUl = styled.ul`
     content: "✦";
     padding-right: 8px;
     color: ${(p) => p.theme.linkTextColor};
-    transition: color var(--fast-timing) ease-in-out;
   }
 `;
 
