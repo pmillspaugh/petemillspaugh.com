@@ -40,7 +40,6 @@ const StyledLink = styled(Link)`
   line-height: 1.2;
   color: ${(p) => p.theme.textColor};
   box-shadow: none;
-  margin-left: -2px;
 
   @media (min-width: 768px) {
     font-size: 2rem;

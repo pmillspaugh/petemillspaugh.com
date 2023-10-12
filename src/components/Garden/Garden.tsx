@@ -70,7 +70,8 @@ const Garden = ({ posts }: GardenProps) => {
       return;
     }
 
-    setFormat(value as PostFormat);
+    value === undefined ? setFormat("") : setFormat(value as PostFormat);
+
     router.push({
       pathname: router.pathname,
       query: { ...router.query, format: value },
@@ -78,7 +79,8 @@ const Garden = ({ posts }: GardenProps) => {
   };
 
   const handleStatusChange = (value: string) => {
-    setStatus(value as PostStatus);
+    value === undefined ? setStatus("") : setStatus(value as PostStatus);
+
     router.push({
       pathname: router.pathname,
       query: { ...router.query, status: value },
@@ -92,7 +94,7 @@ const Garden = ({ posts }: GardenProps) => {
         <Popover
           trigger={
             <OuterWrapper>
-              <InnerWrapper>What's this?</InnerWrapper>
+              <InnerWrapper>What’s this?</InnerWrapper>
             </OuterWrapper>
           }
         >
@@ -101,7 +103,7 @@ const Garden = ({ posts }: GardenProps) => {
         <StyledFiltersWrapper>
           <Select
             placeholder="Format"
-            value={PostFormatDescription[format]}
+            value={PostFormatDescription[format] ?? ""}
             onValueChange={handleFormatChange}
             items={Object.values(PostFormatDescription)}
           />
@@ -122,7 +124,7 @@ const Garden = ({ posts }: GardenProps) => {
       </ul>
       {!filteredPosts.length && (
         <StyledP>
-          I haven't published anything matching this format + status just yet.
+          I haven’t published anything matching this format + status just yet.
           Try resetting or choosing another filter.
         </StyledP>
       )}
@@ -144,12 +146,9 @@ const StyledH1 = styled.h1`
 const StyledBarWrapper = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 8px;
   padding-bottom: 32px;
-
-  @media (min-width: 768px) {
-    justify-content: space-between;
-  }
 `;
 
 const StyledFiltersWrapper = styled.div`
@@ -165,7 +164,7 @@ const StyledP = styled.p`
 
 export const OuterWrapper = styled.div`
   border-radius: 4px;
-  border: 1px solid var(--black);
+  border: 1px solid ${(p) => p.theme.textColor};
   padding: 3px;
   background-color: ${(p) => p.theme.tagBorderColor};
   transition: background-color var(--base-timing) ease-in-out;

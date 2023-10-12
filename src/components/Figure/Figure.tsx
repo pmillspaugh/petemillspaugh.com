@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
 import AllTrails from "./AllTrails";
+import Porkbun from "./Porkbun";
 
 interface FigureProps {
   caption: string;
@@ -30,5 +31,6 @@ const StyledFigcaption = styled.figcaption`
 `;
 
 Figure.AllTrails = AllTrails;
+Figure.Porkbun = Porkbun;
 
 export default Figure;

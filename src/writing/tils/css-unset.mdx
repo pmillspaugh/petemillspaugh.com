@@ -1,0 +1,30 @@
+---
+slug: css-unset
+title: CSS unset
+createdAt: October 1, 2023
+updatedAt: October 1, 2023
+format: TIL
+status: Evergreen
+---
+
+To reset a CSS property to its default value, you can use the `unset` value:
+
+```css styles.css
+button {
+  all: unset;
+}
+```
+
+That saves a couple lines from the alternative:
+
+```css styles.css
+button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+```
+
+I find myself doing the latter pretty often, so this should save a couple lines many times over.
+
+Credit <a href="https://www.radix-ui.com/primitives/docs/components/select" target="_blank">Radix UI docs</a> for the find. `unset` is widely supported by modern browsers: <a href="https://caniuse.com/?search=unset" target="_blank">caniuse.com/?search=unset</a>
