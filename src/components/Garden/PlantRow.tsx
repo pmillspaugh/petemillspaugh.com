@@ -2,7 +2,6 @@ import Link from "next/link";
 import styled from "styled-components";
 import { PostFormatDescription, PostMetadata } from "@/components/Post";
 import Tag from "@/components/Post/Tag";
-import { COLORS } from "@/styles/themes";
 
 const PlantRow = ({ title, slug, format, status, updatedAt }: PostMetadata) => {
   return (

@@ -66,8 +66,35 @@ export async function getPostData(slug: string) {
     parseFrontmatter: true,
   });
 
+  const backlinks = await getBacklinks(slug);
+
   return {
     mdxSource: serializedMDX,
     metadata: serializedMDX.frontmatter,
+    backlinks,
   };
+}
+
+async function getBacklinks(slug: string) {
+  const backlinks = [];
+
+  const subdirs = readdirSync(POSTS_DIR);
+  for (const subdir of subdirs) {
+    const filenames = readdirSync(join(POSTS_DIR, subdir));
+
+    for (const filename of filenames) {
+      if (filename === `${slug}.mdx`) continue;
+
+      const fileBuffer = readFileSync(join(POSTS_DIR, subdir, filename));
+      const fileString = fileBuffer.toString();
+      if (fileString.includes(slug)) {
+        const backlinkFrontmatter = (
+          await serialize(fileString, { parseFrontmatter: true })
+        ).frontmatter;
+        backlinks.push(backlinkFrontmatter);
+      }
+    }
+  }
+
+  return backlinks;
 }
