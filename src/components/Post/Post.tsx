@@ -2,16 +2,18 @@ import styled from "styled-components";
 import { MDXRemoteSerializeResult, MDXRemote } from "next-mdx-remote";
 
 import { components } from "@/components/index";
+import { OuterWrapper, InnerWrapper } from "@/components/Garden";
 import { PostFormatDescription, PostMetadata } from "./types";
 import Tag from "./Tag";
-import { OuterWrapper, InnerWrapper } from "@/components/Garden";
+import Backlinks from "./Backlinks";
 
 export interface PostProps {
   mdxSource: MDXRemoteSerializeResult;
   metadata: PostMetadata;
+  backlinks: PostMetadata[];
 }
 
-const Post = ({ mdxSource, metadata }: PostProps) => {
+const Post = ({ mdxSource, metadata, backlinks }: PostProps) => {
   const { title, createdAt, updatedAt, format, status } = metadata;
 
   return (
@@ -56,6 +58,7 @@ const Post = ({ mdxSource, metadata }: PostProps) => {
       <div>
         <MDXRemote {...mdxSource} components={components} />
       </div>
+      <Backlinks backlinks={backlinks} />
     </>
   );
 };
