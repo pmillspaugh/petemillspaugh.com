@@ -58,7 +58,7 @@ const Post = ({ mdxSource, metadata, backlinks }: PostProps) => {
       <div>
         <MDXRemote {...mdxSource} components={components} />
       </div>
-      <Backlinks backlinks={backlinks} />
+      {Boolean(backlinks.length) && <Backlinks backlinks={backlinks} />}
     </>
   );
 };
