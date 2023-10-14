@@ -1,0 +1,20 @@
+---
+slug: url-character-limit
+title: URL character limit
+createdAt: October 6, 2023
+updatedAt: October 6, 2023
+format: TIL
+status: Evergreen
+---
+
+I was curious how much state I could actually store in a serverless, shareable way for a tiny weekend project I’m thinking about. The **TL;DR is that you should keep URLs under 2000 characters to be safe, or 8000 if you don’t care about search engines**.
+
+Internet Explorer used to be the limiting factor because it only supported 2083 chars, but modern browsers can handle up to ~8000 bytes. From <a href="https://www.rfc-editor.org/rfc/rfc9110#section-4.1-5" target="_blank">HTTP RFC 9110, section 4.1</a> (2022):
+
+> It is RECOMMENDED that all senders and recipients support, at a minimum, URIs with lengths of 8000 octets in protocol elements. Note that this implies some structures and on-wire representations (for example, the request line in HTTP/1.1) will necessarily be larger in some cases.
+
+URLs use <a href="https://en.wikipedia.org/wiki/Percent-encoding" target="_blank">percent-encoding</a>, so it’s not quite 1 byte per character, e.g. an underscore `_` would be percent-encoded as `%5F`, requiring 3 bytes. You can even include emojis in URLs, although that may not be the best idea—<a href="https://www.icann.org/en/system/files/files/idn-emojis-domain-names-13feb19-en.pdf" target="_blank">especially in a domain name</a>.
+
+For search engine compatibility, the <a href="https://www.sitemaps.org/protocol.html" target="_blank">sitemaps protocol</a> defines a 2048-character URL limit. CDNs also may have limits, and there’s even a status code for exceeding the limit: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/414" target="_blank">HTTP 414 URI Too Long</a>
+
+I mainly sourced this from a <a href="https://stackoverflow.com/a/417184" target="_blank">really good answer from Paul Dixon</a> on Stack Overflow that he’s been updating for over 14 years now.
