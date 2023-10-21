@@ -7,6 +7,7 @@ const Search = () => {
   // TODO: rm. Temporary for testing pagefind
   useEffect(() => {
     async function pagefinder() {
+      // @ts-ignore
       const pagefind = await import("../../../public/pagefind/pagefind.js");
       console.log({ pagefind });
       await pagefind.init();
