@@ -10,6 +10,8 @@ async function generateSearchIndex() {
   await index.writeFiles({
     outputPath: "public/pagefind",
   });
+
+  await pagefind.close();
 }
 
 function run() {
