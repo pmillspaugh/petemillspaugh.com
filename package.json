@@ -3,13 +3,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && pnpm run generate-search-index && next build",
     "start": "next start",
     "lint": "next lint",
-    "prettify": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\""
+    "prettify": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\"",
+    "generate-search-index": "node src/server/helpers/search.helper.mjs"
   },
   "dependencies": {
     "@code-hike/mdx": "^0.9.0",
+    "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-popover": "^1.0.7",
     "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-switch": "^1.0.3",
@@ -18,6 +20,7 @@
     "@vercel/analytics": "^1.1.0",
     "next": "13.4.9",
     "next-mdx-remote": "^4.4.1",
+    "pagefind": "^1.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "styled-components": "^6.0.8"
