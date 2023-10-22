@@ -40,8 +40,7 @@ export default function Search() {
     if (window.pagefind) {
       console.log("=== pagefind is populated ===");
       console.log({ pagefind: window.pagefind });
-      // @ts-ignore
-      const search = await pagefind.search(query);
+      const search = await window.pagefind.search(query);
       console.log("=== searching ===");
       console.log({ search });
       setResults(search.results);
