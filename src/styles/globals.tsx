@@ -41,8 +41,8 @@ export const GlobalStyle = createGlobalStyle`
     font-family: var(--font-petrona), serif;
 
     ::selection {
-      background-color: var(--green);
-      color: var(--white);
+      background-color: var(--gold);
+      color: var(--dark-green);
     }
   }
   
@@ -53,12 +53,13 @@ export const GlobalStyle = createGlobalStyle`
   a {
     font-weight: 500;
     color: ${(p) => p.theme.linkTextColor};
-    text-decoration-thickness: 1.5px;
-    text-underline-offset: 0.125em;
+    text-decoration: none;
+    box-shadow: 0px 1.25px 0px 0px ${(p) => p.theme.linkTextColor};
     transition: all var(--fast-timing) ease-in-out;
 
     &:hover {
-      text-decoration-color: ${(p) => p.theme.linkTextColorHover};
+      color: ${(p) => p.theme.linkTextColorHover};
+      box-shadow: none;
     }
   }
 
