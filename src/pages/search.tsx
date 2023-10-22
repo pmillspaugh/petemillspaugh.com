@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-// TODO: ideally move this to a shared /types/index.d.ts file included in tsconfig.json, but that wasn't working
+// TODO: move this to a shared /types/index.d.ts file included in tsconfig.json
 declare global {
   interface Window {
     pagefind: any;
@@ -14,21 +14,9 @@ export default function Search() {
   useEffect(() => {
     async function loadPagefind() {
       if (typeof window.pagefind === "undefined") {
-        console.log("=== pagefind is undefined ===");
-        if (process.env.NODE_ENV === "development") {
-          console.log("=== NODE_ENV is development ===");
-          const pagefind = await import("../pagefind/pagefind.js");
-          console.log({ pagefind });
-          window.pagefind = pagefind;
-        }
-        console.log("=== NODE_ENV is production ===");
-        const pagefind = await import("../pagefind/pagefind.js");
-        console.log({ pagefind });
-        window.pagefind = pagefind;
+        window.pagefind = await import("../pagefind/pagefind.js");
       }
     }
-    console.log("=== pagefind is populated ===");
-    console.log({ pagefind: window.pagefind });
 
     loadPagefind();
   }, []);
@@ -36,13 +24,8 @@ export default function Search() {
   async function handleSearch() {
     if (typeof window === "undefined") return;
 
-    console.log("=== handleSearch ===");
     if (window.pagefind) {
-      console.log("=== pagefind is populated ===");
-      console.log({ pagefind: window.pagefind });
       const search = await window.pagefind.search(query);
-      console.log("=== searching ===");
-      console.log({ search });
       setResults(search.results);
     }
   }
