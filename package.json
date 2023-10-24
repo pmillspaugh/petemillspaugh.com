@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && pagefind --site .next --output-path src/pagefind && next build",
+    "build": "next build && pagefind --site .next --output-path .next/static/chunks/pages/pagefind",
     "start": "next start",
     "lint": "next lint",
     "prettify": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\""

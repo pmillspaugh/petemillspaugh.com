@@ -14,10 +14,11 @@ export default function Search() {
   useEffect(() => {
     async function loadPagefind() {
       if (typeof window.pagefind === "undefined") {
-        window.pagefind = await import("../pagefind/pagefind.js");
+        window.pagefind = await import(
+          /* webpackIgnore: true */ "./pagefind/pagefind.js"
+        );
       }
     }
-
     loadPagefind();
   }, []);
 
@@ -26,6 +27,7 @@ export default function Search() {
 
     if (window.pagefind) {
       const search = await window.pagefind.search(query);
+      console.log({ search });
       setResults(search.results);
     }
   }
