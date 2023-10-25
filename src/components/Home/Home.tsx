@@ -1,10 +1,15 @@
-import { PostParams } from "@/helpers/garden.helpers";
+import { useMemo } from "react";
 import Link from "next/link";
 import styled from "styled-components";
+import CommandBar from "@/components/CommandBar";
+import { PostParams } from "@/helpers/garden.helpers";
 
 const Home = ({ postPaths }: { postPaths: PostParams[] }) => {
-  const randomIndex = Math.floor(Math.random() * postPaths.length);
-  const randomSlug = postPaths[randomIndex].params.slug;
+  const randomSlug = useMemo(() => {
+    const index = Math.floor(Math.random() * postPaths.length);
+    const slug = postPaths[index].params.slug;
+    return slug;
+  }, [postPaths]);
 
   return (
     <StyledHome>
@@ -12,14 +17,12 @@ const Home = ({ postPaths }: { postPaths: PostParams[] }) => {
         <Firstname>Pete</Firstname>
         <Lastname>Millspaugh</Lastname>
       </StyledH1>
-      <StyledNav>
-        <StyledGardenLinkWrapper>
-          <StyledGardenLink href="/garden">Visit the garden</StyledGardenLink>
-        </StyledGardenLinkWrapper>
+      <StyledCta>
+        <CommandBar />
         <em>
           Or, read <Link href={`/${randomSlug}`}>something random</Link>
         </em>
-      </StyledNav>
+      </StyledCta>
     </StyledHome>
   );
 };
@@ -48,37 +51,12 @@ const Lastname = styled.div`
   font-weight: 200;
 `;
 
-const StyledNav = styled.nav`
+const StyledCta = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
   font-family: var(--font-petrona);
-`;
-
-const StyledGardenLink = styled(Link)`
-  padding: 8px 16px;
-  border-radius: 4px;
-  border: 1px solid var(--black);
-  box-shadow: none;
-  background-color: ${(p) => p.theme.popoverBg};
-  color: ${(p) => p.theme.textColor};
-  font-family: var(--font-open-sans);
-  font-weight: 400;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-
-  &:hover {
-    font-weight: 600;
-  }
-`;
-
-const StyledGardenLinkWrapper = styled.div`
-  border-radius: 4px;
-  border: 1px solid var(--black);
-  background-color: ${(p) => p.theme.tagBorderColor};
-  padding: 3px;
 `;
 
 export default Home;
