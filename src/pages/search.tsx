@@ -14,9 +14,30 @@ export default function Search() {
   useEffect(() => {
     async function loadPagefind() {
       if (typeof window.pagefind === "undefined") {
-        window.pagefind = await import(
-          /* webpackIgnore: true */ "./pagefind/pagefind.js"
-        );
+        try {
+          window.pagefind = await import(
+            // @ts-expect-error pagefind exists only on build
+            /* webpackIgnore: true */ "./pagefind/pagefind.js"
+          );
+        } catch (e) {
+          window.pagefind = {
+            search: () => ({
+              results: [
+                {
+                  id: "mock-result-id",
+                  data: async () => ({
+                    url: "/map-in-the-woods",
+                    meta: {
+                      title: "Downloading a 30MB map in the woods",
+                    },
+                    excerpt:
+                      "The first 128 characters of Unicode, for example, exactly match ASCII and take up one byte per char",
+                  }),
+                },
+              ],
+            }),
+          };
+        }
       }
     }
     loadPagefind();
