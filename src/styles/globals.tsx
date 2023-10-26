@@ -41,8 +41,8 @@ export const GlobalStyle = createGlobalStyle`
     font-family: var(--font-petrona), serif;
 
     ::selection {
-      background-color: var(--gold);
-      color: var(--dark-green);
+      background-color: var(--green);
+      color: var(--white);
     }
   }
   
@@ -53,13 +53,12 @@ export const GlobalStyle = createGlobalStyle`
   a {
     font-weight: 500;
     color: ${(p) => p.theme.linkTextColor};
-    text-decoration: none;
-    box-shadow: 0px 1.25px 0px 0px ${(p) => p.theme.linkTextColor};
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 0.125em;
     transition: all var(--fast-timing) ease-in-out;
 
     &:hover {
-      color: ${(p) => p.theme.linkTextColorHover};
-      box-shadow: none;
+      text-decoration-color: ${(p) => p.theme.linkTextColorHover};
     }
   }
 
@@ -80,7 +79,7 @@ export const GlobalStyle = createGlobalStyle`
   code, .ch-editor-frame, .ch-codegroup, .ch-codeblock, .ch-code-scroll-parent {
     font-family: var(--font-mono), monospace;
     font-size: 0.75rem;
-    box-shadow: none;
+    text-decoration: none;
   }
   .ch-frame-title-bar {
     font-family: var(--font-open-sans), sans-serif;

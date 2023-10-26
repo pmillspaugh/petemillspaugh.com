@@ -60,7 +60,7 @@ const Logo = ({ lightMode }: { lightMode: boolean }) => {
 const StyledLink = styled(Link)`
   margin-left: -4px;
   margin-top: 4px;
-  box-shadow: none;
+  text-decoration: none;
 
   @media (min-width: 768px) {
     margin-left: 0px;
