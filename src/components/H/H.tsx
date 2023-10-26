@@ -12,6 +12,7 @@ const StyledH2 = styled.h2`
   margin-top: 36px;
   margin-bottom: 20px;
   margin-left: -1px;
+  text-wrap: balance; /* not supported in all browsers */
 
   @media (min-width: 768px) {
     font-size: 2.25rem;
@@ -29,6 +30,7 @@ const StyledH3 = styled.h3`
   margin-top: 24px;
   margin-bottom: 16px;
   margin-left: -1px;
+  text-wrap: balance; /* not supported in all browsers */
 
   @media (min-width: 768px) {
     font-size: 1.5rem;

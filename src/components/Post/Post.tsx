@@ -70,6 +70,7 @@ const StyledH1 = styled.h1`
   font-size: 2rem;
   font-weight: 600;
   line-height: 1.2;
+  text-wrap: balance; /* not supported in all browsers */
 
   @media (min-width: 768px) {
     font-size: 3rem;
