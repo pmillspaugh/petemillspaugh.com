@@ -9,6 +9,11 @@ import SearchIcon from "./SearchIcon";
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
 
+  // Note: navigator.platform is deprecated, but fallback to isWindows=false is ok
+  const isWindows =
+    typeof navigator !== "undefined" &&
+    navigator.platform.toLowerCase().includes("win");
+
   return (
     <div style={{ height: "100%" }}>
       <FlexContainer>
@@ -22,7 +27,13 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <CommandBar>
           <StyledTrigger>
             <VisuallyHidden>Search and explore</VisuallyHidden>
-            <SearchIcon />
+            <StyledShortcut>
+              <span>{isWindows ? "⌃" : "⌘"}</span>
+              <span>K</span>
+            </StyledShortcut>
+            <StyledIconWrapper>
+              <SearchIcon />
+            </StyledIconWrapper>
           </StyledTrigger>
         </CommandBar>
       )}
@@ -75,8 +86,8 @@ const StyledTrigger = styled.button`
   position: fixed;
   bottom: 16px;
   right: 16px;
-  width: 32px;
   height: 32px;
+  padding: 4px 8px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -98,6 +109,34 @@ const StyledTrigger = styled.button`
     cursor: pointer;
     color: ${(p) => p.theme.linkTextColor};
     border-color: ${(p) => p.theme.linkTextColor};
+  }
+`;
+
+const StyledShortcut = styled.div`
+  display: none;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 700;
+
+  @media (min-width: 768px) {
+    display: flex;
+    gap: 4px;
+  }
+
+  & > span {
+    padding: 0px 4px;
+    border: 1.5px solid ${(p) => p.theme.textColor};
+    border-radius: 2px;
+  }
+
+  button:hover > & > span {
+    border: 1.5px solid ${(p) => p.theme.linkTextColor};
+  }
+`;
+
+const StyledIconWrapper = styled.span`
+  @media (min-width: 768px) {
+    display: none;
   }
 `;
 
