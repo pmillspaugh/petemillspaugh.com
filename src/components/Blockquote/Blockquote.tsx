@@ -18,6 +18,13 @@ const StyledBlockquote = styled.blockquote`
   p {
     padding-bottom: 0px;
   }
+
+  @media (min-width: 1200px) {
+    p {
+      font-size: 1rem;
+      margin-bottom: 24px;
+    }
+  }
 `;
 
 export default Blockquote;

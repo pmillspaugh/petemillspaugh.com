@@ -74,6 +74,12 @@ const MaxWidthWrapper = styled.div`
     min-height: calc(100vh - 393px - 72px);
   }
 
+  @media (min-width: 1200px) {
+    width: 800px;
+    /* Vertically fill the space between the header and footer */
+    min-height: calc(100vh - calc(100vw * 393 / 1200) - 72px);
+  }
+
   @media (min-width: 1512px) {
     /* Vertically fill the space between the header and footer */
     min-height: calc(100vh - calc(100vw * 393 / 1512) - 72px);

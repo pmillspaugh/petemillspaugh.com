@@ -8,6 +8,11 @@ const P = ({ children }: { children: ReactNode }) => (
 const StyledP = styled.p`
   margin-bottom: 16px;
   text-wrap: pretty; /* not supported in all browsers */
+
+  @media (min-width: 1200px) {
+    font-size: 1.25rem;
+    margin-bottom: 24px;
+  }
 `;
 
 export default P;

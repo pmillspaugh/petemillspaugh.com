@@ -110,6 +110,10 @@ const StyledNav = styled.nav`
     width: 660px;
   }
 
+  @media (min-width: 1200px) {
+    width: 800px;
+  }
+
   /* Cover up black svg stroke */
   &::before {
     content: "";

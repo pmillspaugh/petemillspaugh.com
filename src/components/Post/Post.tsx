@@ -91,6 +91,10 @@ const MetadataList = styled.ul`
     font-style: italic;
     font-weight: 300;
   }
+
+  @media (min-width: 1200px) {
+    padding-bottom: 44px;
+  }
 `;
 
 export default Post;
