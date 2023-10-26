@@ -54,6 +54,7 @@ const StyledLink = styled(Link)`
   border: 2px solid ${(p) => p.theme.linkTextColor};
   border-radius: 4px;
   color: ${(p) => p.theme.textColor};
+  text-decoration: none;
 
   &:hover,
   &:focus {
