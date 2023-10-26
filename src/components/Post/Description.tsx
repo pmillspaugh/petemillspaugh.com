@@ -63,9 +63,9 @@ function ShowNTellDescription() {
     <>
       <StyledP>
         <strong>Show n' tells</strong> are write-ups detailing how I built
-        something. They aren't quite as step-by-step and broadly applicable as a
-        classic "tutorial", and they are typically more technical with more code
-        snippets than my Essays.
+        something. They aren't typically quite as step-by-step and broadly
+        applicable as a classic "tutorial", and they are usually more technical
+        with more code snippets than my Essays.
         <StyledP></StyledP>
         You can find all Show n' tells{" "}
         <Link href={`/garden?format=${PostFormat.ShowNTell}`}>

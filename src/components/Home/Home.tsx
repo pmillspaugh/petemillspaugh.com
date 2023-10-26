@@ -1,10 +1,20 @@
-import { PostParams } from "@/helpers/garden.helpers";
+import { useMemo } from "react";
 import Link from "next/link";
 import styled from "styled-components";
+import CommandBar from "@/components/CommandBar";
+import { PostParams } from "@/helpers/garden.helpers";
 
 const Home = ({ postPaths }: { postPaths: PostParams[] }) => {
-  const randomIndex = Math.floor(Math.random() * postPaths.length);
-  const randomSlug = postPaths[randomIndex].params.slug;
+  const randomSlug = useMemo(() => {
+    const index = Math.floor(Math.random() * postPaths.length);
+    const slug = postPaths[index].params.slug;
+    return slug;
+  }, [postPaths]);
+
+  // Note: navigator.platform is deprecated, but fallback to isWindows=false is ok
+  const isWindows =
+    typeof navigator !== "undefined" &&
+    navigator.platform.toLowerCase().includes("win");
 
   return (
     <StyledHome>
@@ -12,14 +22,20 @@ const Home = ({ postPaths }: { postPaths: PostParams[] }) => {
         <Firstname>Pete</Firstname>
         <Lastname>Millspaugh</Lastname>
       </StyledH1>
-      <StyledNav>
-        <StyledGardenLinkWrapper>
-          <StyledGardenLink href="/garden">Visit the garden</StyledGardenLink>
-        </StyledGardenLinkWrapper>
+      <StyledCta>
+        <CommandBar>
+          <StyledTrigger>
+            <div>Search / Explore</div>
+            <StyledShortcut>
+              <span>{isWindows ? "⌃" : "⌘"}</span>
+              <span>K</span>
+            </StyledShortcut>
+          </StyledTrigger>
+        </CommandBar>
         <em>
           Or, read <Link href={`/${randomSlug}`}>something random</Link>
         </em>
-      </StyledNav>
+      </StyledCta>
     </StyledHome>
   );
 };
@@ -48,7 +64,7 @@ const Lastname = styled.div`
   font-weight: 200;
 `;
 
-const StyledNav = styled.nav`
+const StyledCta = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -56,29 +72,53 @@ const StyledNav = styled.nav`
   font-family: var(--font-petrona);
 `;
 
-const StyledGardenLink = styled(Link)`
-  padding: 8px 16px;
-  border-radius: 4px;
-  border: 1px solid var(--black);
-  box-shadow: none;
-  background-color: ${(p) => p.theme.popoverBg};
-  color: ${(p) => p.theme.textColor};
-  font-family: var(--font-open-sans);
-  font-weight: 400;
-  display: inline-flex;
+const StyledTrigger = styled.button`
+  all: unset;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 8px;
+  gap: 32px;
+  border: 2px solid ${(p) => p.theme.textColor};
+  border-radius: 4px;
+  outline: 2px solid ${(p) => p.theme.tagBorderColor};
+  padding: 8px 16px;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 700;
+
+  @media (min-width: 768px) {
+    padding: 8px;
+  }
+
+  &:focus {
+    outline: revert;
+    outline-offset: 4px;
+  }
 
   &:hover {
-    font-weight: 600;
+    cursor: pointer;
+    color: ${(p) => p.theme.linkTextColor};
+    border-color: ${(p) => p.theme.linkTextColor};
   }
 `;
 
-const StyledGardenLinkWrapper = styled.div`
-  border-radius: 4px;
-  border: 1px solid var(--black);
-  background-color: ${(p) => p.theme.tagBorderColor};
-  padding: 3px;
+const StyledShortcut = styled.div`
+  display: none;
+
+  @media (min-width: 768px) {
+    display: flex;
+    gap: 4px;
+  }
+
+  & > span {
+    padding: 0px 4px;
+    border: 1.5px solid ${(p) => p.theme.textColor};
+    border-radius: 2px;
+  }
+
+  button:hover > & > span {
+    border: 1.5px solid ${(p) => p.theme.linkTextColor};
+  }
 `;
 
 export default Home;

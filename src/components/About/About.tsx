@@ -68,9 +68,9 @@ const About = () => {
         </li>
         <li>
           <strong>Show n’ tells:</strong> write-ups detailing how I built
-          something. They aren’t quite as step-by-step and broadly applicable as
-          a classic "tutorial", and they are typically more technical with more
-          code snippets than my Essays
+          something. They aren’t typically quite as step-by-step and broadly
+          applicable as a classic "tutorial", and they are usually more
+          technical with more code snippets than my Essays
         </li>
         <li>
           <strong>TILs:</strong> stands for <em>Today I Learned</em>. TILs are
