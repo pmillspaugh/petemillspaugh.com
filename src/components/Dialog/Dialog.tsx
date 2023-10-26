@@ -1,6 +1,7 @@
 import * as RadixDialog from "@radix-ui/react-dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import styled, { keyframes } from "styled-components";
+import CloseIcon from "./CloseIcon";
 
 const Dialog = ({
   open,
@@ -32,20 +33,7 @@ const Dialog = ({
         <Close asChild>
           <button>
             <VisuallyHidden>Close search menu</VisuallyHidden>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M18 6 6 18" />
-              <path d="m6 6 12 12" />
-            </svg>
+            <CloseIcon />
           </button>
         </Close>
       </Content>
@@ -94,11 +82,12 @@ const Content = styled(RadixDialog.Content)`
   width: 90vw;
   max-width: 450px;
   max-height: 85vh;
-  background-color: var(--white);
-  border: 2px solid var(--black);
+  background-color: ${(p) => p.theme.primaryBg};
+  border: 2px solid ${(p) => p.theme.textColor};
   border-radius: 4px;
   padding: 16px;
   animation: ${slideIn} 300ms ease-out;
+  overflow-y: auto;
 `;
 
 const Close = styled(RadixDialog.Close)`
@@ -112,7 +101,7 @@ const Close = styled(RadixDialog.Close)`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid var(--black);
+  border: 2px solid ${(p) => p.theme.textColor};
   border-radius: 4px;
 
   &:focus {

@@ -1,8 +1,14 @@
+import { useRouter } from "next/router";
 import styled from "styled-components";
 import Footer from "./Footer";
 import Header from "./Header";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import CommandBar from "@/components/CommandBar";
+import SearchIcon from "./SearchIcon";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
+  const router = useRouter();
+
   return (
     <div style={{ height: "100%" }}>
       <FlexContainer>
@@ -12,6 +18,14 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         </MaxWidthWrapper>
         <Footer />
       </FlexContainer>
+      {router.pathname !== "/" && (
+        <CommandBar>
+          <StyledTrigger>
+            <VisuallyHidden>Search and explore</VisuallyHidden>
+            <SearchIcon />
+          </StyledTrigger>
+        </CommandBar>
+      )}
     </div>
   );
 };
@@ -52,6 +66,38 @@ const MaxWidthWrapper = styled.div`
   @media (min-width: 1512px) {
     /* Vertically fill the space between the header and footer */
     min-height: calc(100vh - calc(100vw * 393 / 1512) - 72px);
+  }
+`;
+
+const StyledTrigger = styled.button`
+  all: unset;
+
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${(p) => p.theme.primaryBg};
+  border: 2px solid ${(p) => p.theme.textColor};
+  border-radius: 4px;
+  outline: 2px solid ${(p) => p.theme.tagBorderColor};
+
+  @media (min-width: 768px) {
+    padding: 8px;
+  }
+
+  &:focus {
+    outline: revert;
+    outline-offset: 4px;
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: ${(p) => p.theme.linkTextColor};
+    border-color: ${(p) => p.theme.linkTextColor};
   }
 `;
 
