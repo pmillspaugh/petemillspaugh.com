@@ -1,0 +1,130 @@
+---
+slug: nextjs-search-with-pagefind
+title: Add search to your Next.js static site with Pagefind
+createdAt: October 25, 2023
+updatedAt: October 25, 2023
+format: ShowNTell
+status: Evergreen
+---
+
+{/* prettier-ignore */}
+<a href="https://pagefind.app/" target="_blank">Pagefind</a> is a neat OSS client-side search library that just recently reached `v1.0.0` in September ’23. From the docs:
+
+> Pagefind is a fully static search library that aims to perform well on large sites, while using as little of your users’ bandwidth as possible, and without hosting any infrastructure.
+
+The docs do a terrific job of explaining things, and the search experience feels really snappy (hit `⌘+K` to give it a try). To get Pagefind working with Next.js, it takes a few extra steps.
+
+## Run pagefind after build
+
+Start by installing Pagefind as a dev dependency:
+
+```bash
+npm i -D pagefind
+```
+
+The Pagefind CLI generates a static search index from your site’s static files after building. The <a href="https://pagefind.app/docs/config-options/#site" target="_blank">`--site`</a> flag indicates the output dir of your built static files, and the <a href="https://pagefind.app/docs/config-options/#output-path" target="_blank">`--output-path`</a> option is where the search bundle will be written—more on that below. I’m on Next `13.4.9` and the `/pages` router, so adjust as needed.
+
+```json package.json
+{
+  "scripts": {
+    "build": "next build && pagefind --site .next --output-path .next/static/chunks/pages/pagefind"
+  }
+}
+```
+
+I’m using pnpm, which <a href="https://pnpm.io/cli/run#differences-with-npm-run" target="_blank">doesn’t support</a> `pre-` and `post-` scripts, but if you’re using npm or yarn, this is a bit more elegant:
+
+```json package.json focus=4
+{
+  "scripts": {
+    "build": "next build",
+    "postbuild": "pagefind --site .next --output-path .next/static/chunks/pages/pagefind"
+  }
+}
+```
+
+Depending on how you build/deploy, you might be able to avoid adding the dependency and post-build script entirely by running `npx pagefind` instead.
+
+## Dynamically import search bundle
+
+The tricky bits that tripped me up were (1) handling errors in development, and (2) configuring Webpack to allow the import to resolve correctly.
+
+The first one is an issue because the Pagefind search index is generated _after_ build, so it doesn’t exist when running `next dev`. One way to solve this is creating a `/pagefind/pagefind.js` file that returns some mock search results in development, or you can add a try-catch and `@ts-expect-error` comment to avoid creating the extra file (<a href="https://github.com/pmillspaugh/petemillspaugh.com/pull/15#discussion_r1371544139" target="_blank">thanks to noxify for the tip!</a>).
+
+The second problem is that Webpack will bundle `/pagefind/pagefind.js` and output the contents into a new file, so the import path will hit a dead end. That’s where the <a href="https://webpack.js.org/api/module-methods/#webpackignore" target="_blank">`webpackIgnore`</a> comment comes in handy, preserving the initial path. Files in the `/pages` directory (in `v13.4.9`, at least) will end up in the `.next/static/chunks/pages` folder upon build, hence the custom `--output-path` discussed above.
+
+```tsx pages/search.tsx
+export default function SearchPage() {
+  const [query, setQuery] = React.useState("");
+  const [results, setResults] = React.useState([]);
+
+  React.useEffect(() => {
+    async function loadPagefind() {
+      if (typeof window.pagefind === "undefined") {
+        try {
+          window.pagefind = await import(
+            // @ts-expect-error pagefind.js generated after build
+            /* webpackIgnore: true */ "./pagefind/pagefind.js"
+          );
+        } catch (e) {
+          window.pagefind = { search: () => ({ results: [] }) };
+        }
+      }
+    }
+    loadPagefind();
+  }, []);
+
+  async function handleSearch() {
+    if (window.pagefind) {
+      const search = await window.pagefind.search(query);
+      setResults(search.results);
+    }
+  }
+
+  return (
+    <div>
+      <input
+        type="text"
+        placeholder="Search..."
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        onInput={handleSearch}
+      />
+      <div id="results">
+        {results.map((result, index) => (
+          <Result key={result.id} result={result} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Result({ result }) {
+  const [data, setData] = useState(null);
+
+  React.useEffect(() => {
+    async function fetchData() {
+      const data = await result.data();
+      setData(data);
+    }
+    fetchData();
+  }, [result]);
+
+  if (!data) return null;
+
+  return (
+    <Link href={data.url}>
+      <h3>{data.meta.title}</h3>
+      <p>{data.excerpt}</p>
+    </Link>
+  );
+}
+```
+
+The search implementation on this website is <a href="https://github.com/pmillspaugh/petemillspaugh.com" target="_blank">public</a>, so feel free to poke around (and suggest anything I could improve upon!).
+
+## Shoutouts
+
+Thanks to <a href="https://blog.otterlord.dev/posts/astro-search/" target="_blank">Otterlord’s blog post on using Pagefind with Astro</a> for the nudge to share something similar for Next. If you’re keen to use Pagefind with another SSG, check out <a href="https://pagefind.app/docs/resources/" target="_blank">community resources in the docs</a>.
+
+And big, big thanks to <a href="https://github.com/bglw" target="_blank">bglw</a> for helping me debug this and creating an amazing library!
