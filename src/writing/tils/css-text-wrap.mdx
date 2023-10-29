@@ -1,0 +1,28 @@
+---
+slug: css-text-wrap
+title: CSS text-wrap
+createdAt: October 24, 2023
+updatedAt: October 24, 2023
+format: TIL
+status: Evergreen
+---
+
+I am always irked by the last word of a sentence or heading wrapping onto the next line. I even edit texts before I send them to avoid it 😅. <a href="https://developer.chrome.com/en/blog/css-text-wrap-pretty/" target="_blank">`text-wrap: pretty`</a> is what I’ve been waiting for!
+
+I’ve manually added `nbsp;` in the past a handful of times, but that’s a bad solution for a few reasons: it isn’t responsive—you can’t control which viewports will cause orphans or know when users will zoom/update their base font size; it’s rather manual—you’d have to update every time you change copy; and it’s not semantic, which may harm accessibility.
+
+There’s also `text-wrap: balance`, which distributes words evenly across lines. I am using that declaration for headings.
+
+```css styles.css
+p {
+  text-wrap: pretty;
+}
+
+h1 {
+  text-wrap: balance;
+}
+```
+
+The browser support <a href="https://caniuse.com/?search=css%20text-wrap%20pretty" target="_blank">isn’t perfect</a>, but the fallback is just the status quo, so it’s safe to use.
+
+If you’d like to dig deeper, there’s a <a href="https://docs.google.com/document/d/1jJFD8nAUuiUX6ArFZQqQo8yTsvg8IuAq7oFrNQxPeqI" target="_blank">Google doc</a> written by the engineer who designed this, Koji Ishii.
