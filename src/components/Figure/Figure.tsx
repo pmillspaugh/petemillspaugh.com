@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import styled from "styled-components";
 import AllTrails from "./AllTrails";
 import Porkbun from "./Porkbun";
+import MapNotes from "./MapNotes";
 
 interface FigureProps {
   caption: string;
@@ -28,9 +29,14 @@ const StyledFigcaption = styled.figcaption`
   text-align: center;
   padding-top: 16px;
   color: ${(p) => p.theme.dateTextColor};
+
+  @media (min-width: 1200px) {
+    font-size: 1rem;
+  }
 `;
 
 Figure.AllTrails = AllTrails;
 Figure.Porkbun = Porkbun;
+Figure.MapNotes = MapNotes;
 
 export default Figure;

@@ -142,6 +142,12 @@ const StyledH2 = styled.h2`
 
 const StyledP = styled.p`
   margin-bottom: 16px;
+
+  @media (min-width: 1200px) {
+    font-size: 1.25rem;
+    line-height: 1.75;
+    margin-bottom: 24px;
+  }
 `;
 
 const StyledUl = styled.ul`
@@ -155,6 +161,14 @@ const StyledUl = styled.ul`
   & > li::before {
     content: "✦ ";
     padding-right: 4px;
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 1.25rem;
+
+    li {
+      margin-bottom: 16px;
+    }
   }
 `;
 

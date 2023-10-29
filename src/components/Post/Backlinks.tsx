@@ -4,44 +4,31 @@ import { PostMetadata } from "./types";
 
 const Backlinks = ({ backlinks }: { backlinks: PostMetadata[] }) => {
   return (
-    <StyledSection>
-      <StyledDivider />
+    <>
       <StyledH2>Backlinks</StyledH2>
       <StyledUl>
         {backlinks.map(({ title, slug }) => (
           <li key={slug}>
-            <Link href={`/${slug}`} target="_blank">
-              {title}
-            </Link>
+            <Link href={`/${slug}`}>{title}</Link>
           </li>
         ))}
       </StyledUl>
-    </StyledSection>
+    </>
   );
 };
 
-const StyledSection = styled.section`
-  margin-top: 20px;
-`;
-
-const StyledDivider = styled.hr`
-  border-top: 2px solid ${(p) => p.theme.textColor};
-  border-bottom: 2px solid ${(p) => p.theme.textColor};
-  border-left: none;
-  border-right: none;
-  height: 8px;
-`;
-
 const StyledH2 = styled.h2`
-  margin-top: 16px;
+  margin-top: 20px;
   margin-bottom: 8px;
-  font-family: var(--font-mono), monospace;
-  font-size: 1.5rem;
-  font-weight: 400;
+  font-size: 1.75rem;
+  font-weight: 300;
 
   @media (min-width: 768px) {
-    font-size: 2rem;
-    font-weight: 200;
+    font-size: 2.25rem;
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 2.75rem;
   }
 `;
 
@@ -52,6 +39,10 @@ const StyledUl = styled.ul`
     content: "✦";
     padding-right: 8px;
     color: ${(p) => p.theme.linkTextColor};
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 1.25rem;
   }
 `;
 

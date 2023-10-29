@@ -110,6 +110,10 @@ const StyledNav = styled.nav`
     width: 660px;
   }
 
+  @media (min-width: 1200px) {
+    width: 800px;
+  }
+
   /* Cover up black svg stroke */
   &::before {
     content: "";
@@ -130,7 +134,7 @@ const StyledGardenUl = styled.ul`
 
 const StyledLink = styled(Link)`
   color: var(--white);
-  box-shadow: 0px 1.25px 0px var(--gold);
+  text-decoration-color: var(--gold);
 
   &:hover {
     color: var(--gold);
@@ -148,7 +152,11 @@ const StyledGardenLi = styled.li`
 const StyledGardenLink = styled(Link)`
   color: var(--white);
   font-style: italic;
-  box-shadow: none;
+  text-decoration: none;
+
+  &:hover {
+    color: var(--gold);
+  }
 `;
 
 const StyledSecondarySection = styled.div`

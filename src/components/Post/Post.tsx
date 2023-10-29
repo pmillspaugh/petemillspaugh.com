@@ -70,10 +70,18 @@ const StyledH1 = styled.h1`
   font-size: 2rem;
   font-weight: 600;
   line-height: 1.2;
+  text-wrap: balance; /* not supported in all browsers */
 
   @media (min-width: 768px) {
     font-size: 3rem;
     line-height: 1;
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 16px;
   }
 `;
 
@@ -89,6 +97,11 @@ const MetadataList = styled.ul`
   & > li {
     font-style: italic;
     font-weight: 300;
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 1.125rem;
+    padding-bottom: 44px;
   }
 `;
 

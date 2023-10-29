@@ -2,12 +2,14 @@
 slug: css-unset
 title: CSS unset
 createdAt: October 1, 2023
-updatedAt: October 1, 2023
+updatedAt: October 29, 2023
 format: TIL
 status: Evergreen
 ---
 
-To reset a CSS property to its default value, you can use the `unset` value:
+> **Update**: after I started using `all: unset`, I realized that the convenience tradeoff is probably not worth the danger and loss of precision. For example, the button code snippet below also removes default `outline` styles, which harms accessibility (and UX for all users). The more CSS I write, the more inclined I am to avoid shorthand properties that abstract away what properties the declaration sets. E.g. it’s more deliberate to declare `animation-delay`, `animation-duration`, etc. separately than to use the `animation` shorthand.
+
+To reset a CSS property to its default value, you can use the `unset` value. And to unset all properties at once, you can use `all: unset`:
 
 ```css styles.css
 button {

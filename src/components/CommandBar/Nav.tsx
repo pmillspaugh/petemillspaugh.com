@@ -38,7 +38,7 @@ const StyledNav = styled.nav`
 
 const StyledNavLink = styled(Link)`
   font-weight: 700;
-  box-shadow: none;
+  text-decoration: none;
   display: block;
   outline-offset: 8px;
 `;

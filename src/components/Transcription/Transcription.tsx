@@ -11,10 +11,16 @@ const StyledSection = styled.section`
   background-color: ${(p) => p.theme.codeBg};
   color: ${(p) => p.theme.codeColor};
   font-family: var(--font-mono), monospace;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
 
   p:last-child {
     margin-bottom: 0px;
+  }
+
+  @media (min-width: 1200px) {
+    p {
+      font-size: 0.875rem;
+    }
   }
 `;
 

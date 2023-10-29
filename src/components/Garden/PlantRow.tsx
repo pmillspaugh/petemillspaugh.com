@@ -6,7 +6,9 @@ import Tag from "@/components/Post/Tag";
 const PlantRow = ({ title, slug, format, status, updatedAt }: PostMetadata) => {
   return (
     <>
-      <StyledLink href={`/${slug}`}>{title}</StyledLink>
+      <StyledLink href={`/${slug}`}>
+        <div>{title}</div>
+      </StyledLink>
       <StyledMetadata>
         <Tag
           label={format}
@@ -39,10 +41,10 @@ const StyledLink = styled(Link)`
   font-weight: 800;
   line-height: 1.2;
   color: ${(p) => p.theme.textColor};
-  box-shadow: none;
+  text-decoration: none;
 
-  @media (min-width: 768px) {
-    font-size: 2rem;
+  & > div {
+    text-wrap: balance; /* not supported in all browsers */
   }
 `;
 

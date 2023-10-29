@@ -94,7 +94,7 @@ const Garden = ({ posts }: GardenProps) => {
         <Popover
           trigger={
             <OuterWrapper>
-              <InnerWrapper>What’s this?</InnerWrapper>
+              <InnerWrapper>What's this?</InnerWrapper>
             </OuterWrapper>
           }
         >
@@ -139,6 +139,7 @@ const StyledGarden = styled.div`
 const StyledH1 = styled.h1`
   font-size: 4rem;
   font-weight: 300;
+  line-height: 1.2;
   margin-top: 16px;
   margin-left: -3px;
 `;
@@ -148,18 +149,13 @@ const StyledBarWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  padding-bottom: 32px;
+  padding-bottom: 36px;
 `;
 
 const StyledFiltersWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-`;
-
-const StyledP = styled.p`
-  font-family: var(--font-open-sans);
-  font-style: italic;
 `;
 
 export const OuterWrapper = styled.div`
@@ -180,9 +176,14 @@ export const InnerWrapper = styled.div`
   border: 1px solid var(--black);
   background-color: ${(p) => p.theme.primaryBg};
   transition: background-color var(--base-timing) ease-in-out;
-  font-family: var(--font-open-sans);
+  font-family: var(--font-mono);
   font-size: 0.875rem;
   font-weight: 700;
+`;
+
+const StyledP = styled.p`
+  font-family: var(--font-open-sans);
+  font-style: italic;
 `;
 
 export default Garden;
