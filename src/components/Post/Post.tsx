@@ -76,6 +76,13 @@ const StyledH1 = styled.h1`
     font-size: 3rem;
     line-height: 1;
   }
+
+  @media (min-width: 1200px) {
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
 `;
 
 const TagsContainer = styled.div`
@@ -93,6 +100,7 @@ const MetadataList = styled.ul`
   }
 
   @media (min-width: 1200px) {
+    font-size: 1.125rem;
     padding-bottom: 44px;
   }
 `;

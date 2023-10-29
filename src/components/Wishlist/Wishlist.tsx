@@ -4,12 +4,12 @@ const Wishlist = () => {
   return (
     <>
       <StyledH1>Wishlist</StyledH1>
-      <p>
+      <StyledP>
         This is a collection of things I am interested to learn/try, in no
         particular order (and not exhaustive). I'll add, remove, and cross
         things off from time to time. I planted this in September 2023, so
         anything I worked with before that didn't make the cut.
-      </p>
+      </StyledP>
       <StyledUl>
         <li>
           <a href="https://www.rust-lang.org/" target="_blank">
@@ -67,6 +67,14 @@ const Wishlist = () => {
             Replit
           </a>
         </li>
+        <li>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components"
+            target="_blank"
+          >
+            Web Components
+          </a>
+        </li>
       </StyledUl>
     </>
   );
@@ -76,6 +84,18 @@ const StyledH1 = styled.h1`
   font-size: 4rem;
   font-weight: 300;
   margin-top: 16px;
+
+  @media (min-width: 1200px) {
+    margin-bottom: 24px;
+  }
+`;
+
+const StyledP = styled.p`
+  @media (min-width: 1200px) {
+    font-size: 1.25rem;
+    line-height: 1.75;
+    margin-bottom: 24px;
+  }
 `;
 
 const StyledUl = styled.ul`
@@ -83,6 +103,14 @@ const StyledUl = styled.ul`
 
   & > li {
     padding-bottom: 8px;
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 1.25rem;
+
+    & > li {
+      padding-bottom: 16px;
+    }
   }
 `;
 

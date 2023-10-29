@@ -94,7 +94,7 @@ const Garden = ({ posts }: GardenProps) => {
         <Popover
           trigger={
             <OuterWrapper>
-              <InnerWrapper>What’s this?</InnerWrapper>
+              <InnerWrapper>What's this?</InnerWrapper>
             </OuterWrapper>
           }
         >
@@ -180,7 +180,7 @@ export const InnerWrapper = styled.div`
   border: 1px solid var(--black);
   background-color: ${(p) => p.theme.primaryBg};
   transition: background-color var(--base-timing) ease-in-out;
-  font-family: var(--font-open-sans);
+  font-family: var(--font-mono);
   font-size: 0.875rem;
   font-weight: 700;
 `;

@@ -11,6 +11,7 @@ const StyledP = styled.p`
 
   @media (min-width: 1200px) {
     font-size: 1.25rem;
+    line-height: 1.75;
     margin-bottom: 24px;
   }
 `;

@@ -80,10 +80,18 @@ export const GlobalStyle = createGlobalStyle`
     font-family: var(--font-mono), monospace;
     font-size: 0.75rem;
     text-decoration: none;
+
+    @media (min-width: 1200px) {
+      font-size: 1rem;
+    }
   }
   .ch-frame-title-bar {
     font-family: var(--font-open-sans), sans-serif;
     font-size: 0.75rem;
+
+    @media (min-width: 1200px) {
+      font-size: 1rem;
+    }
   }
   .ch-codegroup, .ch-codeblock {
     margin-top: 24px;

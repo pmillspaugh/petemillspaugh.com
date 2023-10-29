@@ -17,6 +17,10 @@ const StyledH2 = styled.h2`
   @media (min-width: 768px) {
     font-size: 2.25rem;
   }
+
+  @media (min-width: 1200px) {
+    font-size: 2.75rem;
+  }
 `;
 
 export const H3 = ({ children }: { children: ReactNode }) => (
@@ -34,5 +38,10 @@ const StyledH3 = styled.h3`
 
   @media (min-width: 768px) {
     font-size: 1.5rem;
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 1.75rem;
+    margin-bottom: 24px;
   }
 `;

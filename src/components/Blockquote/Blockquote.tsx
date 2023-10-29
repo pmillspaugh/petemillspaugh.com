@@ -20,9 +20,10 @@ const StyledBlockquote = styled.blockquote`
   }
 
   @media (min-width: 1200px) {
+    margin-bottom: 30px;
+
     p {
-      font-size: 1rem;
-      margin-bottom: 24px;
+      font-size: 1.05rem;
     }
   }
 `;

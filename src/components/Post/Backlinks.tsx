@@ -9,9 +9,7 @@ const Backlinks = ({ backlinks }: { backlinks: PostMetadata[] }) => {
       <StyledUl>
         {backlinks.map(({ title, slug }) => (
           <li key={slug}>
-            <Link href={`/${slug}`} target="_blank">
-              {title}
-            </Link>
+            <Link href={`/${slug}`}>{title}</Link>
           </li>
         ))}
       </StyledUl>
@@ -28,6 +26,10 @@ const StyledH2 = styled.h2`
   @media (min-width: 768px) {
     font-size: 2.25rem;
   }
+
+  @media (min-width: 1200px) {
+    font-size: 2.75rem;
+  }
 `;
 
 const StyledUl = styled.ul`
@@ -37,6 +39,10 @@ const StyledUl = styled.ul`
     content: "✦";
     padding-right: 8px;
     color: ${(p) => p.theme.linkTextColor};
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 1.25rem;
   }
 `;
 

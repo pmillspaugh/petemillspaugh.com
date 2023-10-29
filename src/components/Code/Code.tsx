@@ -29,6 +29,10 @@ const StyledCode = styled.code`
     color: ${(p) => p.theme.linkTextColorHover};
     box-shadow: none;
   }
+
+  @media (min-width: 1200px) {
+    font-size: 0.9rem;
+  }
 `;
 
 export default Code;

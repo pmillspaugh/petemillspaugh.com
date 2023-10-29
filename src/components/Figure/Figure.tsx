@@ -28,6 +28,10 @@ const StyledFigcaption = styled.figcaption`
   text-align: center;
   padding-top: 16px;
   color: ${(p) => p.theme.dateTextColor};
+
+  @media (min-width: 1200px) {
+    font-size: 1rem;
+  }
 `;
 
 Figure.AllTrails = AllTrails;
