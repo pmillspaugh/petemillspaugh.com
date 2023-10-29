@@ -22,6 +22,10 @@ export async function getStaticProps() {
     posts.push(metadata);
   }
 
+  posts.sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
+
   return {
     props: {
       posts,

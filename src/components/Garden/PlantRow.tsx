@@ -48,7 +48,7 @@ const StyledLink = styled(Link)`
   }
 
   @media (min-width: 768px) {
-    font-size: 2rem;
+    /* font-size: 2rem; */
   }
 `;
 
