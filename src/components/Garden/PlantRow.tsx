@@ -44,11 +44,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 
   & > div {
-    text-wrap: pretty; /* not supported in all browsers */
-  }
-
-  @media (min-width: 768px) {
-    /* font-size: 2rem; */
+    text-wrap: balance; /* not supported in all browsers */
   }
 `;
 

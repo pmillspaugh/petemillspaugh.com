@@ -10,7 +10,6 @@ const MapNotes = () => {
           <StyledImage
             src="/images/map-in-the-woods-raw.png"
             alt="Raw notes from June 26th map brainstorm"
-            // width x height = 4010 x 2221 = 1.806
             width={4010}
             height={2221}
           />
