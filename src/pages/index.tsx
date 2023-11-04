@@ -3,6 +3,7 @@ import type { GetStaticProps } from "next";
 import { getPostPaths } from "@/helpers/garden.helpers";
 import Home from "@/components/Home";
 import { ComponentProps } from "react";
+import { generateRssFeed } from "@/helpers/rss.helpers";
 
 const HomePage = ({ postPaths }: ComponentProps<typeof Home>) => {
   return (
@@ -17,6 +18,9 @@ const HomePage = ({ postPaths }: ComponentProps<typeof Home>) => {
 
 export const getStaticProps = (async () => {
   const postPaths = getPostPaths();
+
+  await generateRssFeed(postPaths);
+
   return { props: { postPaths } };
 }) satisfies GetStaticProps;
 

@@ -2,6 +2,7 @@ import { serialize } from "next-mdx-remote/serialize";
 import { remarkCodeHike } from "@code-hike/mdx";
 import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
+import { PostMetadata } from "@/components/Post";
 
 const POSTS_DIR = join(process.cwd(), "src/writing");
 
@@ -70,13 +71,13 @@ export async function getPostData(slug: string) {
 
   return {
     mdxSource: serializedMDX,
-    metadata: serializedMDX.frontmatter,
+    metadata: serializedMDX.frontmatter as unknown as PostMetadata,
     backlinks,
   };
 }
 
 async function getBacklinks(slug: string) {
-  const backlinks = [];
+  const backlinks: PostMetadata[] = [];
 
   const subdirs = readdirSync(POSTS_DIR);
   for (const subdir of subdirs) {
@@ -88,10 +89,10 @@ async function getBacklinks(slug: string) {
       const fileBuffer = readFileSync(join(POSTS_DIR, subdir, filename));
       const fileString = fileBuffer.toString();
       if (fileString.includes(slug)) {
-        const backlinkFrontmatter = (
+        const backlinkMetadata = (
           await serialize(fileString, { parseFrontmatter: true })
-        ).frontmatter;
-        backlinks.push(backlinkFrontmatter);
+        ).frontmatter as unknown as PostMetadata;
+        backlinks.push(backlinkMetadata);
       }
     }
   }
