@@ -81,9 +81,13 @@ const Wishlist = () => {
 };
 
 const StyledH1 = styled.h1`
-  font-size: 4rem;
-  font-weight: 300;
+  font-size: 3rem;
+  font-weight: 900;
   margin-top: 16px;
+
+  @media (min-width: 768px) {
+    font-size: 4rem;
+  }
 
   @media (min-width: 1200px) {
     margin-bottom: 24px;

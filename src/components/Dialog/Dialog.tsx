@@ -101,8 +101,7 @@ const Close = styled(RadixDialog.Close)`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid ${(p) => p.theme.textColor};
-  border-radius: 4px;
+  border: 2px solid transparent;
 
   &:focus {
     outline: revert;

@@ -57,21 +57,23 @@ const CommandBar = ({ children }) => {
       srDescription="Find content by searching, or follow navigation links."
       trigger={children}
     >
-      <search>
-        <form onSubmit={handleSearch}>
-          <VisuallyHidden>
-            <label htmlFor="search">Search</label>
-          </VisuallyHidden>
-          <StyledInput
-            type="text"
-            id="search"
-            placeholder="Search the garden"
-            ref={searchInputRef}
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            onInput={handleSearch}
-          />
-        </form>
+      <>
+        <search>
+          <form onSubmit={handleSearch}>
+            <VisuallyHidden>
+              <label htmlFor="search">Search</label>
+            </VisuallyHidden>
+            <StyledInput
+              type="text"
+              id="search"
+              placeholder="Search the garden"
+              ref={searchInputRef}
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onInput={handleSearch}
+            />
+          </form>
+        </search>
         {query ? (
           <SearchResults
             results={results}
@@ -80,7 +82,7 @@ const CommandBar = ({ children }) => {
         ) : (
           <Nav handleClick={handleDialogOpenChange} />
         )}
-      </search>
+      </>
     </Dialog>
   );
 };
@@ -94,6 +96,11 @@ const StyledInput = styled.input`
   font-family: var(--font-mono);
   font-size: 0.875rem;
   font-weight: 700;
+
+  &::placeholder {
+    color: ${(p) => p.theme.textColor};
+    opacity: 0.75;
+  }
 `;
 
 export default CommandBar;

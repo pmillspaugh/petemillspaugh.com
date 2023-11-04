@@ -138,10 +138,9 @@ const StyledGarden = styled.div`
 
 const StyledH1 = styled.h1`
   font-size: 4rem;
-  font-weight: 300;
-  line-height: 1.2;
+  font-weight: 900;
+  line-height: 1.3;
   margin-top: 16px;
-  margin-left: -3px;
 `;
 
 const StyledBarWrapper = styled.div`
@@ -160,7 +159,7 @@ const StyledFiltersWrapper = styled.div`
 
 export const OuterWrapper = styled.div`
   border-radius: 4px;
-  border: 1px solid ${(p) => p.theme.textColor};
+  border: 1.5px solid ${(p) => p.theme.textColor};
   padding: 3px;
   background-color: ${(p) => p.theme.tagBorderColor};
   transition: background-color var(--base-timing) ease-in-out;
@@ -173,7 +172,7 @@ export const OuterWrapper = styled.div`
 export const InnerWrapper = styled.div`
   padding: 2px 8px;
   border-radius: 4px;
-  border: 1px solid var(--black);
+  border: 1.5px solid var(--black);
   background-color: ${(p) => p.theme.primaryBg};
   transition: background-color var(--base-timing) ease-in-out;
   font-family: var(--font-mono);
