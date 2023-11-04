@@ -33,9 +33,9 @@ The Pagefind CLI generates a static search index from your site’s static files
 }
 ```
 
-I’m using pnpm, which <a href="https://pnpm.io/cli/run#differences-with-npm-run" target="_blank">doesn’t support</a> `pre-` and `post-` scripts by default, so I appended `&& <pagefind-script>` to my build script. You can also <a href="https://pnpm.io/cli/run#enable-pre-post-scripts" target="_blank">enable pre- and post- scripts</a> with pnpm.
+I’m using pnpm, which <a href="https://pnpm.io/cli/run#differences-with-npm-run" target="_blank">doesn’t support</a> `pre-` and `post-` scripts by default, so I just appended `&& <pagefind-script>` to my build script. You can also <a href="https://pnpm.io/cli/run#enable-pre-post-scripts" target="_blank">enable pre- and post- scripts</a> with pnpm.
 
-Depending on how you build/deploy, you might be able to avoid adding the dependency and postbuild script entirely by running `npx pagefind` instead.
+Depending on how you build and deploy, you might be able to avoid adding the dependency and postbuild script altogether by running `npx pagefind` instead.
 
 ## Dynamically import search bundle
 
@@ -115,8 +115,14 @@ function Result({ result }) {
 
 The search implementation on this website is <a href="https://github.com/pmillspaugh/petemillspaugh.com" target="_blank">public</a>, so feel free to poke around (and suggest anything I could improve upon!).
 
+## Bells ’n whistles
+
+Pagefind exposes some handy options for refining your index and polishing search UI. I am using both the <a href="https://pagefind.app/docs/indexing/#limiting-what-sections-of-a-page-are-indexed" target="_blank">`data-pagefind-body`</a> and <a href="https://pagefind.app/docs/indexing/#removing-individual-elements-from-the-index" target="_blank">`data-pagefind-ignore`</a> attributes to exclude certain content from my search index (e.g. header, 404 page, homepage, etc.). I also swapped <a href="https://pagefind.app/docs/api/#debounced-search" target="_blank">`pagefind.debouncedSearch()`</a> in place of the standard `pagefind.search()` to cut down on resource usage and prevent jarring flashes of results before you finish typing a search query.
+
+There are options to <a href="https://pagefind.app/docs/api/#filtering" target="_blank">filter</a> and <a href="https://pagefind.app/docs/api/#sorting-results" target="_blank">sort</a> results, too, which I may tap into down the road. Check out the docs for other neat options, like <a href="https://pagefind.app/docs/multilingual/" target="_blank">multilingual</a> support.
+
 ## Shoutouts
 
-Thanks to <a href="https://blog.otterlord.dev/posts/astro-search/" target="_blank">Otterlord’s blog post on using Pagefind with Astro</a> for the nudge to share something similar for Next. If you’re keen to use Pagefind with another SSG, check out <a href="https://pagefind.app/docs/resources/" target="_blank">community resources in the docs</a>.
+Thanks to <a href="https://blog.otterlord.dev/posts/astro-search/" target="_blank">Otterlord’s blog post on using Pagefind with Astro</a> for the nudge to share something similar for Next. If you’re keen to use Pagefind with another SSG, the docs have a list of <a href="https://pagefind.app/docs/resources/" target="_blank">community resources</a>. There are also some nice <a href="https://pagefind.app/#pagefind-demos" target="_blank">demos</a> to get a feel for the search experience before jumping into your own implementation.
 
 And big, big thanks to <a href="https://github.com/bglw" target="_blank">bglw</a> for helping me debug this and creating an amazing library!
