@@ -88,7 +88,7 @@ const Garden = ({ posts }: GardenProps) => {
   };
 
   return (
-    <StyledGarden>
+    <StyledGarden data-pagefind-ignore>
       <StyledH1>Garden</StyledH1>
       <StyledBarWrapper>
         <Popover

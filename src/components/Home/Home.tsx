@@ -12,7 +12,7 @@ const Home = ({ postPaths }: { postPaths: PostParams[] }) => {
   }, [postPaths]);
 
   return (
-    <StyledHome>
+    <StyledHome data-pagefind-ignore>
       <StyledH1>
         <Firstname>Pete</Firstname>
         <Lastname>Millspaugh</Lastname>

@@ -9,7 +9,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <FlexContainer>
         <Header />
         <MaxWidthWrapper>
-          <main>{children}</main>
+          <main data-pagefind-body>{children}</main>
         </MaxWidthWrapper>
         <Footer />
       </FlexContainer>

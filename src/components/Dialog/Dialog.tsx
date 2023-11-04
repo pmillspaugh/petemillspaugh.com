@@ -1,5 +1,5 @@
 import * as RadixDialog from "@radix-ui/react-dialog";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import VisuallyHidden from "@/components/VisuallyHidden";
 import styled, { keyframes } from "styled-components";
 import CloseIcon from "./CloseIcon";
 
@@ -23,10 +23,10 @@ const Dialog = ({
     <RadixDialog.Portal>
       <Overlay />
       <Content>
-        <VisuallyHidden asChild>
+        <VisuallyHidden>
           <RadixDialog.Title>{srTitle}</RadixDialog.Title>
         </VisuallyHidden>
-        <VisuallyHidden asChild>
+        <VisuallyHidden>
           <RadixDialog.Description>{srDescription}</RadixDialog.Description>
         </VisuallyHidden>
         {children}

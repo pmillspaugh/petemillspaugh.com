@@ -19,7 +19,7 @@ const Post = ({ mdxSource, metadata, backlinks }: PostProps) => {
   return (
     <>
       <StyledH1>{title}</StyledH1>
-      <MetadataList>
+      <MetadataList data-pagefind-ignore>
         <li>
           Planted:{" "}
           <time dateTime={new Date(createdAt).toISOString()}>{createdAt}</time>

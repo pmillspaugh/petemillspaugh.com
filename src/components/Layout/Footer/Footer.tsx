@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import Link from "next/link";
-import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
+import VisuallyHidden from "@/components/VisuallyHidden";
 import styled from "styled-components";
 import { LightModeContext } from "pages/_app";
 import { PostFormat } from "@/components/Post";
@@ -53,9 +53,7 @@ const Footer = () => {
                   target="_blank"
                 >
                   <GitHubIcon />
-                  <VisuallyHidden.Root>
-                    Pete Millspaugh on GitHub
-                  </VisuallyHidden.Root>
+                  <VisuallyHidden>Pete Millspaugh on GitHub</VisuallyHidden>
                 </StyledIconLink>
               </li>
               <li>
@@ -64,9 +62,7 @@ const Footer = () => {
                   target="_blank"
                 >
                   <TwitterIcon />
-                  <VisuallyHidden.Root>
-                    Pete Millspaugh on Twitter
-                  </VisuallyHidden.Root>
+                  <VisuallyHidden>Pete Millspaugh on Twitter</VisuallyHidden>
                 </StyledIconLink>
               </li>
               <li>
@@ -75,9 +71,7 @@ const Footer = () => {
                   target="_blank"
                 >
                   <ValTownIcon />
-                  <VisuallyHidden.Root>
-                    Pete Millspaugh on Val Town
-                  </VisuallyHidden.Root>
+                  <VisuallyHidden>Pete Millspaugh on Val Town</VisuallyHidden>
                 </StyledIconLink>
               </li>
             </StyledIconUl>

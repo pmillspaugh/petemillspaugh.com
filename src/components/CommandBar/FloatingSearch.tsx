@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import VisuallyHidden from "@/components/VisuallyHidden";
 import CommandBar from "@/components/CommandBar";
 import SearchIcon from "./SearchIcon";
 

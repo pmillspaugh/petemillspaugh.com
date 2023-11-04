@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import VisuallyHidden from "@/components/VisuallyHidden";
 import Dialog from "@/components/Dialog";
 import SearchResults from "./SearchResults";
 import Nav from "./Nav";
