@@ -2,15 +2,12 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import VisuallyHidden from "@/components/VisuallyHidden";
 import CommandBar from "@/components/CommandBar";
+import useIsWindows from "@/hooks/useIsWindows.hook";
 import SearchIcon from "./SearchIcon";
 
 const FloatingSearch = () => {
   const router = useRouter();
-
-  // Note: navigator.platform is deprecated, but fallback to isWindows=false is ok
-  const isWindows =
-    typeof navigator !== "undefined" &&
-    navigator.platform.toLowerCase().includes("win");
+  const isWindows = useIsWindows();
 
   if (router.pathname === "/") return null;
 

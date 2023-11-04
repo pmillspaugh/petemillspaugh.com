@@ -1,11 +1,9 @@
 import styled from "styled-components";
 import CommandBar from "@/components/CommandBar";
+import useIsWindows from "@/hooks/useIsWindows.hook";
 
 const SearchCta = () => {
-  // Note: navigator.platform is deprecated, but fallback to isWindows=false is ok
-  const isWindows =
-    typeof navigator !== "undefined" &&
-    navigator.platform.toLowerCase().includes("win");
+  const isWindows = useIsWindows();
 
   return (
     <CommandBar>
