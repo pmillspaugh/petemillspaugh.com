@@ -3,10 +3,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && pagefind --site .next --output-path .next/static/chunks/pages/pagefind",
+    "build": "next build && npm run generate-pagefind && npm run generate-sitemap",
     "start": "next start",
     "lint": "next lint",
-    "prettify": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\""
+    "prettify": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\"",
+    "generate-pagefind": "pagefind --site .next --output-path .next/static/chunks/pages/pagefind",
+    "generate-sitemap": "next-sitemap"
   },
   "dependencies": {
     "@code-hike/mdx": "^0.9.0",
@@ -32,6 +34,7 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.28.1",
     "feed": "^4.2.2",
+    "next-sitemap": "^4.2.3",
     "pagefind": "^1.0.3",
     "prettier": "^3.0.3",
     "typescript": "5.1.6"
