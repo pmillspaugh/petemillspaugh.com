@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { LightModeContext } from "pages/_app";
 import { PostFormat } from "@/components/Post";
 import NewfoundLake from "./NewfoundLake";
+import RssIcon from "./RssIcon";
 import GitHubIcon from "./GitHubIcon";
 import ValTownIcon from "./ValTownIcon";
 import TwitterIcon from "./TwitterIcon";
@@ -47,6 +48,14 @@ const Footer = () => {
               </li>
             </StyledNavUl>
             <StyledIconUl>
+              <li>
+                <StyledRssIconLink href="/rss.xml" target="_blank">
+                  <RssIcon />
+                  <VisuallyHidden>
+                    RSS feed for petemillspaugh.com
+                  </VisuallyHidden>
+                </StyledRssIconLink>
+              </li>
               <li>
                 <StyledIconLink
                   href="https://github.com/pmillspaugh"
@@ -178,11 +187,18 @@ const StyledIconLink = styled.a`
   color: var(--white);
 `;
 
+const StyledRssIconLink = styled(Link)`
+  width: 48px;
+  height: 48px;
+  color: var(--white);
+`;
+
 const StyledCopyright = styled.p`
   color: var(--white);
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.785rem;
   font-weight: 600;
+  text-align: right;
 `;
 
 export default Footer;
