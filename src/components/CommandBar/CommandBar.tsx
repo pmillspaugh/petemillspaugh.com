@@ -44,7 +44,7 @@ const CommandBar = ({ children }) => {
     e.preventDefault();
 
     if (window.pagefind) {
-      const search = await window.pagefind.search(query);
+      const search = await window.pagefind.debouncedSearch(query);
       setResults(search.results);
     }
   }
