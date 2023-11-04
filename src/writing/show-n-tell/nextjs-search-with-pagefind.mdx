@@ -24,16 +24,6 @@ npm i -D pagefind
 
 The Pagefind CLI generates a static search index from your site’s static files after building. The <a href="https://pagefind.app/docs/config-options/#site" target="_blank">`--site`</a> flag indicates the output dir of your built static files, and the <a href="https://pagefind.app/docs/config-options/#output-path" target="_blank">`--output-path`</a> option is where the search bundle will be written—more on that below. I’m on Next `13.4.9` and the `/pages` router, so adjust as needed.
 
-```json package.json
-{
-  "scripts": {
-    "build": "next build && pagefind --site .next --output-path .next/static/chunks/pages/pagefind"
-  }
-}
-```
-
-I’m using pnpm, which <a href="https://pnpm.io/cli/run#differences-with-npm-run" target="_blank">doesn’t support</a> `pre-` and `post-` scripts, but if you’re using npm or yarn, this is a bit more elegant:
-
 ```json package.json focus=4
 {
   "scripts": {
@@ -43,7 +33,9 @@ I’m using pnpm, which <a href="https://pnpm.io/cli/run#differences-with-npm-ru
 }
 ```
 
-Depending on how you build/deploy, you might be able to avoid adding the dependency and post-build script entirely by running `npx pagefind` instead.
+I’m using pnpm, which <a href="https://pnpm.io/cli/run#differences-with-npm-run" target="_blank">doesn’t support</a> `pre-` and `post-` scripts by default, so I appended `&& <pagefind-script>` to my build script. You can also <a href="https://pnpm.io/cli/run#enable-pre-post-scripts" target="_blank">enable pre- and post- scripts</a> with pnpm.
+
+Depending on how you build/deploy, you might be able to avoid adding the dependency and postbuild script entirely by running `npx pagefind` instead.
 
 ## Dynamically import search bundle
 
