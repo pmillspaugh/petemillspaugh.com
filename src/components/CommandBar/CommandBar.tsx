@@ -40,7 +40,9 @@ const CommandBar = ({ children }) => {
     }
   }
 
-  async function handleSearch() {
+  async function handleSearch(e) {
+    e.preventDefault();
+
     if (window.pagefind) {
       const search = await window.pagefind.search(query);
       setResults(search.results);
@@ -56,7 +58,7 @@ const CommandBar = ({ children }) => {
       trigger={children}
     >
       <search>
-        <form onSubmit={(e) => e.preventDefault()}>
+        <form onSubmit={handleSearch}>
           <VisuallyHidden>
             <label htmlFor="search">Search</label>
           </VisuallyHidden>

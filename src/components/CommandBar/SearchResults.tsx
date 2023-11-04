@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 
@@ -36,13 +36,18 @@ const ResultRow = ({ result, handleClick }) => {
     fetchData();
   }, [result]);
 
+  const resultHtml = useMemo(() => {
+    if (!data) return "";
+    return data.sub_results.map((sub) => sub.excerpt).join("... ");
+  }, [data]);
+
   if (!data || !url) return null;
 
   return (
     <li>
       <StyledLink href={url} onClick={handleClick}>
         <StyledH3>{data.meta.title}</StyledH3>
-        <StyledP dangerouslySetInnerHTML={{ __html: data.excerpt }} />
+        <StyledP dangerouslySetInnerHTML={{ __html: resultHtml }} />
       </StyledLink>
     </li>
   );
