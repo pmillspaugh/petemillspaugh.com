@@ -43,7 +43,7 @@ const StyledTrigger = styled(RadixSelect.Trigger)`
   gap: 4px;
   padding: 7px 8px 5px 8px;
   background-color: ${(p) => p.theme.primaryBg};
-  border: 1px solid ${(p) => p.theme.textColor};
+  border: 1.5px solid ${(p) => p.theme.textColor};
   border-radius: 4px;
   font-size: 0.875rem;
   font-weight: 500;

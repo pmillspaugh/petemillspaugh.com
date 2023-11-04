@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import VisuallyHidden from "@/components/VisuallyHidden";
 import Dialog from "@/components/Dialog";
 import SearchResults from "./SearchResults";
 import Nav from "./Nav";
@@ -40,9 +40,11 @@ const CommandBar = ({ children }) => {
     }
   }
 
-  async function handleSearch() {
+  async function handleSearch(e) {
+    e.preventDefault();
+
     if (window.pagefind) {
-      const search = await window.pagefind.search(query);
+      const search = await window.pagefind.debouncedSearch(query);
       setResults(search.results);
     }
   }
@@ -56,18 +58,22 @@ const CommandBar = ({ children }) => {
       trigger={children}
     >
       <>
-        <VisuallyHidden>
-          <label htmlFor="search">Search</label>
-        </VisuallyHidden>
-        <StyledInput
-          type="text"
-          id="search"
-          placeholder="Search the garden"
-          ref={searchInputRef}
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          onInput={handleSearch}
-        />
+        <search>
+          <form onSubmit={handleSearch}>
+            <VisuallyHidden>
+              <label htmlFor="search">Search</label>
+            </VisuallyHidden>
+            <StyledInput
+              type="text"
+              id="search"
+              placeholder="Search the garden"
+              ref={searchInputRef}
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onInput={handleSearch}
+            />
+          </form>
+        </search>
         {query ? (
           <SearchResults
             results={results}
@@ -90,6 +96,11 @@ const StyledInput = styled.input`
   font-family: var(--font-mono);
   font-size: 0.875rem;
   font-weight: 700;
+
+  &::placeholder {
+    color: ${(p) => p.theme.textColor};
+    opacity: 0.75;
+  }
 `;
 
 export default CommandBar;

@@ -1,12 +1,12 @@
 import Link from "next/link";
 import styled from "styled-components";
-import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
+import VisuallyHidden from "@/components/VisuallyHidden";
 import { COLORS } from "@/styles/themes";
 
 const Logo = ({ lightMode }: { lightMode: boolean }) => {
   return (
     <StyledLink href="/">
-      <VisuallyHidden.Root>Visit homepage</VisuallyHidden.Root>
+      <VisuallyHidden>Visit homepage</VisuallyHidden>
       <svg
         width="44"
         height="48"

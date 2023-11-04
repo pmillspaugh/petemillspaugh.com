@@ -37,10 +37,19 @@ const StyledNav = styled.nav`
 `;
 
 const StyledNavLink = styled(Link)`
+  font-family: var(--font-mono);
   font-weight: 700;
   text-decoration: none;
   display: block;
   outline-offset: 8px;
+
+  &:after {
+    content: " →";
+  }
+
+  &:hover {
+    color: ${(p) => p.theme.linkTextColorHover};
+  }
 `;
 
 export default Nav;

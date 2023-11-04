@@ -1,5 +1,5 @@
 import * as RadixDialog from "@radix-ui/react-dialog";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import VisuallyHidden from "@/components/VisuallyHidden";
 import styled, { keyframes } from "styled-components";
 import CloseIcon from "./CloseIcon";
 
@@ -23,10 +23,10 @@ const Dialog = ({
     <RadixDialog.Portal>
       <Overlay />
       <Content>
-        <VisuallyHidden asChild>
+        <VisuallyHidden>
           <RadixDialog.Title>{srTitle}</RadixDialog.Title>
         </VisuallyHidden>
-        <VisuallyHidden asChild>
+        <VisuallyHidden>
           <RadixDialog.Description>{srDescription}</RadixDialog.Description>
         </VisuallyHidden>
         {children}
@@ -101,8 +101,7 @@ const Close = styled(RadixDialog.Close)`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid ${(p) => p.theme.textColor};
-  border-radius: 4px;
+  border: 2px solid transparent;
 
   &:focus {
     outline: revert;

@@ -19,7 +19,7 @@ const Post = ({ mdxSource, metadata, backlinks }: PostProps) => {
   return (
     <>
       <StyledH1>{title}</StyledH1>
-      <MetadataList>
+      <MetadataList data-pagefind-ignore>
         <li>
           Planted:{" "}
           <time dateTime={new Date(createdAt).toISOString()}>{createdAt}</time>
@@ -68,7 +68,7 @@ const StyledH1 = styled.h1`
   margin-bottom: 8px;
   margin-left: -1px;
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 900;
   line-height: 1.2;
   text-wrap: balance; /* not supported in all browsers */
 
@@ -79,7 +79,6 @@ const StyledH1 = styled.h1`
 
   @media (min-width: 1200px) {
     font-size: 4rem;
-    font-weight: 900;
     line-height: 1.1;
     margin-bottom: 16px;
   }

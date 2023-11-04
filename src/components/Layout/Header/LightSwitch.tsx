@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { useSpring, animated } from "@react-spring/web";
-import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
+import VisuallyHidden from "@/components/VisuallyHidden";
 import styled from "styled-components";
 import useLightMode from "@/hooks/useLightMode.hook";
 import { LocalStorageKey } from "@/constants";
@@ -83,9 +83,9 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
       <audio ref={audioRef}>
         <source src="./audio/light-switch.m4a" type="audio/mp4" />
       </audio>
-      <VisuallyHidden.Root>
+      <VisuallyHidden>
         {lightMode ? "Switch to dark mode" : "Switch to light mode"}
-      </VisuallyHidden.Root>
+      </VisuallyHidden>
       <EdisonBulb lightMode={lightMode} />
     </StyledButton>
   );

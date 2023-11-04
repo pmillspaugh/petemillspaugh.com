@@ -83,6 +83,7 @@ export const GlobalStyle = createGlobalStyle`
 
     @media (min-width: 1200px) {
       font-size: 1rem;
+      line-height: 1.5;
     }
   }
   .ch-frame-title-bar {

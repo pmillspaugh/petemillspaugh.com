@@ -128,14 +128,18 @@ const About = () => {
 };
 
 const StyledH1 = styled.h1`
-  font-size: 4rem;
-  font-weight: 300;
+  font-size: 3rem;
+  font-weight: 900;
   margin-top: 16px;
+
+  @media (min-width: 768px) {
+    font-size: 4rem;
+  }
 `;
 
 const StyledH2 = styled.h2`
   font-size: 2rem;
-  font-weight: 800;
+  font-weight: 700;
   margin-top: 24px;
   margin-bottom: 8px;
 `;

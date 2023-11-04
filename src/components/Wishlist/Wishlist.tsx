@@ -8,7 +8,7 @@ const Wishlist = () => {
         This is a collection of things I am interested to learn/try, in no
         particular order (and not exhaustive). I'll add, remove, and cross
         things off from time to time. I planted this in September 2023, so
-        anything I worked with before that didn't make the cut.
+        anything I worked with before then didn't make the cut.
       </StyledP>
       <StyledUl>
         <li>
@@ -81,9 +81,13 @@ const Wishlist = () => {
 };
 
 const StyledH1 = styled.h1`
-  font-size: 4rem;
-  font-weight: 300;
+  font-size: 3rem;
+  font-weight: 900;
   margin-top: 16px;
+
+  @media (min-width: 768px) {
+    font-size: 4rem;
+  }
 
   @media (min-width: 1200px) {
     margin-bottom: 24px;
