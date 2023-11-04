@@ -1,26 +1,41 @@
 import fs from "fs";
 import path from "path";
+import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { MDXRemote } from "next-mdx-remote";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { Feed } from "feed";
 import { PostParams, getPostData } from "@/helpers/garden.helpers";
+import { PostMetadata } from "@/components/Post";
 import { components } from "@/components/index";
 
 export async function generateRssFeed(postPaths: PostParams[]) {
+  const posts: Array<{
+    metadata: PostMetadata;
+    mdxSource: MDXRemoteSerializeResult;
+  }> = [];
+
+  let lastPublished = new Date(2023, 6, 26);
+  for (const { params } of postPaths) {
+    const { metadata, mdxSource } = await getPostData(params.slug);
+    posts.push({ metadata, mdxSource });
+
+    if (new Date(metadata.createdAt) > lastPublished) {
+      lastPublished = new Date(metadata.createdAt);
+    }
+  }
+
+  posts.sort(
+    (a, b) =>
+      new Date(b.metadata.createdAt).getTime() -
+      new Date(a.metadata.createdAt).getTime()
+  );
+
   const baseURL = `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
   const author = {
     name: "Pete Millspaugh",
     email: "peterdgmillspaugh@gmail.com",
     link: "https://twitter.com/pete_millspaugh",
   };
-
-  let lastPublished = new Date(2023, 6, 26);
-  for (const { params } of postPaths) {
-    const { metadata } = await getPostData(params.slug);
-    if (new Date(metadata.createdAt) > lastPublished) {
-      lastPublished = new Date(metadata.createdAt);
-    }
-  }
 
   const feed = new Feed({
     title: "Pete Millspaugh",
@@ -38,11 +53,13 @@ export async function generateRssFeed(postPaths: PostParams[]) {
     },
   });
 
-  for (const { params } of postPaths) {
-    const url = `${baseURL}/${params.slug}`;
-    const { metadata, mdxSource } = await getPostData(params.slug);
+  for (const { metadata, mdxSource } of posts) {
+    const url = `${baseURL}/${metadata.slug}`;
     const markup = renderToStaticMarkup(
-      <MDXRemote components={components} {...mdxSource} />
+      createElement(
+        MDXRemote,
+        Object.assign({ components: components }, mdxSource)
+      )
     );
 
     feed.addItem({
