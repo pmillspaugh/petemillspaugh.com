@@ -1,0 +1,22 @@
+---
+slug: css-overscroll-behavior
+title: CSS overscroll-behavior
+createdAt: November 5, 2023
+updatedAt: November 5, 2023
+format: TIL
+status: Evergreen
+---
+
+To control scroll behavior when reaching the boundary of a scrolling area, use <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior" target="_blank">`overscroll-behavior`</a>.
+
+```css styles.css
+body {
+  overscroll-behavior: auto; /* default */
+  overscroll-behavior: contain;
+  overscroll-behavior: none;
+}
+```
+
+I used `overscroll-behavior: none;` to prevent pull-to-refresh behavior on mobile browsers for my <Link href="/edison-bulb">edison bulb night mode</Link>.
+
+As of 2023, it is <a href="https://caniuse.com/?search=overscroll-behavior" target="_blank">well-supported in browsers</a>.
