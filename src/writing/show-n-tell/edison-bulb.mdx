@@ -2,12 +2,12 @@
 slug: edison-bulb
 title: Edison bulb night mode
 createdAt: August 12, 2023
-updatedAt: October 7, 2023
+updatedAt: November 5, 2023
 format: ShowNTell
 status: Evergreen
 ---
 
-Up in the top right corner of the screen, there’s a little light bulb. It’s an SVG I made to resemble the Edison bulb I have in my apartment. You can click or drag and release to turn the lights on and off. All in all it’s <a href="https://github.com/pmillspaugh/petermillspaugh.com/tree/main/src/components/Layout/Header/LightSwitch.tsx" target="_blank">a bit over 100 lines of code</a>.
+Up in the top right corner of the screen, there’s a little light bulb. It’s an SVG I made to resemble the Edison bulb I have in my apartment. You can click or drag and release to turn the lights on and off. All in all it’s around a <a href="https://github.com/pmillspaugh/petermillspaugh.com/tree/main/src/components/Layout/Header/LightSwitch.tsx" target="_blank">couple hundred lines of code</a>.
 
 ## Night owls and early birds
 
@@ -34,7 +34,7 @@ useEffect(() => {
 }, []);
 ```
 
-It’s worth noting one shortcoming of this approach w/r/t SSR: `localStorage` and `window.matchMedia` are only available client-side, so the server-rendered HTML will always default to light mode. This creates a flicker for night owls, which I considered addressing with some server persistence or a loading state before the initial effect runs. The former feels a bit heavy, and the latter doesn’t exactly solve the problem (would the loading UI be light or dark?). As a compromise, I apply a CSS transition to `color` and `background-color` to create a fade-in effect.
+It’s worth noting one shortcoming of this approach w/r/t SSR: `localStorage` and `window.matchMedia` are only available client-side, so the server-rendered HTML will always default to dark mode. That creates a flicker for early birds, so as a compromise I apply a CSS transition to `color` and `background-color` to create a fade-in effect. A few helpful commenters <a href="https://news.ycombinator.com/item?id=38135892" target="_blank">on Hacker News</a> suggested either (1) moving the JS that checks localStorage into the document `<head>` to run before content loads, or (2) setting a cookie. I haven’t refactored yet, but I think I’ll take a stab at those suggestions at some point. I was also initially defaulting to light mode on the server, but another HN commenter pointed out that the light flicker is more jarring than vice versa.
 
 ## Tactile animation
 
@@ -54,7 +54,7 @@ const springProps = useSpring({
 });
 ```
 
-I’m using React state to manage mouse position and whether the light is being dragged or has been clicked. Event listeners for `mousedown`, `mousemove`, `mouseup`, and `keyup` capture user interaction to trigger theme updates and persistence.
+I’m using React state to manage mouse position and whether the light is being dragged or has been clicked. Event listeners for `mousedown`, `mousemove`, `mouseup`, and `keyup` capture user interaction to trigger theme updates and persistence. My initial implementation didn’t allow dragging on mobile because pull-to-refresh got in the way, but I’ve since added touch events (`touchstart`, `touchmove`, `touchend`) and CSS <Link href="/css-overscroll-behavior">`overscroll-behavior: none`</Link> to enable touch dragging. Vercel’s automatic preview deployments were really handy for testing this quickly.
 
 I could have achieved a similar drag ’n release effect with vanilla CSS transitions, but a personal website feels like the right place to experiment and indulge. `@react-spring/web` adds about <a href="https://pkg-size.dev/@react-spring%2Fweb?no-peers" target="_blank">2.6MB / 51KB minified (20KB gzip)</a>. By comparison, `react-dom` and `react` come in at <a href="https://pkg-size.dev/react-dom" target="_blank">4.9MB / 141KB minified (45KB gzip)</a>. I’d be curious to benchmark my page load speed with and without React Spring (or any package that adds material weight, really). Something to save for another Sunday morning...
 
@@ -97,7 +97,7 @@ if (JSON.parse(localStorage.getItem(LocalStorageKey.AudioEnabled))) {
 </audio>;
 ```
 
-For the actual audio clip, I spent 5 or 10 minutes searching for a nice free sound online before realizing I could just create a recording myself. So the sound you hear is a phone recording of me clicking the switch on my actual Edison bulb!
+For the actual audio clip, I spent five or 10 minutes searching for a nice free sound online before realizing I could just create a recording myself. So the sound you hear is a phone recording of me clicking the switch on my actual Edison bulb!
 
 I disable audio by default and bury the option to enable audio within this Show ’n tell because I generally find sound on websites jarring and distracting. In this case, though, hearing the little sound makes me happy.
 
