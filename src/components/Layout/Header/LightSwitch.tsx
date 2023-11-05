@@ -92,22 +92,24 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
 
   const handleTouchEnd = () => {
     document.documentElement.style.overscrollBehavior = "auto";
+    document.removeEventListener("touchend", handleTouchEnd);
+
+    setLightMode(!lightMode);
+    setDragging(false);
 
     if (currentY === initialY && currentY !== 0) {
       // I think I don't need to do anything here since mouseup will fire
+      setClicked(true);
+      setTimeout(() => setClicked(false), 250);
     } else {
-      setLightMode(!lightMode);
-      setDragging(false);
       setCurrentY(0);
       setInitialY(0);
-
-      // TODO: DRY
-      if (JSON.parse(localStorage.getItem(LocalStorageKey.AudioEnabled))) {
-        audioRef.current?.play();
-      }
     }
 
-    document.removeEventListener("touchend", handleTouchEnd);
+    // TODO: DRY
+    if (JSON.parse(localStorage.getItem(LocalStorageKey.AudioEnabled))) {
+      audioRef.current?.play();
+    }
   };
 
   return (
