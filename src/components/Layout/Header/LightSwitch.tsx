@@ -71,17 +71,12 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
     }
   };
 
-  const handleTouchStart = (event: React.TouchEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-  };
-
   return (
     <StyledButton
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onKeyUp={handleKeyUp}
-      onTouchStart={handleTouchStart}
       aria-label="Theme Toggle"
       style={springProps}
     >
