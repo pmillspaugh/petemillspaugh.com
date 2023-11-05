@@ -31,6 +31,9 @@ const StyledTrigger = styled.button`
   font-family: var(--font-mono);
   font-size: 0.875rem;
   font-weight: 700;
+  transition:
+    border var(--base-timing) ease-out,
+    outline var(--base-timing) ease-out;
 
   @media (min-width: 768px) {
     padding: 8px;
@@ -60,6 +63,7 @@ const StyledShortcut = styled.div`
     padding: 0px 4px;
     border: 1.5px solid ${(p) => p.theme.textColor};
     border-radius: 2px;
+    transition: border var(--base-timing) ease-out;
   }
 
   button:hover > & > span {

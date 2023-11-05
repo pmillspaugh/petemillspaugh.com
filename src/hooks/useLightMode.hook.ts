@@ -5,7 +5,7 @@ const useLightMode = (): {
   lightMode: boolean;
   setLightMode: (isLightMode: boolean) => void;
 } => {
-  const [lightMode, setLightModeState] = useState(true);
+  const [lightMode, setLightModeState] = useState(false);
 
   useEffect(() => {
     const storedThemePreference = JSON.parse(
