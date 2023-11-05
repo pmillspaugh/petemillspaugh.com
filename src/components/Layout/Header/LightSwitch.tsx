@@ -6,6 +6,10 @@ import useLightMode from "@/hooks/useLightMode.hook";
 import { LocalStorageKey } from "@/constants";
 import EdisonBulb from "./EdisonBulb";
 
+/**
+ * CLICKING ON MOBILE:
+ */
+
 export type LightSwitchProps = ReturnType<typeof useLightMode>;
 
 const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
@@ -18,6 +22,7 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
   const [currentY, setCurrentY] = useState(0);
   const [clicked, setClicked] = useState(false);
 
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const springProps = useSpring({
@@ -31,17 +36,12 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
   });
 
   const handleMouseDown = (event: React.MouseEvent<HTMLButtonElement>) => {
-    alert("handleMouseDown");
-
     setDragging(true);
     setInitialY(event.clientY);
     setCurrentY(event.clientY);
-    document.addEventListener("mouseup", handleMouseUp);
   };
 
   const handleMouseMove = (event: React.MouseEvent<HTMLButtonElement>) => {
-    alert("handleMouseMove");
-
     if (dragging) {
       event.clientY < initialY
         ? setCurrentY(initialY)
@@ -49,9 +49,13 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
     }
   };
 
-  const handleMouseUp = () => {
-    alert("handleMouseUp");
+  const handleMouseOut = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (dragging) {
+      document.addEventListener("mouseup", handleMouseUp);
+    }
+  };
 
+  const handleMouseUp = () => {
     setLightMode(!lightMode);
     setDragging(false);
 
@@ -70,42 +74,37 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
     document.removeEventListener("mouseup", handleMouseUp);
   };
 
-  const handleKeyUp = (event: React.KeyboardEvent<HTMLButtonElement>) => {
-    alert("handleKeyUp");
-
-    if (event.key === "Enter" || event.key === " ") {
-      handleMouseUp();
-      setClicked(true);
-      setTimeout(() => setClicked(false), 250);
-    }
-  };
-
   const handleTouchStart = (event: React.TouchEvent<HTMLButtonElement>) => {
-    alert("handleTouchStart");
-
     // Prevent pull-to-refresh behavior on mobile
     document.documentElement.style.overscrollBehavior = "none";
 
     setDragging(true);
     setInitialY(event.touches[0].clientY);
     setCurrentY(event.touches[0].clientY);
-
-    document.addEventListener("touchend", handleTouchEnd);
   };
 
   const handleTouchMove = (event: React.TouchEvent<HTMLButtonElement>) => {
-    alert("handleTouchMove");
+    const touch = event.touches[0];
 
     if (dragging) {
-      event.touches[0].clientY < initialY
+      touch.clientY < initialY
         ? setCurrentY(initialY)
-        : setCurrentY(Math.min(event.touches[0].clientY, initialY + RANGE));
+        : setCurrentY(Math.min(touch.clientY, initialY + RANGE));
+    }
+
+    const buttonRect = buttonRef.current?.getBoundingClientRect();
+    const isOutside =
+      touch.clientX < buttonRect?.left ||
+      touch.clientX > buttonRect?.right ||
+      touch.clientY < buttonRect?.top ||
+      touch.clientY > buttonRect?.bottom;
+
+    if (isOutside) {
+      document.addEventListener("touchend", handleTouchEnd);
     }
   };
 
   const handleTouchEnd = () => {
-    alert("handleTouchEnd");
-
     // Re-enable pull-to-refresh behavior on mobile
     document.documentElement.style.overscrollBehavior = "auto";
 
@@ -113,15 +112,15 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
     // setLightMode(!lightMode);
     // setDragging(false);
 
-    if (currentY === initialY && currentY !== 0) {
-      // setClicked(true);
-      // setTimeout(() => setClicked(false), 250);
-    } else {
-      setCurrentY(0);
-      setInitialY(0);
-    }
+    // if (currentY === initialY && currentY !== 0) {
+    //   setClicked(true);
+    //   setTimeout(() => setClicked(false), 250);
+    // } else {
+    //   setCurrentY(0);
+    //   setInitialY(0);
+    // }
 
-    // TODO: DRY
+    // // TODO: DRY
     // if (JSON.parse(localStorage.getItem(LocalStorageKey.AudioEnabled))) {
     //   audioRef.current?.play();
     // }
@@ -129,15 +128,25 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
     document.removeEventListener("touchend", handleTouchEnd);
   };
 
+  const handleKeyUp = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      handleMouseUp();
+      setClicked(true);
+      setTimeout(() => setClicked(false), 250);
+    }
+  };
+
   return (
     <StyledButton
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
-      onKeyUp={handleKeyUp}
+      onMouseOut={handleMouseOut}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
+      onKeyUp={handleKeyUp}
+      ref={buttonRef}
       aria-label="Theme Toggle"
       style={springProps}
     >
