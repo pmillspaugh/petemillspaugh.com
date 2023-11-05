@@ -75,6 +75,9 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
     // Prevent pull-to-refresh behavior on mobile
     document.documentElement.style.overscrollBehavior = "none";
 
+    // Prevent handleMouseUp from firing on mobile
+    event.preventDefault();
+
     setDragging(true);
     setInitialY(event.touches[0].clientY);
     setCurrentY(event.touches[0].clientY);
