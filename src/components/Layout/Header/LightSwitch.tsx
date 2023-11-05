@@ -30,12 +30,6 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
     },
   });
 
-  const playAudio = useCallback(() => {
-    if (JSON.parse(localStorage.getItem(LocalStorageKey.AudioEnabled))) {
-      audioRef.current?.play();
-    }
-  }, []);
-
   const handleMouseDown = (event: React.MouseEvent<HTMLButtonElement>) => {
     setDragging(true);
     setInitialY(event.clientY);
@@ -64,7 +58,9 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
       setInitialY(0);
     }
 
-    playAudio();
+    if (JSON.parse(localStorage.getItem(LocalStorageKey.AudioEnabled))) {
+      audioRef.current?.play();
+    }
   };
 
   const handleKeyUp = (event: React.KeyboardEvent<HTMLButtonElement>) => {
@@ -75,49 +71,12 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
     }
   };
 
-  const handleTouchStart = (event: React.TouchEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    setDragging(true);
-    const touch = event.touches[0];
-    setInitialY(touch.clientY);
-    setCurrentY(touch.clientY);
-    document.addEventListener("touchend", handleTouchEnd);
-  };
-
-  const handleTouchMove = (event: React.TouchEvent<HTMLButtonElement>) => {
-    const touch = event.touches[0];
-    if (dragging) {
-      touch.clientY < initialY
-        ? setCurrentY(initialY)
-        : setCurrentY(Math.min(touch.clientY, initialY + RANGE));
-    }
-  };
-
-  const handleTouchEnd = () => {
-    setLightMode(!lightMode);
-    setDragging(false);
-    document.removeEventListener("touchend", handleTouchEnd);
-
-    // if (currentY === initialY && currentY !== 0) {
-    //   setClicked(true);
-    //   setTimeout(() => setClicked(false), 250);
-    // } else {
-    setCurrentY(0);
-    setInitialY(0);
-    // }
-
-    playAudio();
-  };
-
   return (
     <StyledButton
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onKeyUp={handleKeyUp}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
       aria-label="Theme Toggle"
       style={springProps}
     >
@@ -136,6 +95,7 @@ const StyledButton = styled(animated.button)`
   padding: 0 8px;
   background: none;
   border: none;
+  overscroll-behavior: none;
 
   &:hover {
     cursor: grab;
