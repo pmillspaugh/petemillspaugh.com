@@ -8,6 +8,13 @@ import EdisonBulb from "./EdisonBulb";
 
 /**
  * CLICKING ON MOBILE:
+ * touchStart
+ * touchEnd
+ * touchEnd (again)
+ * mouseMove
+ * mouseDown
+ * mouseUp
+ * mouseUp (again)
  */
 
 export type LightSwitchProps = ReturnType<typeof useLightMode>;
@@ -22,7 +29,6 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
   const [currentY, setCurrentY] = useState(0);
   const [clicked, setClicked] = useState(false);
 
-  const buttonRef = useRef<HTMLButtonElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const springProps = useSpring({
@@ -81,6 +87,8 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
     setDragging(true);
     setInitialY(event.touches[0].clientY);
     setCurrentY(event.touches[0].clientY);
+
+    document.addEventListener("touchend", handleTouchEnd);
   };
 
   const handleTouchMove = (event: React.TouchEvent<HTMLButtonElement>) => {
@@ -91,39 +99,22 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
         ? setCurrentY(initialY)
         : setCurrentY(Math.min(touch.clientY, initialY + RANGE));
     }
-
-    const buttonRect = buttonRef.current?.getBoundingClientRect();
-    const isOutside =
-      touch.clientX < buttonRect?.left ||
-      touch.clientX > buttonRect?.right ||
-      touch.clientY < buttonRect?.top ||
-      touch.clientY > buttonRect?.bottom;
-
-    if (isOutside) {
-      document.addEventListener("touchend", handleTouchEnd);
-    }
   };
 
   const handleTouchEnd = () => {
     // Re-enable pull-to-refresh behavior on mobile
     document.documentElement.style.overscrollBehavior = "auto";
 
-    // TODO: double firing on click/tap on mobile, so toggle cancels ou
-    // setLightMode(!lightMode);
-    // setDragging(false);
-
-    // if (currentY === initialY && currentY !== 0) {
-    //   setClicked(true);
-    //   setTimeout(() => setClicked(false), 250);
-    // } else {
-    //   setCurrentY(0);
-    //   setInitialY(0);
-    // }
-
-    // // TODO: DRY
-    // if (JSON.parse(localStorage.getItem(LocalStorageKey.AudioEnabled))) {
-    //   audioRef.current?.play();
-    // }
+    if (currentY !== initialY) {
+      setLightMode(!lightMode);
+      setDragging(false);
+      setCurrentY(0);
+      setInitialY(0);
+      // TODO: DRY
+      if (JSON.parse(localStorage.getItem(LocalStorageKey.AudioEnabled))) {
+        audioRef.current?.play();
+      }
+    }
 
     document.removeEventListener("touchend", handleTouchEnd);
   };
@@ -146,7 +137,6 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
       onKeyUp={handleKeyUp}
-      ref={buttonRef}
       aria-label="Theme Toggle"
       style={springProps}
     >
