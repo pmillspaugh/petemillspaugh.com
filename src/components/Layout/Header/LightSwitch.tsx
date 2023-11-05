@@ -94,7 +94,7 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
     document.documentElement.style.overscrollBehavior = "auto";
     document.removeEventListener("touchend", handleTouchEnd);
 
-    setLightMode(!lightMode);
+    // setLightMode(!lightMode);
     setDragging(false);
 
     if (currentY === initialY && currentY !== 0) {
