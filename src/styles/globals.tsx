@@ -75,7 +75,7 @@ export const GlobalStyle = createGlobalStyle`
     OVERRIDES
   */
 
-  body {
+  html, body {
     overscroll-behavior-y: contain;
   }
 
