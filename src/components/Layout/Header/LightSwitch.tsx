@@ -31,6 +31,8 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
   });
 
   const handleMouseDown = (event: React.MouseEvent<HTMLButtonElement>) => {
+    alert("handleMouseDown");
+
     setDragging(true);
     setInitialY(event.clientY);
     setCurrentY(event.clientY);
@@ -38,6 +40,8 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
   };
 
   const handleMouseMove = (event: React.MouseEvent<HTMLButtonElement>) => {
+    alert("handleMouseMove");
+
     if (dragging) {
       event.clientY < initialY
         ? setCurrentY(initialY)
@@ -46,6 +50,8 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
   };
 
   const handleMouseUp = () => {
+    alert("handleMouseUp");
+
     setLightMode(!lightMode);
     setDragging(false);
 
@@ -65,6 +71,8 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
   };
 
   const handleKeyUp = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    alert("handleKeyUp");
+
     if (event.key === "Enter" || event.key === " ") {
       handleMouseUp();
       setClicked(true);
@@ -73,6 +81,8 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
   };
 
   const handleTouchStart = (event: React.TouchEvent<HTMLButtonElement>) => {
+    alert("handleTouchStart");
+
     // Prevent pull-to-refresh behavior on mobile
     document.documentElement.style.overscrollBehavior = "none";
 
@@ -84,6 +94,8 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
   };
 
   const handleTouchMove = (event: React.TouchEvent<HTMLButtonElement>) => {
+    alert("handleTouchMove");
+
     if (dragging) {
       event.touches[0].clientY < initialY
         ? setCurrentY(initialY)
@@ -92,23 +104,27 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
   };
 
   const handleTouchEnd = () => {
+    alert("handleTouchEnd");
+
+    // Re-enable pull-to-refresh behavior on mobile
     document.documentElement.style.overscrollBehavior = "auto";
 
-    setLightMode(!lightMode);
-    setDragging(false);
+    // TODO: double firing on click/tap on mobile, so toggle cancels ou
+    // setLightMode(!lightMode);
+    // setDragging(false);
 
     if (currentY === initialY && currentY !== 0) {
-      setClicked(true);
-      setTimeout(() => setClicked(false), 250);
+      // setClicked(true);
+      // setTimeout(() => setClicked(false), 250);
     } else {
       setCurrentY(0);
       setInitialY(0);
     }
 
     // TODO: DRY
-    if (JSON.parse(localStorage.getItem(LocalStorageKey.AudioEnabled))) {
-      audioRef.current?.play();
-    }
+    // if (JSON.parse(localStorage.getItem(LocalStorageKey.AudioEnabled))) {
+    //   audioRef.current?.play();
+    // }
 
     document.removeEventListener("touchend", handleTouchEnd);
   };
