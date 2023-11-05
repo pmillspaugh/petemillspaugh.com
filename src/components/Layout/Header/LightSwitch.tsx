@@ -6,17 +6,6 @@ import useLightMode from "@/hooks/useLightMode.hook";
 import { LocalStorageKey } from "@/constants";
 import EdisonBulb from "./EdisonBulb";
 
-/**
- * CLICKING ON MOBILE:
- * touchStart
- * touchEnd
- * touchEnd (again)
- * mouseMove
- * mouseDown
- * mouseUp
- * mouseUp (again)
- */
-
 export type LightSwitchProps = ReturnType<typeof useLightMode>;
 
 const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
@@ -30,6 +19,11 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
   const [clicked, setClicked] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement>(null);
+  const playAudio = useCallback(() => {
+    if (JSON.parse(localStorage.getItem(LocalStorageKey.AudioEnabled))) {
+      audioRef.current?.play();
+    }
+  }, []);
 
   const springProps = useSpring({
     transform: clicked
@@ -64,6 +58,7 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
   const handleMouseUp = () => {
     setLightMode(!lightMode);
     setDragging(false);
+    playAudio();
 
     if (currentY === initialY && currentY !== 0) {
       setClicked(true);
@@ -73,49 +68,32 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
       setInitialY(0);
     }
 
-    if (JSON.parse(localStorage.getItem(LocalStorageKey.AudioEnabled))) {
-      audioRef.current?.play();
-    }
-
     document.removeEventListener("mouseup", handleMouseUp);
   };
 
   const handleTouchStart = (event: React.TouchEvent<HTMLButtonElement>) => {
     // Prevent pull-to-refresh behavior on mobile
     document.documentElement.style.overscrollBehavior = "none";
+    document.addEventListener("touchend", handleTouchEnd);
 
     setDragging(true);
     setInitialY(event.touches[0].clientY);
     setCurrentY(event.touches[0].clientY);
-
-    document.addEventListener("touchend", handleTouchEnd);
   };
 
   const handleTouchMove = (event: React.TouchEvent<HTMLButtonElement>) => {
-    const touch = event.touches[0];
-
     if (dragging) {
-      touch.clientY < initialY
+      event.touches[0].clientY < initialY
         ? setCurrentY(initialY)
-        : setCurrentY(Math.min(touch.clientY, initialY + RANGE));
+        : setCurrentY(Math.min(event.touches[0].clientY, initialY + RANGE));
     }
   };
 
   const handleTouchEnd = () => {
+    handleMouseUp();
+
     // Re-enable pull-to-refresh behavior on mobile
     document.documentElement.style.overscrollBehavior = "auto";
-
-    if (currentY !== initialY) {
-      setLightMode(!lightMode);
-      setDragging(false);
-      setCurrentY(0);
-      setInitialY(0);
-      // TODO: DRY
-      if (JSON.parse(localStorage.getItem(LocalStorageKey.AudioEnabled))) {
-        audioRef.current?.play();
-      }
-    }
-
     document.removeEventListener("touchend", handleTouchEnd);
   };
 
