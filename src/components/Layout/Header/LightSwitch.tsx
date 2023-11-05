@@ -71,12 +71,39 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
     }
   };
 
-  const handleTouchStart = () => {
+  const handleTouchStart = (event: React.TouchEvent<HTMLButtonElement>) => {
+    // Prevent pull-to-refresh behavior on mobile
     document.documentElement.style.overscrollBehavior = "none";
+
+    setDragging(true);
+    setInitialY(event.touches[0].clientY);
+    setCurrentY(event.touches[0].clientY);
+
+    document.addEventListener("touchend", handleTouchEnd);
+  };
+
+  const handleTouchMove = (event: React.TouchEvent<HTMLButtonElement>) => {
+    if (dragging) {
+      event.touches[0].clientY < initialY
+        ? setCurrentY(initialY)
+        : setCurrentY(Math.min(event.touches[0].clientY, initialY + RANGE));
+    }
   };
 
   const handleTouchEnd = () => {
     document.documentElement.style.overscrollBehavior = "auto";
+
+    setLightMode(!lightMode);
+    setDragging(false);
+    setCurrentY(0);
+    setInitialY(0);
+
+    // TODO: DRY
+    if (JSON.parse(localStorage.getItem(LocalStorageKey.AudioEnabled))) {
+      audioRef.current?.play();
+    }
+
+    document.removeEventListener("touchend", handleTouchEnd);
   };
 
   return (
@@ -86,6 +113,7 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
       onMouseUp={handleMouseUp}
       onKeyUp={handleKeyUp}
       onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
       aria-label="Theme Toggle"
       style={springProps}
