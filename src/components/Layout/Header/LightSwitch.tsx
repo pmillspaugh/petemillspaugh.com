@@ -74,7 +74,7 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
   const handleTouchStart = (event: React.TouchEvent<HTMLButtonElement>) => {
     // Prevent pull-to-refresh behavior on mobile
     document.documentElement.style.overscrollBehavior = "none";
-    document.addEventListener("touchend", handleTouchEnd);
+    // document.addEventListener("touchend", handleTouchEnd);
 
     setDragging(true);
     setInitialY(event.touches[0].clientY);
@@ -90,11 +90,11 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
   };
 
   const handleTouchEnd = () => {
-    handleMouseUp();
-
     // Re-enable pull-to-refresh behavior on mobile
     document.documentElement.style.overscrollBehavior = "auto";
-    document.removeEventListener("touchend", handleTouchEnd);
+    // document.removeEventListener("touchend", handleTouchEnd);
+
+    handleMouseUp();
   };
 
   const handleKeyUp = (event: React.KeyboardEvent<HTMLButtonElement>) => {
