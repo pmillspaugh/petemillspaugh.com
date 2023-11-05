@@ -80,7 +80,6 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
     setCurrentY(event.touches[0].clientY);
 
     document.addEventListener("touchend", handleTouchEnd);
-    document.addEventListener("mouseup", handleMouseUp);
   };
 
   const handleTouchMove = (event: React.TouchEvent<HTMLButtonElement>) => {
@@ -94,23 +93,21 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
   const handleTouchEnd = () => {
     document.documentElement.style.overscrollBehavior = "auto";
 
-    // setDragging(false);
+    if (currentY === initialY && currentY !== 0) {
+      // I think I don't need to do anything here since mouseup will fire
+    } else {
+      setLightMode(!lightMode);
+      setDragging(false);
+      setCurrentY(0);
+      setInitialY(0);
 
-    // if (currentY === initialY && currentY !== 0) {
-    //   setClicked(true);
-    //   setTimeout(() => setClicked(false), 250);
-    // } else {
-    //   setCurrentY(0);
-    //   setInitialY(0);
-    // }
-
-    // // TODO: DRY
-    // if (JSON.parse(localStorage.getItem(LocalStorageKey.AudioEnabled))) {
-    //   audioRef.current?.play();
-    // }
+      // TODO: DRY
+      if (JSON.parse(localStorage.getItem(LocalStorageKey.AudioEnabled))) {
+        audioRef.current?.play();
+      }
+    }
 
     document.removeEventListener("touchend", handleTouchEnd);
-    document.removeEventListener("mouseup", handleMouseUp);
   };
 
   return (
