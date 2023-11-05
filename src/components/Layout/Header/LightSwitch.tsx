@@ -94,20 +94,20 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
   const handleTouchEnd = () => {
     document.documentElement.style.overscrollBehavior = "auto";
 
-    // if (currentY === initialY && currentY !== 0) {
-    //   setLightMode(!lightMode);
-    //   setDragging(false);
-    //   setClicked(true);
-    //   setTimeout(() => setClicked(false), 250);
-    // } else {
-    //   setCurrentY(0);
-    //   setInitialY(0);
-    // }
+    if (currentY === initialY && currentY !== 0) {
+      setClicked(true);
+      setTimeout(() => setClicked(false), 250);
+    } else {
+      setLightMode(!lightMode);
+      setDragging(false);
+      setCurrentY(0);
+      setInitialY(0);
+    }
 
-    // // TODO: DRY
-    // if (JSON.parse(localStorage.getItem(LocalStorageKey.AudioEnabled))) {
-    //   audioRef.current?.play();
-    // }
+    // TODO: DRY
+    if (JSON.parse(localStorage.getItem(LocalStorageKey.AudioEnabled))) {
+      audioRef.current?.play();
+    }
 
     document.removeEventListener("touchend", handleTouchEnd);
   };
