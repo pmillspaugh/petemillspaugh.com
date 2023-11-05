@@ -73,5 +73,7 @@ export async function generateRssFeed(postPaths: PostParams[]) {
     });
   }
 
-  fs.writeFileSync(path.join(process.cwd(), "public/rss.xml"), feed.rss2());
+  if (process.env.NEXT_PUBLIC_VERCEL_ENV !== "development") {
+    fs.writeFileSync(path.join(process.cwd(), "public/rss.xml"), feed.rss2());
+  }
 }
