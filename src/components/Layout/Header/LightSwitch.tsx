@@ -72,30 +72,24 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
   };
 
   return (
-    <Wrapper>
-      <StyledButton
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onKeyUp={handleKeyUp}
-        aria-label="Theme Toggle"
-        style={springProps}
-      >
-        <audio ref={audioRef}>
-          <source src="./audio/light-switch.m4a" type="audio/mp4" />
-        </audio>
-        <VisuallyHidden>
-          {lightMode ? "Switch to dark mode" : "Switch to light mode"}
-        </VisuallyHidden>
-        <EdisonBulb lightMode={lightMode} />
-      </StyledButton>
-    </Wrapper>
+    <StyledButton
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+      onKeyUp={handleKeyUp}
+      aria-label="Theme Toggle"
+      style={springProps}
+    >
+      <audio ref={audioRef}>
+        <source src="./audio/light-switch.m4a" type="audio/mp4" />
+      </audio>
+      <VisuallyHidden>
+        {lightMode ? "Switch to dark mode" : "Switch to light mode"}
+      </VisuallyHidden>
+      <EdisonBulb lightMode={lightMode} />
+    </StyledButton>
   );
 };
-
-const Wrapper = styled.div`
-  overscroll-behavior: none;
-`;
 
 const StyledButton = styled(animated.button)`
   padding: 0 8px;
