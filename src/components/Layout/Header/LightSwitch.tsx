@@ -71,12 +71,22 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
     }
   };
 
+  const handleTouchStart = () => {
+    document.documentElement.style.overscrollBehavior = "none";
+  };
+
+  const handleTouchEnd = () => {
+    document.documentElement.style.overscrollBehavior = "auto";
+  };
+
   return (
     <StyledButton
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onKeyUp={handleKeyUp}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
       aria-label="Theme Toggle"
       style={springProps}
     >

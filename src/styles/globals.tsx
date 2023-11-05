@@ -75,10 +75,6 @@ export const GlobalStyle = createGlobalStyle`
     OVERRIDES
   */
 
-  html, body {
-    overscroll-behavior: none;
-  }
-
   /* Code Hike */
   code, .ch-editor-frame, .ch-codegroup, .ch-codeblock, .ch-code-scroll-parent {
     font-family: var(--font-mono), monospace;
