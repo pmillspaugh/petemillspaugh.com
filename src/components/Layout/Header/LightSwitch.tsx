@@ -80,6 +80,7 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
     setCurrentY(event.touches[0].clientY);
 
     document.addEventListener("touchend", handleTouchEnd);
+    document.addEventListener("mouseup", handleMouseUp);
   };
 
   const handleTouchMove = (event: React.TouchEvent<HTMLButtonElement>) => {
@@ -109,6 +110,7 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
     // }
 
     document.removeEventListener("touchend", handleTouchEnd);
+    document.removeEventListener("mouseup", handleMouseUp);
   };
 
   return (
