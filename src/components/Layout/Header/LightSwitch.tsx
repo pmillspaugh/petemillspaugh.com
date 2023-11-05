@@ -71,12 +71,22 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
     }
   };
 
+  const handleTouchStart = (event: React.TouchEvent<HTMLButtonElement>) => {
+    document.body.style.overscrollBehavior = "none";
+  };
+
+  const handleTouchEnd = (event: React.TouchEvent<HTMLButtonElement>) => {
+    document.body.style.overscrollBehavior = "auto";
+  };
+
   return (
     <StyledButton
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onKeyUp={handleKeyUp}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
       aria-label="Theme Toggle"
       style={springProps}
     >
@@ -95,7 +105,6 @@ const StyledButton = styled(animated.button)`
   padding: 0 8px;
   background: none;
   border: none;
-  overscroll-behavior: none;
 
   &:hover {
     cursor: grab;
