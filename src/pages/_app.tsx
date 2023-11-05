@@ -30,7 +30,7 @@ const App = ({ Component, pageProps }) => {
           );
         } catch (error) {
           window.pagefind = {
-            search: () => ({
+            debouncedSearch: () => ({
               results: [
                 {
                   id: "pretzels",
