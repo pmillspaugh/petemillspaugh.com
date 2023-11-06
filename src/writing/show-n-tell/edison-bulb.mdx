@@ -34,7 +34,7 @@ useEffect(() => {
 }, []);
 ```
 
-It’s worth noting one shortcoming of this approach w/r/t SSR: `localStorage` and `window.matchMedia` are only available client-side, so the server-rendered HTML will always default to dark mode. That creates a flicker for early birds, so as a compromise I apply a CSS transition to `color` and `background-color` to create a fade-in effect. A few helpful commenters <a href="https://news.ycombinator.com/item?id=38135892" target="_blank">on Hacker News</a> suggested either (1) moving the JS that checks localStorage into the document `<head>` to run before content loads, or (2) setting a cookie. I haven’t refactored yet, but I think I’ll take a stab at those suggestions at some point. I was also initially defaulting to light mode on the server, but another HN commenter pointed out that the light flicker is more jarring than vice versa.
+It’s worth noting one shortcoming of this approach w/r/t SSR: `localStorage` and `window.matchMedia` are only available client-side, so the server-rendered HTML will always default to dark mode. That creates a flicker for early birds, so as a compromise I apply a CSS transition to `color` and `background-color` to create a fade-in effect. A few helpful commenters <a href="https://news.ycombinator.com/item?id=38135892" target="_blank">on Hacker News</a> suggested either (1) moving the JS that checks localStorage into the document `<head>` to run before content loads, or (2) setting a cookie. I haven’t implemented either solution yet, but it’s on my todo list. I was also initially defaulting to light mode on the server, but another HN commenter pointed out that the light flicker is more jarring than vice versa.
 
 ## Tactile animation
 
