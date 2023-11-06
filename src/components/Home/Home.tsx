@@ -57,6 +57,10 @@ const StyledCta = styled.div`
   align-items: center;
   gap: 16px;
   font-family: var(--font-petrona);
+
+  & > em > a {
+    transition: color var(--base-timing) ease-out;
+  }
 `;
 
 export default Home;

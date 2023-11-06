@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CH } from "@code-hike/mdx/components";
 
 import Blockquote from "./Blockquote";
@@ -24,4 +25,5 @@ export const components = {
   Transcription,
   // external components
   CH,
+  Link,
 };
