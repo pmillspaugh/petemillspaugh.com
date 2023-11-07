@@ -31,7 +31,7 @@ export async function generateRssFeed(postPaths: PostParams[]) {
   );
 
   const baseURL =
-    process.env.VERCEL_ENV === "production"
+    process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
       ? "https://petemillspaugh.com"
       : `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
 
