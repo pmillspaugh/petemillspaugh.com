@@ -30,7 +30,11 @@ export async function generateRssFeed(postPaths: PostParams[]) {
       new Date(a.metadata.createdAt).getTime()
   );
 
-  const baseURL = `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
+  const baseURL =
+    process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
+      ? "https://petemillspaugh.com"
+      : `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
+
   const author = {
     name: "Pete Millspaugh",
     email: "peterdgmillspaugh@gmail.com",
