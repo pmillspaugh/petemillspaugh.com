@@ -9,7 +9,7 @@ status: Seedling
 
 In May I was talking to a friend who had just graduated from a CS undergrad program, and he mentioned that he was creating a website. I asked which web framework he was using. React? Svelte? Something else? Nope, no framework—just HTML, CSS, and JavaScript.
 
-It’s been over two years since I worked on a website without heavy abstractions to guide me, so out of curiosity I opened my editor and created three files: `index.html`, `styles.css`, and `index.js`. Pretty immediately I was annoyed by lack of HMR, so I reached for <a href="https://www.npmjs.com/package/nodemon" target="_blank">nodemon</a>. Before running `npm i nodemon`, though, I decided to take the experiment a step further and see what it would be like to build a website **without any external dependencies whatsoever**, <a href="https://github.com/pmillspaugh/only-the-platform/blob/main/package.json" target="_blank">literally</a>.
+It’s been over two years since I worked on a website without heavy abstractions to guide me, so out of curiosity I opened my editor and created three files: `index.html`, `styles.css`, and `index.js`. Pretty immediately I was annoyed by lack of HMR, so I reached for [nodemon](https://www.npmjs.com/package/nodemon). Before running `npm i nodemon`, though, I decided to take the experiment a step further and see what it would be like to build a website **without any external dependencies whatsoever**, [literally](https://github.com/pmillspaugh/only-the-platform/blob/main/package.json).
 
 I plan to deploy my sandbox site once I have a critical mass of browser API demos that I think others would find interesting. Open source is awesome, and I’ve missed many libraries while tinkering here, but it’s a lot of fun to _#usetheplatform_.
 
@@ -17,19 +17,18 @@ I plan to deploy my sandbox site once I have a critical mass of browser API demo
 
 So far I’ve played around with:
 
-{/* prettier-ignore */}
-- <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" target="_blank">Service Workers</a>
-- <a href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API" target="_blank">View Transitions</a>
-- <a href="https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API" target="_blank">Network Information</a>
-- <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components" target="_blank">Web Components</a>
-- <a href="https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API" target="_blank">Battery Status</a>
-- <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API" target="_blank">Fullscreen</a>
+- [Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API)
+- [View Transitions](https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API)
+- [Network Information](https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API)
+- [Web Components](https://developer.mozilla.org/en-US/docs/Web/API/Web_components)
+- [Battery Status](https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API)
+- [Fullscreen](https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API)
 
 ### Service workers
 
 Service workers are the browser feature that I get most excited about. I find the every-website-should-have-a-service-worker argument very compelling. A sensible offline experience, for example, should be a given. I think about this whenever I’m on an airplane and a browser tab that I had already loaded 404s on refresh, especially for static sites. Full disclosure: I am the pot calling the kettle a website without a service worker here (i.e. I haven't implemented any service worker caching strategy in my garden just yet).
 
-I’m also interested in what an abstraction would look like for SPAs. <a href="https://github.com/hanford/next-offline" target="_blank">`next/offline`</a> exists and looks useful. An even simpler interface like a `useOffline` React hook might be handy to cache recently visited or high-traffic pages.
+I’m also interested in what an abstraction would look like for SPAs. [`next/offline`](https://github.com/hanford/next-offline) exists and looks useful. An even simpler interface like a `useOffline` React hook might be handy to cache recently visited or high-traffic pages.
 
 {/* ### View Transitions */}
 
@@ -81,7 +80,7 @@ fs.watch(
 );
 ```
 
-It turns out Node 18 (LTS) has supported this out of the box <a href="https://nodejs.org/en/blog/release/v18.11.0" target="_blank">since October ’22</a> with the `--watch` flag, so I ended up replacing the flaky `fs.watch` implementation. <a href="https://twitter.com/jlengstorf/status/1707521630585676224" target="_blank">Thanks to Jason Lengstorf</a> for the tip!
+It turns out Node 18 (LTS) has supported this out of the box [since October ’22](https://nodejs.org/en/blog/release/v18.11.0) with the `--watch` flag, so I ended up replacing the flaky `fs.watch` implementation. [Thanks to Jason Lengstorf](https://twitter.com/jlengstorf/status/1707521630585676224) for the tip!
 
 {/* ### TypeScript */}
 
@@ -98,24 +97,22 @@ It turns out Node 18 (LTS) has supported this out of the box <a href="https://no
 
 ## Browser APIs I'd like to explore
 
-The collection of features that browsers ship out of the box is <a href="https://developer.mozilla.org/en-US/docs/Web/API" target="_blank">vast</a>. There are a handful that I’m particularly keen to try out:
+The collection of features that browsers ship out of the box is [vast](https://developer.mozilla.org/en-US/docs/Web/API). There are a handful that I’m particularly keen to try out:
 
-{/* prettier-ignore */}
-- <a href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API" target="_blank">Geolocation</a>
-- <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API" target="_blank">Websockets</a>
-- <a href="https://developer.mozilla.org/en-US/docs/Web/API/Media_Capture_and_Streams_API" target="_blank">Media Capture</a>
-- <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API" target="_blank">Web Speech</a>
-- <a href="https://developer.mozilla.org/en-US/docs/Glossary/WebGL" target="_blank">WebGL</a>
-- <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API" target="_blank">Web Animations</a>
+- [Geolocation](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API)
+- [Websockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)
+- [Media Capture](https://developer.mozilla.org/en-US/docs/Web/API/Media_Capture_and_Streams_API)
+- [Web Speech](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API)
+- [WebGL](https://developer.mozilla.org/en-US/docs/Glossary/WebGL)
+- [Web Animations](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API)
 
 {/* ## Constraints breed creativity */}
 
-{/* I’m interested in the idea that the <a href="https://en.wikipedia.org/wiki/Creative_limitation" target="_blank">constraints breed creativity</a>. */}
+{/* I’m interested in the idea that [constraints breed creativity](https://en.wikipedia.org/wiki/Creative_limitation). */}
 
 ## Where to learn about browser features
 
-There are a lot of _#usetheplatform_ advocates out there _(read: Twitter)_. <a href="https://syntax.fm/" target="_blank">Syntax.fm</a>—my favorite web dev podcast—has a couple fun, relevant episodes:
+There are a lot of _#usetheplatform_ advocates out there _(read: Twitter)_. [Syntax.fm](https://syntax.fm/—my favorite web dev podcast—has a couple fun, relevant episodes:
 
-{/* prettier-ignore */}
-- <a href="https://syntax.fm/show/522/use-the-platform" target="_blank">Use The Platform!</a>
-- <a href="https://syntax.fm/show/456/10-nifty-browser-apis" target="_blank">10 Nifty Browser APIs</a>
+- [Use The Platform!](https://syntax.fm/show/522/use-the-platform)
+- [10 Nifty Browser APIs](https://syntax.fm/show/456/10-nifty-browser-apis)
