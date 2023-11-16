@@ -38,28 +38,28 @@ const ValTownButton = () => {
       let iframe = iframes[i];
       iframe.src = iframe.src;
     }
-  }, 150);
+  }, 250);
 
   useEffect(() => {
+    getValTownButtonClicks(); // initial fetch
+
     let intervalId;
     let timeoutId;
 
     // Clear polling if the Val Town Button is not in view
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          clearInterval(intervalId);
-          clearTimeout(timeoutId);
-          intervalId = setInterval(() => getValTownButtonClicks(), INTERVAL);
-          timeoutId = setTimeout(() => clearInterval(intervalId), TIMEOUT);
-        } else {
-          setVisible(false);
-          clearInterval(intervalId);
-        }
-      },
-      { threshold: 0.5 }
-    );
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setVisible(true);
+        clearInterval(intervalId);
+        clearTimeout(timeoutId);
+        intervalId = setInterval(() => getValTownButtonClicks(), INTERVAL);
+        timeoutId = setTimeout(() => clearInterval(intervalId), TIMEOUT);
+      } else {
+        setVisible(false);
+        clearInterval(intervalId);
+        clearTimeout(timeoutId);
+      }
+    });
 
     if (ref.current) {
       observer.observe(ref.current);
@@ -69,6 +69,7 @@ const ValTownButton = () => {
     function handleVisibilityChange() {
       if (document.hidden) {
         clearInterval(intervalId);
+        clearTimeout(timeoutId);
       } else {
         if (visible) {
           clearInterval(intervalId);

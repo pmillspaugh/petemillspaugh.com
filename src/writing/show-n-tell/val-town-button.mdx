@@ -29,7 +29,6 @@ And here are the Vals that fetch and increment the count:
 
 <iframe
   style={{ border: "none", marginBottom: "16px" }}
-  className="dark"
   id="the-val-town-button-getter"
   title="The Val Town Button: getValTownButtonClicks"
   width="100%"
@@ -40,7 +39,6 @@ And here are the Vals that fetch and increment the count:
 
 <iframe
   style={{ border: "none", marginBottom: "24px" }}
-  className="dark"
   id="the-val-town-button-setter"
   title="The Val Town Button: setValTownButtonClicks"
   width="100%"
@@ -53,7 +51,7 @@ Vals are composable, so the getter and setter import the click count from the fi
 
 Persisting a click count by exporting `valTownButtonClicks` works, but if you need more robust persistence, Val Town supports SQLite (Turso), PostgreSQL (Supabase, Neon), MySQL (PlanetScale), built-in blob storage, and more. The version number of a Val updates whenever you update and save. In this case, mutating `valTownButtonClicks` automatically versions up that Val. I could also consolidate the getter and setter into a single handler, maybe even using a framework like [Hono](https://hono.dev/), which VT supports (probably overkill here, though).
 
-I set up an interval to poll the fetcher Val every second, clearing the interval when the button is out of the viewport (using [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)), or when you navigate away from the browser tab, or after 30 seconds of inactivity (no mousemoves, clicks, or scrolling). The API call fired on click is also debounced, although I noticed that Val Town does some throttling on the endpoint already—if I rage click the button many times in a short time span without debouncing, the counter only increments once.
+I set up an interval to poll the fetcher Val every second, clearing the interval when the button is out of the viewport (using [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)), or when you navigate away from the browser tab, or after 10 seconds of inactivity (no mousemoves, clicks, or scrolling). The API call fired on click is also debounced, although I noticed that Val Town does some throttling on the endpoint already—if I rage click the button many times in a short time span without debouncing, the counter only increments once.
 
 ## Val for \_
 
