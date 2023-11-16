@@ -25,6 +25,7 @@ export const GlobalStyle = createGlobalStyle`
     /* Animations */
     --base-timing: 500ms;
     --fast-timing: 150ms;
+    --slow-timing: 1000ms;
   }
 
   /*

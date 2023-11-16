@@ -1,0 +1,68 @@
+---
+slug: val-town-button
+title: The Val Town Button
+createdAt: November 14, 2023
+updatedAt: November 15, 2023
+format: ShowNTell
+status: Seedling
+---
+
+[val.town](https://www.val.town/) makes it really easy to run JavaScript. Their homepage does a better job explaining it than I would, so I’ll go straight to a demo.
+
+Try pressing the button below this paragraph. Each button click triggers an API call to a "Val" I wrote that increments a global counter, which is stored in another Val. So if you pull this up in another browser or device and click, the tally will show up here, too. The Val Town Button is a spin on [The Button](<https://en.wikipedia.org/wiki/The_Button_(Reddit)>) at Reddit (which, btw, was created by [Josh Wardle](https://www.powerlanguage.co.uk/) of _Wordle_ fame—how about that!).
+
+<ValTownButton />
+
+Here’s the Val that persists the count:
+
+<iframe
+  style={{ border: "none", marginBottom: "24px" }}
+  id="the-val-town-button"
+  title="The Val Town Button: valTownButtonClicks"
+  width="100%"
+  height="180"
+  src="https://www.val.town/embed/petermillspaugh/valTownButtonClicks"
+  loading="lazy"
+/>
+
+And here are the Vals that fetch and increment the count:
+
+<iframe
+  style={{ border: "none", marginBottom: "16px" }}
+  id="the-val-town-button-getter"
+  title="The Val Town Button: getValTownButtonClicks"
+  width="100%"
+  height="300"
+  src="https://www.val.town/embed/petermillspaugh/getValTownButtonClicks"
+  loading="lazy"
+/>
+
+<iframe
+  style={{ border: "none", marginBottom: "24px" }}
+  id="the-val-town-button-setter"
+  title="The Val Town Button: setValTownButtonClicks"
+  width="100%"
+  height="400"
+  src="https://www.val.town/embed/petermillspaugh/setValTownButtonClicks"
+  loading="lazy"
+/>
+
+Vals are composable, so the getter and setter import the click count from the first Val. And since I made these Vals public, anyone can run them or import them into their own Vals. You can also like and fork Vals, making Val Town very much a social coding space.
+
+Persisting a click count by exporting `valTownButtonClicks` works, but if you need more robust persistence, Val Town supports SQLite (Turso), PostgreSQL (Supabase, Neon), MySQL (PlanetScale), built-in blob storage, and more. The version number of a Val updates whenever you update and save. In this case, mutating `valTownButtonClicks` automatically versions up that Val. I could also consolidate the getter and setter into a single handler, maybe even using a framework like [Hono](https://hono.dev/), which VT supports (probably overkill here, though).
+
+I set up an interval to poll the fetcher Val every second, clearing the interval when the button is out of the viewport (using [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)), or when you navigate away from the browser tab, or after 10 seconds of inactivity (no mousemoves, clicks, or scrolling). The API call fired on click is also debounced, although I noticed that Val Town does some throttling on the endpoint already—if I rage click the button many times in a short time span without debouncing, the counter only increments once.
+
+## Val for \_
+
+The Val Town Button above is more of a contrived example / social experiment, but you can build all sorts of stuff with Vals. My primary use case so far has been custom email reminder cron jobs, which are super handy. [pomdtr](https://www.val.town/u/pomdtr) just built a mini hosted [blog Val](https://www.val.town/v/pomdtr/blog). [hurricanenate](https://www.val.town/u/hurricanenate) built a [web scraper](https://nateeagle.com/posts/val-town-scraper/) to email him when Sea Light Swizzles are back in stock.
+
+The [docs](https://docs.val.town/) have a bunch of cool ideas to get your wheels turning, and [val.town/trending](https://www.val.town/trending) is a good way to keep tabs on neat Vals. The VT Discord server is also good fun, and the team is super responsive there.
+
+## Building in Val Town
+
+Val Town is just so fun. I hope it becomes a scalable, production-ready backend and that Vals become web primitives like Tweets and GitHub repos, but right now it is definitely just plain fun. The early I-don’t-know-quite-what-this-is-yet stage has a certain magic. I heard Steve Krouse (Val Town founder) say on a podcast that the 3-person VT team drops all product work on Thursdays and hacks on Vals. That reminded me of this passage in _The Dream Machine_ about Xerox PARC:
+
+> "Don’t just **invent** the future; go **live** in it"...whatever you build, use it. In fact, get everybody in PARC to use it. Get them pounding on the technology every day, writing reports, writing programs, sending E-mail—anything and everything, so they can see for themselves what the problems and possibilities are. And then use what they learn to build better technology.
+
+And btw, if you do like podcasts, Steve has been on the circuit this year—the VT [About](https://about.val.town/) page lists a handful of episodes (including my two favorite web dev podcasts, [syntax.fm](https://syntax.fm/show/640/supper-club-val-town-with-steve-krouse) and [devtools.fm](https://www.devtools.fm/episode/53)). Those conversations are pretty fascinating, both about Val Town’s vision and programming broadly.

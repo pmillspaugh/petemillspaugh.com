@@ -5,11 +5,13 @@ import Blockquote from "./Blockquote";
 import Code from "./Code";
 import { H2, H3 } from "./H";
 import P from "./P";
+import A from "./A";
 import Ul from "./Ul";
 
 import AudioSwitch from "./AudioSwitch";
 import Figure from "./Figure";
 import Transcription from "./Transcription";
+import ValTownButton from "./ValTownButton";
 
 export const components = {
   // native HTML elements
@@ -18,11 +20,13 @@ export const components = {
   h2: H2,
   h3: H3,
   p: P,
+  a: A,
   ul: Ul,
   // custom components
   AudioSwitch,
   Figure,
   Transcription,
+  ValTownButton,
   // external components
   CH,
   Link,
