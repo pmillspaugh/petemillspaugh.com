@@ -1,5 +1,6 @@
 export enum COLORS {
   Black = "hsl(0, 0%, 0%)",
+  White = "hsl(0, 0%, 100%)",
   Charcoal = "hsl(207, 43%, 16%)",
   Gray = "hsl(157, 6%, 90%)",
   Frost = "hsl(209, 33%, 96%)",
@@ -32,6 +33,8 @@ export const lightTheme = {
   popoverBg: COLORS.Frost,
   popoverBorderColor: COLORS.Green,
   switchEnabledBg: COLORS.Gold,
+  vtLogoBg: COLORS.White,
+  vtLogoColor: COLORS.Black,
 };
 
 export const darkTheme = {
@@ -48,4 +51,6 @@ export const darkTheme = {
   popoverBg: COLORS.Charcoal,
   popoverBorderColor: COLORS.Gold,
   switchEnabledBg: COLORS.Green,
+  vtLogoBg: COLORS.Black,
+  vtLogoColor: COLORS.White,
 };

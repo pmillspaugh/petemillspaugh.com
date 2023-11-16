@@ -11,6 +11,7 @@ import Ul from "./Ul";
 import AudioSwitch from "./AudioSwitch";
 import Figure from "./Figure";
 import Transcription from "./Transcription";
+import ValTownButton from "./ValTownButton";
 
 export const components = {
   // native HTML elements
@@ -25,6 +26,7 @@ export const components = {
   AudioSwitch,
   Figure,
   Transcription,
+  ValTownButton,
   // external components
   CH,
   Link,
