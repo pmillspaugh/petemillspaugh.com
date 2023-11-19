@@ -9,6 +9,7 @@ import RssIcon from "./RssIcon";
 import GitHubIcon from "./GitHubIcon";
 import ValTownIcon from "./ValTownIcon";
 import TwitterIcon from "./TwitterIcon";
+import EmailSignup from "@/components/EmailSignup";
 
 const Footer = () => {
   const { lightMode } = useContext(LightModeContext);
@@ -18,74 +19,85 @@ const Footer = () => {
       <NewfoundLake lightMode={lightMode} />
       <StyledWrapper>
         <StyledNav>
-          <StyledGardenUl>
-            <StyledGardenLi>
-              <StyledLink href="/garden">Garden</StyledLink>
-              <StyledGardenLink href={`/garden?format=${PostFormat.Essay}`}>
-                Essays
-              </StyledGardenLink>
-              <StyledGardenLink
-                href={`/garden?format=${PostFormat.Brainstorm}`}
-              >
-                Brainstorms
-              </StyledGardenLink>
-              <StyledGardenLink href={`/garden?format=${PostFormat.ShowNTell}`}>
-                Show 'n tells
-              </StyledGardenLink>
-              <StyledGardenLink href={`/garden?format=${PostFormat.TIL}`}>
-                TILs
-              </StyledGardenLink>
-            </StyledGardenLi>
-          </StyledGardenUl>
-          <StyledSecondarySection>
-            <StyledNavUl>
-              <li>
-                <StyledLink href="/about">About</StyledLink>
-              </li>
-              <li></li>
-              <li>
-                <StyledLink href="/wishlist">Wishlist</StyledLink>
-              </li>
-            </StyledNavUl>
-            <StyledIconUl>
-              <li>
-                <StyledRssIconLink href="/rss.xml" target="_blank">
-                  <RssIcon />
-                  <VisuallyHidden>
-                    RSS feed for petemillspaugh.com
-                  </VisuallyHidden>
-                </StyledRssIconLink>
-              </li>
-              <li>
-                <StyledIconLink
-                  href="https://github.com/pmillspaugh"
-                  target="_blank"
-                >
-                  <GitHubIcon />
-                  <VisuallyHidden>Pete Millspaugh on GitHub</VisuallyHidden>
-                </StyledIconLink>
-              </li>
-              <li>
-                <StyledIconLink
-                  href="https://twitter.com/pete_millspaugh"
-                  target="_blank"
-                >
-                  <TwitterIcon />
-                  <VisuallyHidden>Pete Millspaugh on Twitter</VisuallyHidden>
-                </StyledIconLink>
-              </li>
-              <li>
-                <StyledIconLink
-                  href="https://www.val.town/u/petermillspaugh"
-                  target="_blank"
-                >
-                  <ValTownIcon />
-                  <VisuallyHidden>Pete Millspaugh on Val Town</VisuallyHidden>
-                </StyledIconLink>
-              </li>
-            </StyledIconUl>
-            <StyledCopyright>© 2023 Pete Millspaugh</StyledCopyright>
-          </StyledSecondarySection>
+          <StyledColumnWrapper>
+            <StyledLeftColumn>
+              <StyledGardenUl>
+                <StyledGardenLi>
+                  <StyledLink href="/garden">Garden</StyledLink>
+                  <StyledGardenLink href={`/garden?format=${PostFormat.Essay}`}>
+                    Essays
+                  </StyledGardenLink>
+                  <StyledGardenLink
+                    href={`/garden?format=${PostFormat.Brainstorm}`}
+                  >
+                    Brainstorms
+                  </StyledGardenLink>
+                  <StyledGardenLink
+                    href={`/garden?format=${PostFormat.ShowNTell}`}
+                  >
+                    Show 'n tells
+                  </StyledGardenLink>
+                  <StyledGardenLink href={`/garden?format=${PostFormat.TIL}`}>
+                    TILs
+                  </StyledGardenLink>
+                </StyledGardenLi>
+              </StyledGardenUl>
+            </StyledLeftColumn>
+            <StyledRightColumn>
+              <StyledNavUl>
+                <li>
+                  <StyledLink href="/about">About</StyledLink>
+                </li>
+                <li></li>
+                <li>
+                  <StyledLink href="/wishlist">Wishlist</StyledLink>
+                </li>
+              </StyledNavUl>
+            </StyledRightColumn>
+          </StyledColumnWrapper>
+          <StyledRowWrapper>
+            <EmailSignup />
+            <div>
+              <StyledIconUl>
+                <li>
+                  <StyledRssIconLink href="/rss.xml" target="_blank">
+                    <RssIcon />
+                    <VisuallyHidden>
+                      RSS feed for petemillspaugh.com
+                    </VisuallyHidden>
+                  </StyledRssIconLink>
+                </li>
+                <li>
+                  <StyledIconLink
+                    href="https://github.com/pmillspaugh"
+                    target="_blank"
+                  >
+                    <GitHubIcon />
+                    <VisuallyHidden>Pete Millspaugh on GitHub</VisuallyHidden>
+                  </StyledIconLink>
+                </li>
+                <li>
+                  <StyledIconLink
+                    href="https://twitter.com/pete_millspaugh"
+                    target="_blank"
+                  >
+                    <TwitterIcon />
+                    <VisuallyHidden>Pete Millspaugh on Twitter</VisuallyHidden>
+                  </StyledIconLink>
+                </li>
+                <li>
+                  <StyledIconLink
+                    href="https://www.val.town/u/petermillspaugh"
+                    target="_blank"
+                  >
+                    <ValTownIcon />
+                    <VisuallyHidden>Pete Millspaugh on Val Town</VisuallyHidden>
+                  </StyledIconLink>
+                </li>
+              </StyledIconUl>
+              <StyledCopyright>© 2023 Pete Millspaugh</StyledCopyright>
+            </div>
+          </StyledRowWrapper>
         </StyledNav>
       </StyledWrapper>
     </footer>
@@ -100,9 +112,8 @@ const StyledWrapper = styled.div`
 
 const StyledNav = styled.nav`
   padding: 48px 16px;
+  padding-bottom: 96px;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
   color: var(--white);
 
   @media (min-width: 592px) {
@@ -115,6 +126,7 @@ const StyledNav = styled.nav`
 
   @media (min-width: 1200px) {
     width: 800px;
+    font-size: 1.25rem;
   }
 
   /* Cover up black svg stroke */
@@ -128,6 +140,13 @@ const StyledNav = styled.nav`
     border-bottom: 1px solid var(--dark-green);
   }
 `;
+
+const StyledColumnWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const StyledLeftColumn = styled.div``;
 
 const StyledGardenUl = styled.ul`
   display: flex;
@@ -162,7 +181,7 @@ const StyledGardenLink = styled(Link)`
   }
 `;
 
-const StyledSecondarySection = styled.div`
+const StyledRightColumn = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -175,9 +194,22 @@ const StyledNavUl = styled.ul`
   text-align: right;
 `;
 
+const StyledRowWrapper = styled.div`
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 32px;
+
+  @media (min-width: 592px) {
+    flex-direction: row;
+    align-items: end;
+    justify-content: space-between;
+  }
+`;
+
 const StyledIconUl = styled.ul`
   display: flex;
-  justify-content: end;
   gap: 16px;
 `;
 
@@ -185,18 +217,28 @@ const StyledIconLink = styled.a`
   width: 48px;
   height: 48px;
   color: var(--white);
+
+  &:hover {
+    color: var(--gold);
+  }
 `;
 
 const StyledRssIconLink = styled(Link)`
   width: 48px;
   height: 48px;
   color: var(--white);
+
+  &:hover {
+    color: var(--gold);
+  }
 `;
 
 const StyledCopyright = styled.p`
+  margin-bottom: -2px;
+  padding-top: 8px;
   color: var(--white);
   font-family: var(--font-mono);
-  font-size: 0.785rem;
+  font-size: 0.79rem;
   font-weight: 600;
   text-align: right;
 `;
