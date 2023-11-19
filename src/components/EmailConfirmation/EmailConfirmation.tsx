@@ -9,7 +9,7 @@ const CONFIRMATION_URL =
 const EmailConfirmation = () => {
   const router = useRouter();
   const { email, token } = router.query;
-  const [confirmed, setConfirmed] = useState(false);
+  const [isConfirmed, setIsConfirmed] = useState(false);
 
   // TODO: could use Suspense loading UI
   useEffect(() => {
@@ -24,7 +24,7 @@ const EmailConfirmation = () => {
       );
 
       const { confirmed } = await response.json();
-      if (confirmed) setConfirmed(true);
+      if (confirmed) setIsConfirmed(true);
     }
 
     confirmEmail();
@@ -38,7 +38,7 @@ const EmailConfirmation = () => {
     </>
   );
 
-  if (email && token && confirmed) {
+  if (email && token && isConfirmed) {
     heading = "You’re all set!";
     body = (
       <>
@@ -55,8 +55,8 @@ const EmailConfirmation = () => {
 
   return (
     <StyledWrapper data-pagefind-ignore>
-      <h1 key={`${String(confirmed)}-heading`}>{heading}</h1>
-      <p key={`${String(confirmed)}-body`}>{body}</p>
+      <h1 key={`${String(isConfirmed)}-heading`}>{heading}</h1>
+      <p key={`${String(isConfirmed)}-body`}>{body}</p>
     </StyledWrapper>
   );
 };
