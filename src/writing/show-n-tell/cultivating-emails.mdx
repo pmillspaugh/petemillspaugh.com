@@ -109,7 +109,7 @@ const EmailConfirmationPage = () => {
     confirmEmail();
   }, [email, token]);
 
-  if (!email || !token || !isConfirmed) return null;
+  if (!isConfirmed) return null;
 
   return (
     <main>

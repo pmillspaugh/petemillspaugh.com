@@ -18,9 +18,7 @@ const EmailConfirmation = () => {
 
       const response = await fetch(
         `${CONFIRMATION_URL}?email=${email}&token=${token}`,
-        {
-          method: "PUT",
-        }
+        { method: "PUT" }
       );
 
       const { confirmed } = await response.json();
@@ -38,7 +36,7 @@ const EmailConfirmation = () => {
     </>
   );
 
-  if (email && token && isConfirmed) {
+  if (isConfirmed) {
     heading = "You’re all set!";
     body = (
       <>
