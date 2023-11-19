@@ -9,7 +9,7 @@ status: Budding
 
 I’m still thinking through how I’ll use email for my garden, but I want a subscription option for anyone who doesn’t use RSS. I might send an email at some irregular cadence (roughly every month or two) with links to things I’ve written since the last email, idk. In the meantime, though, I need some signup mechanism to cultivate emails for anyone who cares to read what I write.
 
-There are _a ton_ of email vendors out there—an overwhelming number, actually—so my main goal is to simplify as much as possible. I narrowed it down to two options: [buttondown.email](https://buttondown.email/), or build my own custom logic with [val.town](https://www.val.town/) (see also: <Link href="/val-town-button">The Val Town Button</Link>).
+There are _a ton_ of email vendors out there—an overwhelming number, actually—so my main goal is to simplify as much as possible. I narrowed it down to two options: [buttondown.email](https://buttondown.email/), or build my own custom logic with [val.town](https://www.val.town/) (see also: <Link href="/val-town-button" target="_blank">The Val Town Button</Link>).
 
 ## Buttondown
 
@@ -17,7 +17,7 @@ I went with Val Town, but if I ever want to turn to a more feature-rich solution
 
 ## Val Town
 
-I wrote a [Val for email subscription signup](https://www.val.town/v/petermillspaugh/emailSubscription)—feel free to fork and remix if you’d like! I’ll explain a few things below, but if you want to jump to demo + code, the signup is in the footer and the code is just below this paragraph. You can also view the [README](https://www.val.town/v/petermillspaugh/emailSubscription).
+I wrote a [Val for email subscription signup](https://www.val.town/v/petermillspaugh/emailSubscription)—feel free to fork and remix if you’d like! I’ll explain a few things below, but if you want to jump to demo + code, the signup is in the footer and the code is below. You can also view the [README](https://www.val.town/v/petermillspaugh/emailSubscription).
 
 <iframe
   style={{ border: "none", marginBottom: "24px" }}
@@ -86,29 +86,30 @@ const EmailSignupForm = () => {
 
 ### Confirmation page
 
-And here’s a simplified example of a confirmation page. Again, my full implementation is [here](https://github.com/pmillspaugh/petemillspaugh.com/blob/main/src/components/EmailConfirmation/.EmailConfirmation.tsx).
+And here’s a simplified example of a confirmation page. Full implementation [here](https://github.com/pmillspaugh/petemillspaugh.com/blob/main/src/components/EmailConfirmation/.EmailConfirmation.tsx).
 
 ```tsx
 const EmailConfirmationPage = () => {
-  const router = useRouter();
+  const router = useRouter(); // Next.js page directory router
   const { email, token } = router.query;
+  const [isConfirmed, setIsConfirmed] = useState(false);
 
   useEffect(() => {
     async function confirmEmail() {
       if (!email || !token) return;
 
-      await fetch(
+      const response = await fetch(
         `https://petermillspaugh-emailSubscription.web.val.run/confirm-verification?email=${email}&token=${token}`,
-        {
-          method: "PUT",
-        }
+        { method: "PUT" }
       );
+      const { confirmed } = await response.json();
+      if (confirmed) setIsConfirmed(true);
     }
 
     confirmEmail();
   }, [email, token]);
 
-  if (!email || !token) return null;
+  if (!email || !token || !isConfirmed) return null;
 
   return (
     <main>
