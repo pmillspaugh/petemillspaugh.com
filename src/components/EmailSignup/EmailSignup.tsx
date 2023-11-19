@@ -14,8 +14,6 @@ const EmailSignup = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     setLoading(true);
-    // setName("");
-    // setEmail("");
 
     const formData = new FormData();
     formData.append("name", name);
@@ -35,15 +33,15 @@ const EmailSignup = () => {
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <VisuallyHidden>
-        <label htmlFor="name">First name</label>
-      </VisuallyHidden>
       {success ? (
         <StyledConfirmation>
           Check your email to confirm. Thanks!
         </StyledConfirmation>
       ) : (
         <>
+          <VisuallyHidden>
+            <label htmlFor="name">First name</label>
+          </VisuallyHidden>
           <input
             id="name"
             value={name}
