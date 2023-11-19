@@ -1,0 +1,131 @@
+---
+slug: cultivating-emails
+title: Cultivating emails with Val Town
+createdAt: November 18, 2023
+updatedAt: November 19, 2023
+format: ShowNTell
+status: Budding
+---
+
+I’m still thinking through how I’ll use email for my garden, but I want a subscription option for anyone who doesn’t use RSS. I might send an email at some irregular cadence (roughly every month or two) with links to things I’ve written since the last email, idk. In the meantime, though, I need some signup mechanism to cultivate emails for anyone who cares to read what I write.
+
+There are _a ton_ of email vendors out there—an overwhelming number, actually—so my main goal is to simplify as much as possible. I narrowed it down to two options: [buttondown.email](https://buttondown.email/), or build my own custom logic with [val.town](https://www.val.town/) (see also: <Link href="/val-town-button">The Val Town Button</Link>).
+
+## Buttondown
+
+I went with Val Town, but if I ever want to turn to a more feature-rich solution, I’d probably use Buttondown. If you want to see it in action, [swyx](https://www.swyx.io/), [cassidoo](https://cassidoo.co/), [mxstbr](https://mxstbr.com/), and [browsertech](https://digest.browsertech.com/) all use it for their newsletters. It has off-the-shelf email verification, you can write emails in markdown, plus there’s a bunch of other stuff like analytics and monetization (which I don’t have any plans for, btw).
+
+## Val Town
+
+I wrote a [Val for email subscription signup](https://www.val.town/v/petermillspaugh/emailSubscription)—feel free to fork and remix if you’d like! I’ll explain a few things below, but if you want to jump to demo + code, the signup is in the footer and the code is just below this paragraph. You can also view the [README](https://www.val.town/v/petermillspaugh/emailSubscription).
+
+<iframe
+  style={{ border: "none", marginBottom: "24px" }}
+  id="email-subscription-val"
+  title="Email subscription with Val Town"
+  width="100%"
+  height="2200"
+  src="https://www.val.town/embed/petermillspaugh/emailSubscription"
+  loading="lazy"
+/>
+
+The Val is a [Hono](https://hono.dev/) router with two endpoints: `/send-verification` and `/confirm-verification`. The first route (called from my frontend—more on that below) extracts name and email from the request as form data, generates a token using Deno’s built-in `crypto.randomUUID()` function, upserts a row into the `subscribers` table (using Val Town’s built-in sqlite database), and sends an email with a confirmation link. Sending emails to people other than yourself is a paid feature, but if you want to stay on the free plan, you can go with a package like [nodemailer](https://www.npmjs.com/package/nodemailer) or [@sendgrid/mail](https://www.npmjs.com/package/@sendgrid/mail). The confirmation link sends the user to a page on my site, which fires a request to the second endpoint with the email and token as query params.
+
+`/confirm-verification`, pulls the email and token from the request and finds a matching row in the `subscribers` table. If the `subscribed_at` timestamp written by the first endpoint is in the last 30 minutes, the `verified` column flips to true and the frontend updates upon the success response. If the timestamp is older than 30 minutes, the endpoint updates the `subscribed_at` timestamp and resends a verification email.
+
+### Signup form
+
+Here’s a simplified example of a signup form using React. My full implementation is [here](https://github.com/pmillspaugh/petemillspaugh.com/blob/main/src/components/EmailSignup/.EmailSignup.tsx).
+
+```tsx
+const EmailSignupForm = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setName("");
+    setEmail("");
+
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+
+    await fetch(
+      "https://petermillspaugh-emailSubscription.web.val.run/send-verification",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="name">First name</label>
+      <input
+        id="name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        type="text"
+        required={true}
+      />
+      <label htmlFor="email">Email</label>
+      <input
+        id="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        type="email"
+        required={true}
+      />
+      <button type="submit">Subscribe</button>
+    </form>
+  );
+};
+```
+
+### Confirmation page
+
+And here’s a simplified example of a confirmation page. Again, my full implementation is [here](https://github.com/pmillspaugh/petemillspaugh.com/blob/main/src/components/EmailConfirmation/.EmailConfirmation.tsx).
+
+```tsx
+const EmailConfirmationPage = () => {
+  const router = useRouter();
+  const { email, token } = router.query;
+
+  useEffect(() => {
+    async function confirmEmail() {
+      if (!email || !token) return;
+
+      await fetch(
+        `https://petermillspaugh-emailSubscription.web.val.run/confirm-verification?email=${email}&token=${token}`,
+        {
+          method: "PUT",
+        }
+      );
+    }
+
+    confirmEmail();
+  }, [email, token]);
+
+  if (!email || !token) return null;
+
+  return (
+    <main>
+      <h1>You’re all set!</h1>
+    </main>
+  );
+};
+```
+
+## Sending emails
+
+It’s worth noting that I haven’t yet written a Val to actually send emails with content. That’ll be a follow-up for me, but a basic implementation could query for all `subscribers` with a verified email and send some markup. I’d also have to write an unsubscribe Val, probably just setting `subscribed_at` to null. And if I end up wanting custom components with styling and all, I’ve bookmarked [MJML](https://mjml.io/) and [HEML](https://heml.io/) as options to research. Josh Comeau wrote a nice blog post on [his robust MJML email workflow](https://www.joshwcomeau.com/react/wonderful-emails-with-mjml-and-mdx/).
+
+## Why go with Val Town
+
+Buttondown would be _easier_, but Val Town is more fun and yields more learning for me, which is a major reason why I tend to my garden in the first place. It’s also completely customizable, so I can build a robust system over time if I want to. Price is about the same (free tier, then $9/mo for Buttondown versus $10/mo for Val Town Pro).
+
+A major benefit to using Val Town is being able to send emails with no extra dependency. It’s also handy because you get a sqlite database out of the box—some meta frameworks offer something similar, like [Vercel Storage](https://vercel.com/docs/storage). And because my Val is public, others can fork it and improve upon it (any suggestions are welcome—just comment on the Val). Not only that—knowing my code is public and might be used by others forces me to write cleaner/better code (in theory, at least).
+
+As always, the Val Town team is super helpful and responsive. Thanks to André and Steve for answering questions I had while building this. Hop in the Discord if you’re interested to see all sorts of Vals people are coming up with!
