@@ -2,12 +2,12 @@
 slug: cultivating-emails
 title: Cultivating emails with Val Town
 createdAt: November 18, 2023
-updatedAt: November 19, 2023
+updatedAt: November 22, 2023
 format: ShowNTell
 status: Budding
 ---
 
-I’m still thinking through how I’ll use email for my garden, but I want a subscription option for anyone who doesn’t use RSS. I might send an email at some irregular cadence (roughly every month or two) with links to things I’ve written since the last email, idk. In the meantime, though, I need some signup mechanism to cultivate emails for anyone who cares to read what I write.
+I’m still thinking through how I’ll use email for my garden, but I want a subscription option for anyone who doesn’t use RSS. I might send emails at some irregular cadence (roughly every month or two) with links to things I’ve written since the last email, idk. In the meantime, though, I need some signup mechanism to cultivate emails for anyone who cares to read what I write.
 
 There are _a ton_ of email vendors out there—an overwhelming number, actually—so my main goal is to simplify as much as possible. I narrowed it down to two options: [buttondown.email](https://buttondown.email/), or build my own custom logic with [val.town](https://www.val.town/) (see also: <Link href="/val-town-button" target="_blank">The Val Town Button</Link>).
 
@@ -17,27 +17,71 @@ I went with Val Town, but if I ever want to turn to a more feature-rich solution
 
 ## Val Town
 
-I wrote a [Val for email subscription signup](https://www.val.town/v/petermillspaugh/emailSubscription)—feel free to fork and remix if you’d like! I’ll explain a few things below, but if you want to jump to demo + code, the signup is in the footer and the code is below. You can also view the [README](https://www.val.town/v/petermillspaugh/emailSubscription).
+I wrote a [Val for email subscription signup](https://www.val.town/v/petermillspaugh/emailSubscription)—feel free to fork and remix if you’d like! I’ll explain a few things, but if you want to jump to demo + code, the signup is in the footer and the code is below. You can also view the [README](https://www.val.town/v/petermillspaugh/emailSubscription).
 
 <iframe
   style={{ border: "none", marginBottom: "24px" }}
   id="email-subscription-val"
   title="Email subscription with Val Town"
   width="100%"
-  height="2200"
+  height="1320"
   src="https://www.val.town/embed/petermillspaugh/emailSubscription"
   loading="lazy"
 />
 
-The Val is a [Hono](https://hono.dev/) router with two endpoints: `/send-verification` and `/confirm-verification`. The first route (called from my frontend—more on that below) extracts name and email from the request as form data, generates a token using Deno’s built-in `crypto.randomUUID()` function, upserts a row into the `subscribers` table (using Val Town’s built-in sqlite database), and sends an email with a confirmation link. Sending emails to people other than yourself is a paid feature, but if you want to stay on the free plan, you can go with a package like [nodemailer](https://www.npmjs.com/package/nodemailer) or [@sendgrid/mail](https://www.npmjs.com/package/@sendgrid/mail). The confirmation link sends the user to a page on my site, which fires a request to the second endpoint with the email and token as query params.
+The Val is a [Hono](https://hono.dev/) router with two endpoints: `/send-verification` and `/confirm-verification`. The first route (called from my frontend—more on that below) extracts name and email from the request form data, generates a token using Deno’s built-in `crypto.randomUUID()` function, upserts a row into the `subscribers` table (using Val Town’s built-in sqlite database), and sends an email with a confirmation link. The confirmation link sends the user to a page on my garden, which fires a request to the second endpoint with the email and token as query params.
 
 `/confirm-verification`, pulls the email and token from the request and finds a matching row in the `subscribers` table. If the `subscribed_at` timestamp written by the first endpoint is in the last 30 minutes, the `verified` column flips to true and the frontend updates upon the success response. If the timestamp is older than 30 minutes, the endpoint updates the `subscribed_at` timestamp and resends a verification email.
 
+### Queuing the verification email
+
+To tidy up, I pulled out a handful of helper Vals that the main router Val imports. This one sends emails and alerts me about new signups or errors:
+
+<iframe
+  style={{ border: "none", marginBottom: "24px" }}
+  id="send-email-verification-val"
+  title="Email subscription with Val Town: sendVerificationEmail"
+  width="100%"
+  height="920"
+  src="https://www.val.town/embed/petermillspaugh/sendVerificationEmail"
+  loading="lazy"
+/>
+
+Sending emails to people other than yourself is a paid feature, but if you want to stay on the free plan, you can go with a package like [nodemailer](https://www.npmjs.com/package/nodemailer) or [@sendgrid/mail](https://www.npmjs.com/package/@sendgrid/mail).
+
+Originally I was awaiting the `@std/email` invocation before sending a success response to the client, but I refactored to send an optimistic success response and queue up the email to send asynchronously (as a Promise). The thought is, instant feedback is expected UX on a Web form submission, but not for a confirmation email. Plus, it takes a few seconds for someone to open up their email, so that’s extra cushion. Definitely not a perfect science, but to gauge the actual latency I measured the awaited `sendEmail` call a dozen times, and it’s quite fast: 95 milliseconds, 98, 151, 92, 30, 119, 79, 36, 26, 30, 72, and 21.
+
+### Upserting subscribers and refreshing tokens with sqlite
+
+As mentioned, Val Town comes with your own sqlite database courtesy of Turso. Here’s the Val that `/send-verification` invokes to upsert a subscriber:
+
+<iframe
+  style={{ border: "none", marginBottom: "24px" }}
+  id="send-email-verification-val"
+  title="Email subscription with Val Town: upsertEmailSubscriber"
+  width="100%"
+  height="510"
+  src="https://www.val.town/embed/petermillspaugh/upsertEmailSubscriber"
+  loading="lazy"
+/>
+
+And here’s the Val that `/confirm-verification` calls to refresh the token if it’s been over 30 minutes:
+
+<iframe
+  style={{ border: "none", marginBottom: "24px" }}
+  id="send-email-verification-val"
+  title="Email subscription with Val Town: refreshVerificationToken"
+  width="100%"
+  height="650"
+  src="https://www.val.town/embed/petermillspaugh/refreshVerificationToken"
+  loading="lazy"
+/>
+
 ### Signup form
 
-Here’s a simplified example of a signup form using React. My full implementation is [here](https://github.com/pmillspaugh/petemillspaugh.com/blob/main/src/components/EmailSignup/.EmailSignup.tsx).
+Here’s a simplified example of a signup form using React. My full implementation is [here](https://github.com/pmillspaugh/petemillspaugh.com/blob/main/src/components/EmailSignup/.EmailSignup.tsx). At some point I’d like to move the form itself into a Val so that email subscriptions as a fullstack feature can be nicely wrapped up as one easily forkable Val.
 
-```tsx
+```tsx EmailSignup.tsx
 const EmailSignupForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -86,9 +130,9 @@ const EmailSignupForm = () => {
 
 ### Confirmation page
 
-And here’s a simplified example of a confirmation page. Full implementation [here](https://github.com/pmillspaugh/petemillspaugh.com/blob/main/src/components/EmailConfirmation/.EmailConfirmation.tsx).
+And here’s a simplified example of a confirmation page. Full implementation [here](https://github.com/pmillspaugh/petemillspaugh.com/blob/main/src/components/EmailConfirmation/.EmailConfirmation.tsx). As with the form above, I’d like to move this confirmation UI into a Val to round out the feature.
 
-```tsx
+```tsx EmailConfirmation.tsx
 const EmailConfirmationPage = () => {
   const router = useRouter(); // Next.js page directory router
   const { email, token } = router.query;
