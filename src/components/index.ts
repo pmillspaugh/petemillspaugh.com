@@ -6,9 +6,12 @@ import Code from "./Code";
 import { H2, H3 } from "./H";
 import P from "./P";
 import A from "./A";
+import Details from "./Details";
+import Ol from "./Ol";
 import Ul from "./Ul";
 
 import AudioSwitch from "./AudioSwitch";
+import Callout from "./Callout";
 import Figure from "./Figure";
 import Transcription from "./Transcription";
 import ValTownButton from "./ValTownButton";
@@ -21,9 +24,12 @@ export const components = {
   h3: H3,
   p: P,
   a: A,
+  ol: Ol,
   ul: Ul,
   // custom components
   AudioSwitch,
+  Callout,
+  Details,
   Figure,
   Transcription,
   ValTownButton,
