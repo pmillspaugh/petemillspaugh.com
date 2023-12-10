@@ -1,0 +1,34 @@
+---
+slug: how-does-search-work-exactly
+title: How does search work, exactly?
+createdAt: October 21, 2023
+updatedAt: December 10, 2023
+format: Brainstorm
+status: Seedling
+---
+
+<Callout>
+  This is my second "Brainstorm", a writing format where I scribble down an
+  offline thought stream with questions then follow up later with research. The
+  first one I wrote was about{" "}
+  <Link href="/map-in-the-woods">downloading a map in the woods</Link>. This is
+  also a "Seedling", which means I'll come back later to finish up the research
+  part.
+</Callout>
+
+For my garden, I decided that a command bar with nav and search would be the primary way to navigate rather than a (hamburger) menu. I wanted a simple, open-source search library, and I ended up going with [pagefind](https://github.com/CloudCannon/pagefind), which I'm very happy with. You can try it by pressing `⌘ + K` and read about my <Link href="/nextjs-search-with-pagefind">implementation for a Next.js static site</Link>.
+
+Before I evaluated search libraries, though, I wanted to understand how search typically works.
+
+## Raw transcription
+
+<Transcription>
+[October 21, 2023]
+
+How does search work, exactly? On my garden, for example. I have content in /src/writing that I want to be searchable, and it probably makes sense to expose other pages to search, but just /writing is an ok starting point. Could a dumb approach be as simple as traversing all files in that directory linearly and running a string match on the search query? And would that traversal happen on the client or on the server? I know Node has methods like fs.readFile and fs.readDir, but I’m not sure which browser APIs could achieve the same result. Which would be more performant? My website is a static site with a pretty small surface area (although that will be less true over time), and I don’t use a database or CMS for content. I’m guessing including the searchable content in the client bundle would be preferable to a round trip search API call for every query, but that might not be true over time with lots of searchable content, especially on lower end mobile devices. The searchable stuff could probably be lazy loaded (or deferred or whatever—not sure the exact correct term) as to not block the initial page load / Time To Interactive. Or if a server-side search is the better option, there could be some caching/memoization of search terms/queries. And search API calls should be debounced at a 500ms threshold or whatever is the typical pause in human typing. Plus maybe some throttling so that people can’t abuse it. Also, how does indexing apply? Would I manually add indexes for commonly searched terms? How does that even work in a dumb linear search implementation? Some cache object keyed by common search terms that gets checked before doing the linear search? And I guess that cache gets generated at build time whereas the recent searches one is always changing based on the latest queries sent to the server. The server-side cache seems like something to leave out of the initial implementation and tack-on after observing search behavior. Which btw, I think I can do with some custom event in Vercel analytics? Anyhoo, my guess is that hand-rolling search is not worth it and I’ll end up going with some open-source alternative to Algolia (maybe Pagefind?).
+
+</Transcription>
+
+## Research
+
+_To be written. Feel free to send me anything you know about search or any interesting reading on search in the meantime._
