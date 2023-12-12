@@ -6,10 +6,11 @@ export const LABEL_TO_DESCRIPTION = {
   [PostFormat.Essay]: EssayDescription,
   [PostFormat.ShowNTell]: ShowNTellDescription,
   [PostFormat.Brainstorm]: BrainstormDescription,
+  [PostFormat.TIL]: TILDescription,
+  [PostFormat.Note]: NoteDescription,
   [PostStatus.Evergreen]: EvergreenDescription,
   [PostStatus.Budding]: BuddingDescription,
   [PostStatus.Seedling]: SeedlingDescription,
-  [PostFormat.TIL]: TILDescription,
 };
 
 function EssayDescription() {
@@ -104,6 +105,25 @@ function TILDescription() {
   );
 }
 
+function NoteDescription() {
+  return (
+    <>
+      <StyledP>
+        Notes are my catch-all format for things I want to write about that
+        don't neatly fit into another category (Essays, Show n' tells,
+        Brainstorms, TILs). A Note could be as small as a Tweet or could grow
+        large enough to call for re-potting as an Essay.
+      </StyledP>
+      <StyledP>
+        You can find all Notes{" "}
+        <Link href={`/garden?format=${PostFormat.Note}`}>in the garden</Link>{" "}
+        and an explanation of my writing formats{" "}
+        <Link href="/about#this-site">on the about page</Link>.
+      </StyledP>
+    </>
+  );
+}
+
 function SeedlingDescription() {
   return (
     <>
@@ -169,5 +189,10 @@ const StyledP = styled.p`
 
   &:last-child {
     margin-bottom: 0px;
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
   }
 `;

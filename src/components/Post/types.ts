@@ -3,6 +3,7 @@ export enum PostFormat {
   Brainstorm = "Brainstorm",
   TIL = "TIL",
   ShowNTell = "ShowNTell",
+  Note = "Note",
 }
 
 export const PostFormatDescription = {
@@ -10,6 +11,7 @@ export const PostFormatDescription = {
   [PostFormat.Brainstorm]: "Brainstorm",
   [PostFormat.TIL]: "TIL",
   [PostFormat.ShowNTell]: "Show ’n tell",
+  [PostFormat.Note]: "Note",
 };
 
 export enum PostStatus {

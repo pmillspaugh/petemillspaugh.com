@@ -1,6 +1,5 @@
 import Link from "next/link";
 import styled from "styled-components";
-import { PostFormat } from "@/components/Post";
 
 const About = () => {
   return (
@@ -83,10 +82,16 @@ const About = () => {
           </a>{" "}
           repo
         </li>
+        <li>
+          <strong>Notes:</strong> things I want to write about that don't neatly
+          fit into another category (Essays, Show n' tells, Brainstorms, TILs).
+          A Note could be as small as a Tweet or could grow large enough to call
+          for re-potting as an Essay.
+        </li>
       </StyledUl>
       <StyledP>
         Each piece of content also has a status, which I borrowed directly from
-        Maggie:
+        Maggie A.:
       </StyledP>
       <StyledUl>
         <li>

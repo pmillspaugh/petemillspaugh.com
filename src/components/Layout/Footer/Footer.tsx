@@ -40,6 +40,9 @@ const Footer = () => {
                   <StyledGardenLink href={`/garden?format=${PostFormat.TIL}`}>
                     TILs
                   </StyledGardenLink>
+                  <StyledGardenLink href={`/garden?format=${PostFormat.Note}`}>
+                    Notes
+                  </StyledGardenLink>
                 </StyledGardenLi>
               </StyledGardenUl>
             </StyledLeftColumn>
