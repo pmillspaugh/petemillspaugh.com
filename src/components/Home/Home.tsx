@@ -61,6 +61,10 @@ const StyledCta = styled.div`
   & > em > a {
     transition: color var(--base-timing) ease-out;
   }
+
+  @media (min-width: 1200px) {
+    font-size: 1.25rem;
+  }
 `;
 
 export default Home;

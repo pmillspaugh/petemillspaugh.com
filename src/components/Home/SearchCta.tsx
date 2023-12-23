@@ -49,6 +49,10 @@ const StyledTrigger = styled.button`
     color: ${(p) => p.theme.linkTextColor};
     border-color: ${(p) => p.theme.linkTextColor};
   }
+
+  @media (min-width: 1200px) {
+    font-size: 1rem;
+  }
 `;
 
 const StyledShortcut = styled.div`
