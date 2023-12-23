@@ -1,0 +1,155 @@
+---
+slug: weeks-of-your-life
+title: Weeks of your life
+createdAt: December 23, 2023
+updatedAt: December 23, 2023
+format: ShowNTell
+status: Seedling
+---
+
+I made a website where you can visualize your life in weeks, grouped by decade: [weeksofyour.life](https://weeksofyour.life)
+
+Any feedback is welcome! Credit to Tim Urban’s original blog post, [Your Life In Weeks](https://waitbutwhy.com/2014/05/life-weeks.html), and Buster Benson’s [Life in Weeks](https://busterbenson.com/life-in-weeks), which gave me the idea to make an interactive version.
+
+## Thinking small
+
+In parallel with this Show ’n Tell, I also wrote an <Link href="/think-small" target="_blank">essay</Link> about thinking small on side projects. In order to actually ship this in ~one weekend, I limited myself to one new unknown: the Next.js `/app` router. This website still uses `/pages`, and I thought it would be nice to get comfortable with the new patterns before migrating a larger (although still pretty small) codebase.
+
+I also used CSS modules for styling, which I’m familiar with from my day job but hadn’t used for a personal project. I’m considering reaching for CSS modules as my go-to for new projects, so this was a low risk way to test that out.
+
+I marked Framer Motion as a stretch goal that I could check off my <Link href="/wishlist" target="_blank">wishlist</Link>, but after shipping the SLC (Simple, Lovable, and Complete) version in the afternoon I walked to the grocery store and kept thinking about the slow initial page load. So when I got home I wrote a [`Loading`](https://github.com/pmillspaugh/weeksofyourlife/blob/main/src/components/Loading/Loading.tsx) component using [`framer-motion`](https://github.com/framer/motion#readme).
+
+## Experimenting
+
+Since this a low stakes personal project, I could afford to experiment a bit.
+
+### Pushing the boundaries of URL as state
+
+URLs are the fundamental state management tool. For the limited scope of this project I decided against adding auth or backend persistence, so it really came down to URL or localStorage.
+
+The reason I went with URLs over localStorage is that URLs are shareable. The main drawback is that super long ones are very ugly, so unless they are hidden behind a nice hyperlink, they just look bad. <Link href="/url-character-limit" target="_blank">URLs can have a maximum character length of about 8,000 characters</Link>, which should be enough in most cases. From some quick napkin math, I think that allows for about 100 life events, including some characters like emojis that require longer URI encodings.
+
+### HTML contentEditable
+
+The primary heading and all decade headings use the HTML attribute <Link href="/html-contenteditable" target="_blank">`contenteditable="true"`</Link>, which allows rich text editing without some of the features of `input` elements, like client-side validation.
+
+### CSS ch unit
+
+As far as I know, there’s no way to set a dynamic width for an HTML `input` with pure CSS (please lmk if that’s not the case). Setting `max-content` doesn’t work, for example, because inputs are _replaced elements_ that have intrinsic dimensions and behaviors that are not fully governed by CSS.
+
+So to size inputs dynamically based on the width of their child text, I used <Link href="/css-ch-unit" target ="_blank">`ch`</Link> units. One ch unit is the width of the `0` character for a given font, so I used a monospace font for consistent width. It’s not perfect—e.g. emojis don’t exactly match the ch width—but it seemed like the right tool for the job. Getting this to work was a helpful, humbling reminder that I’m ok but not great at CSS.
+
+```tsx Week.tsx
+/* ... */
+
+const [lifeEvent, setLifeEvent] = React.useState("");
+
+React.useEffect(() => {
+  if (inputRef.current) {
+    inputRef.current.style.width = `${Math.max(1, lifeEvent.length + 2)}ch`;
+  }
+}, [lifeEvent]);
+
+/* ... */
+
+return (
+  <input
+    ref={inputRef}
+    type="text"
+    maxLength={100}
+    value={lifeEvent}
+    onChange={handleLifeEventChange}
+  />
+);
+```
+
+## Five thousand DOM nodes
+
+There are over 5,200 weeks in a century (~52 weeks per year \* 100 years, ignoring leap years). Rendering a DOM node for each week in a century is a lot. First I built a working version without any performance optimizations, which was both slow to load and laggy on interaction. Here’s the short list of where I looked first to optimize:
+
+- Memoize the React component that re-renders thousands of times
+- Isolate `FutureWeek` component from `Week` component
+- Memoize the function that computes a century of birthdates
+- Debounce the function that handles accent color picker updates
+
+### Memoize the React component that re-renders thousands of times
+
+First I wanted to know if the problem was rendering thousands of HTML inputs, or re-rendering thousands of React components. I temporarily swapped all inputs for divs, and the lag was still there: React re-rendering problem. Each individual input shouldn’t need to re-render when its parent updates—e.g. when a new accent color is chosen from the color picker—so I memoized the component with [React.memo](https://react.dev/reference/react/memo):
+
+```tsx Week.tsx
+const MemoizedWeek = React.memo(function Week({ week }: { week: IWeek }) {
+  /* ... */
+});
+```
+
+Memoizing means that a component will only re-render when its props, state, or context updates, so that change cut down on thousands of unnecessary re-renders. From the React docs:
+
+> Optimizing with memo is only valuable when your component re-renders often with the same exact props, and its re-rendering logic is expensive. If there is no perceptible lag when your component re-renders, memo is unnecessary...
+>
+> There is no benefit to wrapping a component in memo in other cases. There is no significant harm to doing that either...
+
+### Isolate FutureWeek component from Week component
+
+I initally rendered both future weeks and past weeks using the same component, but since future weeks are styled using the dynamic accent color, they will re-render whenever the accent changes. To avoid coupling past weeks in those re-renders, I isolated `FutureWeek.tsx`:
+
+```tsx FutureWeek.tsx
+const FutureWeek = ({ week }: { week: IWeek }) => {
+  return <div className={styles.futureWeek}>{week.lifeEvent}</div>;
+};
+```
+
+That led to a 3+ second difference on the initial page load delay to populate birthdays (e.g. “10 in 2007”) per DevTools > Performance tab. I did not do a rigorous benchmarking exercise, though, so I am a little suspicious that such a simple change could have made such an enormous difference. More investigation for me to do there. It’s worth noting that birthdays populate immediately in the future week divs compared to a multiple second lag for the past week inputs, so it could have something to do with the overhead of controlled state for each input.
+
+### Memoize the function that computes a century of birthdates
+
+The [`useBirthdate`](https://github.com/pmillspaugh/weeksofyourlife/blob/main/src/hooks/useBirthdate.hook.ts) custom hook generates a nested array of weeks grouped by decade. Since that computation should only occur when birthdate updates and not when other state updates trigger a re-render, I wrapped it in [`React.useMemo`](https://react.dev/reference/react/useMemo):
+
+```ts useBirthdate.hook.ts
+const decades = React.useMemo(() => {
+  /* Computation of each week in a century, grouped by decade */
+}, [searchParams, birthdate]);
+```
+
+I also timed the function using `console.time` and `console.timeEnd` to gauge how long it actually takes, and the result was consistently about 10 milliseconds. Time spent in the past studying time complexity and Big O notation etc. for coding interviews tempted me to optimize this function, but I think any improvement would be immaterial.
+
+### Debounce the function that handles accent color picker updates
+
+Dragging the color picker to change the accent color was extremely laggy because each change event triggered a re-render of thousands of future week divs. The only change event that matters is the final color chosen, so to ignore the intermediate dragging states I debounced the change handler:
+
+```ts useAccentColor.hook.ts
+const handleAccentColorChange = debounce((newAccentColor: string) => {
+  setAccentColor(newAccentColor);
+  document.documentElement.style.setProperty("--accent-color", newAccentColor);
+
+  const newParams = new URLSearchParams(Array.from(searchParams.entries()));
+  newParams.set("accent", newAccentColor);
+  router.push(`?${newParams.toString()}`, { scroll: false });
+}, 50);
+```
+
+I chose 50 milliseconds because it’s under the threshold of 100ms that humans perceive as instant.
+
+### Where to go from here
+
+There’s definitely more I can do to improve performance, and this is not a topic of expertise for me, so feel free to reach out with any suggestions. Things I have in mind:
+
+- [Windowing](https://legacy.reactjs.org/docs/optimizing-performance.html#virtualize-long-lists)
+- [Million.js](https://million.dev/)
+- [Profiler](https://react.dev/reference/react/Profiler) (for diagnosis)
+
+{/* ### Profiling */}
+{/* TODO: Add DevTools > Performance screenshots here. */}
+
+## Dates are tricky
+
+I got tripped up on UTC versus local time a couple times while writing date logic. For example, `Date.prototype.getDay()` should return 0 for Sunday, 1 for Monday, …, 6 for Saturday. But when you invoke `new Date("2023-12-20")`, it’ll create a local date based on your timezone at midnight, then when you call `.getDay()` it’ll take UTC time, which will be the day before. I suspect there could be more date bugs hiding in edge cases, so let me know if you find any.
+
+## Stretch goals
+
+There are a handful of features I could add.
+
+- **Custom OG images**, e.g. in a style similar to the loader including one of the life events you added, to improve the sharing experience
+- **Custom font** as a natural extension of the custom accent color
+- **Anniversary emails**, i.e. an opt-in to receive emails on the anniversary of certain life events you added
+
+Feel free to suggest any you’d like, too!

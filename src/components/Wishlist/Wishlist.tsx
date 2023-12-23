@@ -52,9 +52,14 @@ const Wishlist = () => {
           </a>
         </li>
         <li>
-          <a href="https://www.framer.com/motion/" target="_blank">
-            Framer Motion
-          </a>
+          <del>
+            <a href="https://www.framer.com/motion/" target="_blank">
+              Framer Motion
+            </a>
+          </del>{" "}
+          <em>
+            used on <a href="https://weeksofyour.life">weeksofyour.life</a>
+          </em>
         </li>
         <li>
           <a href="https://trpc.io/" target="_blank">

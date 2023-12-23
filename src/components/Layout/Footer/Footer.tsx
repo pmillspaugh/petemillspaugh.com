@@ -55,6 +55,22 @@ const Footer = () => {
                 <li>
                   <StyledLink href="/wishlist">Wishlist</StyledLink>
                 </li>
+                <li>
+                  <StyledExternalLink
+                    href="https://weeksofyour.life"
+                    target="_blank"
+                  >
+                    weeksofyour.life
+                  </StyledExternalLink>
+                </li>
+                <li>
+                  <StyledExternalLink
+                    href="https://pete.football"
+                    target="_blank"
+                  >
+                    pete.football
+                  </StyledExternalLink>
+                </li>
               </StyledNavUl>
             </StyledRightColumn>
           </StyledColumnWrapper>
@@ -157,7 +173,7 @@ const StyledGardenUl = styled.ul`
   gap: 4px;
 `;
 
-const StyledLink = styled(Link)`
+const StyledExternalLink = styled.a`
   color: var(--white);
   text-decoration-color: var(--gold);
 
@@ -165,6 +181,8 @@ const StyledLink = styled(Link)`
     color: var(--gold);
   }
 `;
+
+const StyledLink = styled(StyledExternalLink)``;
 
 const StyledGardenLi = styled.li`
   display: flex;
