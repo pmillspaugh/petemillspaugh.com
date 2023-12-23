@@ -1,0 +1,70 @@
+---
+slug: think-small
+title: Think small
+createdAt: December 23, 2023
+updatedAt: December 23, 2023
+format: Essay
+status: Seedling
+---
+
+I like writing and coding in my free time. The constraint is always time—not a lack of things to learn or ideas to build. The classic trope of developers buying dozens of domains and letting side projects collect dust definitely rings true for me.
+
+I think the main reason for that is <Link href="/slippery-scope" target="_blank">_slippery scope_</Link>. In other words, thinking too big. There are times for thinking big, of course (e.g. [Bun](https://bun.sh/)), but for single-weekend side projects I am trying to think smaller these days.
+
+And that’s not to say I don’t want to build big projects. For bigger projects, I’d like to ship a Simple, Lovable, and Complete thing first and then build toward the big thing.
+
+## SLC
+
+I heard the concept of _Simple, Lovable, and Complete (SLC)_ as an alternative to _Minimum Viable Product (MVP)_ on a devtools.fm podcast recently. I like it—especially for side projects that aren’t really “products” but more projects meant to do something useful or just delight people (or person, singular). The best side projects are often tiny, useful things.
+
+## Others who think small
+
+[Linus Lee](https://thesephist.com/) does this really well. To be fair, he has built many amazing big things, too, but I heard him talk [on a podcast](https://www.latent.space/p/ai-interfaces-and-notion) about limiting himself to one new unknown per project and scoping something to a single weekend.
+
+[neal.fun](https://neal.fun) is the king of small, fun projects. I like [Draw Logos From Memory](https://neal.fun/logos-from-memory/).
+
+[pkg-size.dev](https://pkg-size.dev/) is a very useful, well designed project. It’s actually pretty feature rich, so not small necessarily, but it does one thing really well. Josh Comeau’s [goodies](https://www.joshwcomeau.com/goodies/) are another example of useful single-purpose things.
+
+Small, useful things are not only more likely for you/me the developer to actually ship, but they are also more likely for people to try. If someone can understand something quickly, they will be more likely to give it a shot, I think.
+
+[zany.sh](https://zany.sh/) is a good example of that. You can understand it immediately, _and_ you can play with it immediately. Copy-paste the testing URL in your address bar then update the text/color/font params, and you have a decent custom favicon.
+
+[emoji.supply/kitchen](https://emoji.supply/kitchen/) is one of my favorite examples. Not only is it very fun to play with for custom Slack emojis, but it’s awesome for favicons. I used it for the favicon on [pete.football](https://pete.football).
+
+## Small mediums
+
+Finding a medium that lends itself to thinking small is helpful. Building browser extensions is a good example. The coding bootcamp I did a couple years ago when I was learning to code had a single-night hackathon in the second week of the program, and the prompt was simply, “build a Chrome extension.” My partner and I built an accessibility extension that made all text on a website high contrast and highlighted links more clearly.
+
+[Val Town](https://val.town) is another perfect medium for thinking small. Vals are meant to be small and composable. The <Link href="/cultivating-emails" target="_blank">email subscription Val I created for this website</Link>, for example, took about a day to ship. Val Town is also a great medium for small projects because it’s still so new _and_ it’s social. You run into less of “I would build that, but I bet it already exists” and more of “I should build that...I bet other people would use it!”
+
+## When I’ve thought small
+
+### Weeks of your life
+
+Yesterday I was off work, so I built a website where you can create a visualization of your life in weeks: [weeksofyour.life](https://weeksofyour.life). I definitely had no shortage of stretch goals, but I scoped down enough to ship an SLC version. I can always add features when I want and patch bugs when they come up, but now a working project is out there for people to play with.
+
+### pete.football
+
+About a year before I redesigned/refactored this website in the fall to start writing consistently, I published a single blog post on [pete.football](https://pete.football). I knew I wanted to write on the Internet, and I already invested too much time researching fantasy football, so I spent a weekend on an SLC fantasy football blog.
+
+## When I’ve thought too big
+
+This essay is as much for myself—as a reminder and to set an intention—as it is for an audience, which is generally true about most things I write. As I said up top (and in my note on <Link href="/silly-tlds" target="_blank">silly TLDs</Link>), I’ve often fallen into the trap of buying domain names on a whim and leaving projects unfinished.
+
+### non-prophet
+
+The first real website I wanted to build when I started coding a couple years ago, before I got my first software engineering job, was [non-prophet](https://non-prophet.dev). The static version of the site is still up, but I didn’t get around to finishing the part that actually matters: accepting money in return for clothing. It’s not surprising in retrospect that I didn’t complete that given the scope I chose and the many new things I was learning on the fly, including the act of scoping itself. I was learning React (and still JS, HTML, CSS), responsive design, deployment, etc. And I spent time on shiny engineering things like Storybook and Cypress that felt like prudent decisions but probably just added unnecessary overhead.
+
+I still want to revisit and finish non-prophet for a few reasons. It was my first website that I got really excited about, so there’s some nostalgia there. Plus, building an e-commerce site is somewhat of a seminal web dev experience (along with a blog). I also find the design task of making physical clothes and creating a brand interesting. And lastly—perhaps most importantly—I want to follow through on my original intent to bring in donations to EJI.
+
+When I do dust it off, I’ll change my approach to start by shipping an SLC version: a single page (literally—not SPA) that sells a single piece of clothing. There’s still plenty to do for that—I need to integrate payments, e.g. Stripe, and drop shipping, e.g. Printful—but I can throw out anything that isn’t core, like an email signup list and multiple products.
+
+### Only the platform
+
+More recently, this past summer, I started building a website using <Link href="/only-the-platform" target="_blank">only the platform</Link>, i.e. just HTML, CSS, and JavaScript without any external libraries. My goal for v1 was a nice looking website with demos for at least 10 interesting browser APIs, then add more over time. In retrospect, 10 was way too many. Some of the APIs—like service workers—have enough depth for weeks of interesting exploration. I should have aimed to ship just _one_ browser API demo to start.
+
+That’s not to say I can’t still do that, or that the time I spent experimenting wasn’t valuable. I think View Transitions and Service Workers are both very cool, and I am pretty confident I’ll return to those in the next year or two. But by overscoping, I left several features half baked and am less likely to pick that project up on the odd weekend.
+
+## It works, it’s fast, and it looks good
+
+Along the lines of simplifying things, I heard [Jerome Hardaway](https://twitter.com/JeromeHardaway) say something when I was first learning to code that stuck with me. He said (to paraphrase), people only really care if your website works, is fast, and looks good. In that order, too. It’s easy to get caught up in other stuff as a developer, especially for side projects in your free time where there might not be financial incentives, but people will be happy (or not unhappy) if it works, is fast, and looks good.
