@@ -52,7 +52,7 @@ const StyledTrigger = styled(RadixSelect.Trigger)`
   &:hover {
     cursor: pointer;
     color: ${(p) => p.theme.tagBorderColorHover};
-    border: 1px solid ${(p) => p.theme.tagBorderColorHover};
+    border: 1.5px solid ${(p) => p.theme.tagBorderColorHover};
   }
 `;
 
