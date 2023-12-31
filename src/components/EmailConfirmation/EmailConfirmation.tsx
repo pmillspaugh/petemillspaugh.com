@@ -1,60 +1,54 @@
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import styled, { keyframes } from "styled-components";
 
-const CONFIRMATION_URL =
-  "https://petermillspaugh-emailSubscription.web.val.run/confirm-verification";
+interface EmailConfirmationProps {
+  confirmationUrl: string;
+  heading: string;
+  body: JSX.Element;
+}
 
-const EmailConfirmation = () => {
+const EmailConfirmation = ({
+  confirmationUrl,
+  heading,
+  body,
+}: EmailConfirmationProps) => {
   const router = useRouter();
   const { email, token } = router.query;
-  const [isConfirmed, setIsConfirmed] = useState(false);
+  const [confirmationError, setConfirmationError] = useState(false);
 
-  // TODO: could use Suspense loading UI
   useEffect(() => {
     async function confirmEmail() {
       if (!email || !token) return;
 
       const response = await fetch(
-        `${CONFIRMATION_URL}?email=${email}&token=${token}`,
+        `${confirmationUrl}?email=${email}&token=${token}`,
         { method: "PUT" }
       );
 
       const { confirmed } = await response.json();
-      if (confirmed) setIsConfirmed(true);
+      if (!confirmed) setConfirmationError(true);
     }
 
     confirmEmail();
-  }, [email, token]);
+  }, [email, token, confirmationUrl]);
 
-  let heading = "Confirming your email...";
-  let body = (
-    <>
-      Try checking your email for another confirmation link—the previous one may
-      have expired.
-    </>
-  );
-
-  if (isConfirmed) {
-    heading = "You’re all set!";
+  // Optimistic success UI, but show error message if confirmation fails
+  if (confirmationError) {
+    heading = "Whoops, looks like email confirmation failed.";
     body = (
       <>
-        I’ll send emails monthly-ish with things I write. In the meantime, you
-        can read about <Link href="/silly-tlds">Silly TLDs</Link>,{" "}
-        <Link href="/edison-bulb">Edison bulb night mode</Link>,{" "}
-        <Link href="/map-in-the-woods">
-          Downloading a 30MB map in the woods
-        </Link>
-        , or just wander through <Link href="/garden">the garden</Link>.
+        I'll get a notification of the error, but please feel free to email me
+        directly at pete@petemillspaugh.com so I can sort things out quickly.
+        Thanks for your patience!
       </>
     );
   }
 
   return (
     <StyledWrapper data-pagefind-ignore>
-      <h1 key={`${String(isConfirmed)}-heading`}>{heading}</h1>
-      <p key={`${String(isConfirmed)}-body`}>{body}</p>
+      <h1 key={`${String(confirmationError)}-heading`}>{heading}</h1>
+      <p key={`${String(confirmationError)}-body`}>{body}</p>
     </StyledWrapper>
   );
 };
