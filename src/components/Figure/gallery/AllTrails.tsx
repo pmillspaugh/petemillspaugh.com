@@ -1,6 +1,6 @@
-import Image from "next/image";
 import styled from "styled-components";
-import Figure from "./Figure";
+import Figure from "..";
+import { StyledImage } from "../Wrapper";
 
 const AllTrails = () => {
   return (
@@ -45,11 +45,6 @@ const StyledImageWrapper = styled.div`
   border-radius: 4px;
   background-color: ${(p) => p.theme.tagBorderColor};
   padding: 4px;
-`;
-
-const StyledImage = styled(Image)`
-  padding: 8px;
-  background-color: ${(p) => p.theme.primaryBg};
 `;
 
 export default AllTrails;

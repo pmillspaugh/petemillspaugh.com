@@ -1,6 +1,6 @@
-import Image from "next/image";
 import styled from "styled-components";
-import Figure from "./Figure";
+import Figure from "..";
+import { StyledImage, StyledWrapper } from "../Wrapper";
 
 const Porkbun = () => {
   return (
@@ -29,12 +29,6 @@ const Porkbun = () => {
   );
 };
 
-const StyledWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-`;
-
 const StyledImageWrapper = styled.div`
   flex-shrink: 0;
   border: 2px solid ${(p) => p.theme.dateTextColor};
@@ -54,11 +48,6 @@ const StyledImageWrapper = styled.div`
       display: block;
     }
   }
-`;
-
-const StyledImage = styled(Image)`
-  padding: 8px;
-  background-color: ${(p) => p.theme.primaryBg};
 `;
 
 export default Porkbun;
