@@ -1,0 +1,106 @@
+---
+slug: anki
+title: Choosing to remember with Anki
+createdAt: January 7, 2023
+updatedAt: January 7, 2023
+format: Essay
+status: Seedling
+---
+
+I began using [Anki](https://apps.ankiweb.net/) in July of last year to aid my memory and learning. Although it’s still a relatively new habit for me, I’m already confident that it’ll be a key learning tool for the rest of my life with compounding benefits over time.
+
+Anki is free flashcard software that automates the timing of card review. So for example, let’s say you write a new flashcard that asks, "About how many neurons do humans have?" (about [100 billion](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2776484/)). Anki presents that card for review immediately, you remember it and mark it as correct. The next day it presents the same card, which you remember again and mark as correct, so Anki waits a full week to present it a third time. If you get it right again, Anki will wait a month or so to surface it, and so on. Or if you get it wrong, the clock resets.
+
+There are more layers to the software, but that’s the basic premise. I’ll cover both the why of Anki for me and observations from my first six months using it.
+
+## Memory’s role in thinking
+
+I first learned about Anki from my partner when she was in medical school (med students use Anki heavily, often reviewing hundreds of cards per day). I thought it was neat, but I didn’t see the appeal beyond high-volume memorization domains like medicine and law. Then my coworker [Danny](https://dannyguo.com) mentioned that he’d started using Anki a few years prior after reading [Augmenting Long-Term Memory](http://augmentingcognition.com/ltm.html) by Michael Nielsen. From the essay:
+
+> Anki can be used to remember almost anything. That is, Anki makes memory a choice, rather than a haphazard event, to be left to chance. I’ll discuss how to use Anki to understand research papers, books, and much else. And I’ll describe numerous patterns and anti-patterns for Anki use. While Anki is an extremely simple program, it’s possible to develop virtuoso skill using Anki, a skill aimed at understanding complex material in depth, not just memorizing simple facts.
+
+I read that essay, and it immediately clicked for me. I recommend reading the full essay if you’re interested—I found it super energizing. Two key points stand out: that you can choose to remember (and choose _what_ to remember), and that foundational knowledge is critical for accruing expertise, creating/building, and solving problems.
+
+Building on Nielsen’s claim that Anki can be used for much more than memorizing simple facts, the book [_Make It Stick_](https://www.goodreads.com/book/show/18770267-make-it-stick)—which covers effective learning techniques supported by research—makes the case that memory is crucial for thinking and developing expertise. From the book:
+
+> Memory plays a central role in our ability to carry out complex cognitive tasks, such as applying knowledge to problems never before encountered and drawing inferences from facts already known.
+>
+> ...
+>
+> All new learning requires a foundation of prior knowledge.
+>
+> ...
+>
+> Mastery in any field, from cooking to chess to brain surgery, is a gradual accretion of knowledge, conceptual understanding, judgement, and skill. These are the fruits of variety in the practice of new skills, and of striving, reflection, and mental rehersal... Mastery requires both the possession of ready knowledge and the conceptual understanding of how to use it.
+
+Donald Rumsfeld famously said that there are _known knowns_, _known unknowns_, and _unknown unknowns_. If a task requires a known known piece of knowledge or skill, we can do it. If it requires a known unknown, we can learn the prerequisite knowledge/skill then do it. But if a task requires an unknown unknown, we may not even be able to start. Having knowledge and skills readily accessible unlocks solutions that we might not have otherwise known to reach for. For example, I like learning about and tinkering with browser APIs that I haven’t yet used in my day job or a side project, like the [Battery Status API](https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API) or [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API).
+
+Building durable knowledge requires time, which is where traditional note-taking can fall short.
+
+## Spaced repetition and forgetting curves
+
+Anki’s automated timing that I described earlier is an implementation of [spaced repetition](https://en.wikipedia.org/wiki/Spaced_repetition). Physical flashcards are an even simpler form. The idea is that you should allow some time to forget what you’ve learned, then test yourself just before forgetting. Each act of recall strengthens the memory trace in your brain for that knowledge and also makes connections to new things you’ve learned since the last retrieval.
+
+This notion can be visualized by a [forgetting curve](https://en.wikipedia.org/wiki/Forgetting_curve), which plots retention over time. Cognitive psychologists have been plotting forgetting curves since Hermann Ebbinghaus’s self-observation study of memory in 1885. Retention starts at 100%, drops over time, jumps back to 100% upon recall, and flattens with each retrieval.
+
+Scroll through the forgetting curves below to visualize retention as a function of time and retrieval. Notice that the curve flattens with each retrieval as the memory trace becomes more durable.
+
+<Figure.ForgettingCurves />
+
+_Side note: I’d like to come back to this essay and create an interactive graph that allows you to play with forgetting curves by controlling the number of retrievals, interval of retrieval, etc._
+
+## My first 6 months of Anki
+
+So I’ve been at it for about half a year—here’s the TL;DR.
+
+- First card added July 29, 2023 (162 days ago)
+- 394 cards added total
+- 106/162 (65%) days studied
+
+## Daily studying
+
+My initial aim was to review once per week because I thought daily would be unrealistic. Surprisingly though, my habit naturally turned into an (almost) daily morning routine without much willpower. It’s a pleasant thing to do in the morning, and there’s definitely a reward/gamification effect. Long intervals between reviews also feels burdensome because you end up with a lot of cards to review. Plus, chunking review into smaller, spaced out sessions leads to more effective learning.
+
+## Single deck
+
+I took Michael Nielsen’s suggestion of one universal deck. Having one deck feels like a more natural representation of the brain, plus the approach of _interleaving_ the study of different topics is known to be an effective learning technique (which I learned in _Make It Stick_). Categorizing would also add maintenance burden.
+
+## Notes as questions
+
+Anki has significantly changed my note-taking style. Instead of writing notes while I learn in the form of statements, I create Anki cards in the form of questions. I still write some traditional notes, but I default to Ankifying new knowledge where it makes sense. _Note: I am borrowing the use of "Ankify" as a verb from Nielsen_.
+
+When I first started, I would write questions for myself without answers as a sort of staging ground, then return to Ankify those questions the next day. I’d try writing answers from memory, check my answers with a quick Google search, ChatGPT query, or Wikipedia scan, then finally create the card. That was good in that it optimized for refined questions and filtered out things I didn’t think were worth remembering by the next day. But it was bad because I ended up with lots of stranded questions that I didn’t get around to adding. So I reversed course and started Ankifying things I learn immediately and directly. I like this better because my rate of card creation is faster, and I can still always edit or delete the question.
+
+## Adding cards
+
+I also found Michael Nielsen’s suggestion of Ankifying things I’m actively applying to be helpful. For example, I learned more about SVGs in Chris Coyier’s [_Practical SVG_](https://abookapart.com/products/practical-svg) book on the same day that I implemented my animated <Link href="/edison-bulb" target="_blank">Edison bulb</Link> SVG in the top right corner of this website, so I Ankified some SVG foundations in the process. I’ll sometimes also write a <Link href="/garden?format=TIL" target="_blank">TIL</Link> for things I Ankify that were particularly fun to learn and worth sharing.
+
+## Deleting cards
+
+I delete cards somewhat often because present me is often a poor judge of what future me will want to remember. Plus, I am building a better intuition for what makes a good card over time.
+
+For example, I’ve deleted some cards I wrote for APIs early on, like “In Next.js, how do you set static or dynamic metadata for a page?” (by exporting a static `metadata` object or a dynamic `generateMetadata()` function). Although those APIs are useful, I don’t need to memorize them because (1) they are readily accessible on API docs, and (2) more importantly, I won’t forget that I want to set metadata like title and description for a webpage—I’ll know I want to do that then look up the method as needed or let Copilot fill it in for me.
+
+## Visuals
+
+Diagrams and images can be very useful, depending on the card. I also learned from _Make It Stick_ that there is no empirical support for the claim that preferred learning style (e.g. "visual learner") has any bearing on learning outcomes. Although learning style _should_ fit the subject matter, e.g. visuals are important when learning geometry.
+
+I make an effort to add visuals wherever it makes sense for a given card. For my card that asks, "What is the [Dunning-Kruger](https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect) effect?", I added a chart that illustrates the relationship between competence and confidence:
+
+<Figure.DunningKruger />
+
+For people, I add a picture—ideally of them doing the thing I want to remember them for—to the card. My card that asks "Who is [Grace Hopper](https://en.wikipedia.org/wiki/Grace_Hopper)?" includes the portrait of her below. While the picture doesn’t remind me that she was a pioneer of high-level programming languages, wrote one of the first compilers, or coined the term "bug" when she found a literal moth in the computer, it does remind me that she was a Navy rear admiral, which is a memory hook for the time period she worked in (because the military was at the forefront of computing innovation in the 1940s/50s).
+
+<Figure.GraceHopper />
+
+## Topics my cards cover
+
+I Ankify things I learn from coding, books, podcasts, conversations, etc. My primary interest right now is remembering software engineering concepts, syntax, and commands, e.g. SQL commands, git sequences, system design concepts, browser APIs, and so on. I also Ankify tangential topics like the history of computing and completely unrelated ones like brain anatomy and cooking science/ingredients. In short, if there’s anything I think is worth remembering for the rest of my life, I Ankify it.
+
+## Looking forward
+
+A few years ago I used to say, "I’ll only have a high probability of remembering something if I tell someone about it or write it down." The word learning researchers use for that is _elaboration_ (learned in _Make It Stick_), which is known to strengthen learning. The problem with my old strategy is that it was random. What if I didn’t have the chance to write something down or tell someone? Or even if I did, without introducing recall and spaced repetition, the learning would fade anyway.
+
+Anki has been very empowering because it eliminates that randomness. It also increases my awareness of how what I think is worth learning changes over time. Did I add a bunch of cards a few months ago about some isolated topic that doesn’t connect to the rest of my knowledge? Maybe that wasn’t time well spent. Or maybe it was! There are obviously infinite things to learn, so I like that I am more aware of how I allocate my learning budget (i.e. time).
+
+This is still a very new habit for me, so I’m curious how it evolves. On that note, please reach out if you have your own Anki observations to share (or any observations, really)—I like talking about this stuff.
