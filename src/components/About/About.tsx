@@ -19,11 +19,11 @@ const About = () => {
       <StyledP>
         I am a dev who likes to design and write. My bread ’n butter is
         TypeScript/JavaScript, React, Node, and SQL. In the near-ish term I’d
-        like to learn Rust and Three.js,{" "}
+        like to learn Rust and Web Components,{" "}
         <Link href="/wishlist" target="_blank">
           among other things
         </Link>
-        . When I’m not coding I like to write, cook, draw, climb, and run.
+        .
       </StyledP>
       <StyledH2 id="this-site">My digital garden</StyledH2>
       <StyledP>
@@ -46,7 +46,7 @@ const About = () => {
       </StyledP>
       <StyledP>
         My <Link href="/garden">garden</Link> is organized by writing formats
-        and statuses, aka growth stages. I have four writing formats:
+        and statuses, aka growth stages. I have five writing formats:
       </StyledP>
       <StyledUl>
         <li>
@@ -84,9 +84,8 @@ const About = () => {
         </li>
         <li>
           <strong>Notes:</strong> things I want to write about that don't neatly
-          fit into another category (Essays, Show n' tells, Brainstorms, TILs).
-          A Note could be as small as a Tweet or could grow large enough to call
-          for re-potting as an Essay.
+          fit into another category. A Note could be as small as a Tweet or
+          could grow large enough to re-pot as an Essay
         </li>
       </StyledUl>
       <StyledP>

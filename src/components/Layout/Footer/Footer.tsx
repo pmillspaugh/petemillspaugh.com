@@ -56,19 +56,14 @@ const Footer = () => {
                   <StyledLink href="/wishlist">Wishlist</StyledLink>
                 </li>
                 <li>
+                  <StyledLink href="/talks">Talks</StyledLink>
+                </li>
+                <li>
                   <StyledExternalLink
                     href="https://weeksofyour.life"
                     target="_blank"
                   >
                     weeksofyour.life
-                  </StyledExternalLink>
-                </li>
-                <li>
-                  <StyledExternalLink
-                    href="https://pete.football"
-                    target="_blank"
-                  >
-                    pete.football
                   </StyledExternalLink>
                 </li>
               </StyledNavUl>

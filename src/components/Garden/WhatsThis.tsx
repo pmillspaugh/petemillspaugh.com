@@ -11,10 +11,11 @@ const WhatsThis = () => {
         early on while it's still being cultivated and growing.
       </StyledP>
       <StyledP>
-        Writing also has many shapes. I have four writing formats:{" "}
-        <em>Essays</em>, <em>Brainstorms</em>, <em>Show 'n tells</em>, and{" "}
-        <em>TILs</em>. Each piece of content also has a status or growth stage:{" "}
-        <em>Seedlings</em>, <em>Buddings</em>, and <em>Evergreens</em>.
+        Writing also has many shapes. I have five writing formats:{" "}
+        <em>Essays</em>, <em>Brainstorms</em>, <em>Show 'n tells</em>,{" "}
+        <em>TILs</em>, and <em>Notes</em>. Each piece of content also has a
+        status or growth stage: <em>Seedlings</em>, <em>Buddings</em>, and{" "}
+        <em>Evergreens</em>.
       </StyledP>
       <StyledP>
         I cover my gardening habits in full on the{" "}
@@ -39,6 +40,10 @@ const StyledP = styled.p`
 
   &:not(:last-child) {
     margin-bottom: 12px;
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 1rem;
   }
 `;
 
