@@ -1,0 +1,45 @@
+---
+slug: browser-terminal
+title: How would you build a terminal in the browser?
+createdAt: January 17, 2024
+updatedAt: January 17, 2024
+format: Brainstorm
+status: Seedling
+---
+
+<Callout>
+  This is my third <Link href="/garden?format=Brainstorm">“Brainstorm”</Link>, a
+  writing format where I scribble down an offline thought stream with questions
+  then follow up later with research. This is also a “Seedling”, which means
+  I’ll come back later to finish up the research part.
+</Callout>
+
+I use [Warp](https://warp.dev/) as my terminal—it’s an indispensable devtool for me. Michelle Lim and Zach Lloyd from Warp did an [episode on the devtools.fm podcast](https://www.devtools.fm/episode/24)—well worth a listen—where they mentioned building an in-browser terminal. A couple weeks later I wrote down a brainstorm exploring how that would work.
+
+## Raw transcription
+
+<Transcription>
+[January 17, 2024]
+
+How would you make a terminal in the browser? I heard Michelle Lim and Zach Lloyd from Warp on a devtools.fm podcast episode mention building one. They said Warp has its own in-house Rust UI framework for rendering text using MacOS APIs/graphics library, so could that framework be adapted for the Web? Like, compile Rust to WASM and use WebGL? Not sure how all that works. There’s prior art like replit and pkg-size.dev—how do they do it? IIRC, pkg-size.dev uses "Web Containers" (is that right?) to npm install whatever package you’re after. And that’s an unauth’d experience, so new web container per browser session, I guess? Is it really a full virtual OS running in your browser with no backend? Or does it spin up a container and stream in tiny chunks of download progress? I don’t know much about containers. If it is a server-side container—which it must be for an auth’d UX that persists your file system and terminal session history etc. across logins—then does the container stay alive when the user closes the browser tab? I would think probably that event triggers a call to save the state and spin down the container. And are those all just slices of servers on AWS or wherever? Do you choose OS based on detecting the user’s OS at the outset? Or just support one (Linux?). What about shell? Is there even a way to detect shell—e.g. bash versus zsh—from the browser? I guess users could choose from a dropdown. I think that’s what the VS Code terminal does.
+
+Stepping back, part of why I think an in-browser terminal would be useful is for pair programming. When I was first learning to code I really liked VS Code’s Live Share extension that creates a multiplayer IDE+terminal. In the browser I guess you’d use websockets, which I guess means the terminal/container state would live on the server and sync between multiple clients based on user input. Although I’ve never actually implemented websockets, so I’m not totally sure how they work—something for the wishlist!
+
+</Transcription>
+
+## Michelle and Zach’s pitch for an in-browser terminal on devtools.fm
+
+After writing my raw thought stream, I went back to read my initial listening notes from the podcast episode. It turns out some stuff I “thought of” was just stuff they said on the podcast where the source/attribution got lost in my brain (a good reminder of the fallibility of memory—thank goodness for notes). Namely, they did say the in-browser terminal would compile Rust to WASM and compile shader code to WebGL.
+
+Michelle and Zach also pitched four use cases of an in-browser terminal, listed below. If you want to jump to this part of the episode, it starts around `37:24`.
+
+1. You have some cloud IDE so a complementary terminal makes sense
+2. You can share terminal sessions without your teammate having to download the native app
+3. You can firefight as a team during downtime/site incidents
+4. You can monitor the status of long-running commands on the go (e.g. check status of a script from your phone)
+
+Use case #2 jumps out as the one I’d use right away. Low-friction pair programming in a terminal would be handy, especially for tasks like onboarding. Although reproducing your local terminal state in the browser—e.g. to debug an error—sounds tricky.
+
+## Research
+
+_To be written. Feel free to send me any thoughts or reading on in-browser terminals in the meantime._

@@ -30,8 +30,23 @@ const Wishlist = () => {
           </a>
         </li>
         <li>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API"
+            target="_blank"
+          >
+            WebGL
+          </a>
+          ,{" "}
           <a href="https://threejs.org/" target="_blank">
             Three.js
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/API/WebSocket"
+            target="_blank"
+          >
+            WebSockets
           </a>
         </li>
         <li>
