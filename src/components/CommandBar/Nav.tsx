@@ -16,6 +16,11 @@ const Nav = ({ handleClick }) => {
           </StyledNavLink>
         </li>
         <li>
+          <StyledNavLink href="/talks" onClick={handleClick}>
+            Talks
+          </StyledNavLink>
+        </li>
+        <li>
           <StyledNavLink href="/wishlist" onClick={handleClick}>
             Wishlist
           </StyledNavLink>

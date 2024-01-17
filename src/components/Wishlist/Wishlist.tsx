@@ -17,6 +17,14 @@ const Wishlist = () => {
           </a>
         </li>
         <li>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components"
+            target="_blank"
+          >
+            Web Components
+          </a>
+        </li>
+        <li>
           <a href="https://bun.sh/" target="_blank">
             Bun
           </a>
@@ -70,14 +78,6 @@ const Wishlist = () => {
           Mobile coding, e.g.{" "}
           <a href="https://replit.com/mobile" target="_blank">
             Replit
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components"
-            target="_blank"
-          >
-            Web Components
           </a>
         </li>
       </StyledUl>
