@@ -1,0 +1,20 @@
+---
+slug: ram-is-like-battleship
+title: RAM is like Battleship
+createdAt: January 18, 2024
+updatedAt: January 18, 2024
+format: Note
+status: Seedling
+---
+
+The “random” in [Random Access Memory (RAM)](https://en.wikipedia.org/wiki/Random-access_memory) means any location in memory can be read just as easily as another. So lookup is constant, `O(1)`. Same for writes. But like,
+
+> How does RAM actually access any location in memory without going through other bytes first? Or is it that it starts searching at random, so on average lookup time is constant?
+
+It’s not average lookup time—it actually is direct, constant-time reads/writes. My mental model for this is [Battleship](<https://en.wikipedia.org/wiki/Battleship_(game)>). In Battleship, when one player says “G4”, the other player uses the grid to find column G and row 4, without having to sequentially scan the other cells. Lookup is constant.
+
+<Figure.Battleship />
+
+In RAM, memory cells are arranged in a grid-like structure. When the CPU needs to read or write data, it passes along an address that gets translated to a physical location on the grid. The CPU would be the player in Battleship, and RAM would be the grid (the ocean, I guess).
+
+You could expand the metaphor to separate each player—maybe whoever calls out “G4” is the CPU and the other player is the address bus and/or memory controller translating that address to a RAM location—although I’d need to learn more about RAM first to be confident going elbow deep in metaphor. On that note, if you have any corrections, caveats, or comments lmk!

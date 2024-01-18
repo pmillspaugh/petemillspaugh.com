@@ -6,6 +6,7 @@ import MapNotes from "./gallery/MapNotes";
 import GraceHopper from "./gallery/GraceHopper";
 import DunningKruger from "./gallery/DunningKruger";
 import ForgettingCurves from "./gallery/ForgettingCurve";
+import Battleship from "./gallery/Battleship";
 
 interface FigureProps {
   caption: string;
@@ -44,5 +45,6 @@ Figure.MapNotes = MapNotes;
 Figure.GraceHopper = GraceHopper;
 Figure.DunningKruger = DunningKruger;
 Figure.ForgettingCurves = ForgettingCurves;
+Figure.Battleship = Battleship;
 
 export default Figure;
