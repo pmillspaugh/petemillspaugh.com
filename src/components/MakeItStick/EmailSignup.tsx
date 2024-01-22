@@ -29,7 +29,7 @@ const MakeItStickEmailSignup = () => {
     <>
       <StyledH1>Make It Stick (in 10 days, via email)</StyledH1>
       <StyledP>
-        I made an email-based course on{" "}
+        I’m making an email-based course on{" "}
         <em>
           <a
             href="https://www.goodreads.com/book/show/18770267-make-it-stick"
@@ -42,8 +42,9 @@ const MakeItStickEmailSignup = () => {
         research.
       </StyledP>
       <StyledP>
-        It’s 10 lessons, delivered over 10 days. Sign up to start the first
-        lesson:
+        It’s 10 lessons, delivered over 10 days. The course is a
+        work-in-progress, so the content is incomplete, but feel free to sign up
+        and lmk what you think.
       </StyledP>
       <StyledForm onSubmit={handleSubmit}>
         {success ? (
@@ -81,7 +82,7 @@ const MakeItStickEmailSignup = () => {
         </button>
       </StyledForm>
       <StyledP>
-        I also wrote about{" "}
+        I’m also writing about{" "}
         <Link href="/email-course-creator" target="_blank">
           the <em>how</em> of making the course
         </Link>
