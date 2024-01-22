@@ -1,0 +1,51 @@
+---
+slug: email-course-creator
+title: Building an email-based course creator with Val Town
+createdAt: January 22, 2024
+updatedAt: January 22, 2024
+format: ShowNTell
+status: Seedling
+---
+
+<Callout>
+  This Show ’n tell is a <Link href="/garden?format=Seedling">"Seedling"</Link>,
+  which means I still have lots of writing to do. I’ll tend to it as I complete
+  the course tool and wrap up my first course. More on that below...
+</Callout>
+
+I recently read [_Make It Stick_](https://www.goodreads.com/book/show/18770267-make-it-stick), a book written by cognitive psychologists about effective learning techniques, backed by research. One of the topics covered is [spaced repetition](https://en.wikipedia.org/wiki/Spaced_repetition), which I <Link href="/anki" target="_blank">started practicing in my own learning</Link> this summer using flashcard software [Anki](https://apps.ankiweb.net/).
+
+While reading, I was reminded of [_Just JavaScript_](https://justjavascript.com/), which I took in 2021 as an email-based course in beta before its full launch as a web application (amazing course btw, for anyone who wants to strengthen their JavaScript mental models). An email-based course means you receive lessons or chapters as emails rather than in a PDF or website.
+
+_Just JavaScript_ was programmed so that when you submitted the quiz at the end of each lesson you’d receive the next one. But what if instead of receiving the next lesson immediately you had to wait a day? Spaced repetition is key to learning, and email can be a useful medium to naturally bake in time between lessons.
+
+## Email-based course creator
+
+With all that in mind, I am making an email-based course creator using [val.town](https://www.val.town/) that anyone who knows some JavaScript and HTML can fork to create their own email-based course. Along with spaced repetition, I lean on other effective learning techniques from the book to inform course structure:
+
+- Fill-in-the-blank before each lesson as _generation_
+- Mixing up order of content as _interleaving_
+- Quizzing as _retrieval practice_
+- Free form writing at the end of each lesson as _elaboration_ and _reflection_
+
+As an example (and hopefully a useful resource), I’m using the course creator to write a course about learning techniques and research covered in _Make It Stick_. And if you’re interested in Val Town, I also wrote about <Link href="/val-town-button" target="_blank">creating a global button</Link> and <Link href="/cultivating-emails" target="_blank">managing email subscribers</Link>.
+
+## Signing up
+
+For signup and email verification, I forked a Hono router Val that I wrote for `petemillspaugh.com` subscribers (signup for that is in the footer). See the Val Town iframe below. I added a root endpoint `/` that returns a signup form for the course, which you can test out in the "Browser preview" at the bottom of the iframe. I also set up a <Link href="/make-it-stick" target="_blank">landing page for the course</Link> that hits the `/send-verification` endpoint. I cover signup and verfication in more detail in my Show ’n Tell <Link href="/cultivating-emails">on cultivating emails</Link>.
+
+<iframe
+  style={{ border: "none", marginBottom: "24px" }}
+  id="email-course-creator-val"
+  title="Email course creator Hono router via Val Town"
+  width="100%"
+  height="1500"
+  src="https://www.val.town/embed/petermillspaugh/emailCourseCreator"
+  loading="lazy"
+/>
+
+{/* ## Cron Val for daily email lesson */}
+
+## To be written
+
+_I’ll add code examples and descriptions for storing subscribers with SQLite, sending lessons via email with a cron, handling unsubscribe, emailing student responses, and more. In the meantime, feel free to [reach out](mailto:pete@petemillspaugh.com) with any comments, questions, or feedback._
