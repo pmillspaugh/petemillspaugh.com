@@ -51,12 +51,17 @@ const Footer = () => {
                 <li>
                   <StyledLink href="/about">About</StyledLink>
                 </li>
-                <li></li>
+                <li>
+                  <StyledLink href="/talks">Talks</StyledLink>
+                </li>
                 <li>
                   <StyledLink href="/wishlist">Wishlist</StyledLink>
                 </li>
                 <li>
-                  <StyledLink href="/talks">Talks</StyledLink>
+                  <StyledLink href="/blogroll">Blogroll</StyledLink>
+                </li>
+                <li>
+                  <StyledLink href="/tour">Tour</StyledLink>
                 </li>
                 <li>
                   <StyledExternalLink
@@ -208,6 +213,10 @@ const StyledNavUl = styled.ul`
   flex-grow: 1;
   margin-left: auto;
   text-align: right;
+
+  & > li {
+    padding-bottom: 4px;
+  }
 `;
 
 const StyledRowWrapper = styled.div`
