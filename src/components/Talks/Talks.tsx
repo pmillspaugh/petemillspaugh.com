@@ -39,6 +39,8 @@ const StyledH1 = styled.h1`
 `;
 
 const StyledP = styled.p`
+  margin-bottom: 16px;
+
   @media (min-width: 1200px) {
     font-size: 1.25rem;
     line-height: 1.75;

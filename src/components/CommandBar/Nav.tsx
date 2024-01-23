@@ -25,6 +25,16 @@ const Nav = ({ handleClick }) => {
             Wishlist
           </StyledNavLink>
         </li>
+        <li>
+          <StyledNavLink href="/blogroll" onClick={handleClick}>
+            Blogroll
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink href="/tour" onClick={handleClick}>
+            Tour
+          </StyledNavLink>
+        </li>
       </ul>
     </StyledNav>
   );
