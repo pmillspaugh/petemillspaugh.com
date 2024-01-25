@@ -15,14 +15,16 @@ const StyledBlockquote = styled.blockquote`
   border-left: 3px solid ${(p) => p.theme.blockquoteColor};
   transition: all var(--base-timing) ease-in-out;
 
-  p {
+  p,
+  ul {
     padding-bottom: 0px;
   }
 
   @media (min-width: 1200px) {
     margin-bottom: 30px;
 
-    p {
+    p,
+    ul {
       font-size: 1.05rem;
     }
   }
