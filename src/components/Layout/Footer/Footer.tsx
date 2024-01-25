@@ -114,7 +114,10 @@ const Footer = () => {
                   </StyledIconLink>
                 </li>
               </StyledIconUl>
-              <StyledCopyright>© 2023 Pete Millspaugh</StyledCopyright>
+              <StyledCopyright>
+                © 2023{" "}
+                <a href="mailto:pete@petemillspaugh.com">Pete Millspaugh</a>
+              </StyledCopyright>
             </div>
           </StyledRowWrapper>
         </StyledNav>
@@ -266,6 +269,15 @@ const StyledCopyright = styled.p`
   font-size: 0.79rem;
   font-weight: 600;
   text-align: right;
+
+  & > a {
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  & > a:hover {
+    color: var(--gold);
+  }
 `;
 
 export default Footer;
