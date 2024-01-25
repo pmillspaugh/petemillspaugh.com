@@ -4,7 +4,7 @@ title: Things I found interesting in Richard Hamming’s "The Art of Doing Scien
 createdAt: December 12, 2023
 updatedAt: December 12, 2023
 format: Note
-status: Seedling
+status: Evergreen
 ---
 
 I’m reading Richard Hamming’s [_The Art of Doing Science and Engineering_](https://www.goodreads.com/book/show/530415.The_Art_of_Doing_Science_and_Engineering). Page numbers refer to the [Stripe Press](https://press.stripe.com/the-art-of-doing-science-and-engineering) copy (which, btw—if you’ve never stumbled upon Stripe Press, it’s worth spending a few minutes there. It’s one of the most beautiful sites on the Web).
@@ -51,8 +51,118 @@ One of my friends whose father is a novelist and uncle is a programmer has told 
 
 Hamming wanted to get better at speaking, so he signed up to give a few talks a year as part of IBM training programs. For the topic, he chose _The History of Computing to the Year 2000_ (it was around 1960 when he started giving talks). He ended up learning a lot about the future of computing when preparing for the talks directly, of course, but it also motivated him to stay in tune year round with the latest in the field.
 
-I’ve heard the phrase “talk driven development”—I can’t remember where—to describe the learning that signing up for a talk forces you to do, and I’ve always loved that idea. I gave a [talk on Web accessibility in 2021](https://www.youtube.com/watch?v=pPX0Gk0l6Vo), which helped me build a good foundation there—and a lot of what I learned stuck with me.
+I’ve heard the phrase “talk-driven development”—I can’t remember where—to describe the learning that signing up for a talk forces you to do, and I’ve always loved that idea. I gave a [talk on Web accessibility in 2021](https://www.youtube.com/watch?v=pPX0Gk0l6Vo), which helped me build a good foundation there—and a lot of what I learned stuck with me.
 
-## On [the rest of the book]
+## On transmission through time versus transmission through space (17, 126)
 
-_I started reading this last week, so more to come._
+> We should note here _transmission through space_ (typically signaling) is the same as _transmission through time_ (storage).
+
+The same fundamental physics apply to storage and transmission, which I’d never really thought about. Encoding and decoding, redundancy and error detection/correction, capacity (storage) and bandwidth (transmission), etc. I imagine this mental model will fill in more for me over time and hopefully be useful.
+
+## On continuous learning (180)
+
+> Learning a new subject is something you will have to do many times in your career if you are to be a leader, and not be left behind as a follower by newer developments.
+
+This is an energizing, empowering truth. Instead of, “choose a career, train for that career, hope you made the right choice,” it’s “do your job, but also learn for your next job and the one after that.”
+
+## On skeuomorphism (196)
+
+Hamming notes that when something new comes around, people often mistake it for something old. He focuses on digital filters that people incorrectly interpreted as a variant of analog filters. Also computers, which were just "large, fast desk calculators." You have to recognize that something is fundamentally new to do innovative work.
+
+> Those who claimed there was no essential difference never made any significant contributions to the development of computers. Those who did make significant contributions viewed computers as something new...
+>
+> This is a common, endlessly made mistake; people always want to think that something new is just like the past—they like to be comfortable in their minds as well as their bodies—and hence they prevent themselves from making any significant contribution to the new field being created under their noses.
+
+Websites as magazines/brochures/newspapers is the big [skeuomorphism](https://en.wikipedia.org/wiki/Skeuomorph) example in technology after Hamming’s time. There’s naturally a delay before use cases that the new technology unlocks catch on. The most prevalent current example is probably chatbots, I think? I’ve also heard crypto bulls talk about use cases like supply chain ledgers as skeuomorphs, but TBD if undeniably useful crypto apps will ever come.
+
+## On exceptions (236)
+
+> _Only_ an expert in the field of application can know if what you have failed to include is vital to the accuracy of the simulation, or if it can be safely ignored.
+
+This reminds me of anti-patterns and escape hatches in software. Like, an open-source library’s docs might have a warning that says, "don’t do this unless you _really_ know what you’re doing." Escape hatches that exist will get used. I’ve been irked by [component libraries that allow passing arbitrary styles through a prop](https://www.gabe.pizza/notes-on-component-libraries/#components-probably-shouldnt-expose-code-classlanguage-textclassnamecode-or-code-classlanguage-textstylecode-props), which loud naming like `UNSAFE_className` can help discourage.
+
+## On starting simple (240)
+
+> I strongly advise, when possible, to start with the simple simulation and evolve it to a more complete, more accurate, simulation later so the insights can arise early.
+
+This is one of those things that I know but still need to constantly remind myself of. I wrote about <Link href="/slippery-scope">slippery scope</Link> and <Link href="/think-small">thinking small</Link> to help remind myself.
+
+## On younger minds being more malleable (250)
+
+Hamming writes about a tennis simulation game he built where it was hard but possible to win a match against the machine. He said that not one adult he watched was able to win but nearly every child was.
+
+> I noticed, after a while, not one adult ever got the idea of what was going on enough to play successfully, and almost every child did! Think that over! It speaks volumes about the elasticity of young minds and the rigidity of older minds!
+>
+> Remember this fact—older minds have more trouble adjusting to new ideas than do younger minds—since you will be showing new ideas, and even making formal presentations, to older people throughout much of your career.
+
+This is both fascinating and unsettling. We’ve heard that children can pick up languages more quickly, for example, which can be discouraging to hear as an adult. Is there a way to fight this rigidity as we age?
+
+For a while I was discouraged that I’d never be as good of a programmer as others who started coding as kids because I didn’t start until I was 23. That's probably true in many ways, but I feel more reassured focusing on things I can control—e.g. picking up effective <Link href="/anki">learning habits like Anki</Link>—and trusting the compounding effect of learning.
+
+## On Simpson’s Paradox (251)
+
+He discusses [Simpson’s Paradox](https://en.wikipedia.org/wiki/Simpson’s_paradox), where a statistical trend in multiple groups reverses when you aggregate the data.
+
+This reminds me of an example I heard on a [Freakonomics podcast episode about whether public transit should be free](https://freakonomics.com/podcast/should-public-transit-be-free/):
+
+> There was a period where New York was gaining riders during a boom time, a decade or so ago, and much of the country was losing riders. But it appeared, if you looked at the top-line figures, that public transit was doing very well. New York was so big it could, by itself, move the needle.
+
+That episode is super interesting, btw, especially if you live in NYC.
+
+## On the future of fiber optics (285)
+
+It’s fun reading predictions from decades ago that have already played out. I had a lot of fun just last night reading [Paul Graham’s _The Other Road Ahead_](https://www.paulgraham.com/road.html) about server-based web applications (websites) beating out desktop apps, written in 2004 (before the iPhone).
+
+Hamming predicted the future of fiber optics, I think around 1993.
+
+> Let me now turn to predictions of the immediate future. It is fairly clear that in time "drop lines" from the street to the house (they may actually be buried, but will probably still be called "drop lines"!) will be fiber optics. Once a fiber-optic wire is installed, then potentially you have available almost all the information you could possibly want, including TV and radio, and possibly newspaper articles selected according to your interest profile...
+>
+> But will this happen? It is necessary to examine political, economic, and social conditions before saying what is technologically possible will in fact happen. Is it likely the government will want to have so much information distribution in the hands of a single company?
+
+He's roughly describing the Internet, of course, and it really is a marvel that it developed into the incredibly stable technology it is. Thank goodness for the Internet!
+
+## On the circularity of language (307)
+
+> Coming back to Plato: What is a chair? Is it always the same idea, or does it depend on context? At a picnic a rock can be a chair, but you do not _expect_ the use of a rock in someone’s living room as a chair. You also realize any dictionary must be circular; the first word you look up must be defined in terms of other words—there can be no first definition which does not use words.
+>
+> You may, therefore, wonder how a child learns a language. It is one thing to learn a second language once you know a first language, but to learn the first language is another matter—there is no first place to appeal for meaning. You can do a bit with gestures for nouns and verbs, but apparently many words are not so indictable. When I point to a horse and say the word “horse,” am I indicating the name of the particular horse, the general name of horses, of quadrupeds, of mammals, of living things, or the color of the horse? How is the other person to know which meaning is meant in a particular situation? Indeed, how does a child learn to distinguish between the specific, concrete horse and the more abstract class of horses?
+
+The notion that dictionaries must be circular is a bit mind-bending. It’s mind-bending in the kind of way that words from other languages are when they have no direct translation to your language. Like [_Ikigai_](https://en.wikipedia.org/wiki/Ikigai) in Japanese or [_Hygge_](https://en.wikipedia.org/wiki/Hygge) in Danish. You just have to grok language by observing usage.
+
+Unrelated, but: the rock-in-living-room part reminded me of [this Sisyphus WFH meme](https://twitter.com/mausmasher/status/1747777337184166084), which totally cracked me up. The "one must imagine" part is a reference to Camus’ [_The Myth of Sisyphus_](https://en.wikipedia.org/wiki/The_Myth_of_Sisyphus), which is a fantastic essay. I wonder what Camus would think of the meme.
+
+## On descriptivism versus prescriptivism in dictionaries (308)
+
+Continuing directly from the last quote above on circularity, Hamming brings up [descriptivism](https://en.wikipedia.org/wiki/Linguistic_description):
+
+> Apparently, as I said above, meaning arises from the use made of the word, and is not otherwise defined. Some years back a famous dictionary came out and admitted they could not prescribe usage, they could only say how words were used; they had to be "descriptive" and not "prescriptive." That there is apparently no absolute, proper meaning for every word made many people quite angry. For example, both the New Yorker book reviewer and the fictional detective Nero Wolfe were very irate over the dictionary.
+
+This is a fascinating topic covered brilliantly by the DFW essay I mentioned before, _Authority and American Usage_ (originally published in _Harper’s_ in 2001 as _Tense Present: Democracy, English, and the Wars over Usage_). That’s probably my favorite all time essay, so I’ll do a quick detour to tease the opening paragraph:
+
+> Did you know that probing the seamy underbelly of U.S. lexicography reveals ideological strife and controversy and intrigue and nastiness and fervor on a nearly hanging-chad scale? For instance, did you know that some modern dictionaries are notoriously liberal and others notoriously conservative, and that certain conservative dictionaries were actually conceived and designed as corrective responses to the "corruption" and "permissiveness" of certain liberal dictionaries? That the oligarchic device of having a special "Distinguished Usage Panel...of outstanding professional speakers and writers" is an attempted compromise between the forces of egalitarianism and traditionalism in English, but that most linguistic liberals dismiss the Usage Panel as mere sham-populism?
+>
+> Did you know that U.S. lexicography even _had_ a seamy underbelly?
+
+## On “You and Your Research” (387, 393)
+
+This book grew out of Hamming’s essay "You and Your Research," which is included as the final chapter.
+
+He writes about improving "luck" with preparation (i.e. hard work) and environment. Hamming created _coding theory_ in the same office at the same time Claude Shannon created _information theory_ at Bell Labs. Pretty cool! No coincidence that good things happen when you have smart, hard-working people around you to bounce around ideas.
+
+I am a fan of remote work in many ways, but reading stuff like this resurfaces my latent worry that I should be sitting 5 days a week next to smart people I can learn from by wheely-chairing over to their desk on a whim.
+
+For me, the overarching theme of this book—and the original essay—is motivation. The idea that knowledge is compounding is the best motivation, I think. Hamming writes:
+
+> In a sense my boss was saying intellectual investment is like compound interest: the more you do, the more you learn how to do, so the more you can do, etc. I do not know what compound interest rate to assign, but it must be well over 6%—one extra hour per day over a lifetime will much more than double the total output. The steady application of a bit more effort has a great total accumulation.
+
+## On saving Friday afternoons for “great thoughts” (394)
+
+> You need to work on the right problem at the right time and in the right way—what I have been calling "style." At the urging of others, for some years I set aside Friday afternoons for "great thoughts"...I would only think great thoughts—what was the nature of computing, how would it affect the development of science, what was the natural role of computers in Bell Telephone Laboratories, what effect will computers have on AT&T, on science generally? I found it was well worth the 10% of my time to do this careful examination of where computing was heading so I would know where we were going and hence could go in the right direction.
+>
+> I strongly recommend taking the time, _on a regular basis_, to ask the larger questions, and not stay immersed in the sea of detail where almost everyone stays almost all of the time. These chapters have regularly stressed the bigger picture, and if you are to be a leader into the future, rather than a follower of others, I am now saying it seems to me to be necessary for you to look at the bigger picture on a regular, frequent basis for many years.
+
+Doing this on Friday afternoons is definitely a luxury work-wise, but it could of course be Sunday morning or whenever. It’s easy to open browser tabs and bookmark stuff without ever blocking out time to get to it.
+
+## On the book
+
+I liked this book. If you read all this (without feeling some obligation to, like if I texted it to you), [say hi](mailto:pete@petemillspaugh.com)! I'm looking for book recs on programming and the Web. I read _The Dream Machine_ before this, I'm reading _Hackers and Painters_ now, and I have _Weaving the Web_ and _A Small Matter of Programming_ in the queue.
