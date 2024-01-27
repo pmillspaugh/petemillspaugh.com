@@ -50,7 +50,7 @@ const Art = () => {
           width={400}
           height={303}
         />
-        <figcaption>Monkey. 18x24in. Oil.</figcaption>
+        <figcaption>Monochrome monkey. 24x18in. Oil.</figcaption>
       </StyledFigure>
     </>
   );
