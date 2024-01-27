@@ -19,10 +19,10 @@ At every moment, the cruise control system calculates the current error—e.g. 2
 
 But if you’re driving up a hill with constant engine power, your speed will be dropping continuously, so a power adjustment based on one snapshot won’t be enough. Instead, cruise control uses a second factor, the _integral control_, to adjust for the current error and historical errors at prior moments.
 
-With proportional and integral controls, power can be continuously adjusted to compensate for current and historical errors, but it will overshoot. To offset, cruise control uses a third factor, the _derivative control_, that observes the rate of change of the error and correct for overshoot. So:
+With proportional and integral controls, power can be continuously adjusted to compensate for current and historical errors, but it will overshoot. To offset, cruise control uses a third factor, the _derivative control_, that observes the rate of change of the error and corrects for overshoot. So:
 
-- Proportional control: adjustment factor based on current error
-- Integral control: adjustment factor based on historical error plus current error
-- Derivative control: correction factor for overadjustments made by proportional and integral controllers, based on the rate of change of the error
+- **Proportional control:** adjustment factor based on current error
+- **Integral control:** adjustment factor based on historical error plus current error
+- **Derivative control:** correction factor for overadjustments made by proportional and integral controllers, based on rate of change of the error
 
 Again, definitely read Azeem’s post for a better and more thorough explanation if you’re interested!
