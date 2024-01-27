@@ -1,0 +1,28 @@
+---
+slug: pid-controllers
+title: Proportional-integral-derivative (PID) controllers
+createdAt: January 27, 2024
+updatedAt: January 27, 2024
+format: TIL
+status: Evergreen
+---
+
+My friend Azeem is working on a baseball video game called [_The Ump Show_](https://theumpshow.com/) where you get to be the umpire (so cool!). He wrote a [neat blog post](https://azeemba.com/posts/pids-creating-stable-control-in-games.html) explaining his use of PID controllers to adjust the animation speed of baserunners. Feel free to jump right to Azeem’s blog for a better explanation than my attempt below.
+
+I’d never heard of PIDs before reading Azeem’s post. As I understand it, PID controllers are used to continuously adjust some process variable in a system to meet a target. I think an example makes it more clear.
+
+## Cruise control
+
+When you set cruise control to 60mph on the highway, your car continuously adjusts engine power to meet the target speed. More engine power is needed to maintain speed when driving up a hill, for example.
+
+At every moment, the cruise control system calculates the current error—e.g. 2mph if your car is going 58mph—to know how much more or less power is needed. If you were driving on a perfectly flat road and all other conditions were constant, then the current error could be enough to determine the power adjustment needed. That adjustment factor is called the _proportional control_.
+
+But if you’re driving up a hill with constant engine power, your speed will be dropping continuously, so a power adjustment based on one snapshot won’t be enough. Instead, cruise control uses a second factor, the _integral control_, to adjust for the current error and historical errors at prior moments.
+
+With proportional and integral controls, power can be continuously adjusted to compensate for current and historical errors, but it will overshoot. To offset, cruise control uses a third factor, the _derivative control_, that observes the rate of change of the error and correct for overshoot. So:
+
+- Proportional control: adjustment factor based on current error
+- Integral control: adjustment factor based on historical error plus current error
+- Derivative control: correction factor for overadjustments made by proportional and integral controllers, based on the rate of change of the error
+
+Again, definitely read Azeem’s post for a better and more thorough explanation if you’re interested!
