@@ -13,7 +13,7 @@ const WhatsThis = () => {
       <StyledP>
         You can filter the garden by format—
         <em>Essays</em>, <em>Brainstorms</em>, <em>Show 'n tells</em>,{" "}
-        <em>TILs</em>, <em>Notes</em>—and status: <em>Seedlings</em>,{" "}
+        <em>TILs</em>, <em>Notes</em>—and by status—<em>Seedlings</em>,{" "}
         <em>Buddings</em>, <em>Evergreens</em>.
       </StyledP>
       <StyledP>
