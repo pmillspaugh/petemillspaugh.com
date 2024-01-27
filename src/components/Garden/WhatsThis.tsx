@@ -11,15 +11,18 @@ const WhatsThis = () => {
         early on while it's still being cultivated and growing.
       </StyledP>
       <StyledP>
-        Writing also has many shapes. I have five writing formats:{" "}
+        You can filter the garden by format—
         <em>Essays</em>, <em>Brainstorms</em>, <em>Show 'n tells</em>,{" "}
-        <em>TILs</em>, and <em>Notes</em>. Each piece of content also has a
-        status or growth stage: <em>Seedlings</em>, <em>Buddings</em>, and{" "}
-        <em>Evergreens</em>.
+        <em>TILs</em>, <em>Notes</em>—and by status—<em>Seedlings</em>,{" "}
+        <em>Buddings</em>, <em>Evergreens</em>.
       </StyledP>
       <StyledP>
-        I cover my gardening habits in full on the{" "}
-        <Link href="/about#this-site">About</Link> page. Or, if you want to jump
+        You can start with a{" "}
+        <Link href="/tour" target="_blank">
+          tour
+        </Link>{" "}
+        of the garden or read about my gardening habits in full on the{" "}
+        <Link href="/about#this-site">about</Link> page. Or, if you want to jump
         directly to a historical tour of digital gardening, read{" "}
         <a href="https://maggieappleton.com/garden-history" target="_blank">
           Maggie Appleton's wonderful essay
