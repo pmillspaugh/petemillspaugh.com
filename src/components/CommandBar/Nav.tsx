@@ -21,6 +21,11 @@ const Nav = ({ handleClick }) => {
           </StyledNavLink>
         </li>
         <li>
+          <StyledNavLink href="/art" onClick={handleClick}>
+            Art
+          </StyledNavLink>
+        </li>
+        <li>
           <StyledNavLink href="/wishlist" onClick={handleClick}>
             Wishlist
           </StyledNavLink>
@@ -28,11 +33,6 @@ const Nav = ({ handleClick }) => {
         <li>
           <StyledNavLink href="/blogroll" onClick={handleClick}>
             Blogroll
-          </StyledNavLink>
-        </li>
-        <li>
-          <StyledNavLink href="/tour" onClick={handleClick}>
-            Tour
           </StyledNavLink>
         </li>
       </ul>

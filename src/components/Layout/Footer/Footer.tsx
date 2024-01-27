@@ -43,6 +43,7 @@ const Footer = () => {
                   <StyledGardenLink href={`/garden?format=${PostFormat.Note}`}>
                     Notes
                   </StyledGardenLink>
+                  <StyledGardenLink href={"/tour"}>Tour</StyledGardenLink>
                 </StyledGardenLi>
               </StyledGardenUl>
             </StyledLeftColumn>
@@ -55,13 +56,13 @@ const Footer = () => {
                   <StyledLink href="/talks">Talks</StyledLink>
                 </li>
                 <li>
+                  <StyledLink href="/art">Art</StyledLink>
+                </li>
+                <li>
                   <StyledLink href="/wishlist">Wishlist</StyledLink>
                 </li>
                 <li>
                   <StyledLink href="/blogroll">Blogroll</StyledLink>
-                </li>
-                <li>
-                  <StyledLink href="/tour">Tour</StyledLink>
                 </li>
                 <li>
                   <StyledExternalLink
