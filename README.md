@@ -8,17 +8,17 @@ React and Next are the frontend framework and meta framework I know best. I real
 
 ## MDX
 
-I'm using [MDX](https://mdxjs.com/) with `next-mdx-remote` for my content.
+I'm using [MDX](https://mdxjs.com/) with [`next-mdx-remote`](https://github.com/hashicorp/next-mdx-remote) for written content.
 
-### Components
+## Components
 
-Components are a spectrum from primitives like `Blockquote` to highly composed components like `Garden`. It's hard to draw a line in the sand between component-library-components that might live in `/components/lib` and bespoke components that are reused just once or not at all. So I mixed them all in one `/components` folder. I settled on this structure based on Josh Comeau's opinion on the subject in his React course.
+Components are a spectrum from low-level building blocks like `Blockquote` to highly composed components like `Garden`. It's hard to draw a line in the sand between component-library-components that might live in `/components/lib` and bespoke components that are reused just once or not at all. So I mixed them all in one `/components` folder. Credit to Josh Comeau's wonderful React course for this structure.
 
 I rely on unstyled component libraries like [Radix UI](https://radix-ui.com) for my underlying component primitives when it comes to complex implementations like `Popover` and `Switch`. I love getting accessibilty and usability out of the box with these sorts of libraries.
 
 ## Styled Components
 
-I like the flexibility of CSS-in-JS and the colocation of markup + styles with `styled-components`. I also prefer writing vanilla CSS to writing utility classes, e.g. with Tailwind. I'm considering moving away from CSS-in-JS, though, maybe to CSS modules.
+I like the flexibility of CSS-in-JS and the colocation of markup + styles with [`styled-components`](https://styled-components.com/). I also prefer writing vanilla CSS to writing utility classes, e.g. with Tailwind. I'm considering moving away from CSS-in-JS, though, maybe to CSS modules.
 
 ## Code snippets
 
@@ -26,7 +26,7 @@ I use [Code Hike](https://codehike.org/) to drop code examples in my MDX. It's f
 
 ## Animation
 
-I use [react-spring](https://react-spring.dev/) for the Edison bulb in the top right corner of my garden, which [I wrote about here](https://www.petemillspaugh.com/edison-bulb). I'd like to play more with [Framer Motion](https://github.com/framer/motion) like I did in [weeksofyour.life](https://www.weeksofyour.life/) (loading UI).
+I use [`react-spring`](https://react-spring.dev/) for the Edison bulb in the top right corner of my garden, which [I wrote about here](https://www.petemillspaugh.com/edison-bulb). I'd like to play more with [Framer Motion](https://github.com/framer/motion) like I did in [weeksofyour.life](https://www.weeksofyour.life/) (loading UI).
 
 ## Backend
 
@@ -34,15 +34,15 @@ This is a static site, but there is some stuff that happens server-side. Email n
 
 ## Domain registrar
 
-Cloudflare is my domain registrar of choice. They don't mark up domains and come with the expected features (SSL etc.).
+Cloudflare is my domain registrar of choice. They don't mark up domains and come with the expected features (SSL, etc.).
 
 ## Deployment
 
-I'm deploying on Vercel. Automatic preview deployments on PRs are really handy for a static site like this.
+I deploy on Vercel. Automatic preview deployments on PRs are really handy for a static site like this.
 
 ## Analytics
 
-I use Vercel Analytics to track # of visitors, page visits by URL, referrers, countries, operating systems, and browsers. These are just curiosity/vanity metrics for me—I'm not interested in collecting or doing anything with individual user data. I might migrate from Vercel to Plausible or another alternative at some point.
+I use Vercel Analytics to track # of visitors, page visits by URL, referrers, countries, operating systems, and browsers. These are just curiosity/vanity metrics for me—I'm not interested in collecting or doing anything with individual user data. I might migrate from Vercel to [Plausible](https://plausible.io/) or another alternative at some point.
 
 ## Monetization
 
