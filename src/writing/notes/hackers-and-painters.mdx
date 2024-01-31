@@ -1,0 +1,130 @@
+---
+slug: hackers-and-painters
+title: Things I found interesting in Paul Graham’s "Hackers & Painters"
+createdAt: January 31, 2024
+updatedAt: January 31, 2024
+format: Note
+status: Budding
+---
+
+I just read _Hackers & Painters_ by Paul Graham, who I’ll call PG for brevity (it’s also his nickname, I think). The book is a collection of his essays, which are available on [paulgraham.com](https://paulgraham.com).
+
+## On programmers as makers (18)
+
+In [_Hackers and Painters_](https://www.paulgraham.com/hp.html) (the essay where the book gets its name), PG makes the case that programming is more a creative craft like painting than a methodical number-crunching discipline like accounting.
+
+{/* PG’s description of the "hacker" persona feels outdated, though (he wrote this in 2003). */}
+
+{/* Re the hacker stereotype: maybe in the 1990s programming was fringe enough that there could be a generalizable "hacker" personality. And it makes sense that people in the same niche profession would share core beliefs like freedom of speech. But now that there are millions of software engineers there can’t be one generalizable hacker personality. All types of people are programmers. I wonder if it’s even considered nerdy anymore in middle and high school to be into math and computers. Depends on the high school, I guess. */}
+
+> A lot of people seemed surprised that someone interested in computers would also be interested in painting. They seemed to think that hacking and painting were very different kinds of work-- that hacking was cold, precise, and methodical, and that painting was the frenzied expression of some primal urge.
+>
+> Both of these images are wrong. Hacking and painting have a lot in common. In fact, of all the different types of people I’ve known, hackers and painters are among the most alike.
+>
+> What hackers and painters have in common is that they’re both makers. Along with composers, architects, and writers, what hackers and painters are trying to do is make good things.
+
+The hackers-as-makers mental model strikes a chord with me. The term I’ve used when discussing this with friends is "craft." I’ve mostly talked about this with my friend who is a chef and my brother who is a teacher. Programming feels like a craft to me just like cooking is a craft and woodworking is a craft and writing is a craft. When I worked in investment banking, that work didn’t feel like a craft. I also <Link href="/art" target="_blank">painted</Link> a good bit in high school, and that definitely felt like a craft. But what actually makes something a craft?
+
+Does it have something to do with creating a thing that people use? Something you can point to and say, I made that thing? Programmers make websites, chefs make food, woodworkers make chairs, painters make paintings. That would rule out teachers, though, and teaching _feels_ like a craft to me.
+
+{/* Interesting bit on 22-23 about pressure on programmers to be mathy. */}
+
+I touched on a similar topic in my <Link href="/the-art-of-doing-science-and-engineering" target="_blank">notes on Richard Hamming’s book</Link>—see _On programming as more creative writing, less engineering (57)_. I definitely have more thinking to do here to turn this noodling about crafts into coherent thoughts. I might turn it into a standalone note or essay.
+
+## On betting on the Web (56-86)
+
+I particularly liked [_The Other Road Ahead_](https://www.paulgraham.com/road.html) (originally published in 2001) where PG writes about Viaweb’s bet on the Web. He and Robert Morris decided in 1995 to write their online commerce store builder software as a web application rather than a desktop application, which is actually how they came up with the name "Viaweb" (like, _via_ the Web). 1995 is literally the same year JavaScript was invented.
+
+I imagine it was really, really hard to write a web app in 1995, but being able to ship features and bug fixes anytime compared to the slow, high risk release cycle of desktop software is a killer feature. It still is—when I worked at SeedFi I was grateful we could ship features/fixes on the website almost immediately while our (awesome) mobile engineers had to wait days or weeks for their next iOS/Android release.
+
+PG’s case for Web-based software over desktop software even includes a prediction of smartphones:
+
+> And so you won’t ordinarily need a computer, per se, to use software. All you’ll need will be something with a keyboard, a screen, and a Web browser. Maybe it will have wireless Internet access. Maybe it will also be your cell phone.
+
+That was six years before the iPhone came out!
+
+## On Lisp (183-188)
+
+The other big bet they made at Viaweb was on Lisp.
+
+Lisp was created in the 1950s by John McCarthy—the same person who coined the term "Artificial Intelligence" in the 50s. His grad student Steve Russell was the one who actually first implemented Lisp after McCarthy designed the language. Pretty crazy that a language from the 50s felt like both the best choice _and_ a cutting edge choice at Viaweb in the 90s.
+
+Even crazier is the list of language features first introduced in Lisp. In this chapter—originally from his 2002 essay [_Revenge of the Nerds_](https://www.paulgraham.com/icad.html)—PG lists nine features introduced by Lisp, including:
+
+- Conditionals
+- Function types
+- Recursion
+- Dynamic typing
+- Garbage collection
+
+Reading the list now feels a bit like reading the table of contents for a book that teaches JavaScript.
+
+## On JavaScript (196)
+
+The first mention of JavaScript in the book comes on page 196 when discussing lexical scope and closures (also in _Revenge of the Nerds_).
+
+The claim PG makes about JS closures being more verbose than Lisp closures is actually outdated now, which supports his point about languages converging. Well-liked features in one language tend to be adopted in other languages. He says:
+
+> In Javascript the example is, again, slightly longer, because Javascript retains the distinction between statements and expressions, so you need explicit return statements to return values:
+
+Here’s his code example:
+
+{/* prettier-ignore */}
+```js
+function foo(n) {
+  return function (i) {
+          return n += i } }
+```
+
+Which can be rewritten as a one-liner with arrow functions as of ES6 (2015):
+
+```js
+const foo = (n) => (i) => (n += i);
+```
+
+I was on the edge of my seat for the first 195 pages waiting for any mention of JavaScript. About a dozen languages get mentioned before it: Lisp, Perl, Ruby, Python, C, C++, Java, Cobol, Fortran, Ada, etc. It makes sense—Brendan Eich created JavaScript in 1995, and this book was published in 2004 (and most essays were published before that). Still, JavaScript going from nearly omitted in a book about programming to the most popular language in twenty years is pretty remarkable.
+
+## On physical books (203)
+
+Referring to physical books on programming, PG says:
+
+> A [programming] language also needs to have a book about it. The book should be thin, well-written, and full of good examples.
+>
+> ...
+>
+> There should be online documentation as well. In fact, the book can start as online documentation. But physical books aren’t obsolete yet. Their format is convenient, and the de facto censorship imposed by publishers is a useful if imperfect filter. Bookstores are one of the most important places for learning about new languages.
+
+On the one hand, this feels pretty outdated. Even in colleges where going to the library is part of the routine, I imagine more students learn to code on YouTube than by reading books. I bet the difference is one or two orders of magnitude, even. And now there are so many amazing online courses on platforms like [frontendmasters.com](https://frontendmasters.com/) and from independent course creators like [Josh Comeau](https://www.joshwcomeau.com/courses/).
+
+On the other hand, I do still like physical books! Case in point: I read a physical copy of this book even though all the essays are available online for free. I do that because I read before bed every night, and I like to avoid screens. I also read several chapters of this book on an airplane, and it was nice to have the paper book for that.
+
+I’m split on this topic for programming books because it’s so valuable to learn by doing at your computer. I think PG’s point about thin books is key. I really like the [A Book Apart](https://abookapart.com/) series because they are all thin. I loved [_Going Offline_](https://abookapart.com/products/going-offline) because I could sit down and read it in one afternoon. Thin books are also approachable to re-read whereas if I ever get though _The Rust Book_, for example, there’s a very low chance I’d re-read it.
+
+Btw, if you’re looking for the full essay—this chapter in the physical book is called _The Dream Language_, which is an edited version of PG’s 2001 essay [_Being Popular_](https://www.paulgraham.com/popular.html).
+
+## On what you do (216)
+
+From [_Design and Research_](https://www.paulgraham.com/desres.html):
+
+> Visitors to this country are often surprised to find that Americans like to begin a conversation by asking "what do you do?" I’ve never liked this question. I’ve rarely had a neat answer to it. But I think I have finally solved the problem. Now, when someone asks me what I do, I look them straight in the eye and say "I’m designing a new dialect of Lisp." I recommend this answer to anyone who doesn’t like being asked what they do. The conversation will turn immediately to other topics.
+
+This was one of those woah coincidences for me because I read this paragraph a few days after posting my half-baked thoughts on <Link href="/what-do-you-do" target="_blank">how I answer the what-do-you-do question</Link>. I won’t be borrowing PG’s Lisp answer directly, but my takeaway is that in any given conversation I should answer based on my goals for the conversation. If I’d rather not talk about what I’m working on, a generic answer like "I’m a software engineer" will probably move the conversation to other topics like what the other person does. Or when I do want to talk about what I’m working, it’s on me to come up with a good hook.
+
+## On Worse is Better (219-221)
+
+> In practice, to get good design you have to get close, and stay close, to your users. You have to calibrate your ideas on actual users constantly, especially in the beginning. One of the reasons Jane Austen’s novels are so good is that she read them out loud to her family. That’s why she never sinks into self-indulgently arty descriptions of landscapes, or pretentious philosophizing.
+
+This reminded me of a time in high school when I was walking to football practice with a few teammates. We were taking a longer route because the field we usually cut through to get to our field was closed. I said something about how we were taking a "circuitous" route, and my friend said something like "what the hell does circuitous mean"—then I explained that circuitous means roundabout, and he said "well then why didn’t you just say roundabout" lol. I love words, but it’s good to remind myself to [write simply](https://www.paulgraham.com/simply.html) and [write like you talk](https://www.paulgraham.com/talk.html) (and talk simply).
+
+PG applies Jane Austen’s practice of testing with readers to software:
+
+> In the software world, this idea is known as Worse is Better. Actually, there are several ideas mixed together in the concept of Worse is Better, which is why people are still arguing about whether worse is actually better or not. But one of the main ideas in that mix is that if you’re building something new, you should get a prototype in front of users as soon as possible.
+>
+> ...
+>
+> In software, my rule is: always have working code.
+
+I’ve been making a conscious effort to do this lately, which I’m calling <Link href="/think-small" target="_blank">thinking small</Link>.
+
+{/* prettier-ignore */}
+<Link href="/about#this-site" target="_blank">This digital garden</Link> itself applies Worse is Better. By planting incomplete written work as _Seedlings_ I can get stuff out there then come back later to water, prune, and re-pot. And by experimenting with formats like _Brainstorms_ I can learn in public about subjects where I’m a beginner.
