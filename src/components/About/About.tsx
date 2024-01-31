@@ -46,7 +46,7 @@ const About = () => {
       </StyledP>
       <StyledP>
         My <Link href="/garden">garden</Link> is organized by writing formats
-        and statuses, aka growth stages. I have five writing formats:
+        and statuses, aka growth stages. I have six writing formats:
       </StyledP>
       <StyledUl>
         <li>
@@ -83,9 +83,15 @@ const About = () => {
           repo
         </li>
         <li>
-          <strong>Notes:</strong> things I want to write about that don't neatly
+          <strong>Notes:</strong> things I want to write about that don’t neatly
           fit into another category. A Note could be as small as a Tweet or
           could grow large enough to re-pot as an Essay
+        </li>
+        <li>
+          <strong>Clippings:</strong> email newsletters that I send every month
+          or two (ish). I write about what’s been on my mind and propagate a
+          selection of things I’ve planted since the last clipping. You can sign
+          up to receive clippings in the footer
         </li>
       </StyledUl>
       <StyledP>
@@ -122,10 +128,10 @@ const About = () => {
         my plants (write), prune them (edit), give them some sun (think), or
         even re-pot (a TIL into an Essay, for example). If you are a metaphor
         nerd and/or digital gardener,{" "}
-        <a href="https://twitter.com/pete_millspaugh" target="_blank">
-          say hi on Twitter
+        <a href="mailto:pete@petemillspaugh.com" target="_blank">
+          send me an email
         </a>{" "}
-        and share your metaphors!
+        to say hi and share your metaphors!
       </StyledP>
     </>
   );

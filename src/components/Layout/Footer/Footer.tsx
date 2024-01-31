@@ -15,7 +15,7 @@ const Footer = () => {
   const { lightMode } = useContext(LightModeContext);
 
   return (
-    <footer>
+    <footer id="footer">
       <NewfoundLake lightMode={lightMode} />
       <StyledWrapper>
         <StyledNav>
@@ -42,6 +42,11 @@ const Footer = () => {
                   </StyledGardenLink>
                   <StyledGardenLink href={`/garden?format=${PostFormat.Note}`}>
                     Notes
+                  </StyledGardenLink>
+                  <StyledGardenLink
+                    href={`/garden?format=${PostFormat.Clipping}`}
+                  >
+                    Clippings
                   </StyledGardenLink>
                   <StyledGardenLink href={"/tour"}>Tour</StyledGardenLink>
                 </StyledGardenLi>

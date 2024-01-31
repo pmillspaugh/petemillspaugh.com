@@ -16,13 +16,13 @@ const Tour = ({ posts }: GardenProps) => {
         . Or feel free to wander through the <Link href="/garden">garden</Link>{" "}
         on your own.
       </StyledP>
-      <StyledUl>
+      <ul>
         {posts.map((post) => (
           <li key={post.slug}>
             <PlantRow {...post} />
           </li>
         ))}
-      </StyledUl>
+      </ul>
     </>
   );
 };
@@ -31,37 +31,19 @@ const StyledH1 = styled.h1`
   font-size: 3rem;
   font-weight: 900;
   margin-top: 16px;
+  margin-left: -2px;
 
   @media (min-width: 768px) {
     font-size: 4rem;
   }
-
-  @media (min-width: 1200px) {
-    margin-bottom: 24px;
-  }
 `;
 
 const StyledP = styled.p`
+  margin-bottom: 32px;
+
   @media (min-width: 1200px) {
     font-size: 1.25rem;
     line-height: 1.75;
-    margin-bottom: 16px;
-  }
-`;
-
-const StyledUl = styled.ul`
-  margin-top: 16px;
-
-  & > li {
-    padding-bottom: 8px;
-  }
-
-  @media (min-width: 1200px) {
-    font-size: 1.25rem;
-
-    & > li {
-      padding-bottom: 16px;
-    }
   }
 `;
 

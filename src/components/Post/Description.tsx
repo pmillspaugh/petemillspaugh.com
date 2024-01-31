@@ -8,6 +8,7 @@ export const LABEL_TO_DESCRIPTION = {
   [PostFormat.Brainstorm]: BrainstormDescription,
   [PostFormat.TIL]: TILDescription,
   [PostFormat.Note]: NoteDescription,
+  [PostFormat.Clipping]: ClippingDescription,
   [PostStatus.Evergreen]: EvergreenDescription,
   [PostStatus.Budding]: BuddingDescription,
   [PostStatus.Seedling]: SeedlingDescription,
@@ -109,16 +110,35 @@ function NoteDescription() {
   return (
     <>
       <StyledP>
-        Notes are my catch-all format for things I want to write about that
-        don't neatly fit into another category (Essays, Show n' tells,
-        Brainstorms, TILs). A Note could be as small as a Tweet or could grow
-        large enough to call for re-potting as an Essay.
+        <strong>Notes</strong> are my catch-all format for things I want to
+        write about that don't neatly fit into another category (Essays, Show n'
+        tells, Brainstorms, TILs). A Note could be as small as a Tweet or could
+        grow large enough to call for re-potting as an Essay.
       </StyledP>
       <StyledP>
         You can find all Notes{" "}
         <Link href={`/garden?format=${PostFormat.Note}`}>in the garden</Link>{" "}
         and an explanation of my writing formats{" "}
         <Link href="/about#this-site">on the about page</Link>.
+      </StyledP>
+    </>
+  );
+}
+
+function ClippingDescription() {
+  return (
+    <>
+      <StyledP>
+        <strong>Clippings</strong> are email newsletters that I send every month
+        or two (ish). I write about what's been on my mind and propagate a
+        selection of things I've planted since the last clipping.
+      </StyledP>
+      <StyledP>
+        You can sign up to receive clippings in the{" "}
+        <Link href="#footer">footer</Link>, see all clippings in the{" "}
+        <Link href={`/garden?format=${PostFormat.Clipping}`}>garden</Link> , or
+        read an explanation of my writing formats on the{" "}
+        <Link href="/about#this-site">about</Link> page.
       </StyledP>
     </>
   );
