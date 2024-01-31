@@ -91,7 +91,7 @@ const About = () => {
           <strong>Clippings:</strong> email newsletters that I send every month
           or two (ish). I write about what’s been on my mind and propagate a
           selection of things I’ve planted since the last clipping. You can sign
-          up to receive clippings in the footer
+          up to receive clippings in the <a href="#footer">footer</a>
         </li>
       </StyledUl>
       <StyledP>
