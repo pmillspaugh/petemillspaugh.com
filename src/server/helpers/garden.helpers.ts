@@ -88,7 +88,7 @@ async function getBacklinks(slug: string) {
 
       const fileBuffer = readFileSync(join(POSTS_DIR, subdir, filename));
       const fileString = fileBuffer.toString();
-      if (fileString.includes(slug)) {
+      if (fileString.includes(`/${slug}`)) {
         const backlinkMetadata = (
           await serialize(fileString, { parseFrontmatter: true })
         ).frontmatter as unknown as PostMetadata;

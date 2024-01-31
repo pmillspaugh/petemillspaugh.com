@@ -4,6 +4,7 @@ export enum PostFormat {
   TIL = "TIL",
   ShowNTell = "ShowNTell",
   Note = "Note",
+  Clipping = "Clipping",
 }
 
 export const PostFormatDescription = {
@@ -12,6 +13,7 @@ export const PostFormatDescription = {
   [PostFormat.TIL]: "TIL",
   [PostFormat.ShowNTell]: "Show ’n tell",
   [PostFormat.Note]: "Note",
+  [PostFormat.Clipping]: "Clipping",
 };
 
 export enum PostStatus {

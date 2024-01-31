@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import Popover from "@/components/Popover";
@@ -124,8 +125,9 @@ const Garden = ({ posts }: GardenProps) => {
       </ul>
       {!filteredPosts.length && (
         <StyledP>
-          I haven’t published anything matching this format + status just yet.
-          Try resetting or choosing another filter.
+          Nothing planted is both a {PostFormatDescription[format]} and a{" "}
+          {status}. You can <Link href="/garden">reset</Link> or choose another
+          filter.
         </StyledP>
       )}
     </StyledGarden>
