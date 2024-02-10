@@ -1,0 +1,34 @@
+---
+slug: interaction-to-next-paint
+title: Interaction to Next Paint (INP)
+createdAt: February 10, 2024
+updatedAt: February 10, 2024
+format: TIL
+status: Evergreen
+---
+
+[On March 12th](https://web.dev/blog/inp-cwv-march-12), Google will replace First Input Delay (FID) in [Core Web Vitals](https://web.dev/articles/vitals) with **[Interaction to Next Paint (INP)](https://web.dev/articles/inp)**.
+
+Core Web Vitals are currently:
+
+1. Largest Contentful Paint ([LCP](https://web.dev/articles/lcp)): measures _speed_
+2. First Input Delay ([FID](https://web.dev/articles/fid)): measures _interactivity_
+3. Cumulative Layout Shift ([CLS](https://web.dev/articles/cls)): measures _stability_
+
+Google defines targets for each vital to meet a "good" user experience (i.e. P75):
+
+1. LCP: < 2.5s
+2. FID: < 100ms
+3. CLS: < 0.1
+
+## Testing LCP and CLS
+
+You can test a website’s LCP and CLS in Chrome DevTools > Lighthouse by running a performance test. The homepage of my garden performs well on CLS with a score of 0, and LCP is solid at around 1.5 seconds for Lighthouse mobile performance audits. Desktop audits are much more lenient (LCP of ~0.3 seconds).
+
+The audit does diagnose a few improvements I could make, though, mainly around pruning unused JavaScript from the bundle. Before making any granular adjustments, I plan to migrate from the Next.js `/pages` router to the `/app` directory. I’d also like to store <Link href="/edison-bulb" target="_blank">edison bulb</Link> theme preference in a cookie to prevent dark mode flash. I already <Link href="/nextjs-search-with-pagefind" target="_blank">lazy load my Pagefind search index</Link>, so that shouldn’t slow down initial page load, I don’t think.
+
+## What about FID?
+
+FID has to be tested in the field with real users, which is still possible to do automatically with [PageSpeed Insights](https://pagespeed.web.dev/). You have to have [enough data](https://developers.google.com/speed/docs/insights/v5/about#why-is-the-real-user-crux-data-not-available-for-a-url-or-origin) from opted-in users for a given website, though. If you don’t have enough data, [Total Blocking Time (TBT)](https://web.dev/articles/tbt) is a correlated metric that can serve as a proxy.
+
+The TBT (hard to not read that as throwback Thursday) on this garden is speedy at 60ms. That feels right to me intuitively because I most often visit my own website to quickly find something by typing `Cmd + K` immediately after entering the URL.
