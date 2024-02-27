@@ -1,0 +1,42 @@
+---
+slug: javascript-labeled-statement
+title: JavaScript labeled statement
+createdAt: February 27, 2024
+updatedAt: February 27, 2024
+format: TIL
+status: Evergreen
+---
+
+Seen in [Bytes](https://bytes.dev/) yesterday:
+
+> Nested loops aren’t ideal, but sometimes they’re unavoidable. Given the nested loop below, how can we break out of the nested loop when `j === 2`?
+
+```js loop.js
+function loop() {
+  for (let i = 0; i < 4; i++) {
+    for (let j = 0; j < 4; j++) {
+      if (j === 2) {
+        // Break out here
+      }
+    }
+  }
+}
+```
+
+The tl;dr is that you can label the outer for loop:
+
+```js labeledLoop.js
+function loop() {
+  dance: for (let i = 0; i < 4; i++) {
+    for (let j = 0; j < 4; j++) {
+      if (j === 2) {
+        break dance;
+      }
+    }
+  }
+}
+```
+
+You can only use [statement labels](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/label) with `break` and `continue`, which I don't find myself using too often to begin with. You can't even console log a label—I tried, and it throws `Uncaught ReferenceError: <label> is not defined`.
+
+I'll admit that I actually learned about labeled statements a year or two ago when reviewing a coworker's PR, but I haven't come across one since. I think it's a neat language feature to stash in my back pocket.
