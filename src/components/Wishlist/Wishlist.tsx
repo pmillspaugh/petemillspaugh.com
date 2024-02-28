@@ -1,100 +1,121 @@
+import Link from "next/link";
 import styled from "styled-components";
 
+const WISHLIST = [
+  { name: "Rust", url: "https://www.rust-lang.org/", description: "" },
+  { name: "Astro", url: "https://astro.build/", description: "" },
+  { name: "Remix", url: "https://remix.run/", description: "" },
+  { name: "Svelte", url: "https://svelte.dev/", description: "" },
+  { name: "Playwright", url: "https://playwright.dev/", description: "" },
+  { name: "Replit", url: "https://replit.com/mobile", description: "" },
+  { name: "Bun", url: "https://bun.sh/", description: "" },
+  {
+    name: "Raspberry Pi",
+    url: "https://www.raspberrypi.com/",
+    description: "",
+  },
+  {
+    name: "Three.js",
+    url: "https://threejs.org/",
+    description: "",
+  },
+  {
+    name: "Web Streams",
+    url: "https://developer.mozilla.org/en-US/docs/Web/API/Streams_API",
+    description: "",
+  },
+  {
+    name: "Web Components",
+    url: "https://developer.mozilla.org/en-US/docs/Web/API/Web_components",
+    description: "",
+  },
+  {
+    name: "WebGL",
+    url: "https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API",
+    description: "",
+  },
+  {
+    name: "WebSockets",
+    url: "https://developer.mozilla.org/en-US/docs/Web/API/WebSocket",
+    description: "",
+  },
+  {
+    name: "Framer Motion",
+    url: "https://www.framer.com/motion/",
+    description: "",
+    update: (
+      <>
+        used for{" "}
+        <a href="https://weeksofyour.life" target="_blank">
+          weeksofyour.life
+        </a>
+      </>
+    ),
+  },
+  {
+    name: "SQLite",
+    url: "https://www.sqlite.org/index.html",
+    description: "",
+    update: (
+      <>
+        used in garden{" "}
+        <Link href="/cultivating-emails" target="_blank">
+          Clippings
+        </Link>
+      </>
+    ),
+  },
+  {
+    name: "Hono",
+    url: "https://hono.dev/",
+    description: "",
+    update: (
+      <>
+        used in garden{" "}
+        <Link href="/cultivating-emails" target="_blank">
+          Clippings
+        </Link>
+      </>
+    ),
+  },
+];
+
 const Wishlist = () => {
+  const alphabetizedWishlist = WISHLIST.sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
+
   return (
     <>
       <StyledH1>Wishlist</StyledH1>
       <StyledP>
-        This is a collection of things I am interested to learn/try, in no
-        particular order (and not exhaustive). I'll add, remove, and cross
-        things off from time to time. I planted this in September 2023, so
-        anything I worked with before then didn't make the cut.
+        This is an alphabetized collection of things I am interested to
+        learn/try (not exhaustive). I'll add, remove, and cross things off from
+        time to time. I planted this in September 2023, so anything I worked
+        with before then didn't make the cut.
       </StyledP>
+
+      {/* TODO: render a <detail> or accordion for each item with a description */}
       <StyledUl>
-        <li>
-          <a href="https://www.rust-lang.org/" target="_blank">
-            Rust
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components"
-            target="_blank"
-          >
-            Web Components
-          </a>
-        </li>
-        <li>
-          <a href="https://bun.sh/" target="_blank">
-            Bun
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API"
-            target="_blank"
-          >
-            WebGL
-          </a>
-          ,{" "}
-          <a href="https://threejs.org/" target="_blank">
-            Three.js
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://developer.mozilla.org/en-US/docs/Web/API/WebSocket"
-            target="_blank"
-          >
-            WebSockets
-          </a>
-        </li>
-        <li>
-          <a href="https://astro.build/" target="_blank">
-            Astro
-          </a>
-        </li>
-        <li>
-          <a href="https://remix.run/" target="_blank">
-            Remix
-          </a>
-        </li>
-        <li>
-          <a href="https://svelte.dev/" target="_blank">
-            Svelte
-          </a>
-        </li>
-        <li>
-          <a href="https://playwright.dev/" target="_blank">
-            Playwright
-          </a>
-        </li>
-        <li>
-          <a href="https://www.raspberrypi.com/" target="_blank">
-            Raspberry Pi
-          </a>
-        </li>
-        <li>
-          <del>
-            <a href="https://www.framer.com/motion/" target="_blank">
-              Framer Motion
+        {alphabetizedWishlist.map(({ name, url, description, update }) => {
+          const link = (
+            <a href={url} target="_blank">
+              {name}
             </a>
-          </del>{" "}
-          <em>
-            used on <a href="https://weeksofyour.life">weeksofyour.life</a>
-          </em>
-        </li>
-        <li>
-          <a href="https://trpc.io/" target="_blank">
-            tRPC
-          </a>
-        </li>
-        <li>
-          Mobile coding, e.g.{" "}
-          <a href="https://replit.com/mobile" target="_blank">
-            Replit
-          </a>
-        </li>
+          );
+
+          return (
+            <li key={name}>
+              {update ? (
+                <>
+                  <del>{link}</del> <em>{update}</em>
+                </>
+              ) : (
+                link
+              )}
+            </li>
+          );
+        })}
       </StyledUl>
     </>
   );
