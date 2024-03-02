@@ -2,12 +2,12 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import VisuallyHidden from "@/components/VisuallyHidden";
 import CommandBar from "@/components/CommandBar";
-import useIsWindows from "@/hooks/useIsWindows.hook";
+import useIsWindowsOrFirefox from "@/hooks/useIsWindowsOrFirefox.hook";
 import SearchIcon from "./SearchIcon";
 
 const FloatingSearch = () => {
   const router = useRouter();
-  const isWindows = useIsWindows();
+  const isWindowsOrFirefox = useIsWindowsOrFirefox();
 
   if (router.pathname === "/") return null;
 
@@ -17,7 +17,7 @@ const FloatingSearch = () => {
         <VisuallyHidden>Search and explore</VisuallyHidden>
         <StyledShortcut>
           <div>Search</div>
-          <span>{isWindows ? "⌃" : "⌘"}</span>
+          <span>{isWindowsOrFirefox ? "⌃" : "⌘"}</span>
           <span>K</span>
         </StyledShortcut>
         <StyledIconWrapper>

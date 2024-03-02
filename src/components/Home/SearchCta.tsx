@@ -1,16 +1,16 @@
 import styled from "styled-components";
 import CommandBar from "@/components/CommandBar";
-import useIsWindows from "@/hooks/useIsWindows.hook";
+import useIsWindowsOrFirefox from "@/hooks/useIsWindowsOrFirefox.hook";
 
 const SearchCta = () => {
-  const isWindows = useIsWindows();
+  const isWindowsOrFirefox = useIsWindowsOrFirefox();
 
   return (
     <CommandBar>
       <StyledTrigger>
         <div>Search / Explore</div>
         <StyledShortcut>
-          <span>{isWindows ? "⌃" : "⌘"}</span>
+          <span>{isWindowsOrFirefox ? "⌃" : "⌘"} </span>
           <span>K</span>
         </StyledShortcut>
       </StyledTrigger>
