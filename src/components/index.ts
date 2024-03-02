@@ -13,6 +13,7 @@ import Ul from "./Ul";
 import AudioSwitch from "./AudioSwitch";
 import Callout from "./Callout";
 import Figure from "./Figure";
+import ForgettingCurve from "./ForgettingCurve";
 import Transcription from "./Transcription";
 import ValTownButton from "./ValTownButton";
 
@@ -31,6 +32,7 @@ export const components = {
   Callout,
   Details,
   Figure,
+  ForgettingCurve,
   Transcription,
   ValTownButton,
   // external components

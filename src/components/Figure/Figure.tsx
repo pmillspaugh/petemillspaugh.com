@@ -5,7 +5,6 @@ import Porkbun from "./gallery/Porkbun";
 import MapNotes from "./gallery/MapNotes";
 import GraceHopper from "./gallery/GraceHopper";
 import DunningKruger from "./gallery/DunningKruger";
-import ForgettingCurves from "./gallery/ForgettingCurve";
 import Battleship from "./gallery/Battleship";
 
 interface FigureProps {
@@ -44,7 +43,6 @@ Figure.Porkbun = Porkbun;
 Figure.MapNotes = MapNotes;
 Figure.GraceHopper = GraceHopper;
 Figure.DunningKruger = DunningKruger;
-Figure.ForgettingCurves = ForgettingCurves;
 Figure.Battleship = Battleship;
 
 export default Figure;
