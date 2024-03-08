@@ -1,0 +1,69 @@
+---
+slug: browsertech-nyc-2024-3-7
+title: Browsertech NYC meetup - March 2024
+createdAt: March 7, 2024
+updatedAt: March 7, 2024
+format: Note
+status: Evergreen
+---
+
+The [browsertech](https://browsertech.com) NYC meetup was a whole lot of fun. Thanks Paul and Taylor for organizing!
+
+There were three fantastic talks by Can, Felicia, and Hunter & Amol. Paul also announced that [Drifting in Space](https://driftingin.space/) has been officially renamed to [Jamsocket](https://jamsocket.com/), their main product (they also renamed Spawner to [Plane](https://plane.dev/) at some point). I haven't tried Jamsocket yet myself, but [Paul's episode on devtools.fm](https://www.devtools.fm/episode/39) and [their blog](https://driftingin.space/blog) are really good listens/reads.
+
+Onto (incomplete, rough) notes that I jotted down from the talks.
+
+## Can Duruk, Felt
+
+[Can](https://twitter.com/can) (co-founder at [Felt](https://felt.com/)) presented first.
+
+For Felt's multiplayer, Can said they destructure data as much as possible to avoid merge conflicts and that it's really not common for two people to edit the same exact thing at the same exact moment. They don't directly use CRDTs—which came up a few times throughout the night—although they use them indirectly through Phoenix/Elixir.
+
+For follow-up reading, Can recommended Evan Wallace's blog post on [how Figma multiplayer works](https://www.figma.com/blog/how-figmas-multiplayer-technology-works/) ("read it, go to sleep, read it again," to paraphrase).
+
+Felt uses HTML Canvas over DOM (i.e. SVG). As I understand it, some browsers rasterize SVGs, so when you zoom quickly there's a brief blurry, pixelated UI before the DOM update happens. Canvas is a bit lower-level, so Felt includes its own event handling whereas you'd get that out of the box with the DOM.
+
+Zooming a map requires tiling because different information is rendered based on a map's scale. Felt built a "File to Tile" pipeline that hits AWS lambdas to fetch tiles for each level of zoom (based on acreage, I think).
+
+Can talked about lots of other cool technical bits like raster algebra, custom rendering for the Anti-Meridian (just east of New Zealand), and how there are so, so many GIS file formats—one slide in Can's deck listed 17 formats, although I gather Felt supports far more than that.
+
+See [Paul's interview of Can](https://digest.browsertech.com/archive/browsertech-digest-felt-is-making-browsers-make/) and the [Felt blog](https://felt.com/blog) for much better technical deep dives on Felt.
+
+## Felicia Chang, Jamsocket
+
+[Felicia](https://twitter.com/felchang) (founding engineer at Jamsocket) presented second.
+
+Felicia demoed and talked about her side project [renaissance.earth](https://www.renaissance.earth/) that uses Jamsocket session backends and Stable Diffusion to animate tiles of The Garden of Earthly Delights. First off, it's really fun and chaotic-in-a-good-way to play with (I am watching animated tiles stream in right now as I write). I bet Hieronymus Bosch would like it.
+
+The Stable Diffusion API expects a 728x728 image, which would take up a large portion of a browser window—too large to animate individual scenes and objects in a painting—so Felicia cleverly mapped a ~30,000x17,000 image of the painting server-side to the scaled down image in the browser. So you send 128x128 tiles from the client, then the server sends the same tile scaled up to 728x728 to Stable Diffusion.
+
+On the frontend, renaissance.earth uses HTML canvas to draw the images and WebSockets to talk to the server. I like Felicia's [learn-in-public tweets](https://x.com/felchang/status/1762958382699552980?s=20) on multiplayer/WebSockets while building the project. I haven't ever implemented WebSockets in a shipped project, so this is good inspiration to go build and learn in public myself.
+
+Felicia also mentioned a related blog post that she wrote on the Drifiting in Space blog for some follow-up reading: [AI as a Player in Multiplayer](https://driftingin.space/posts/case-study-assistant).
+
+## Hunter & Amol, Soot
+
+[Hunter](https://hunterlarco.com/) and [Amol](https://twitter.com/theahura_) (co-founders of [Soot](https://soot.com/)) presented third.
+
+Amol started with a side-by-side of Mac finder in 1984 and 2024. It's pretty much the same UI 40 years later—color instead of grayscale, but same metaphors/skeuomorphism.
+
+Soot is a visual file system as an alternative to the status quo nested directory structure. I like how Amol and Hunter put it—that file systems are currently about metadata, not data. Soot organizes files based on data over metadata.
+
+Their demo of self-organizing images as their ML models classify them was really neat. Images that you upload are clustered by vector similarity, and you can reorganize them as you wish. I'm curious what emergent behvavior there would be with teams working in a shared Soot visual file system, where the ML models are kind of like another team member applying their own organization system, relating back to Felicia's AI-as-a-player-in-multiplayer concept.
+
+To render tens of thousands of images on the client reasonably quickly—and support multiplayer—Soot uses sprite maps. The multiplayer architecture uses session backends (theme of the night).
+
+I signed up for the Soot waitlist–excited to play around with it when it comes out.
+
+## Why I'm planting these notes
+
+I left the browsertech event with a lot of energy. I wish we could have stuck around in the space longer to chat—so many people I didn't get the chance to talk to. Here are my goals in writing this:
+
+1. Record and remember what I learned
+2. Collect my thoughts on where to focus my energy
+3. Connect with people who I talked to (and who I didn't get the chance to talk to!)
+4. Find out about more meetups
+
+On 2, as expected I left with too many things I wanted to go home and play with/learn about, e.g. spin up a multiplayer canvas with a Jamsocket session backend, create Soot-inspired self-organizing clusters of non-image documents (e.g. Wikipedia pages), or tinker on maps with Felt (maps is such a cool space that <Link href="/map-in-the-woods">I know next to nothing about</Link> but would love to go deep in).
+
+On 4, there's a [Future of Coding hack night](https://lu.ma/cam9g0nq) on Wednesday next week (3/13) — hopefully I'll see some of you all from the browsertech meetup there! Felicia's talk gave me an idea to try building a multiplayer infinite HTML canvas of refrigerator word magnets with a Jamsocket session backend, so maybe that's what I'll hack on Wednesday.
