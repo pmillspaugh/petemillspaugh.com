@@ -1,11 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
-interface PMDocumentProps {
-  deploymentURL: string;
-}
-
-class PMDocument extends Document<PMDocumentProps> {
+class PMDocument {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
@@ -18,11 +14,9 @@ class PMDocument extends Document<PMDocumentProps> {
         });
 
       const initialProps = await Document.getInitialProps(ctx);
-      const deploymentURL = process.env.NEXT_PUBLIC_VERCEL_URL;
 
       return {
         ...initialProps,
-        deploymentURL,
         styles: (
           <>
             {initialProps.styles}
@@ -39,18 +33,16 @@ class PMDocument extends Document<PMDocumentProps> {
     return (
       <Html lang="en">
         <Head />
-        <meta name="title" property="og:title" content="Pete Millspaugh" />
         <meta property="og:type" content="website" />
         <meta
           name="description"
           property="og:description"
-          content="Pete Millspaugh"
+          content="Pete Millspaugh's digital garden"
         />
-        <meta property="og:url" content="https://www.petermillspaugh.com/" />
         <meta
           name="image"
           property="og:image"
-          content={`https://${this.props.deploymentURL}/images/socialBanner.png`}
+          content={`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/images/og-image.png`}
         />
         {/* TODO: add other favicon formats for Apple/Android/etc? */}
         <link

@@ -10,6 +10,7 @@ const HomePage = ({ postPaths }: ComponentProps<typeof Home>) => {
     <>
       <Head>
         <title>Pete Millspaugh</title>
+        <meta name="title" property="og:title" content="Pete Millspaugh" />
       </Head>
       <Home postPaths={postPaths} />
     </>

@@ -6,7 +6,11 @@ const TalksPage = () => {
     <>
       <Head>
         <title>Pete Millspaugh | Talks</title>
-        <meta name="description" content="Pete Millspaugh - Talks" />
+        <meta
+          name="title"
+          property="og:title"
+          content="Talks from Pete's garden"
+        />
       </Head>
       <Talks />
     </>
