@@ -11,6 +11,7 @@ const HomePage = ({ postPaths }: ComponentProps<typeof Home>) => {
       <Head>
         <title>Pete Millspaugh</title>
         <meta name="title" property="og:title" content="Pete Millspaugh" />
+        <meta property="og:url" content="https://petemillspaugh.com/" />
       </Head>
       <Home postPaths={postPaths} />
     </>

@@ -11,6 +11,7 @@ const BlogrollPage = () => {
           property="og:title"
           content="Pete's garden blogroll"
         />
+        <meta property="og:url" content="https://petemillspaugh.com/blogroll" />
       </Head>
       <Blogroll />
     </>

@@ -9,6 +9,7 @@ const TourPage = ({ posts }: GardenProps) => {
       <Head>
         <title>Pete Millspaugh | Garden Tour</title>
         <meta name="title" property="og:title" content="Pete's garden tour" />
+        <meta property="og:url" content="https://petemillspaugh.com/tour" />
       </Head>
       <Tour posts={posts} />
     </>

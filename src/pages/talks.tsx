@@ -11,6 +11,7 @@ const TalksPage = () => {
           property="og:title"
           content="Talks from Pete's garden"
         />
+        <meta property="og:url" content="https://petemillspaugh.com/talks" />
       </Head>
       <Talks />
     </>

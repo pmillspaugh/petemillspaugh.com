@@ -11,6 +11,7 @@ const AboutPage = () => {
           property="og:title"
           content="About Pete & Pete's garden"
         />
+        <meta property="og:url" content="https://petemillspaugh.com/about" />
       </Head>
       <About />
     </>
