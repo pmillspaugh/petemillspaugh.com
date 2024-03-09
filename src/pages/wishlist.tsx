@@ -6,7 +6,12 @@ const WishlistPage = () => {
     <>
       <Head>
         <title>Pete Millspaugh | Wishlist</title>
-        <meta name="description" content="Pete Millspaugh - Wishlist" />
+        <meta
+          name="title"
+          property="og:title"
+          content="Pete's garden wishlist"
+        />
+        <meta property="og:url" content="https://petemillspaugh.com/wishlist" />
       </Head>
       <Wishlist />
     </>

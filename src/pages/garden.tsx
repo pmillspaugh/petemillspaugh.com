@@ -7,7 +7,12 @@ const GardenPage = ({ posts }: GardenProps) => {
     <>
       <Head>
         <title>Pete Millspaugh | Garden</title>
-        <meta name="description" content="Pete Millspaugh - Garden" />
+        <meta
+          name="title"
+          property="og:title"
+          content="Notes, TILs, Brainstorms, Essays, Show 'n tells, and Clippings from Pete's garden"
+        />
+        <meta property="og:url" content="https://petemillspaugh.com/garden" />
       </Head>
       <Garden posts={posts} />
     </>

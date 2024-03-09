@@ -6,7 +6,12 @@ const ArtPage = () => {
     <>
       <Head>
         <title>Pete Millspaugh | Art</title>
-        <meta name="description" content="Pete Millspaugh - Art" />
+        <meta
+          name="title"
+          property="og:title"
+          content="Art from Pete's garden"
+        />
+        <meta property="og:url" content="https://petemillspaugh.com/art" />
       </Head>
       <Art />
     </>

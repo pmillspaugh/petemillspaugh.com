@@ -6,7 +6,12 @@ const BlogrollPage = () => {
     <>
       <Head>
         <title>Pete Millspaugh | Blogroll</title>
-        <meta name="description" content="Pete Millspaugh - Blogroll" />
+        <meta
+          name="title"
+          property="og:title"
+          content="Pete's garden blogroll"
+        />
+        <meta property="og:url" content="https://petemillspaugh.com/blogroll" />
       </Head>
       <Blogroll />
     </>

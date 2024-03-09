@@ -12,7 +12,11 @@ const PostPage = ({ mdxSource, metadata, backlinks }: PostProps) => {
     <>
       <Head>
         <title>{metadata.title}</title>
-        <meta name="description" content={metadata.title} />
+        <meta name="title" property="og:title" content={metadata.title} />
+        <meta
+          property="og:url"
+          content={`https://petemillspaugh.com/${metadata.slug}`}
+        />
       </Head>
       <Post mdxSource={mdxSource} metadata={metadata} backlinks={backlinks} />
     </>
