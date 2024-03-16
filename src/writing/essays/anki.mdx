@@ -11,8 +11,6 @@ I began using [Anki](https://apps.ankiweb.net/) in July of last year to aid my m
 
 Anki is free flashcard software that automates the timing of card review. So for example, let’s say you write a new flashcard that asks, "About how many neurons do humans have?" (about [100 billion](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2776484/)). Anki presents that card for review immediately. You remember it and mark it as correct. The next day it presents the same card, which you remember again and mark as correct, so Anki waits a full week to present it a third time. If you get it right again, Anki will wait a month or so to surface it, and so on. If you get it wrong, the clock resets.
 
-{/* TODO: opportunity for interactive spacing algorithm widget where the user can play with the interval */}
-
 There are more layers to the software, but that’s the basic premise. I’ll cover both the why of Anki for me and observations from my first six months using it.
 
 ## Spaced repetition and forgetting curves
@@ -26,6 +24,14 @@ Spaced repetition is visualized by a [forgetting curve](https://en.wikipedia.org
 When we learn something, retention starts at 100% then drops gradually toward 0%. With each retrieval, retention jumps back to 100% and begins to decline again, but at a slower rate. Note that the curve flattens with each retrieval as the memory trace becomes more durable. Also note that the forgetting interval increases between each retrieval because memory traces become more durable with each marginal act of recall.
 
 The plot is not a perfect science reflecting the precise rate of forgetting or the optimal retrieval interval, but it should be directionally correct.
+
+<Callout>
+  I also created an [interactive forgetting curve on
+  Observable](https://observablehq.com/d/bbd131030ac04a69) to calculate and plot
+  retention with varying repetitions. The math I came up with is arbitrary, but
+  feel free to take a look and suggest any improvements! I wrote about the
+  calculations in that Observable notebook.
+</Callout>
 
 ## Memory’s role in thinking
 
