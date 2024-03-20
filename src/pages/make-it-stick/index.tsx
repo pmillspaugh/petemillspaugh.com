@@ -1,4 +1,4 @@
-import MakeItStickEmailSignup from "@/components/MakeItStick/EmailSignup";
+import MakeItStickEmailSignup from "@/components/MakeItStick";
 import Head from "next/head";
 
 const MakeItStickSignupPage = () => {
