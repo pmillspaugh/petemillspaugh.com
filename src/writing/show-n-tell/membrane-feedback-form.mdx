@@ -1,0 +1,44 @@
+---
+slug: membrane-feedback-form
+title: Writing a feedback form with Membrane
+createdAt: March 31, 2024
+updatedAt: March 31, 2024
+format: ShowNTell
+status: Seedling
+---
+
+I added a feedback form at the bottom of each post in my garden using [membrane.io](https://membrane.io). You can skip to the bottom of this Show ’n tell to see it in action.
+
+With Membrane it’s simple to deploy [HTTP endpoints](https://www.membrane.io/http-endpoints) and email yourself programmatically (among many other features). This is the bare bones code I wrote in a Membrane program to handle form submission:
+
+```ts blog-feedback.ts
+import { nodes } from "membrane";
+
+export async function endpoint(req) {
+  const { email, feedback, url } = JSON.parse(req.body) as FeedbackForm;
+
+  const subject = `Garden thoughts from ${email ?? "anonymous reader"}`;
+  const body = `Thoughts on ${url}:\n${feedback}`;
+  await nodes.email.send({ subject, body }).$invoke();
+
+  return JSON.stringify({
+    status: 200,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message: "feedback received!" }),
+  });
+}
+
+interface FeedbackForm {
+  email?: string;
+  feedback: string;
+  url: string;
+}
+```
+
+Every Membrane program comes with an endpoint URL, which you can use to write an API, serve some markup, handle webhooks, etc. Right now my little feedback program is just handling form submissions on `POST`, but I could also serve the form on `GET` requests (using vanilla HTML or a framework like HTMX or Hono).
+
+<Callout>
+  I plan to iterate on my feedback Membrane program—maybe starting with a Hono
+  router—and write more about it here. In the meantime, feel free to give me a
+  nudge or lmk what you think with the new form below.
+</Callout>
