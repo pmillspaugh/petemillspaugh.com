@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import P from "@/components/P";
 import VisuallyHidden from "@/components/VisuallyHidden";
+import { COLORS } from "@/styles/themes";
 
 const MEMBRANE_FEEDBACK_API_URL =
   "https://studio-878-reserve-690-drawer-792-hat.hook.membrane.io";
@@ -87,6 +88,7 @@ const StyledForm = styled.form`
     padding: 8px;
     border: 1.5px solid ${(p) => p.theme.textColor};
     border-radius: 4px;
+    background-color: ${(p) => p.theme.primaryBg};
   }
 
   & > div {
@@ -101,6 +103,7 @@ const StyledForm = styled.form`
         padding: 8px;
         border: 1.5px solid ${(p) => p.theme.textColor};
         border-radius: 4px;
+        background-color: ${(p) => p.theme.primaryBg};
       }
     }
 
