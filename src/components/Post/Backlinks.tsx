@@ -18,18 +18,9 @@ const Backlinks = ({ backlinks }: { backlinks: PostMetadata[] }) => {
 };
 
 const StyledH2 = styled.h2`
-  margin-top: 20px;
-  margin-bottom: 8px;
-  font-size: 1.75rem;
-  font-weight: 300;
-
-  @media (min-width: 768px) {
-    font-size: 2.25rem;
-  }
-
-  @media (min-width: 1200px) {
-    font-size: 2.75rem;
-  }
+  margin: 16px 0;
+  font-family: var(--font-open-sans);
+  font-weight: 600;
 `;
 
 const StyledUl = styled.ul`
