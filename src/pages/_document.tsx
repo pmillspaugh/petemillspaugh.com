@@ -55,6 +55,10 @@ class GardenDocument extends Document {
           href="/icons/favicon-dark.ico"
           media="(prefers-color-scheme: dark)"
         />
+        <link
+          rel="webmention"
+          href="https://webmention.io/petemillspaugh.com/webmention"
+        />
         <body>
           <Main />
           <NextScript />
