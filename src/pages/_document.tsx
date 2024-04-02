@@ -57,7 +57,7 @@ class GardenDocument extends Document {
         />
         <link
           rel="webmention"
-          href="https://webmention.io/petemillspaugh.com/webmention"
+          href="https://webmention.io/www.petemillspaugh.com/webmention"
         />
         <body>
           <Main />
