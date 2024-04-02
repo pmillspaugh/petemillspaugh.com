@@ -95,6 +95,7 @@ const Footer = () => {
                 <li>
                   <StyledIconLink
                     href="https://github.com/pmillspaugh"
+                    rel="me"
                     target="_blank"
                   >
                     <GitHubIcon />
@@ -122,7 +123,9 @@ const Footer = () => {
               </StyledIconUl>
               <StyledCopyright>
                 © 2023{" "}
-                <a href="mailto:pete@petemillspaugh.com">Pete Millspaugh</a>
+                <a href="mailto:pete@petemillspaugh.com" rel="me">
+                  Pete Millspaugh
+                </a>
               </StyledCopyright>
             </div>
           </StyledRowWrapper>
