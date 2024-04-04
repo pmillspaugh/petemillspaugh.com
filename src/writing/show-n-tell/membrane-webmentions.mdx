@@ -36,7 +36,7 @@ If you’re interested in going deeper on Membrane, there’s a fascinating [dev
 To _receive_ webmentions of my garden from other websites, I configured webmention.io webhooks to send a `POST` request to my Membrane program’s HTTP endpoint for every new webmention.
 
 Every Membrane program comes with an `endpoint` that you can export to expose a REST API, serve HTML, or handle webhooks as I’ve done here—see the code snippet below.
-I’m also using a Membrane endpoint for the <Link href="/membrane-feedback-form">feedback form</Link> at the bottom of each blog post, for example.
+I’m also using a Membrane endpoint for the <Link href="/membrane-feedback-form">feedback form</Link> at the bottom of each blog post.
 
 ```ts membrane-webmentions/index.ts
 export async function endpoint(req) {
@@ -109,4 +109,4 @@ For my use case, webmentions are pretty low stakes, so it’s ok if I don’t se
 
 To filter webmentions, I think it’d be neat to use the Membrane [`openai`](https://github.com/membrane-io/membrane-driver-openai/tree/4ab9f2c8d8966f9d6cce5e0630d2463458d4237e) driver (or maybe a different LLM better suited for sentiment analysis) to assess the urgency of each new mention. So when a webmention comes in realtime via webhook, your Membrane program would send the content of the Tweet/post/etc. to the specialized LLM to classify it as urgent or normal. The urgent webmentions could be emailed right away, and the rest could be sent in a daily or weekly roundup.
 
-Feel free to fork and remix for your own use case! For example, you may want to send yourself a Discord message using the Membrane [`discord`](https://github.com/membrane-io/membrane-driver-discord/tree/bf71f9f3387c58753741c80b30d4368c31e7ceda) driver instead of emailing. Or the Membrane [`slack`](https://github.com/membrane-io/membrane-driver-slack/tree/79dfb070e466bb0d55fe421e709d4e6dfa351215) driver. You can see all drivers in the [Membrane directory](https://github.com/membrane-io/directory). Or you might want to adjust the cron frequency down to once per week (or up to once per hour).
+Feel free to fork and remix for your own use case! For example, you may want to send yourself a Discord message using the Membrane [`discord`](https://github.com/membrane-io/membrane-driver-discord/tree/bf71f9f3387c58753741c80b30d4368c31e7ceda) driver instead of emailing. Or the Membrane [`slack`](https://github.com/membrane-io/membrane-driver-slack/tree/79dfb070e466bb0d55fe421e709d4e6dfa351215) driver. Or you might want to adjust the cron frequency down to once per week (or up to once per hour). You can see all drivers in the [Membrane directory](https://github.com/membrane-io/directory).
