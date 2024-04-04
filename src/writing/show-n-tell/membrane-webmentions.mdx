@@ -1,0 +1,112 @@
+---
+slug: membrane-webmentions
+title: Listening for webmentions with Membrane
+createdAt: April 3, 2024
+updatedAt: April 3, 2024
+format: ShowNTell
+status: Seedling
+---
+
+Sometimes people link to my website in a Tweet, on Hacker News, or on their blog. In most cases I’d like to see what people are saying, thank whoever wrote nice things, fix any bugs pointed out, etc.
+
+I wrote a program using [membrane.io](https://membrane.io) that listens for webmentions and emails me new ones each day. The webmentions come in realtime via webhooks from [webmention.io](https://webmention.io). For Twitter and HN, since they don’t automatically send out webmentions, the program polls their respective search APIs on a cron.
+
+The code is [public](https://github.com/pmillspaugh/membrane-webmentions/tree/main) if you’d like to fork it and adapt to your own use case.
+
+## Why Membrane
+
+There are a handful of features Membrane comes with out of the box that made this much, much easier to build. I’ll cover each in more detail below.
+
+1. [HTTP endpoints](https://www.membrane.io/http-endpoints) to receive webmentions webhooks
+1. [Instant deploys](https://www.membrane.io/instantanous-deploys) to test sending webmentions easily
+1. [Crons](https://www.membrane.io/cron-jobs-and-timers) to poll Twitter and HN
+1. [Persistence](https://www.membrane.io/durable-programs) to store mentions
+1. [Email](https://www.membrane.io/example-airtable-to-email) to send myself mentions
+
+And these five features only scratch the surface of what you can build with Membrane (there are a lot of batteries included, so to speak). If you’re familiar with [Val Town](https://val.town), which I’ve <Link href="/cultivating-emails">written about before</Link>, then Membrane will click quickly. Both are amazing ways to deploy useful programs easily.
+
+If you’re interested in going deeper on Membrane, there’s a fascinating [devtools.fm episode](https://www.devtools.fm/episode/46) with Membrane creator Juan Campa. The [membrane.io](https://www.membrane.io) landing page also has a ton of compelling examples and explanations of core features.
+
+## Webmentions
+
+[Webmentions](https://indieweb.org/Webmention) are an open standard from the W3C for bidirectional linking between websites, and _webmention.io_ is a hosted service that facilitates sending and receiving webmentions. You may have seen blogs that include comments pulled in from other websites and social platforms—like at the bottom of each post in [Maggie Appleton’s digital garden](https://maggieappleton.com/bidirectionals).
+
+## HTTP endpoints and instant deploys
+
+To _receive_ webmentions of my garden from other websites, I configured webmention.io webhooks to send a `POST` request to my Membrane program’s HTTP endpoint for every new webmention.
+
+Every Membrane program comes with an `endpoint` that you can export to expose a REST API, serve HTML, or handle webhooks as I’ve done here—see the code snippet below.
+I’m also using a Membrane endpoint for the <Link href="/membrane-feedback-form">feedback form</Link> at the bottom of each blog post, for example.
+
+```ts membrane-webmentions/index.ts
+export async function endpoint(req) {
+  const body = JSON.parse(req.body) as IncomingWebhook;
+  const { source, target, post } = body;
+
+  const subject = "New webmention on petemillspaugh.com";
+  const message = `${source} linked to ${target} at ${post.timestamp}`;
+  await nodes.email.send({ subject, body: message });
+  state.webmentions.push({ source, target, receivedAt: post.timestamp });
+}
+```
+
+The endpoint parses incoming webhooks, stores the webmention in my program’s `state` (more on that below), and triggers an email using Membrane’s `email` driver (also below). Where the Membrane endpoint really shines for this program, though, is testing _sending_ webmentions.
+
+For a webmention to be valid, the target link needs to actually exist on the source website. So for quickly testing links from a source website, I set up my Membrane endpoint to return some HTML with a link to my garden.
+
+```ts membrane-webmentions/index.ts
+export async function endpoint(req) {
+  switch (req.method) {
+    case "POST":
+      return; // ...code above that handles incoming webhooks
+    case "GET":
+      return JSON.stringify({
+        headers: { "Content-Type": "text/html" },
+        body: `
+          <main>
+            <h1>Webmentions test</h1>
+            <a href="https://www.petemillspaugh.com/think-small">Think small</a>
+          </main>
+        `,
+      });
+    default:
+      return; // ...handle other cases as needed
+  }
+}
+```
+
+**Membrane deploys instantly on save, so I can immediately deploy a website to test my sample link.** You can visit the [endpoint URL](https://yard-915-release-942-coffee-862-net.hook.membrane.io) to see it live. With the test site deployed, the last step is to send a `POST` request to webmention.io, which will validate the link and trigger a webhook.
+
+Instant deploys of Membrane endpoints was a major time saver. I might have even given up if I had wait several minutes to redeploy a website each time I needed to tweak a test link.
+
+## Timers, persistence, and email
+
+### Timers
+
+Membrane includes timers for actions you want to invoke on a cron, after a delay, or at a specific time. I set up a cron to [text me about the upcoming solar eclipse](https://x.com/pete_millspaugh/status/1775331254096822565) each morning, for example.
+
+For this program, I set up a cron expression `0 0 16 * * *` to poll Twitter and Hacker News daily and send me any new mentions of my garden.
+
+### Persistence
+
+Membrane programs are durable, meaning the values you store in `state` persist indefinitely. For example, to keep track of webmentions, my program stores webmentions in a `state.webmentions` array, and likewise for `state.twitterMentions` etc. I’m also storing data like the last poll timestamp, which refreshes each day when the cron job runs.
+
+### Email
+
+Membrane’s `email` program is another handy util that allows you to email yourself without setting up any third party service like SendGrid or nodemailer. There’s also an `sms` driver that I used for the solar eclipse countdown I mentioned above.
+
+## Polling Hacker News and Twitter
+
+Twitter and Hacker News don’t automatically post webmentions to webmentions.io, so I implemented search and polling for each separately to augment the webmentions webhooks ([twitter](https://github.com/pmillspaugh/membrane-webmentions/blob/main/twitter.ts), [hn](https://github.com/pmillspaugh/membrane-webmentions/blob/main/hn.ts)). There are also services like [brid.gy](https://brid.gy/) that wrap around social sites to surface webmentions automatically. That’s on my shortlist of improvements for this program.
+
+For the Twitter API, unfortunately the free version doesn’t include search (and the Basic tier is $100/mo, oof), so I ended up cobbling together an implementation that uses their private GraphQL API by inspecting requests in browser devtools. That approach is definitely brittle, so it’s only a matter of time until it fails from expired auth tokens or breaking API changes. All the more reason to use a webmentions wrapper instead, although it looks like Bridgy no longer supports Twitter (if you know anything about this please lmk!).
+
+It’s worth noting Membrane has useful API drivers for both [`twitter`](https://github.com/membrane-io/membrane-driver-twitter/tree/dd09ad15e656ebdda2e0024eb302cf9186e76984) and [`hn`](https://github.com/membrane-io/membrane-driver-hn/tree/3d1ec1aad9f4b2a265030a8eb3995249af21fc5a) that make it very easy to do things like [tweet programmatically](https://x.com/pete_millspaugh/status/1771328988767498742) or [track HN jobs](https://www.membrane.io/example-google-sheets-hn-jobs).
+
+## Where to go from here
+
+For my use case, webmentions are pretty low stakes, so it’s ok if I don’t see a new mention until the next day or even the next week. But for companies, I think it’d be really useful to receive alerts for webmentions realtime. You wouldn’t want to get pinged for every mention, though—only when people are complaining about a major bug or downtime on your website, for example.
+
+To filter webmentions, I think it’d be neat to use the Membrane [`openai`](https://github.com/membrane-io/membrane-driver-openai/tree/4ab9f2c8d8966f9d6cce5e0630d2463458d4237e) driver (or maybe a different LLM better suited for sentiment analysis) to assess the urgency of each new mention. So when a webmention comes in realtime via webhook, your Membrane program would send the content of the Tweet/post/etc. to the specialized LLM to classify it as urgent or normal. The urgent webmentions could be emailed right away, and the rest could be sent in a daily or weekly roundup.
+
+Feel free to fork and remix for your own use case! For example, you may want to send yourself a Discord message using the Membrane [`discord`](https://github.com/membrane-io/membrane-driver-discord/tree/bf71f9f3387c58753741c80b30d4368c31e7ceda) driver instead of emailing. Or the Membrane [`slack`](https://github.com/membrane-io/membrane-driver-slack/tree/79dfb070e466bb0d55fe421e709d4e6dfa351215) driver. You can see all drivers in the [Membrane directory](https://github.com/membrane-io/directory). Or you might want to adjust the cron frequency down to once per week (or up to once per hour).
