@@ -16,7 +16,7 @@ fn gcd(mut n: u64, mut m: u64) -> u64 {
   assert!(n != 0 && m != 0);
   while m != 0 {
     if m < n {
-      let t = n;
+      let t = m;
       m = n;
       n = t;
     }
@@ -27,3 +27,14 @@ fn gcd(mut n: u64, mut m: u64) -> u64 {
 ```
 
 I’m starting with O’Reilly’s [_Programming Rust_](https://www.oreilly.com/library/view/programming-rust-2nd/9781492052586/), but I plan to go through [_The Book_](https://doc.rust-lang.org/stable/book/) in parallel and see what sticks.
+
+I also <del>wrote</del> _copied_ my first test in Rust, which quickly caught a bug in my greatest common divisor implementation.
+
+```rust
+#[test]
+fn test_gcd() {
+  assert_eq!(gcd(14, 15), 1);
+
+  assert_eq!(gcd(2 * 3 * 5 * 11 * 13, 3 * 7 * 11 * 19), 3 * 11);
+}
+```
