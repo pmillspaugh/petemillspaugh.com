@@ -1,0 +1,29 @@
+---
+slug: hello-rust
+title: Hello, Rust
+createdAt: April 24, 2024
+updatedAt: April 24, 2024
+format: Note
+status: Seedling
+---
+
+I just wrote my first Rust program. Er, it’s not really even _my_ program—I just read an example from a book, tried to implement it from memory a few minutes later, ran `cargo run`, then used hints from the Rust compiler to fix my code. First impression…the hints are really good!
+
+Here’s the function:
+
+```rust
+fn gcd(mut n: u64, mut m: u64) -> u64 {
+  assert!(n != 0 && m != 0);
+  while m != 0 {
+    if m < n {
+      let t = n;
+      m = n;
+      n = t;
+    }
+    m = m % n;
+  }
+  n
+}
+```
+
+I’m starting with O’Reilly’s [_Programming Rust_](https://www.oreilly.com/library/view/programming-rust-2nd/9781492052586/), but I plan to go through [_The Book_](https://doc.rust-lang.org/stable/book/) in parallel and see what sticks.
