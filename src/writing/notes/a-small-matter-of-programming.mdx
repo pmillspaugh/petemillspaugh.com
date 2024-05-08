@@ -1,82 +1,146 @@
 ---
 slug: a-small-matter-of-programming
-title: Things I found interesting in Bonnie Nardi’s "A Small Matter of Programming"
-createdAt: March 3, 2024
-updatedAt: March 3, 2024
+title: Things I found interesting in Bonnie Nardi’s “A Small Matter of Programming”
+createdAt: May 8, 2024
+updatedAt: May 8, 2024
 format: Note
-status: Seedling
+status: Budding
 ---
 
-I am reading [_A Small Matter of Programming_](https://www.goodreads.com/book/show/581700.A_Small_Matter_of_Programming) by Bonnie Nardi with some others in the <Link href="foc-book-club" target="_blank">Future of Coding book club</Link>.
+I read [_A Small Matter of Programming_](https://www.goodreads.com/book/show/581700.A_Small_Matter_of_Programming) by Bonnie Nardi with some others in the <Link href="foc-book-club" target="_blank">Future of Coding book club</Link>.
 
-It's amazing how current this book reads even though it was published over 30 years ago in 1993. That was only two years after the [world's first website](https://info.cern.ch/hypertext/WWW/TheProject.html) and two years _before_ JavaScript was invented.
+It’s amazing how current this book reads given it was published over 30 years ago in 1993. That was only two years after the [world’s first website](https://info.cern.ch/hypertext/WWW/TheProject.html) and two years _before_ JavaScript was invented.
 
-## On what end users care about versus what programmers care about (xii, 5)
+## On what end users care about (xii, 5)
 
-{/* TODO: */}
+> [End users] have little or no training in computer science, and often little interest in computers per se. Most end users regard computers as useful—even indispensable—machines capable of helping them work more productively, creatively, and with greater pleasure. This is not the same as finding computers themselves intrinsically interesting—as a computer scientist or engineer would—and it dictates an entirely different set of tools for end users.
 
-> ...users who have little or no training in computer science, and often little interest in computers per se. Most end users regard computers as useful—even indispensable—machines capable of helping them work more productively, creatively, and with greater pleasure. This is not the same as finding computers themselves intrinsically interesting—as a computer scientist or engineer would—and it dictates an entirely different set of tools for end users.
+This is a timeless reminder from Nardi that users don’t care about our tech stack. They don’t care that I’m using Next instead of Remix, or Svelte or Astro or whatever. The thing that always sticks in my mind is [Jerome Hardaway](https://twitter.com/JeromeHardaway) saying that users only care if your website (1) works, (2) is fast, and (3) looks good. In that order, too.
 
-Timeless reminder that users don’t care about our tech stack. They don’t care that I’m using Remix instead of Next, or Svelte or Astro or whatever. The thing that always sticks in my mind is Jerome Hardaway saying that users only care if your website (1) works, (2) is fast, and (3) looks good. In that order, too.
-
-End users want computers to get work done. Programmers like computers because programming is fun and interesting.
-
-I definitely feel this when showing websites to friends and family. The way I navigate a website is often quite different from the way someone who doesn't create websites for a living does.
-
-The thing I heard Jerome Hardaway say when I was first learning to code comes to mind: people care if your website (1) works, (2) is fast, and (3) looks good. In that order, too.
-
-> A user of a software system was heard to remark, "I didn't have much time, so I did it the long way."
+> A user of a software system was heard to remark, "I didn’t have much time, so I did it the long way."
 > ...
 > The converse of the statement, putatively from a collection of MIT graffiti, goes: “I would rather write programs to help me write programs than write programs.”
 
-That's not to say end users aren't sophisticated, though.
+End users like computers to get work done. Programmers like computers because programming is fun and interesting.
+
+I feel this when showing websites to friends and family. The little touches and polish that satisfy me often go unnoticed by others. The way I navigate websites can be quite different from the way someone who doesn’t create websites for a living navigates websites.
+
+That’s not to say end users aren’t sophisticated, though.
 
 > End users are not "casual", "novice" or "naive" users; they are people such as chemists, librarians, teachers, architects, and accountants, who have computational needs and want to make serious use of computers, but who are not interested in becoming professional programmers.
 
-## On design (6)
+Nardi nicely tees up the main point of the book with this sentence. My paraphrased tl;dr of that main point is: **end-user software should be easy enough for a user to do something useful within a couple hours of learning, but advanced enough that a user can become an expert over time, without limitation.**
+
+That quotation about end users’ Serious Use of Computers is the most inspiring tidbit of the whole book for me. If you the programmer build powerful tools for your end users, they will build really impressive things. We as programmers have a high leverage opportunity to arm lots of smart, motivated people with the tools that will allow them to build sophisticated programs. [Observable’s collection of examples](https://observablehq.com/explore) is a powerful illustration of this concept.
+
+## On design (3, 6, 132)
+
+I like the idea of designing and writing software for one user, to start. But if your goal is for others to use your software, inevitably you’ll run into the trap that your wishes won’t perfectly match those of your users. Nardi’s vision of end-user programming accounts for emergent and surprising use cases of your software by offering flexibility to users.
+
+On anticipating those user wishes, Nardi writes:
+
+> As has been shown time and again, no matter how much designers and programmers try to anticipate and provide for what users will need, the effort always falls short because it is impossible to know in advance what may be needed.
+
+And a few pages later, my favorite quotation from the entire book, hands down:
 
 > Of course design still is, and almost certainly always will be, a black art whose most crucial elements remain an incalculable mix of imagination, intuition, and intellectual interaction with one’s fellows.
 
-{/* TODO: */}
-this resonates. not sure if she's talking about visual design or the design of a program overall. holding the thing in your hands (i.e. using it) collaboration with teammates, and user interviews unlock design ideas
+This really resonates. You have to hold the thing in your hands, collaborate with teammates, and talk to users to find the right design.
 
-## On spreadsheets (7-8)
+More on that toward the end of the book:
 
-{/* TODO: probably move this to a different section where the spreadsheet studies are more in-depth. She just introduces them here */}
+> The chief point is that application development merges with user interface design: one does not build "the application" and then tack on a user interface; rather, the two processes are more closely interwoven, and the user interface, by being subsumed in the application development process, comes to be a critical aspect of organizing and presenting application semantics—not an afterthought.
 
-Nardi draws from two ethnographic studies she did in 1990 and 1991 with spreadsheet users.
+## On natural language-based human computer communication (10, 15, 83)
 
-Discussion of spreadsheets hits home for me since I worked in investment banking briefly before becoming a programmer, which meant spending 8-16+ hours a day in Microsoft Excel. I was floored by how bad our version control system was. We basically just versioned up the file whenever it felt like a good breaking point, so you'd end up with files like `shopify_v346.xlsx`. Even worse, two people couldn't reasonably work on the same model simultaneously without branching and merge conflict resolution etc. Version control with git was one of the happiest discoveries for me when I started coding.
+> We begin, in chapter 2, by asking why we need end user programming systems at all. Aren’t natural language-based systems that will allow us to just tell the computer what we want right around the corner? We...argue that conversation is not the best model for human-computer communication.
 
-When I was learning to program I noted the similarities between Excel and JavaScript—circular dependencies, modularizing programs, readability, etc.
+If by right around the corner Nardi—or really the crowd she’s speaking on behalf of—meant November 2022, then yes natural language conversation with computers was just around the corner in 1993. This section of the book reads as the AI chapter and Nardi as the AI skeptic.
 
-## On natural language-based human computer communication (10, 15)
+I think she nails the idea that language models enable a programmer to iterate more quickly but don’t (yet) take the programmer out of the loop:
 
-{/* TODO: */}
+> While one can conceive of a system that could automatically generate programs for end users, the probability of such a system producing right-the-first-time programs appears to be low. There may well be a role for high-level programming languages and environments that enable users to specify programs, evaluate them, and iterate toward desirable ones. These will probably not deliver the miracle of "automatic programming" that one might hope for, however.
 
-> We begin, in chapter 2, by asking why we need end user programming systems at all. Aren’t natural language-based systems that will allow us to just tell the computer what we want right around the corner? We discussed the computer's conversational abilities and argue that conversation is not the best model for human computer communication.
-
-It's hard not to read this chapter as the AI chapter and Nardi as an AI skeptic.
+I like the label _right-the-first-time_ programs. And even with powerful language models now available for workflows like generating code, brainstorming, and researching, a lot of work is left to be done for computer agents to act on on our natural language wishes. Nardi discusses _context_ as the missing piece.
 
 > The computer fails to understand and to speak because much of what is understood in a conversation attaches to the context in which the participants of a conversation find themselves, and of which they have knowledge.
 
-- Computers don’t have senses…but now in 2024 let’s say they can hear and see. How important are smell and touch?
+She provides the example of asking a computer to distribute the latest draft to the group and let [me] know when they’ve read it. That simple-for-a-human command is full of context and would require complex logic for an agent to complete.
 
-## On alternatives to natural language (16, 24)
+## On alternatives to natural language (24)
 
-Nardi
+Nardi also makes a compelling case that, depending on the activity, we already use many forms of communication better suited to their given task than natural language. Driving a car is a great (and funny) example. A steering wheel is _way_ better suited to the task of driving than talking to your car would be.
 
-> To play a piece of music...we read the score. An important communicative event has occurred over what may have been a great deal of time and space.
+This reminds me of something I read recently in [_Make It Stick_](https://www.goodreads.com/book/show/18770267-make-it-stick)—that there is no empirical support for the claim that instruction in one’s preferred learning style improves learning outcomes. For example, we often hear people (myself included) say "I am a visual learner," but as yet there’s no evidence to back it up. From the book:
 
-{/* TODO: */}
+> The popular notion that you learn better when you receive instruction in a form consistent with your preferred learning style, for example as an auditory or visual learner, is not supported by the empirical research...It is more important that the mode of instruction match the nature of the subject being taught: visual instruction for geometry and geography, verbal instruction for poetry, and so on.
 
-> We want to argue here that just as formal languages have served computer scientists well, they will serve end users well...Unlike conversational communication, formal languages can be text-based or graphical.
+Nardi hits on that point:
 
-This reminds me of something I read recently in [_Make It Stick_](https://www.goodreads.com/book/show/18770267-make-it-stick)—that there is no empirical support for the common claim that instruction in one’s preferred
-learning style improves learning outcomes. For example, we often hear people (myself included) say "I am a visual learner," but as yet there's no evidence to back it up. From the book:
+> For many problems, a graphical representation is much the most "natural"...Again, the problem is one of matching the practical problem at hand to the design of the technology, rather than assuming a priori the primacy of one form of communication, i.e. conversation.
 
-> The popular notion that you learn better when you receive instruction in a form consistent with your preferred learning style, for example as an auditory or visual learner, is not supported by the empirical research. People do have multiple forms of intelligence to bring to bear on learning, and you learn better when you “go wide,” drawing on all of your aptitudes and resourcefulness, than when you limit instruction or experience to the style you find most amenable.
-> ...
-> It is more important that the mode of instruction match the nature of the subject being taught: visual instruction for geometry and geography, verbal instruction for poetry, and so on. When instructional style matches the nature of the content, all learners learn better, regardless of their differing preferences for how the material is taught.
+It’s the subject matter that dictates the right medium of communication.
 
-I like Nardi's point. Natural language is the hammer making all computer tasks look like nails. The 2023 version would be chatbots as the hammer.
+### On baseball (28, 30-33, 85)
+
+Nardi argues that formal languages and notations are widely used by people in all walks of life. My favorite example she goes into is baseball, which is full of specialized communication: catchers signaling to pitchers, base coaches signaling to runners and batters, fans and statisticians keeping scorecards, etc. She quotes from Fred Schwed, Jr. in _Baseball by the Rules_:
+
+> The baseball box score is the pithiest form of written communication in America today. It is two or three hours...of complex activity, virtually inscribed on the head of a pin.
+
+[Baseball score keeping](https://en.wikipedia.org/wiki/Baseball_scorekeeping) is a particularly fascinating example because it’s common for fans to fill out scorecards while attending a game, purely for fun. My grandfather actually used to do it when I went to Baltimore Orioles games with him. Fans are motivated to learn a fairly complex set of rules and notation to fill out scorecards, without any requirement or monetary incentive to do so.
+
+### On knitting (34)
+
+Nardi follows her explanation of baseball notation with a similar exploration of knitting notation. This back-to-back sequence produced an interesting effect for me as the reader.
+
+As a casual baseball fan who hasn’t ever kept scorecards, it was fun and engaging to read and think about baseball score keeping and notation. But as a knitting novice, reading knitting shorthand produced something similar to the eyes-glaze-over effect you’d see when showing code to a non-coder or math formulas to a non-mathematician. Knitting instructions are intimidating to me because of my lack of familiarity with the domain whereas baseball scorecards are interesting like a puzzle or game.
+
+## On end user programming as good fun (35)
+
+As with baseball scorecards or knitting, end user programs should be fun and satisfying.
+
+> In addition to being useful, formal systems have an appeal all their own; people naturally gravitate to them. Games are perhaps the clearest example of the way we spontaneously engage in interaction with formal systems.
+
+Board games are another fantastic example. Playing _Catan_ requires learning a non-trivial set of rules, for example.
+
+But it’s not just leisurely activities that can be fun—or maybe _satisfying_ is a better word for it. When I worked as an investment banker, I found great satisfaction in working on spreadsheets. Nardi makes the point that only when people have a particular interest or motivation in something—be it baseball, knitting, or forecasting financials—will they learn a formal language to accomplish their goal.
+
+And familiarity with a domain doesn’t just lead to fun or satisfaction in learning and using a formal notation. It also unlocks a better ability and confidence to learn that formal skill. Nardi cites studies that show participants' math and logic skills are much better when problems are framed in things they are familiar with—like cars—than when framed abstractly as pure math.
+
+## On UI density (65, 85-87)
+
+One major challenge with visual programming and visual end user programs is information density in the UI. Text often wins out because its density can be hard to match, but there are counterexamples, like spreadsheets organizing computation in a grid. The book argues that a hybrid approach with text and graphics mixed together—like in spreadsheets—makes the most sense, and that it’s unrealistic to disregard text.
+
+> Sometimes a few words are worth a thousand pictures.
+
+Nardi notes that spreadsheet users have a strong preference for seeing as much data as possible without scrolling. I like to view large code files and long documents on a vertical monitor for the same reason.
+
+## On spreadsheets
+
+The more Nardi discusses spreadsheets, the more in awe I am of their elegance, which I did not fully appreciate when I used to spend ~12-16 hours per day working in Excel. I am always impressed by UIs that balance density and polish. But what I think is most elegant about spreadsheets is that they are simple enough to be useful to a beginner within the first hour of use and powerful enough for experts to perform sophisticated tasks over hundreds of hours.
+
+Nardi describes this concept as _layers:_
+
+> ...the system must incorporate the advanced features that make sophisticated customizations and extensions possible in the first place. But...the system should also be modular...thought of as being in layers, such that an end user may access a first layer that is easy to use and learn, while succeeding layers house modules for more advanced use.
+
+Spreadsheets are not without shortcomings, of course. For example, I am floored in retrospect by how bad our version control system was in Excel at my old job. We basically just versioned up the file whenever it felt like a good breaking point, so you’d end up with files like `shopify_v346.xlsx`. Even worse, two people couldn’t reasonably work on the same model simultaneously without git-style branching available. Version control with git was one of my happiest discoveries when I started coding.
+
+## On associating information with its physical location (87)
+
+Nardi includes conversations from ethnographic studies of spreadsheet users who talk about knowing where to find stuff in their models. One user knows that if she’s in the middle of her spreadsheet around the Municipal Bonds section then the Preferred Stocks section must be above that.
+
+Remembering where some information is in a spreadsheet has a similar feeling for me to remembering where I read something in a physical book. I can remember that some piece of information was in a smaller paragraph around the bottom of a page on the left of the book, for example, then scan through the book until I find it. I don’t often experience that kind of feel with a codebase.
+
+## On modern end-user programming applications and research
+
+Nardi includes something of a call for research in the beginning of the book:
+
+> One hope for this book is that it will stimulate further empirical research on existing end user software systems so that we can learn more about what works and what doesn’t work.
+
+I am new to this field, so I’d appreciate any recommendations on papers to read or examples to check out.
+
+For the research side, I’d like to spend some time using [Elicit](https://elicit.com) as a tool to survey the end-user programming research in the last 30 years. So far, other than this book I’ve read the [Ink & Switch essay on end-user programming](http://inkandswitch.com/end-user-programming) and [Steve Krouse’s essay on end-programmer programming](http://val-town.notion.site/End-programmer-Programming-a749beb4a9b143f2990f575fb7e59b33), and I’ve listened to the [Future of Coding podcast episode about this book](https://podcasts.apple.com/us/podcast/future-of-coding/id1265527976?i=1000625336675) (discussion of the book starts around the 20m mark).
+
+As for modern examples of end-user programming in the wild, [Observable](https://observablehq.com/) and [Notion](https://www.notion.so/) are two programs I’ve actually used that come to mind. Then there are apps I haven’t used like Zapier, iOS custom shortcuts, and website builders (e.g. Bubble, Webflow).
+
+Steve—in collaboration with Ellen Chisa and Paul Biggar when they were working on Dark—created [The Whole Code Catalog](https://futureofcoding.org/catalog/). That is a great list, but it is now 5 years old, and it includes some more programmer-oriented tools like Glitch and Zeit (Vercel) that I don’t think of as end-user tools (although I know the lines are blurry). I’m curious to learn about the best modern examples of end-user programs, so feel free to reply below or on Twitter/wherever if you have examples to share.
