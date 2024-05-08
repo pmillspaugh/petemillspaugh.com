@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import P from "@/components/P";
 import VisuallyHidden from "@/components/VisuallyHidden";
-import { COLORS } from "@/styles/themes";
 
 const MEMBRANE_FEEDBACK_API_URL =
   "https://studio-878-reserve-690-drawer-792-hat.hook.membrane.io";
@@ -31,10 +30,11 @@ const Feedback = () => {
 
   return (
     <>
-      <StyledH2>Your thoughts</StyledH2>
+      <StyledH2>Reply</StyledH2>
       <P>
         Respond with your thoughts, feedback, corrections, or anything else
-        you’d like to share. Leave your email if you’d like a reply. Thanks!
+        you’d like to share. Leave your email if you’d like a reply. Thanks for
+        reading.
       </P>
       <StyledForm onSubmit={handleSubmit}>
         <label htmlFor="feedback">
