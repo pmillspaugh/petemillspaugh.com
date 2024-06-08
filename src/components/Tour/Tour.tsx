@@ -10,7 +10,7 @@ const Tour = ({ posts }: GardenProps) => {
       <StyledP>
         This guided garden tour is here if you’re not sure what to read.
         Inspired by{" "}
-        <a href="https://jvns.ca/categories/favorite/" target="_blank">
+        <a href="https://jvns.ca/categories/favorite/">
           Julia Evans’s favorites
         </a>
         . Or feel free to wander through the <Link href="/garden">garden</Link>{" "}

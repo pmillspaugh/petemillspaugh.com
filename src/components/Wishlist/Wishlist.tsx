@@ -2,8 +2,28 @@ import Link from "next/link";
 import styled from "styled-components";
 
 const WISHLIST = [
-  { name: "Rust", url: "https://www.rust-lang.org/", description: "" },
-  { name: "Astro", url: "https://astro.build/", description: "" },
+  {
+    name: "Rust",
+    url: "https://www.rust-lang.org/",
+    description: "",
+    update: (
+      <>
+        writing Rust for my day job at{" "}
+        <a href="https://membrane.io">Membrane</a>
+      </>
+    ),
+  },
+  {
+    name: "Astro",
+    url: "https://astro.build/",
+    description: "",
+    update: (
+      <>
+        using Astro Starlight for{" "}
+        <a href="https://docs.membrane.io">docs.membrane.io</a>
+      </>
+    ),
+  },
   { name: "Remix", url: "https://remix.run/", description: "" },
   { name: "Svelte", url: "https://svelte.dev/", description: "" },
   { name: "Playwright", url: "https://playwright.dev/", description: "" },
@@ -20,23 +40,8 @@ const WISHLIST = [
     description: "",
   },
   {
-    name: "Web Streams",
-    url: "https://developer.mozilla.org/en-US/docs/Web/API/Streams_API",
-    description: "",
-  },
-  {
     name: "Web Components",
     url: "https://developer.mozilla.org/en-US/docs/Web/API/Web_components",
-    description: "",
-  },
-  {
-    name: "WebGL",
-    url: "https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API",
-    description: "",
-  },
-  {
-    name: "WebSockets",
-    url: "https://developer.mozilla.org/en-US/docs/Web/API/WebSocket",
     description: "",
   },
   {
@@ -45,10 +50,7 @@ const WISHLIST = [
     description: "",
     update: (
       <>
-        used for{" "}
-        <a href="https://weeksofyour.life" target="_blank">
-          weeksofyour.life
-        </a>
+        used for <a href="https://weeksofyour.life">weeksofyour.life</a>
       </>
     ),
   },
@@ -58,10 +60,7 @@ const WISHLIST = [
     description: "",
     update: (
       <>
-        used in garden{" "}
-        <Link href="/cultivating-emails" target="_blank">
-          Clippings
-        </Link>
+        used in garden <Link href="/cultivating-emails">Clippings</Link>
       </>
     ),
   },
@@ -71,10 +70,7 @@ const WISHLIST = [
     description: "",
     update: (
       <>
-        used in garden{" "}
-        <Link href="/cultivating-emails" target="_blank">
-          Clippings
-        </Link>
+        used in garden <Link href="/cultivating-emails">Clippings</Link>
       </>
     ),
   },
@@ -98,11 +94,7 @@ const Wishlist = () => {
       {/* TODO: render a <detail> or accordion for each item with a description */}
       <StyledUl>
         {alphabetizedWishlist.map(({ name, url, description, update }) => {
-          const link = (
-            <a href={url} target="_blank">
-              {name}
-            </a>
-          );
+          const link = <a href={url}>{name}</a>;
 
           return (
             <li key={name}>

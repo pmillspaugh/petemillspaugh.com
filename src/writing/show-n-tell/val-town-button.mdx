@@ -51,7 +51,7 @@ Vals are composable, so the getter and setter import the click count from the fi
 
 Persisting a click count by exporting `valTownButtonClicks` works ok, but if you need more robust persistence, Val Town supports a number of database options—see `Persistence & databases` in the [docs](https://docs.val.town/). The version number of a Val increments whenever you update and save. In this case, mutating `valTownButtonClicks` automatically versions up that Val. Because I’m using a vanilla Val for my counter, writes are not atomic, so consecutive calls to increment in a short time span will create a race condition that yields just one tally but multiple version changes.
 
-I could also consolidate the getter and setter into a single handler, maybe even using a framework like [Hono](https://hono.dev/) like I did for my <Link href="/cultivating-emails" target="_blank">email subscription Val</Link> (probably overkill here, though).
+I could also consolidate the getter and setter into a single handler, maybe even using a framework like [Hono](https://hono.dev/) like I did for my <Link href="/cultivating-emails">email subscription Val</Link> (probably overkill here, though).
 
 I set up an interval to poll the fetcher Val every second, clearing the interval when the button is out of the viewport (using [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)), or when you navigate away from the browser tab, or after 10 seconds of inactivity (no mousemoves, clicks, or scrolling). The API call fired on click is also debounced to avoid spamming the server, plus rapid requests would create a race condition as mentioned above, anyway.
 

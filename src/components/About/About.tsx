@@ -7,42 +7,37 @@ const About = () => {
       <StyledH1>About</StyledH1>
       <StyledH2>Me</StyledH2>
       <StyledP>
-        I’m Pete. I’m a web developer based in Brooklyn, New York. I currently
-        work at SeedFi, now{" "}
-        <a
-          href="https://www.intuit.com/company/press-room/press-releases/2022/intuit-to-acquire-financial-health-startup-seedfi/"
-          target="_blank"
-        >
-          part of Credit Karma.
-        </a>
+        I’m Pete. I am a programmer who likes to design and write. Right now I’m
+        a founding engineer at <a href="https://www.membrane.io/">Membrane</a>,{" "}
+        making it easier to write your own internal tools in TypeScript.
       </StyledP>
       <StyledP>
-        I am a dev who likes to design and write. My bread ’n butter is
-        TypeScript/JavaScript, React, Node, and SQL. In the near-ish term I’d
-        like to learn Rust and Web Components,{" "}
-        <Link href="/wishlist" target="_blank">
-          among other things
-        </Link>
-        .
+        I used to work at SeedFi (and then Credit Karma{" "}
+        <a href="https://www.intuit.com/company/press-room/press-releases/2022/intuit-to-acquire-financial-health-startup-seedfi/">
+          via acquisition
+        </a>
+        ) helping Americans build credit and savings. I write Rust and
+        TypeScript for my day job, and I love frontend Web tech. I also keep a{" "}
+        <Link href="/wishlist">list</Link> of things I'd like to learn.
       </StyledP>
       <StyledH2 id="this-site">My digital garden</StyledH2>
       <StyledP>
         This website is a digital garden, which is a bit different than a blog
-        where each post is a "finished" work ready for public eyes. Instead,
+        where each post is a “finished” work ready for public eyes. Instead,
         writing is made public early on while it’s still being cultivated and
         growing. I owe most of my gardening inspiration to Maggie Appleton for{" "}
-        <a href="https://maggieappleton.com/" target="_blank">
-          her amazing digital garden
-        </a>{" "}
-        and{" "}
-        <a href="https://maggieappleton.com/garden-history" target="_blank">
+        <a href="https://maggieappleton.com/">her amazing digital garden</a> and{" "}
+        <a href="https://maggieappleton.com/garden-history">
           essay on its history and ethos
         </a>
         . Major credit also goes to Swyx for pushing the{" "}
-        <a href="https://www.swyx.io/learn-in-public" target="_blank">
-          learn in public
-        </a>{" "}
+        <a href="https://www.swyx.io/learn-in-public">learn in public</a>{" "}
         philosophy.
+      </StyledP>
+      <StyledP>
+        All my garden code is{" "}
+        <a href="https://github.com/pmillspaugh/petemillspaugh.com">public</a>.
+        I cover my tech stack in the readme.
       </StyledP>
       <StyledP>
         My <Link href="/garden">garden</Link> is organized by writing formats
@@ -56,20 +51,17 @@ const About = () => {
         </li>
         <li>
           <strong>Brainstorms:</strong> raw thought streams that I initially
-          wrote down without consulting the Internet, followed by a debrief
+          wrote down without Internet connection, followed by a debrief
           answering my questions and pointing out where I was right or wrong.
           This is an experimental (and vulnerable 😅) format that I came up with
-          while{" "}
-          <Link href="/map-in-the-woods" target="_blank">
-            downloading a map
-          </Link>{" "}
-          on a hiking trip
+          while <Link href="/map-in-the-woods">downloading a map</Link> on a
+          hiking trip
         </li>
         <li>
           <strong>Show n’ tells:</strong> write-ups detailing how I built
-          something. They aren’t typically quite as step-by-step and broadly
-          applicable as a classic "tutorial", and they are usually more
-          technical with more code snippets than my Essays
+          something. They aren’t quite as step-by-step and broadly applicable as
+          a classic “tutorial”, and they are usually more technical with more
+          code snippets than my Essays
         </li>
         <li>
           <strong>TILs:</strong> stands for <em>Today I Learned</em>. TILs are
@@ -77,10 +69,7 @@ const About = () => {
           connect to anything I’m currently working on, but if I think something
           is neat enough to share and stash away for later, I’ll write a TIL.
           Inspired by Josh Branchaud’s{" "}
-          <a href="https://github.com/jbranchaud/til" target="_blank">
-            til
-          </a>{" "}
-          repo
+          <a href="https://github.com/jbranchaud/til">til</a> repo
         </li>
         <li>
           <strong>Notes:</strong> things I want to write about that don’t neatly
@@ -88,10 +77,11 @@ const About = () => {
           could grow large enough to re-pot as an Essay
         </li>
         <li>
-          <strong>Clippings:</strong> email newsletters that I send every month
-          or two (ish). I write about what’s been on my mind and propagate a
-          selection of things I’ve planted since the last clipping. You can sign
-          up to receive clippings in the <a href="#footer">footer</a>
+          <strong>Clippings:</strong> email newsletters that I send every so
+          often (max once per month). I write about what’s been on my mind and
+          propagate a selection of things I’ve planted since the last clipping.
+          You can sign up to receive clippings in the{" "}
+          <a href="#footer">footer</a>
         </li>
       </StyledUl>
       <StyledP>
@@ -119,18 +109,20 @@ const About = () => {
       </StyledUl>
       <StyledP>
         I quite like metaphors, and I’ve spent considerable time brainstorming
-        my own writing status metaphor to use in place of Maggie’s
-        seedling/budding/evergreen. Some noteworthy candidates include
-        puddle/lake/ocean, boulder/hill/mountain, raw/half-baked/golden-brown,
-        and baby/teenager/adult. As yet nothing resonates with me quite as well
-        as the stages of plant growth—it is a garden, after all. Greenery evokes
-        a positive feeling, and the metaphor stretches really well: I can water
-        my plants (write), prune them (edit), give them some sun (think), or
-        even re-pot (a TIL into an Essay, for example). If you are a metaphor
-        nerd and/or digital gardener,{" "}
-        <a href="mailto:pete@petemillspaugh.com" target="_blank">
-          send me an email
-        </a>{" "}
+        my own writing status metaphor to use in place of Maggie’s{" "}
+        <code>seedling/budding/evergreen</code>. Some noteworthy candidates
+        include <code>puddle/lake/ocean</code>,{" "}
+        <code>boulder/hill/mountain</code>,{" "}
+        <code>raw/half-baked/golden-brown</code>, and{" "}
+        <code>baby/teenager/adult</code>.
+      </StyledP>
+      <StyledP>
+        As yet nothing resonates with me quite as much as the stages of plant
+        growth—it is a garden, after all. Greenery evokes a positive feeling,
+        and the metaphor stretches really well: I can water my plants (write),
+        prune them (edit), give them some sun (think), or even re-pot (a TIL
+        into an Essay, for example). If you are a metaphor nerd or digital
+        gardener, <a href="mailto:pete@petemillspaugh.com">send me an email</a>{" "}
         to say hi and share your metaphors!
       </StyledP>
     </>

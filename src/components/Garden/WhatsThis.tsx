@@ -17,14 +17,11 @@ const WhatsThis = () => {
         <em>Buddings</em>, <em>Evergreens</em>.
       </StyledP>
       <StyledP>
-        You can start with a{" "}
-        <Link href="/tour" target="_blank">
-          tour
-        </Link>{" "}
-        of the garden or read about my gardening habits in full on the{" "}
+        You can start with a <Link href="/tour">tour</Link> of the garden or
+        read about my gardening habits in full on the{" "}
         <Link href="/about#this-site">about</Link> page. Or, if you want to jump
         directly to a historical tour of digital gardening, read{" "}
-        <a href="https://maggieappleton.com/garden-history" target="_blank">
+        <a href="https://maggieappleton.com/garden-history">
           Maggie Appleton's wonderful essay
         </a>
         .

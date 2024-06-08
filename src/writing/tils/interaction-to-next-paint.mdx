@@ -25,7 +25,7 @@ Google defines targets for each vital to meet a "good" user experience (i.e. P75
 
 You can test a website’s LCP and CLS in Chrome DevTools > Lighthouse by running a performance test. The homepage of my garden performs well on CLS with a score of 0, and LCP is solid at around 1.5 seconds for Lighthouse mobile performance audits. Desktop audits are much more lenient (LCP of ~0.3 seconds).
 
-The audit does diagnose a few improvements I could make, though, mainly around pruning unused JavaScript from the bundle. Before making any granular adjustments, I plan to migrate from the Next.js `/pages` router to the `/app` directory. I’d also like to store <Link href="/edison-bulb" target="_blank">edison bulb</Link> theme preference in a cookie to prevent dark mode flash. I already <Link href="/nextjs-search-with-pagefind" target="_blank">lazy load my Pagefind search index</Link>, so that shouldn’t slow down initial page load, I don’t think.
+The audit does diagnose a few improvements I could make, though, mainly around pruning unused JavaScript from the bundle. Before making any granular adjustments, I plan to migrate from the Next.js `/pages` router to the `/app` directory. I’d also like to store <Link href="/edison-bulb">edison bulb</Link> theme preference in a cookie to prevent dark mode flash. I already <Link href="/nextjs-search-with-pagefind">lazy load my Pagefind search index</Link>, so that shouldn’t slow down initial page load, I don’t think.
 
 ## What about FID?
 

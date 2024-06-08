@@ -42,11 +42,8 @@ function BrainstormDescription() {
       </StyledP>
       <StyledP>
         This is an experimental (and vulnerable 😅) format that I came up with
-        while{" "}
-        <Link href="/map-in-the-woods" target="_blank">
-          downloading a map
-        </Link>{" "}
-        on a hiking trip.
+        while <Link href="/map-in-the-woods">downloading a map</Link> on a
+        hiking trip.
       </StyledP>
       <StyledP>
         You can find all Brainstorms{" "}
@@ -91,10 +88,7 @@ function TILDescription() {
         connect to anything I'm currently working on, but if I think something
         is neat enough to share and stash away for later, I'll write a TIL.
         Inspired by Josh Branchaud's{" "}
-        <a href="https://github.com/jbranchaud/til" target="_blank">
-          til
-        </a>{" "}
-        repo.
+        <a href="https://github.com/jbranchaud/til">til</a> repo.
       </StyledP>
       <StyledP>
         You can find all TILs{" "}

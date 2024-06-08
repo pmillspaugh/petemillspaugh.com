@@ -13,95 +13,61 @@ const Blogroll = () => {
       <StyledP>
         I actually hadn’t heard{" "}
         <Link href="/blogrolls">the word “blogroll”</Link> until 2024. I think{" "}
-        <a href="https://manuelmoreale.com/blogroll" target="_blank">
-          Manu Moreale’s blogroll
-        </a>{" "}
+        <a href="https://manuelmoreale.com/blogroll">Manu Moreale’s blogroll</a>{" "}
         is where I first saw it.{" "}
       </StyledP>
       <StyledH2>Personal websites I like</StyledH2>
       <StyledUl>
         <li>
-          <a href="https://chriscoyier.net/" target="_blank">
-            chriscoyier.net
-          </a>
+          <a href="https://chriscoyier.net/">chriscoyier.net</a>
         </li>
         <li>
-          <a href="https://jakelazaroff.com/" target="_blank">
-            jakelazaroff.com
-          </a>
+          <a href="https://jakelazaroff.com/">jakelazaroff.com</a>
         </li>
         <li>
-          <a href="https://www.joshwcomeau.com/" target="_blank">
-            joshwcomeau.com
-          </a>
+          <a href="https://www.joshwcomeau.com/">joshwcomeau.com</a>
         </li>
         <li>
-          <a href="https://jvns.ca/" target="_blank">
-            jvns.ca
-          </a>
+          <a href="https://jvns.ca/">jvns.ca</a>
         </li>
         <li>
-          <a href="https://macwright.com/" target="_blank">
-            macwright.com
-          </a>
+          <a href="https://macwright.com/">macwright.com</a>
         </li>
         <li>
-          <a href="https://maggieappleton.com/" target="_blank">
-            maggieappleton.com
-          </a>
+          <a href="https://maggieappleton.com/">maggieappleton.com</a>
         </li>
         <li>
-          <a href="https://neal.fun/" target="_blank">
-            neal.fun
-          </a>
+          <a href="https://neal.fun/">neal.fun</a>
         </li>
         <li>
-          <a href="https://robinrendle.com/" target="_blank">
-            robinrendle.com
-          </a>
+          <a href="https://robinrendle.com/">robinrendle.com</a>
         </li>
         <li>
-          <a href="https://thesephist.com/" target="_blank">
-            thesephist.com
-          </a>
+          <a href="https://thesephist.com/">thesephist.com</a>
         </li>
         <li>
-          <a href="https://wattenberger.com/" target="_blank">
-            wattenberger.com
-          </a>
+          <a href="https://wattenberger.com/">wattenberger.com</a>
         </li>
       </StyledUl>
       <StyledH2>Other websites I like</StyledH2>
       <StyledUl>
         <li>
-          <a href="https://emoji.supply/kitchen/" target="_blank">
-            emoji.supply
-          </a>
+          <a href="https://emoji.supply/kitchen/">emoji.supply</a>
         </li>
         <li>
-          <a href="https://peopleandblogs.com/" target="_blank">
-            peopleandblogs.com
-          </a>
+          <a href="https://peopleandblogs.com/">peopleandblogs.com</a>
         </li>
         <li>
-          <a href="https://press.stripe.com/" target="_blank">
-            press.stripe.com
-          </a>
+          <a href="https://press.stripe.com/">press.stripe.com</a>
         </li>
         <li>
-          <a href="https://radio.garden/" target="_blank">
-            radio.garden
-          </a>
+          <a href="https://radio.garden/">radio.garden</a>
         </li>
         <li>
-          <a href="https://rotatingsandwiches.com/" target="_blank">
-            rotatingsandwiches.com
-          </a>
+          <a href="https://rotatingsandwiches.com/">rotatingsandwiches.com</a>
         </li>
         <li>
-          <a href="https://same.energy/" target="_blank">
-            same.energy
-          </a>
+          <a href="https://same.energy/">same.energy</a>
         </li>
       </StyledUl>
     </>

@@ -31,10 +31,7 @@ const MakeItStickEmailSignup = () => {
       <StyledP>
         I’m making an email-based course on{" "}
         <em>
-          <a
-            href="https://www.goodreads.com/book/show/18770267-make-it-stick"
-            target="_blank"
-          >
+          <a href="https://www.goodreads.com/book/show/18770267-make-it-stick">
             Make It Stick
           </a>
         </em>
@@ -83,7 +80,7 @@ const MakeItStickEmailSignup = () => {
       </StyledForm>
       <StyledP>
         I’m also writing about{" "}
-        <Link href="/email-course-creator" target="_blank">
+        <Link href="/email-course-creator">
           the <em>how</em> of making the course
         </Link>
         , which I designed to be easily copied by anyone who knows some

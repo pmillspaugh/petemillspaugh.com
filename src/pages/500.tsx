@@ -11,10 +11,7 @@ const ServerErrorPage = () => {
       <StyledWrapper data-pagefind-ignore>
         <h1>500</h1>
         <p>
-          Gardener error.{" "}
-          <a href="https://twitter.com/pete_millspaugh" target="_blank">
-            Lmk
-          </a>{" "}
+          Gardener error. <a href="https://twitter.com/pete_millspaugh">Lmk</a>{" "}
           if my plants need watering, so to speak.
         </p>
       </StyledWrapper>
