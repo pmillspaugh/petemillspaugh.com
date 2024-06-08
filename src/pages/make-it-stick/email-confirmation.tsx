@@ -21,9 +21,7 @@ const MakeItStickEmailConfirmationPage = () => {
             The first lesson of <em>Make It Stick (in 10 days, via email)</em>{" "}
             should show up in your inbox any second now. If you don’t see it,
             shoot me an email me at{" "}
-            <a href="mailto:pete@petemillspaugh.com" target="_blank">
-              pete@petemillspaugh.com
-            </a>
+            <a href="mailto:pete@petemillspaugh.com">pete@petemillspaugh.com</a>
             , and I'd be glad to help sort it out.
           </>
         }

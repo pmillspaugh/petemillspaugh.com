@@ -12,10 +12,7 @@ const Art = () => {
         I’ve always liked to draw, but I haven’t drawn consistently since I was
         18 or so. Planting this /art page is my way of nudging myself to draw
         more. Inspired by{" "}
-        <a href="https://macwright.com/drawings/" target="_blank">
-          macwright.com/drawings
-        </a>
-        .
+        <a href="https://macwright.com/drawings/">macwright.com/drawings</a>.
       </StyledP>
 
       <H2>Elephant on the wall</H2>

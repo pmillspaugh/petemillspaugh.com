@@ -12,10 +12,7 @@ const Talks = () => {
       </StyledP>
       <StyledUl>
         <li>
-          <a
-            href="https://www.youtube.com/watch?v=pPX0Gk0l6Vo&t=12s"
-            target="_blank"
-          >
+          <a href="https://www.youtube.com/watch?v=pPX0Gk0l6Vo&t=12s">
             Introduction to Web Accessibility (July 2021)
           </a>
         </li>

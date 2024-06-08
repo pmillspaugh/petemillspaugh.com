@@ -1,11 +1,7 @@
 import styled from "styled-components";
 
 const A = ({ href, children }) => {
-  return (
-    <StyledA href={href} target="_blank">
-      {children}
-    </StyledA>
-  );
+  return <StyledA href={href}>{children}</StyledA>;
 };
 
 const StyledA = styled.a`

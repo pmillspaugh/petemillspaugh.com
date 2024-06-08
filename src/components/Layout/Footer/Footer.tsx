@@ -70,10 +70,7 @@ const Footer = () => {
                   <StyledLink href="/blogroll">Blogroll</StyledLink>
                 </li>
                 <li>
-                  <StyledExternalLink
-                    href="https://weeksofyour.life"
-                    target="_blank"
-                  >
+                  <StyledExternalLink href="https://weeksofyour.life">
                     weeksofyour.life
                   </StyledExternalLink>
                 </li>
@@ -85,7 +82,7 @@ const Footer = () => {
             <div>
               <StyledIconUl>
                 <li>
-                  <StyledRssIconLink href="/rss.xml" target="_blank">
+                  <StyledRssIconLink href="/rss.xml">
                     <RssIcon />
                     <VisuallyHidden>
                       RSS feed for petemillspaugh.com
@@ -96,26 +93,19 @@ const Footer = () => {
                   <StyledIconLink
                     href="https://github.com/pmillspaugh"
                     rel="me"
-                    target="_blank"
                   >
                     <GitHubIcon />
                     <VisuallyHidden>Pete Millspaugh on GitHub</VisuallyHidden>
                   </StyledIconLink>
                 </li>
                 <li>
-                  <StyledIconLink
-                    href="https://twitter.com/pete_millspaugh"
-                    target="_blank"
-                  >
+                  <StyledIconLink href="https://twitter.com/pete_millspaugh">
                     <TwitterIcon />
                     <VisuallyHidden>Pete Millspaugh on Twitter</VisuallyHidden>
                   </StyledIconLink>
                 </li>
                 <li>
-                  <StyledIconLink
-                    href="https://www.val.town/u/petermillspaugh"
-                    target="_blank"
-                  >
+                  <StyledIconLink href="https://www.val.town/u/petermillspaugh">
                     <ValTownIcon />
                     <VisuallyHidden>Pete Millspaugh on Val Town</VisuallyHidden>
                   </StyledIconLink>

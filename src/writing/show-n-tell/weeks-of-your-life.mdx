@@ -13,11 +13,11 @@ Any feedback is welcome! Credit to Tim Urban’s original blog post, [Your Life 
 
 ## Thinking small
 
-In parallel with this Show ’n Tell, I also wrote an <Link href="/think-small" target="_blank">essay</Link> about thinking small on side projects. In order to actually ship this in ~one weekend, I limited myself to one new unknown: the Next.js `/app` router. This website still uses `/pages`, and I thought it would be nice to get comfortable with the new patterns before migrating a larger (although still pretty small) codebase.
+In parallel with this Show ’n Tell, I also wrote an <Link href="/think-small">essay</Link> about thinking small on side projects. In order to actually ship this in ~one weekend, I limited myself to one new unknown: the Next.js `/app` router. This website still uses `/pages`, and I thought it would be nice to get comfortable with the new patterns before migrating a larger (although still pretty small) codebase.
 
 I also used CSS modules for styling, which I’m familiar with from my day job but hadn’t used for a personal project. I’m considering reaching for CSS modules as my go-to for new projects, so this was a low risk way to test that out.
 
-I marked Framer Motion as a stretch goal that I could check off my <Link href="/wishlist" target="_blank">wishlist</Link>, but after shipping the SLC (Simple, Lovable, and Complete) version in the afternoon I walked to the grocery store and kept thinking about the slow initial page load. So when I got home I wrote a [`Loading`](https://github.com/pmillspaugh/weeksofyourlife/blob/main/src/components/Loading/Loading.tsx) component using [`framer-motion`](https://github.com/framer/motion#readme).
+I marked Framer Motion as a stretch goal that I could check off my <Link href="/wishlist">wishlist</Link>, but after shipping the SLC (Simple, Lovable, and Complete) version in the afternoon I walked to the grocery store and kept thinking about the slow initial page load. So when I got home I wrote a [`Loading`](https://github.com/pmillspaugh/weeksofyourlife/blob/main/src/components/Loading/Loading.tsx) component using [`framer-motion`](https://github.com/framer/motion#readme).
 
 ## Experimenting
 
@@ -27,11 +27,11 @@ Since this a low stakes personal project, I could afford to experiment a bit.
 
 URLs are the fundamental state management tool. For the limited scope of this project I decided against adding auth or backend persistence, so it really came down to URL or localStorage.
 
-The reason I went with URLs over localStorage is that URLs are shareable. The main drawback is that super long ones are very ugly, so unless they are hidden behind a nice hyperlink, they just look bad. <Link href="/url-character-limit" target="_blank">URLs can have a maximum character length of about 8,000 characters</Link>, which should be enough in most cases. From some quick napkin math, I think that allows for about 100 life events, including some characters like emojis that require longer URI encodings.
+The reason I went with URLs over localStorage is that URLs are shareable. The main drawback is that super long ones are very ugly, so unless they are hidden behind a nice hyperlink, they just look bad. <Link href="/url-character-limit">URLs can have a maximum character length of about 8,000 characters</Link>, which should be enough in most cases. From some quick napkin math, I think that allows for about 100 life events, including some characters like emojis that require longer URI encodings.
 
 ### HTML contentEditable
 
-The primary heading and all decade headings use the HTML attribute <Link href="/html-contenteditable" target="_blank">`contenteditable="true"`</Link>, which allows rich text editing without some of the features of `input` elements, like client-side validation.
+The primary heading and all decade headings use the HTML attribute <Link href="/html-contenteditable">`contenteditable="true"`</Link>, which allows rich text editing without some of the features of `input` elements, like client-side validation.
 
 ### CSS ch unit
 
