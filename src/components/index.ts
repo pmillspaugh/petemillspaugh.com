@@ -16,6 +16,7 @@ import Figure from "./Figure";
 import ForgettingCurve from "./ForgettingCurve";
 import Transcription from "./Transcription";
 import ValTownButton from "./ValTownButton";
+import MalleableGarden from "./MalleableGarden";
 
 export const components = {
   // native HTML elements
@@ -35,6 +36,7 @@ export const components = {
   ForgettingCurve,
   Transcription,
   ValTownButton,
+  MalleableGarden,
   // external components
   CH,
   Link,
