@@ -1,0 +1,20 @@
+---
+slug: debugger
+title: debugger
+createdAt: August 29, 2024
+updatedAt: August 29, 2024
+format: TIL
+status: Evergreen
+---
+
+After a few years of coding professionally, I finally tried this one line of code:
+
+```js anywhere.js
+debugger;
+```
+
+The [`debugger;`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/debugger) statement sets a breakpoint in your code, pausing execution at that point if you have a step-through debugger available, like in browser devtools or VS Code.
+
+I did already _know_ about debuggers and have heard others swear by them, but they also are intimidating, maybe because they are so feature rich compared to the simplicity of a `console.log()`. You can inspect values assigned to variables, explore the call stack, step into function invocations, and even set [conditional breakpoints](https://developer.chrome.com/docs/devtools/javascript/breakpoints/#conditional-loc), for example.
+
+I've found the debugger—both the JS statement and just manually setting breakpoints in the browser—enormously helpful for navigating large, unfamiliar codebases. We maintain a fork of vscode at [Membrane](https://membrane.io), and I've been leaning heavily on the debugger/breakpoints to find my way around.
