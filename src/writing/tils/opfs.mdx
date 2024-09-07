@@ -1,0 +1,23 @@
+---
+slug: opfs
+title: Origin private file system (OPFS)
+createdAt: September 7, 2024
+updatedAt: September 7, 2024
+format: TIL
+status: Evergreen
+---
+
+Carlo Francisco gave a ~15m talk a couple days ago at the [Browsertech WASM event in NYC](https://www.youtube.com/watch?v=LFzhN5wQqBk) (~7:30 to 23:50) covering [Notion's use of WASM SQLite in the browser](https://www.notion.so/blog/how-we-sped-up-notion-in-the-browser-with-wasm-sqlite). In it he explained the _Origin private file system_, or _OPFS_ (among other neat stuff like SharedWorkers and cross-origin isolation).
+
+**TL;DR on OPFS: your website gets read+write access to local files on a user's device, but the user can't see the files.**
+
+[Per MDN](https://developer.mozilla.org/en-US/docs/Web/API/File_System_API/Origin_private_file_system):
+
+> [OPFS] is a storage endpoint provided as part of the [File System API](https://developer.mozilla.org/en-US/docs/Web/API/File_System_API)...OPFS offers low-level, byte-by-byte file access, which is private to the origin of the page and not visible to the user.
+
+## More on OPFS
+
+- The regular File System API trades speed for security whereas OPFS can run faster since it's private to the origin and not user-visible
+- Synchronous file access via OPFS must run in a Web Worker to avoid blocking the main thread
+- Since OPFS is a browser storage mechanism (like IndexedDB), it has a storage quota, and clearing site data clears OPFS
+- (Per Carlo) OPFS doesn’t handle concurrency between tabs gracefully, so you have to do it yourself (e.g. use a SharedWorker for a single db connection).
