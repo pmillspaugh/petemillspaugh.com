@@ -1,0 +1,30 @@
+---
+slug: cron-irregularity
+title: cron irregularity
+createdAt: July 1, 2024
+updatedAt: July 1, 2024
+format: TIL
+status: Evergreen
+---
+
+There isn’t just one universal standard for cron expression syntax, as far as I can tell.
+
+I noticed because the widely-used [`cron`](https://crates.io/crates/cron) Rust crate (>2M downloads) that we use at [Membrane](https://membrane.io) includes a seconds field and handles day of week differently from the syntax I'm used to.
+
+Or maybe there is an agreed-upon standard? The cron Wikipedia page has a section on ["Nonstandard predefined scheduling definitions"](https://en.wikipedia.org/wiki/Cron#Nonstandard_predefined_scheduling_definitions), which implies there are standard predefined scheduling definitions. And from the [mcron man pages via gnu.org](https://www.gnu.org/software/mcron/manual/html_node/Crontab-file.html):
+
+> The format of a cron command is very much the V7 standard...The time and date fields are:
+
+```
+Field             Allowed values
+--------------------------------
+minute            0-59
+hour              0-23
+day of month      0-31
+month             0-12 (or names, see below)
+day of week       0-7 (0 or 7 is Sun, or use names)
+```
+
+## cron tl;dr
+
+`cron` is a CLI and job scheduler for Unix-like OSs. `crontab` (cron table) files run shell commands on a schedule (colloquially, "cron jobs"). The cron daemon wakes up every minute, reads crontab files, and executes commands as appropriate.
