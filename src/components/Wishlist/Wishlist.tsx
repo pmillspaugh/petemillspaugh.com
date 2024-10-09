@@ -28,6 +28,18 @@ const WISHLIST = [
   { name: "Svelte", url: "https://svelte.dev/", description: "" },
   { name: "Playwright", url: "https://playwright.dev/", description: "" },
   { name: "Replit", url: "https://replit.com/mobile", description: "" },
+  {
+    name: "Deno",
+    url: "https://deno.com/",
+    description: "",
+    update: (
+      <>
+        used a bit on{" "}
+        <a href="https://www.val.town/u/petermillspaugh">Val Town</a>
+      </>
+    ),
+  },
+  { name: "Fresh", url: "https://fresh.deno.dev/", description: "" },
   { name: "Bun", url: "https://bun.sh/", description: "" },
   {
     name: "Raspberry Pi",
