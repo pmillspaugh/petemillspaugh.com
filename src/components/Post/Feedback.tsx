@@ -31,11 +31,6 @@ const Feedback = () => {
   return (
     <>
       <StyledH2>Reply</StyledH2>
-      <P>
-        Respond with your thoughts, feedback, corrections, or anything else
-        you’d like to share. Leave your email if you’d like a reply. Thanks for
-        reading.
-      </P>
       <StyledForm onSubmit={handleSubmit}>
         <label htmlFor="feedback">
           <VisuallyHidden>Your thoughts</VisuallyHidden>
@@ -64,8 +59,7 @@ const Feedback = () => {
 };
 
 const StyledH2 = styled.h2`
-  margin-top: 16px;
-  margin-bottom: 8px;
+  margin-block: 16px;
   font-family: var(--font-open-sans);
   font-weight: 600;
 `;
