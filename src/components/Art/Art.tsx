@@ -2,7 +2,6 @@ import Image from "next/image";
 import styled from "styled-components";
 import elephantDrawing from "@/images/elephant-drawing.jpeg";
 import monkeyPainting from "@/images/monkey-painting.jpeg";
-import { H2 } from "@/components/H";
 
 const Art = () => {
   return (
@@ -15,7 +14,7 @@ const Art = () => {
         <a href="https://macwright.com/drawings/">macwright.com/drawings</a>.
       </StyledP>
 
-      <H2>Elephant on the wall</H2>
+      <StyledH2>Elephant on the wall</StyledH2>
       <StyledP>
         Last summer my roommate found this big ole frame on the street in
         Brooklyn (large yellow bicycle below for scale). I stuck it on a wall in
@@ -33,12 +32,12 @@ const Art = () => {
         <figcaption>Elephant on the wall. 3x5ft (ish) frame</figcaption>
       </StyledFigure>
 
-      <H2>Monochrome monkey</H2>
+      <StyledH2>Monochrome monkey</StyledH2>
       <StyledP>
         That elephant is the most recent art I made that hangs in my apartment.
         This monkey is the oldest art I made that still hangs in my apartment. I
         started painting in ninth grade, and this was the first thing I remember
-        working on besides one obligatory still life on day 1.
+        working on besides one obligatory still life on day one.
       </StyledP>
       <StyledFigure>
         <Image
@@ -67,6 +66,23 @@ const StyledH1 = styled.h1`
   }
 `;
 
+const StyledH2 = styled.h2`
+  font-size: 1.75rem;
+  font-weight: 300;
+  line-height: 1.1;
+  margin-top: 36px;
+  margin-bottom: 20px;
+  margin-left: -1px;
+  text-wrap: balance;
+
+  @media (min-width: 768px) {
+    font-size: 2.25rem;
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 2.75rem;
+  }
+`;
 const StyledP = styled.p`
   margin-bottom: 16px;
   text-wrap: pretty;

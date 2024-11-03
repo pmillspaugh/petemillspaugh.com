@@ -3,7 +3,7 @@ import { CH } from "@code-hike/mdx/components";
 
 import Blockquote from "./Blockquote";
 import Code from "./Code";
-import { H2, H3 } from "./H";
+import { heading } from "./H";
 import P from "./P";
 import A from "./A";
 import Details from "./Details";
@@ -22,8 +22,8 @@ export const components = {
   // native HTML elements
   blockquote: Blockquote,
   code: Code,
-  h2: H2,
-  h3: H3,
+  h2: heading("h2"),
+  h3: heading("h3"),
   p: P,
   a: A,
   ol: Ol,

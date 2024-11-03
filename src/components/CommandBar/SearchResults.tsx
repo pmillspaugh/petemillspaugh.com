@@ -71,13 +71,13 @@ const StyledLink = styled(Link)`
 const StyledH3 = styled.h3`
   font-family: var(--font-open-sans);
   font-weight: 800;
-  text-wrap: balance; /* not supported in all browsers */
+  text-wrap: balance;
   padding-bottom: 8px;
 `;
 
 const StyledP = styled.p`
   font-size: 0.875rem;
-  text-wrap: pretty; /* not supported in all browsers */
+  text-wrap: pretty;
 
   &::before,
   &::after {

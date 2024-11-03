@@ -1,0 +1,118 @@
+---
+slug: size-and-speed
+title: Building an intuition for file size and network speed
+createdAt: November 3, 2024
+updatedAt: November 3, 2024
+format: Essay
+status: Seedling
+---
+
+You’ve probably seen those latency-numbers-every-programmer-should-know lists like [Vercel’s](https://vercel.com/blog/latency-numbers-every-web-developer-should-know) and [Sam Rose’s](https://samwho.dev/numbers/) (really cool, btw) and [Jonas Bonér’s](https://gist.github.com/jboner/2841832) (the original, I think). These are good, but I haven’t been able to just sit down one day and internalize the numbers—instead, I’m trying to develop an intuition over time, deliberately.
+
+## Observing size and speed
+
+I think it has to be deliberate. You have to actually Stop And Think for a minute to reason about the size of a resource or speed of an operation and its consequence (e.g. load time of your website). At least I think _I_ have to do that to improve my intuition—YMMV, ofc.
+
+I’ve started writing down observations on sizes and speeds when I think of it.
+
+### Downloading an offline map
+
+Last year I wrote a thought stream about [downloading a 30MB map in the woods](/map-in-the-woods).
+
+### Downloading a podcast on my phone
+
+A podcast on my iPhone takes up about 1MB per minute. E.g. this ~30m [syntax.fm episode on Hono](https://syntax.fm/837) that I downloaded for a flight the other week uses ~28MB.
+
+The Apple Podcasts app itself takes up 12.5MB. Apple’s default audio format is [`.aac`](https://en.wikipedia.org/wiki/Advanced_Audio_Coding), which is the higher-quality successor to `.mp3`.
+
+### Installing a MacOS desktop app
+
+I recently downloaded the [onlook.dev](https://onlook.dev/) desktop app (very cool project), and I noticed that the version I downloaded is 290MB. Compare to VS Code at 594MB, Cursor (445MB), Figma (251MB), and Slack (277MB).
+
+The biggest desktop application I have is Chrome at 1.81GB, closely followed by Docker (1.69GB), then a country mile before any others (all \<1GB). Firefox, Brave, Arc, and Safari combined are smaller than Chrome. It’s a little unfair to include Safari because it’s only 13MB on my Mac, borrowing much of its core functionality from the OS, apparently.
+
+### Installing a font
+
+I downloaded [Commit Mono](https://commitmono.com/) a couple months ago to use in my editor (highly recommend, btw). The `.ttf` variable font file is 281KB, the `.woff2` variable font file is 87KB, and each `.otf` variant (e.g. 400 Regular, 600 Italic) is ~275KB.
+
+[WOFF](https://en.wikipedia.org/wiki/Web_Open_Font_Format) fonts are [OTF](https://en.wikipedia.org/wiki/OpenType) or [TTF](https://en.wikipedia.org/wiki/TrueType) fonts tailored for the Web _(read: compressed)_. [Variable fonts](https://en.wikipedia.org/wiki/Variable_font) store an entire typeface in one file and are flexible on multiple axes (e.g. thin to bold, regular to italic).
+
+### Loading this website
+
+I took a look at [petemillspaugh.com/weeks-of-your-life](/weeks-of-your-life) as an example. The long straw on the homepage is 140KB of JavaScript for my React app, plus another 46KB and 30KB for the React library and Next.js framework.
+
+The HTML document is 43KB. I load three fonts (serif + sans + monospace, which in this moment feels a bit gratuitous) around ~40KB each. My [pagefind search bundle](https://www.petemillspaugh.com/nextjs-search-with-pagefind) is 10KB.
+
+{/* On my speedy WiFi, no resource takes longer than 100ms to load, but I’m guessing that’s mostly a result of CDN/server caching. When I throttle the network to Fast 4G emulation, the long straw is 500ms; on Slow 4G it’s 2.5s; on 3G it’s 9s. I’ve read that the threshold for something to be perceived as immediate is [around 100ms](https://x.com/JoshWComeau/status/1837242254315950204), or maybe even [as low as 40ms](https://www.researchgate.net/publication/225761257_Cognitive_processing_and_time_perception). Anything over 200ms is perceived as sluggish/slow. */}
+
+### Inspecting npm packages
+
+[pkg-size.dev](https://pkg-size.dev) is one of my favorite does-one-thing-really-well websites. I like to test npm packages there before adding them to a project. E.g. this website uses [`styled-components`](https://pkg-size.dev/styled-components), but I’d like to switch over to CSS modules.
+
+`styled-components` and its direct dependencies are 3.8MB unpacked, excluding peer dependencies like `react`, and 36KB minified and 14KB over the wire (gzip).
+
+### Running network speed tests
+
+[speed.cloudflare.com](https://speed.cloudflare.com/) is my favorite Internet speed test tool. It goes way beyond sharing download and upload speed. I particularly appreciate the explanations of each measurement (hover over the info icons to see tooltips).
+
+### Testing the limit of a URL
+
+Last year I was curious and wrote about [URL character limits](/url-character-limit).
+
+{/* As an aside, I later learned that 8KB is also the max size of a row in PostgreSQL, so I wonder if there’s something magic about that number. */}
+
+### Converting .mov to .mp4
+
+I sent an email with a video attachment recently, and gmail thwarted my first attempt because the file was too large. I converted the [`.mov`](https://en.wikipedia.org/wiki/QuickTime_File_Format) screen recording to [`.mp4`](https://en.wikipedia.org/wiki/MP4_file_format) with [ffmpeg](https://ffmpeg.org/), and the MP4 was about 90% smaller!
+
+I just tested this again, and a 15 second screen recording of me clicking around on Wikipedia is ~30MB as a QuickTime file (`.mov`) and ~4MB as an MP4. It sounds like QuickTime is specifically designed for editing within the Apple ecosystem whereas MP4 is suited for sharing and streaming with its superior compression.
+
+### Comparing .mp4 to .gif
+
+I also recently compared an `.mp4` screen recording for a [Membrane changelog](https://www.membrane.io/blog/changelog-0.4) to its `.gif` counterpart, out of curiosity. Not only was the MP4 5x smaller, it was way more crisp.
+
+A GIF version of that 15s recording I mentioned is 17MB. I think a GIF is basically a series of frames played in rapid succession like a flip book or [Wallace & Gromit](https://en.wikipedia.org/wiki/Wallace_%26_Gromit) stop-motion. MP4 supports sound and more colors and uses modern compression.
+
+As far as I can tell from a cursory search, GIFs are still so common because they are older _(read: universally supported)_ and simpler (auto loop, no controls). Plus, it’s probably good for society to keep the “ghif” versus “jif” debate going.
+
+### Comparing .png to .mp4
+
+One more observation from [another changelog](https://www.membrane.io/blog/changelog-0.9): a nine second MP4 screen recording was 270 KB, barely more than some of the PNG screenshots in that same blog post.
+
+I think the explanation is that PNG is lossless whereas MP4 uses a bunch of clever compression tricks, only storing what actually changes across frames. We should really be using [WebP](https://en.wikipedia.org/wiki/WebP) (which Next.js [handles by default](/nextjs-automatic-webp)) for those images, anyway.
+
+{/* - Why you shouldn’t store large files in git (I haven’t read it yet): blog.moonglow.ai/why-you-shouldnt-store-large-files-in-git */}
+
+## Why observe
+
+I’m interested in recording these observations because (1) it’s just interesting, but also (2) I think small decisions can add up. Like:
+
+- Local font versus web font versus browser default
+- Font file format
+- Image and video formats
+- CSS-in-JS framework versus CSS modules
+- Animation libraries like [`react-spring`](https://pkg-size.dev/react-spring?no-peers) and [`framer-motion`](https://pkg-size.dev/framer-motion?no-peers)
+- SSR versus CSR versus ISR versus streaming SSR etc.
+- SQLite on your app server versus a separate database server
+
+I really liked this Notion blog post on using [WASM SQLite in the browser](https://www.notion.so/blog/how-we-sped-up-notion-in-the-browser-with-wasm-sqlite). An intuition for file size allows you to confidently make observations like this, from the blog post:
+
+> Why was it slower? Because users had to download and process the WASM SQLite library, which blocked the page load process, preventing other page load operations from happening concurrently. Since this library is a few hundred kilobytes, the extra time was noticeable in our metrics.
+
+{/* ## Don't just observe—record */}
+
+{/* - Anki */}
+{/* - Spaced repetition and retrieval practice is the name of the game */}
+{/* - I have some Anki cards with examples of file sizes and network speeds */}
+
+## (milli)second nature
+
+I get the sense that grokking sizes and speeds is second nature for some programmers. When I started learning to code a few years ago, I realized I had an embarrassingly bad gauge for file sizes and network speeds.
+
+Maybe I missed it because I only became interested in computers and programming in the 2020s when disk space and bandwith are not scarce (on my machine and where I live, at least). Maybe I missed it because [I didn’t study Computer Science](/should-i-learn-computer-science). Maybe I missed it because I’m not a gamer (I imagine gamers waiting for big games to download and noticing when their network connection can’t keep up while playing).
+
+Or maybe I’m just not observant and don’t have a knack for it. Or maybe grokking sizes and speeds is _not_ second nature for most programmers.
+
+{/* ## Transmission through space and time */}
+
+{/* - Richard Hamming talked about [transmission through space & time being the fundamentally the same](/the-art-of-doing-science-and-engineering#on-transmission-through-time-versus-transmission-through-space-17-126) */}

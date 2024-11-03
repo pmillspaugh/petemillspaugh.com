@@ -44,7 +44,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 
   & > div {
-    text-wrap: balance; /* not supported in all browsers */
+    text-wrap: balance;
   }
 `;
 

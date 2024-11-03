@@ -1,47 +1,29 @@
-import { ReactNode } from "react";
-import styled from "styled-components";
+import { ReactNode, useContext } from "react";
+import { LightModeContext } from "pages/_app";
+import { COLORS } from "@/styles/themes";
+import styled from "./H.module.css";
 
-export const H2 = ({ children }: { children: ReactNode }) => (
-  <StyledH2>{children}</StyledH2>
-);
+interface HeadingProps {
+  id: string;
+  children: ReactNode;
+}
 
-const StyledH2 = styled.h2`
-  font-size: 1.75rem;
-  font-weight: 300;
-  line-height: 1.1;
-  margin-top: 36px;
-  margin-bottom: 20px;
-  margin-left: -1px;
-  text-wrap: balance; /* not supported in all browsers */
+// Thanks to https://sdorra.dev/posts/2022-12-07-mdx-autolink-headings#self-link
+export const heading = (As: "h2" | "h3") => {
+  const H = ({ id, children }: HeadingProps) => {
+    const themeContext = useContext(LightModeContext);
+    const linkTextColor = themeContext?.lightMode ? COLORS.Green : COLORS.Gold;
 
-  @media (min-width: 768px) {
-    font-size: 2.25rem;
-  }
+    return (
+      <As
+        id={id}
+        className={As === "h2" ? styled.h2 : styled.h3}
+        style={{ "--color-link-text": linkTextColor } as React.CSSProperties}
+      >
+        {children}
+      </As>
+    );
+  };
 
-  @media (min-width: 1200px) {
-    font-size: 2.75rem;
-  }
-`;
-
-export const H3 = ({ children }: { children: ReactNode }) => (
-  <StyledH3>{children}</StyledH3>
-);
-
-const StyledH3 = styled.h3`
-  font-size: 1.25rem;
-  font-weight: 700;
-  line-height: 1.1;
-  margin-top: 24px;
-  margin-bottom: 16px;
-  margin-left: -1px;
-  text-wrap: balance; /* not supported in all browsers */
-
-  @media (min-width: 768px) {
-    font-size: 1.5rem;
-  }
-
-  @media (min-width: 1200px) {
-    font-size: 1.75rem;
-    margin-bottom: 24px;
-  }
-`;
+  return H;
+};

@@ -105,7 +105,7 @@ const StyledH2 = styled.h2`
   margin-top: 24px;
   margin-left: -2px;
   line-height: 1.1;
-  text-wrap: balance; /* not supported in all browsers */
+  text-wrap: balance;
 
   @media (min-width: 1200px) {
     font-size: 2.75rem;

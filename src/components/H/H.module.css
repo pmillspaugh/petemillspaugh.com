@@ -1,0 +1,65 @@
+.h2 > a,
+.h3 > a {
+  position: relative;
+  line-height: 1.1;
+  margin-left: -1px;
+  font-weight: inherit;
+  color: inherit;
+  text-decoration: none;
+  text-wrap: balance;
+  transition: color var(--fast-timing) ease-in;
+}
+
+.h2:hover,
+.h3:hover {
+  color: var(--color-link-text);
+  cursor: pointer;
+}
+
+.h2 > a::before,
+.h3 > a::before {
+  content: "#";
+  opacity: 0;
+  position: absolute;
+  top: -0.05em;
+  left: -0.75em;
+  transition: opacity var(--fast-timing) ease-in;
+}
+
+.h2 > a:hover::before,
+.h3 > a:hover::before {
+  opacity: 1;
+}
+
+.h2 {
+  font-size: 1.75rem;
+  font-weight: 300;
+  margin-top: 36px;
+  margin-bottom: 20px;
+}
+
+.h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 768px) {
+  .h2 {
+    font-size: 2.25rem;
+  }
+  .h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .h2 {
+    font-size: 2.75rem;
+  }
+  .h3 {
+    font-size: 1.75rem;
+    margin-bottom: 24px;
+  }
+}

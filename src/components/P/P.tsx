@@ -7,7 +7,7 @@ const P = ({ children }: { children: ReactNode }) => (
 
 const StyledP = styled.p`
   margin-bottom: 16px;
-  text-wrap: pretty; /* not supported in all browsers */
+  text-wrap: pretty;
 
   @media (min-width: 1200px) {
     font-size: 1.25rem;
