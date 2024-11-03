@@ -10,6 +10,8 @@ React and Next are the frontend framework and meta framework I know best. I real
 
 I'm using [MDX](https://mdxjs.com/) with [`next-mdx-remote`](https://github.com/hashicorp/next-mdx-remote) for written content.
 
+I use [`rehype-slug`](https://github.com/rehypejs/rehype-slug) and [`rehype-autolink-headings`](https://github.com/rehypejs/rehype-autolink-headings) to autogenerate links to subheadings in each post.
+
 ## Components
 
 Components are a spectrum from low-level building blocks like `Blockquote` to highly composed components like `Garden`. It's hard to draw a line in the sand between component-library-components that might live in `/components/lib` and bespoke components that are reused just once or not at all. So I mixed them all in one `/components` folder. Credit to Josh Comeau's wonderful React course for this structure.
