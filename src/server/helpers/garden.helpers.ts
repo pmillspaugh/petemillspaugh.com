@@ -1,5 +1,7 @@
 import { serialize } from "next-mdx-remote/serialize";
 import { remarkCodeHike } from "@code-hike/mdx";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
 import { PostMetadata } from "@/components/Post";
@@ -51,12 +53,15 @@ export async function getPostData(slug: string) {
   const postFileBuffer = readFileSync(join(POSTS_DIR, dir, postPath));
   const serializedMDX = await serialize(postFileBuffer.toString(), {
     mdxOptions: {
+      rehypePlugins: [
+        rehypeSlug,
+        [rehypeAutolinkHeadings, { behavior: "wrap" }],
+      ],
       remarkPlugins: [
         [
           remarkCodeHike,
           {
             autoImport: false,
-            // lineNumbers: true,
             showCopyButton: true,
             theme: "nord",
           },

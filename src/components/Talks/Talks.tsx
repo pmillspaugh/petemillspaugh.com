@@ -6,8 +6,8 @@ const Talks = () => {
       <StyledH1>Talks</StyledH1>
       <StyledP>
         I've only ever given one public, recorded talk as you can see below. I'd
-        like to give more talks, mainly because preparing for one ("talk-driven
-        development") encourages thorough learning much like teaching and
+        like to give more talks, mainly because preparing for one (“talk-driven
+        development”) encourages thorough learning much like teaching and
         writing.
       </StyledP>
       <StyledUl>

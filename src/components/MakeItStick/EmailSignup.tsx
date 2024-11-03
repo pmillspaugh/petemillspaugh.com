@@ -105,7 +105,7 @@ const StyledH1 = styled.h1`
   font-size: 2rem;
   font-weight: 900;
   line-height: 1.2;
-  text-wrap: balance; /* not supported in all browsers */
+  text-wrap: balance;
 
   @media (min-width: 768px) {
     font-size: 3rem;
@@ -121,7 +121,7 @@ const StyledH1 = styled.h1`
 
 const StyledP = styled.p`
   margin-bottom: 16px;
-  text-wrap: pretty; /* not supported in all browsers */
+  text-wrap: pretty;
 
   @media (min-width: 1200px) {
     font-size: 1.25rem;

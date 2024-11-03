@@ -38,7 +38,7 @@ const Art = () => {
         That elephant is the most recent art I made that hangs in my apartment.
         This monkey is the oldest art I made that still hangs in my apartment. I
         started painting in ninth grade, and this was the first thing I remember
-        working on besides one obligatory still life on day 1.
+        working on besides one obligatory still life on day one.
       </StyledP>
       <StyledFigure>
         <Image
