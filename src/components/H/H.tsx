@@ -11,8 +11,8 @@ interface HeadingProps {
 // Thanks to https://sdorra.dev/posts/2022-12-07-mdx-autolink-headings#self-link
 export const heading = (As: "h2" | "h3") => {
   const H = ({ id, children }: HeadingProps) => {
-    const { lightMode } = useContext(LightModeContext);
-    const linkTextColor = lightMode ? COLORS.Green : COLORS.Gold;
+    const themeContext = useContext(LightModeContext);
+    const linkTextColor = themeContext?.lightMode ? COLORS.Green : COLORS.Gold;
 
     return (
       <As
