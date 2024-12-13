@@ -1,0 +1,30 @@
+---
+slug: rust-raw-strings
+title: Raw strings in Rust
+createdAt: December 12, 2024
+updatedAt: December 12, 2024
+format: TIL
+status: Evergreen
+---
+
+Raw strings in Rust are a nicely designed language feature. From the O'Reilly book, [_Programming Rust_](https://www.goodreads.com/book/show/25550614-programming-rust) (emphasis mine):
+
+> Rust "raw string" syntax: the letter r, zero or more hash marks (that is, the # character), a double quote, and then the contents of the string, terminated by another double quote followed by the same number of hash marks. Any character may occur within a raw string without being escaped, including double quotes; in fact, no escape sequences like `\"` are recognized. **We can always ensure the string ends where we intend by using more hash marks around the quotes than ever appear in the text.**
+
+So, for example:
+
+```rs main.rs
+fn get_docs_link() -> HttpResponse {
+    HttpResponse::Ok().content_type("text/html").body(
+        r##"<a href="/docs#getting-started">Go to docs</a>"##,
+    )
+}
+```
+
+Writing the HTML as a raw string would be less readable:
+
+```rs main.rs
+"<a href=\"/docs#getting-started\">Go to docs</a>"
+```
+
+I think the use-as-many-hashtags-as-you-need rule is pretty clever.
