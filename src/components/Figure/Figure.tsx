@@ -6,6 +6,7 @@ import MapNotes from "./gallery/MapNotes";
 import GraceHopper from "./gallery/GraceHopper";
 import DunningKruger from "./gallery/DunningKruger";
 import Battleship from "./gallery/Battleship";
+import Mandelbrot from "./gallery/Mandelbrot";
 
 interface FigureProps {
   caption: string;
@@ -44,5 +45,6 @@ Figure.MapNotes = MapNotes;
 Figure.GraceHopper = GraceHopper;
 Figure.DunningKruger = DunningKruger;
 Figure.Battleship = Battleship;
+Figure.Mandelbrot = Mandelbrot;
 
 export default Figure;
