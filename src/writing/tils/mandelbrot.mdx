@@ -1,0 +1,36 @@
+---
+slug: mandelbrot
+title: Mandlebrot set
+createdAt: December 14, 2024
+updatedAt: December 14, 2024
+format: TIL
+status: Seedling
+---
+
+I’m working through the O’Reilly [_Programming Rust_](https://www.goodreads.com/book/show/25550614-programming-rust) book, which covers a multi-threaded implementation of the [Mandlebrot set](https://en.wikipedia.org/wiki/Mandelbrot_set).
+
+My code—really, the book’s code—is here: [`pmillspaugh/mandelbrot`](https://github.com/pmillspaugh/mandelbrot). It produces a two-dimensional image like this one:
+
+<Figure.Mandelbrot />
+
+## Mandelbrot set
+
+Per Wikipedia:
+
+> The Mandelbrot set is a two-dimensional set with a relatively simple definition that exhibits great complexity, especially as it is magnified. It is popular for its aesthetic appeal and fractal structures. The set is defined in the complex plane as the complex numbers <code>c</code> for which the function <code>f<sub>c</sub>(z) = z<sup>2</sup> + c</code> does not diverge to infinity when iterated starting at <code>z = 0</code>.
+
+3Blue1Brown's [Mandelbrot video](https://www.youtube.com/watch?v=y9BK--OxZpY) explains this well in less than 2 minutes.
+
+## Complex numbers
+
+I had to look up what a [_complex number_](https://en.wikipedia.org/wiki/Complex_number) is. It's a number of the form `a + bi` where `a` is a real number and and `bi` is an [_imaginary number_](https://en.wikipedia.org/wiki/Imaginary_number).
+
+I also had to look up what an imaginary number is: `b` is the coefficient, and `i` is the [_imaginary unit_](https://en.wikipedia.org/wiki/Imaginary_unit), defined as the square root of -1.
+
+## Fractals
+
+The Mandelbrot definition also mentions [_fractals_](https://en.wikipedia.org/wiki/Fractal), which are geometric patterns that repeat themselves at infinite depth.
+
+## Really cool visuals
+
+Complex numbers and fractals bend my mind a little, and I'd like to spend more time later reading about real world uses, but in the meantime I can enjoy the beautiful visualizations they produce. See, for example, [zooming into the boundary of the Mandelbrot set](https://en.wikipedia.org/wiki/Mandelbrot_set#/media/File:Mandelbrot_sequence_new.gif) from its Wikipedia page.
