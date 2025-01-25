@@ -1,0 +1,107 @@
+---
+slug: javascript-engines-and-runtimes
+title: What should I know about JavaScript engines and runtimes?
+createdAt: January 25, 2025
+updatedAt: January 25, 2025
+format: Brainstorm
+status: Seedling
+---
+
+<Callout>
+  This is what I call a{" "}
+  <Link href="/garden?format=Brainstorm">“Brainstorm”</Link> where I scribble
+  down an offline thought stream then follow up later with the Internet to
+  answer and correct myself. Feel free to skip right past the raw brainstorm and
+  read the researched part.
+</Callout>
+
+## Raw brainstorm
+
+<Transcription>
+So there’s JavaScript the language, JavaScript engines, and JavaScript runtimes. And then there are services that use those runtimes and apps that use those services, etc. But JavaScript the language, let’s start with that.
+
+There’s the spec, and then there’s the implementation—or implementations, plural—which I guess means the engine(s). I think ECMAScript is the official JavaScript specification. Some committee of Technical People thinks hard, discusses, and decides what language features should go in each version of ECMAScript. I want to say there’s a committee called TC39 that might do that, although maybe they do something else related to JavaScript. Who is on TC39? I also have other committee names floating around in my head, like WHATWG and W3C, although I think those might have to do with HTML and CSS, respectively?
+
+Anyway, there’s ECMAScript. When I was first learning JavaScript in 2021, people kept referring to ES6 or ES2015, which, if I remember correctly, introduced a whole bunch of nice stuff like arrow functions and destructuring and the spread operator, maybe. So whichever committee creates ECMAScript publishes a new spec each year or whenever they are ready. Implementation of that JavaScript spec then falls to the engines.
+
+V8 is probably the first engine I ever heard of because it’s in Chromium, which is the substrate of Google Chrome, Microsoft Edge, Arc, Brave, and maybe others, but not Firefox nor Safari, I don’t think—they have their own JS engines IIRC. But anyway, V8 is a JavaScript engine that compiles JavaScript on the go (interpreted language, Just In Time compiler, et cetera, et cetera) and implements all the syntax specified in ECMAScript. There are other engines I’ve heard of, like maybe SpiderMonkey for Firefox and JavaScriptCore for Safari and Bun. And then there’s also QuickJS, which is what we use at Membrane, which is what got me thinking I should have a better handle on this runtime stuff in the first place.
+
+So I guess all these engines strive to fully implement ECMAScript, and they do that, what, in C++? Er, I found out the other day that QuickJS is written in C, which I learned is the simpler predecessor to C++ (oversimplifying, probably). We have a fork of QuickJS at Membrane, but I sure haven’t touched that C code. Anyway, I suppose JavaScript engines must implement JavaScript in some lower-level language. So there’s the JavaScript engines. But then, of course, the next layer is the JavaScript runtimes because the engines don’t have Web APIs like fetch, FormData, Request/Response, Service Workers, WebSockets, and dozens more. Those are runtime responsibilities.
+
+AFAIK, Chromium is an open source runtime used for a handful of browsers I mentioned before, plus Node and Deno. It should include both the V8 engine and the Web API layer. Firefox and Safari, I think, have their own runtimes. Idk what those are called. Maybe I’ve heard of—oh, is WebKit Safari’s? Or do they both use WebKit? WebKit is something, right?
+
+Anyhoo, there are those browser runtimes, and then there are server-side runtimes like Node, Deno, and Bun. And then there are a whole bunch of other server runtimes for hosting providers, like AWS Lambda and Cloudflare Workers and Vercel Edge Functions. Netlify probably has some edge runtime, too. I think those platforms all have their own runtimes, which would mean those companies all maintain their own runtime with that whole layer of Web APIs on top of whichever JavaScript engine they use.
+
+So if you are a programmer, you might use several of these different runtimes in different places on different projects. The concept of a runtime when I was first learning to code and learning JavaScript was a bit nebulous, but I remember hearing that the browser is a JS runtime and Node.js is a JS runtime and that your code will probably run in one or both of those places. If I’m making websites and sharing code between the backend and the frontend, I want to use JavaScript features and Web APIs that are well supported by different runtimes.
+
+I can control my server runtime, but users will choose what browser to use, so it’s important to know which features are widely supported. So that’s why we have caniuse and MDN support tables and Baseline etc. so I can confidently use a Web API or JS syntax knowing that it’ll work everywhere. I understood early on that I need to be aware of browser support, but I don’t have as firm a grasp on server-side runtimes. Like, the reason I’m inking this brainstorm is that we’ve added support for (read: Juan has added support for) a bunch of Web APIs on top of our QuickJS fork.
+
+So all the server runtimes must strive to implement these Web APIs. But what Web APIs? If ECMAScript is the spec for JavaScript, but not for Web APIs, what’s the spec for Web APIs? This is something that I heard about a year or two ago—maybe on a podcast—and might be a relatively recent thing because lots of new runtimes and edge runtimes have been popping up lately. There’s some committee called WinterCG, I think, that is aiming to create an agreed-upon standard for Web APIs that any JavaScript runtime should implement. Who is on that committee?
+
+So, if you’re creating a runtime, you should support the APIs that the committee agrees upon, and then programmers don’t have to fret about adding polyfills and that sort of thing. So that’s good. That seems like a good thing. The more code I write, the more I am drawn to Web Standards—meaning JavaScript runtime standards, I guess—and wanting certainty and reliability to the APIs and the syntax I can use so that I can confidently #usetheplatform in frontend and backend code.
+
+</Transcription>
+
+## JavaScript the language
+
+### ECMAScript and TC39
+
+[ECMAScript](https://en.wikipedia.org/wiki/ECMAScript) is indeed the language specification that JavaScript is based on, and [TC39](https://tc39.es/) (housed under Ecma International) is the group behind it. They actually develop the spec right on GitHub and meet every other month to discuss.
+
+Who’s they? The [`tc39`](https://github.com/orgs/tc39/people) GitHub org has 148 members, including some people I’ve heard of on Twitter and the like (Ashley Williams, Kent C. Dodds, Alex Russell) and _many_ more people I haven’t. They self describe as “JavaScript developers, implementers, academics, and more”—i.e. Technical People—and the acronym stands for Technical Committee 39. They welcome outside contributions.
+
+The name ECMAScript itself goes back about as far as the mid 1990s when Brendan Eich created JavaScript at Netscape. He said that “ECMAScript was always an unwanted trade name that sounds like a skin disease.”
+
+Since ES6, or ES2015, came out in June 2015, new major versions of ECMAScript are published every June. New language features go through a six phase proposal system. ES6 did bring _a lot_ of notable changes including the ones I hit on (arrow functions, destructuring, spread operator) and many more (`let` and `const`, template literals, classes, modules, default parameters, Promises).
+
+### WHATWG and W3C
+
+The [WHATWG](https://whatwg.org/) creates the HTML standard along with a collection of related web platform standards like `fetch`, `DOM`, `Storage`, `URL`, and `WebSockets`. Apple, Google, Mozilla, and Microsoft form the central membership and control of the organization. So essentially the major browser vendors agree upon the standard that they all implement in turn. The WHATWG started in 2004 when the W3C decided it wouldn’t govern HTML.
+
+The [W3C](https://www.w3.org/) goes back to Tim Berners-Lee in 1994. It covers CSS specs and web standards like accessibility, internationalization, and WebAssembly. So really the W3C and WHATWG are more related to JavaScript runtimes than the language itself (because they deal with Web APIs but not language features).
+
+## JavaScript engines
+
+### V8
+
+[V8](https://v8.dev/) is a JavaScript engine that implements ECMAScript, but it’s also a WebAssembly engine, which follows a separate [WASM spec](https://webassembly.github.io/spec/core/). It _is_ open source and written in C++ as part of the [Chromium](https://www.chromium.org/chromium-projects/) project developed by Google. V8 and Chrome dropped in 2008.
+
+Chromium and therefore V8 is used by several browsers (Chrome, Brave, Edge, Arc, Opera, and Vivaldi), runtimes (Node.js, Deno), and even database servers (Couchbase) and frameworks (Electron, NativeScript). So V8 is running both as I write this brainstorm in VS Code, which uses Electron, and as I proofread on localhost in Arc.
+
+### SpiderMonkey
+
+Firefox uses [SpiderMonkey](https://spidermonkey.dev/), which predates V8 by a decade or more and is the first JS engine, written by Brendan Eich at Netscape and later maintained by Mozilla. SpiderMonkey is written in C++ _and_ Rust and JavaScript. It also has the best website of all the specs, engines, and committees I’ve looked up so far (which isn’t saying much).
+
+### JavaScriptCore
+
+[JavaScriptCore](https://docs.webkit.org/Deep%20Dive/JSC/JavaScriptCore.html) is another JavaScript engine (written in C++), developed by Apple under [WebKit](https://webkit.org/) and used in Safari, Mail, App Store, and elsewhere in the Apple ecosystem. WebKit is a full “web browser engine", so JavaScriptCore is to WebKit as V8 is to Chromium. [Bun](https://bun.sh/) does also uses it.
+
+### QuickJS
+
+[QuickJS](https://bellard.org/quickjs/) is a smaller JavaScript engine and a smaller project. It’s written in C, unlike the others, and its memory footprint is much smaller. Its size is why Juan chose QuickJS to implement durable state at [Membrane](https://membrane.io). It supports the ES2023 spec, and there’s a “next gen” [quickjs-ng](https://github.com/quickjs-ng/quickjs) project (greenlighted by the original creator) that aims to support the latest ECMAScript spec.
+
+## JavaScript runtimes
+
+After writing my raw brainstorm, I took off on a run and listened to [syntax.fm #648](https://syntax.fm/show/648/standard-server-javascript-deno-workers-bun-and-more) on “Standard Server JavaScript - Deno, Workers, Bun and More.” They spend 45 good minutes on this topic if you want better coverage than my little write-up.
+
+As covered, there are browser runtimes and server runtimes. The browser runtimes like Chromium and WebKit include a JavaScript engine, Web APIs, an HTML/SVG layout and rendering engine, and other goodies like devtools panels. Server runtimes include a JavaScript engine and _some set_ of Web APIs, which is what I was most curious about.
+
+There are some APIs that are no brainers to have on both the client and server, like `URL` and `fetch`, but others are murkier, like file system operations. Some server runtimes don’t even expose a file system, apparently, so it’s not cut and dry to decide which APIs are necessary at baseline. And as more runtimes have popped up in recent years, it would be nice to know what APIs are considered universal.
+
+### WinterTC
+
+[WinterTC](https://wintercg.org/), which is the successor to WinterCG, is actually an Ecma International Technical Committee, TC55, just like TC39 (I’ve decided not to derail my day by looking up what the other 53 are for right now). It’s quite new, dating back to May 2022. Their mission:
+
+> [WinterTC] aims to achieve some level of API interoperability across server-side JavaScript runtimes, especially for APIs that are common with the web. This is done by standardizing a “minimum common API” shared with the web that such runtimes should support, as well as by collaborating with web standards groups (WHATWG, W3C...) for new web APIs and changes to current web APIs.
+
+Its membership includes likely candidates from Node, Deno, Cloudflare, Vercel, and Netlify, but also non devtool companies that must have a stake in server-side interop, like Bloomberg and Alibaba. They also work in the open on GitHub. Their [FAQ page](https://wintercg.org/faq) is worth a ~3m read, I think.
+
+They list two or three dozen [minimum common web platform APIs](https://min-common-api.proposal.wintercg.org/#api-index) that any server runtime should support. APIs that stand out to me include `Blob`, `Crypto`, `Event`, `File`, `FormData`, `Headers`, `ReadableStream`, `Request`, `Response`, and `URL`. These APIs have open source implementations/shims, so it’s feasible to patch together a fully interop-compliant runtime like we have at Membrane.
+
+### Node, Deno, Bun, and edge runtimes
+
+The State of JavaScript 2024 [survey results for runtimes](https://2024.stateofjs.com/en-US/other-tools/#runtimes) shows Node as king at 91% usage, even above browsers (83%). Bun and Deno come in at 16% and 12%, respectively.
+
+AWS Lambda leads [edge runtimes](https://2024.stateofjs.com/en-US/other-tools/#edge_runtimes) at 28%, followed by Vercel Edge Runtime at 17%, Cloudflare Workers at 14%, Google Cloud Functions at 11%, and both Azure Functions and Netlify at 8%.
+
+I was wrong about Netlify having its own runtime. Their edge platform uses Deno, as does Supabase. Amazon does hand roll its serverless runtimes, though, notably [LLRT (Low Latency Runtime)](https://github.com/awslabs/llrt), which is written in Rust using QuickJS as its JS engine. There’s a long tail of other JavaScript runtimes. I’m most excited about Deno, and with the recent launch of [Deno 2](https://deno.com/blog/v2.0) I’d feel good about defaulting to Deno over Node for any new project.
