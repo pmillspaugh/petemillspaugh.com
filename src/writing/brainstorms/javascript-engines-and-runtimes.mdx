@@ -79,7 +79,7 @@ Firefox uses [SpiderMonkey](https://spidermonkey.dev/), which predates V8 by a d
 
 ### QuickJS
 
-[QuickJS](https://bellard.org/quickjs/) is a smaller JavaScript engine and a smaller project. It’s written in C, unlike the others, and its memory footprint is much smaller. Its size is why [Juan](https://x.com/juancampa) chose QuickJS to implement [durable state](https://docs.membrane.io/concepts/programs/) at [Membrane](https://membrane.io). It supports the ES2023 spec, and there’s a “next gen” [quickjs-ng](https://github.com/quickjs-ng/quickjs) project (greenlighted by the original creator) that aims to support the latest ECMAScript spec.
+[QuickJS](https://bellard.org/quickjs/) is a smaller JavaScript engine and a smaller project. It’s written in C, unlike the others, and its memory footprint is much smaller. Its size is why [Juan](https://x.com/juancampa) chose QuickJS to implement [durable state](https://docs.membrane.io/concepts/programs/) at [Membrane](https://membrane.io). It supports the ES2023 spec, and there’s a “next gen” [quickjs-ng](https://github.com/quickjs-ng/quickjs) project (greenlighted by the original creator) that aims to support the latest ECMAScript spec. QuickJS is the only engine listed here that uses an interpreter rather than JIT compilation. This trades execution speed for low startup time and lighter weight, as I understand it.
 
 ## JavaScript runtimes
 
