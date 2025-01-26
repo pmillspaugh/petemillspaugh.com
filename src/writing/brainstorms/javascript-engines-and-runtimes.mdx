@@ -2,7 +2,7 @@
 slug: javascript-engines-and-runtimes
 title: What should I know about JavaScript engines and runtimes?
 createdAt: January 25, 2025
-updatedAt: January 25, 2025
+updatedAt: January 26, 2025
 format: Brainstorm
 status: Seedling
 ---
@@ -11,8 +11,7 @@ status: Seedling
   This is what I call a{" "}
   <Link href="/garden?format=Brainstorm">“Brainstorm”</Link> where I scribble
   down an offline thought stream then follow up later with the Internet to
-  answer and correct myself. Feel free to skip right past the raw brainstorm and
-  read the researched part.
+  answer and correct myself.
 </Callout>
 
 ## Raw brainstorm
@@ -50,7 +49,7 @@ So, if you’re creating a runtime, you should support the APIs that the committ
 
 Who’s they? The [`tc39`](https://github.com/orgs/tc39/people) GitHub org has 148 members, including some people I’ve heard of on Twitter and the like (Ashley Williams, Kent C. Dodds, Alex Russell) and _many_ more people I haven’t. They self describe as “JavaScript developers, implementers, academics, and more”—i.e. Technical People—and the acronym stands for Technical Committee 39. They welcome outside contributions.
 
-The name ECMAScript itself goes back about as far as the mid 1990s when Brendan Eich created JavaScript at Netscape. He said that “ECMAScript was always an unwanted trade name that sounds like a skin disease.”
+The name ECMAScript itself goes back about as far as the mid 1990s when Brendan Eich created JavaScript at Netscape. He said that “ECMAScript was always an unwanted trade name that sounds like a skin disease.” Oracle holds a trademark on JavaScript as a relic of its acquisition of Sun Microsystems in 2009. [Deno is suing Oracle](https://deno.com/blog/deno-v-oracle) to free the trademark, and you can easily [add your signature](https://javascript.tm) to the open letter that Ryan Dahl wrote. That letter does a fantastic job explaining the history of ECMAScript, too.
 
 Since ES6, or ES2015, came out in June 2015, new major versions of ECMAScript are published every June. New language features go through a six phase proposal system. ES6 did bring _a lot_ of notable changes including the ones I hit on (arrow functions, destructuring, spread operator) and many more (`let` and `const`, template literals, classes, modules, default parameters, Promises).
 
@@ -61,6 +60,8 @@ The [WHATWG](https://whatwg.org/) creates the HTML standard along with a collect
 The [W3C](https://www.w3.org/) goes back to Tim Berners-Lee in 1994. It covers CSS specs and web standards like accessibility, internationalization, and WebAssembly. So really the W3C and WHATWG are more related to JavaScript runtimes than the language itself (because they deal with Web APIs but not language features).
 
 ## JavaScript engines
+
+JavaScript engines implement the ECMAScript spec. There is even an [ECMAScript test suite](https://github.com/tc39/test262) that implementers can run to track feature support. Earlier JS engines used an [interpreter](<https://en.wikipedia.org/wiki/Interpreter_(computing)>) to execute JavaScript source code line by line without an ahead-of-time compilation step. Most engines these days use [just-in-time (JIT) compilation](https://en.wikipedia.org/wiki/Just-in-time_compilation), which I understand (at a surface level) to be a hybrid of compilation and interpretation.
 
 ### V8
 
@@ -78,7 +79,7 @@ Firefox uses [SpiderMonkey](https://spidermonkey.dev/), which predates V8 by a d
 
 ### QuickJS
 
-[QuickJS](https://bellard.org/quickjs/) is a smaller JavaScript engine and a smaller project. It’s written in C, unlike the others, and its memory footprint is much smaller. Its size is why Juan chose QuickJS to implement durable state at [Membrane](https://membrane.io). It supports the ES2023 spec, and there’s a “next gen” [quickjs-ng](https://github.com/quickjs-ng/quickjs) project (greenlighted by the original creator) that aims to support the latest ECMAScript spec.
+[QuickJS](https://bellard.org/quickjs/) is a smaller JavaScript engine and a smaller project. It’s written in C, unlike the others, and its memory footprint is much smaller. Its size is why [Juan](https://x.com/juancampa) chose QuickJS to implement [durable state](https://docs.membrane.io/concepts/programs/) at [Membrane](https://membrane.io). It supports the ES2023 spec, and there’s a “next gen” [quickjs-ng](https://github.com/quickjs-ng/quickjs) project (greenlighted by the original creator) that aims to support the latest ECMAScript spec. QuickJS is the only engine listed here that uses an interpreter rather than JIT compilation. This trades execution speed for low startup time and lighter weight, as I understand it.
 
 ## JavaScript runtimes
 
@@ -100,8 +101,8 @@ They list two or three dozen [minimum common web platform APIs](https://min-comm
 
 ### Node, Deno, Bun, and edge runtimes
 
-The State of JavaScript 2024 [survey results for runtimes](https://2024.stateofjs.com/en-US/other-tools/#runtimes) shows Node as king at 91% usage, even above browsers (83%). Bun and Deno come in at 16% and 12%, respectively.
+The State of JavaScript 2024 [survey results for runtimes](https://2024.stateofjs.com/en-US/other-tools/#runtimes) shows Node as king at 91% usage, even above browsers (83%). I interpret this as runtimes that JavaScript developers are writing code for—so more people are writing backend Node than even frontend browser JS. Bun and Deno come in at 16% and 12%, respectively.
 
-AWS Lambda leads [edge runtimes](https://2024.stateofjs.com/en-US/other-tools/#edge_runtimes) at 28%, followed by Vercel Edge Runtime at 17%, Cloudflare Workers at 14%, Google Cloud Functions at 11%, and both Azure Functions and Netlify at 8%.
+AWS Lambda leads [edge runtimes](https://2024.stateofjs.com/en-US/other-tools/#edge_runtimes) at 28%, followed by Vercel Edge Runtime at 17%, Cloudflare Workers at 14%, Google Cloud Functions at 11%, and both Azure Functions and Netlify at 8%. I was wrong about Netlify having its own runtime. Their edge platform uses Deno, as does Supabase. Amazon does hand roll its serverless runtimes, though, notably [LLRT (Low Latency Runtime)](https://github.com/awslabs/llrt), which is written in Rust using QuickJS as its JS engine. Vercel uses V8 and provides their own Web API layer.
 
-I was wrong about Netlify having its own runtime. Their edge platform uses Deno, as does Supabase. Amazon does hand roll its serverless runtimes, though, notably [LLRT (Low Latency Runtime)](https://github.com/awslabs/llrt), which is written in Rust using QuickJS as its JS engine. There’s a long tail of other JavaScript runtimes. I’m most excited about Deno, and with the recent launch of [Deno 2](https://deno.com/blog/v2.0) I’d feel good about defaulting to Deno over Node for any new project.
+There’s a long and elongating tail of JavaScript runtimes, and it’s not just about catching up to Node feature parity. [Deno 2](https://deno.com/blog/v2.0) is fully backwards compatible with Node _and_ comes with native TS support, a formatter and linter, and its own registry. [Bun 1.2](https://bun.sh/blog/bun-v1.2) has built-in APIs for S3 (`Bun.s3`) and Postgres (`Bun.sql`). I’m excited for these runtime improvements, and I’m glad people behind them are investing in standards.
