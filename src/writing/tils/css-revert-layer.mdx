@@ -1,0 +1,46 @@
+---
+slug: css-revert-layer
+title: CSS revert-layer
+createdAt: February 11, 2025
+updatedAt: February 11, 2025
+format: TIL
+status: Evergreen
+---
+
+The CSS [`revert-layer`](https://developer.mozilla.org/en-US/docs/Web/CSS/revert-layer) keyword allows you to reset a property’s value to that of the previous cascade layer. I wouldn’t have understood that sentence this morning, so I’ll break it down.
+
+`revert-layer` is a keyword you can use for a property’s value, like [`inherit`](https://developer.mozilla.org/en-US/docs/Web/CSS/inherit), [`initial`](https://developer.mozilla.org/en-US/docs/Web/CSS/initial), [`unset`](https://developer.mozilla.org/en-US/docs/Web/CSS/unset), or [`revert`](https://developer.mozilla.org/en-US/docs/Web/CSS/revert). Contrast those with other values like `8px`, `1rem`, or `100%`. You can even apply these to all properties at once with the `all` shorthand property:
+
+```css styles.css
+button {
+  all: unset;
+}
+```
+
+I think it’s helpful to understand the `revert` keyword before understanding `revert-layer`. When you use `revert`, the property will fall back to its value in the previous [style origin](https://developer.mozilla.org/en-US/docs/Glossary/Style_origin). What’s a style origin?
+
+## Style origins
+
+There are three style origins: user agent origin (i.e. browser defaults), user origin (does anyone do that anymore?), and author origin (i.e. styles written by you the developer). So in most cases `revert` probably falls back to a browser default, meaning it’s often the same result as using `unset`.
+
+`revert-layer`, on the other hand, allows you to fall back to the previous _author origin_ cascade layer. But what’s a cascade layer?
+
+## Cascade layers
+
+CSS [cascade layers](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Cascade_layers) define the prioritization of styles from different sources. Within each layer, specificity rules apply. You’ve probably seen the [`!important`](https://developer.mozilla.org/en-US/docs/Web/CSS/important) keyword, for example, which allows a declaration to jump up the priority ladder to a higher cascade layer. And you probably know intuitively that author origin styles are in a higher priority cascade layer than user agent styles. You can explicitly create cascade layers using [`@layer`](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) syntax to separate the priority of different style sources in your app.
+
+## I almost used this in production
+
+I came across `revert-layer` while working on [ide.membrane.io](https://ide.membrane.io) today. We have a global stylesheet used for auth pages, and we don’t want those styles to apply to the root IDE page (which is a vscode fork with its own styles). When redirecting to the IDE from an auth page, though, that global stylesheet has already loaded. So I thought this would be a perfect case to write something like:
+
+```css app/global.css
+@layer base {
+  /* Global styles for auth pages here... */
+
+  .ide * {
+    all: revert-layer;
+  }
+}
+```
+
+It didn’t work as smoothly as I’d hoped in this case (the vscode codebase has many, many CSS files plus inline HTML and JS-controlled styles, so it was tricky to figure out exactly what’s being applied, and visually testing the whole surface of the editor is next to impossible). I ended up using Next.js [Route Groups](https://nextjs.org/docs/app/building-your-application/routing/route-groups) with different layouts instead, but hopefully the `revert-layer` side quest was worthwhile.
