@@ -1,0 +1,25 @@
+---
+slug: blob-api
+title: Blob API
+createdAt: February 13, 2025
+updatedAt: February 13, 2025
+format: TIL
+status: Evergreen
+---
+
+**TL;DR:** A `Blob` in JavaScript is read-only raw data that you can read, store, or send over a network.
+
+A `Blob` object has a `size` property (in bytes) and a (MIME) `type` property. It represents the underlying data but doesn’t expose it directly. You can extract the raw bytes using `blob.arrayBuffer()`, for example.
+
+```ts blob.ts
+const blob = new Blob(["tofu"], { type: "text/plain" });
+console.log(blob); // { size: 4, type: "text/plain "}
+
+const buffer = await blob.arrayBuffer();
+const bytes = new Uint8Array(buffer);
+console.log(bytes); // Uint8Array [116, 111, 102, 117]
+```
+
+Here, the bytes 116, 111, 102, and 117 represent the ASCII codepoints for the letters ‘t’, ‘o’, ‘f’, and ‘u’.
+
+I’m adding a [`Blob`](https://developer.mozilla.org/en-US/docs/Web/API/Blob) [polyfill](https://github.com/eligrey/Blob.js/blob/master/Blob.js) to the Membrane JS runtime (which is a QuickJS fork with persistent state and a browser API layer). I was initially adding a [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) polyfill, which uses `Blob`. The [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) API also uses `Blob`.

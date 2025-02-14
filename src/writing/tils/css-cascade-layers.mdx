@@ -15,7 +15,7 @@ Some layers are determined by the source itself, like user agent origin declarat
 
 If you want to distinguish different sources of author origin declarations (i.e. CSS you write or import), you can create a `@layer`. I used this today on [ide.membrane.io](https://ide.membrane.io), placing global styles in a layer to deprioritize them under styles from CSS modules.
 
-I'd run into cases where specificity of a declaration in the global stylesheet was higher than that in a CSS module, but I always want the module to win out. Defined layers have lower priority than unlayered styles in the author origin.
+I’d run into cases where specificity of a declaration in the global stylesheet was higher than that in a CSS module, but I always want the module to win out. Defined layers have lower priority than unlayered styles in the author origin.
 
 ```css globals.css
 @layer global {
