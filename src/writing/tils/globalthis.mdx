@@ -1,0 +1,18 @@
+---
+slug: globalthis
+title: this, self, window, global, globalThis, etc.
+createdAt: February 14, 2025
+updatedAt: February 14, 2025
+format: TIL
+status: Evergreen
+---
+
+**TL;DR:** In JavaScript (browser runtimes, at least), `this`, `self`, `window`, `frame`, and `globalThis` all point to the same value (the `Window` object).
+
+Why do they all exist then? Per MDN:
+
+> Historically, accessing the global object has required different syntax in different JavaScript environments. On the web you can use `window`, `self`, or `frames` - but in Web Workers only `self` will work. In Node.js none of these work, and you must instead use `global`...
+>
+> The `globalThis` property provides a standard way of accessing the global `this` value (and hence the global object itself) across environments.
+
+I’ve been [thinking more about JavaScript runtimes](/javascript-engines-and-runtimes) lately. I’d like to confidently know when I can use what (language features and APIs). My takeway here is when in doubt, use `globalThis`.
