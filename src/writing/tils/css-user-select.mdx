@@ -1,0 +1,14 @@
+---
+slug: css-user-select
+title: CSS user-select
+createdAt: February 19, 2025
+updatedAt: February 19, 2025
+format: TIL
+status: Seedling
+---
+
+I came across [`user-select`](https://developer.mozilla.org/en-US/docs/Web/CSS/user-select) in the [vscode](https://github.com/microsoft/vscode) codebase. You can set `user-select: none`, for example, to prevent text selection.
+
+In most cases, its value is `text`. The exceptions are `::before` and `::after` pseudo-elements and any element whose parent with `user-select: <none|all>`.
+
+Setting `user-select: all` on an element means that selecting any of its descendents will select _all_ text in that element and its descendents. I’m not sure when I’d use that, though, because it prevents more granular selection of text.
