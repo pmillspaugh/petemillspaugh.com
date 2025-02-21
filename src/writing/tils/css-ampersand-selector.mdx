@@ -7,7 +7,7 @@ format: TIL
 status: Seedling
 ---
 
-I've been using the [CSS nesting selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Nesting_selector), `&`, for a few years to nest style declarations. I wondered recently if you even need it. For example:
+I’ve been using the [CSS nesting selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Nesting_selector), `&`, for a few years to nest style declarations. I wondered recently if you even need it. For example:
 
 ```css styles.css
 button {
@@ -35,4 +35,4 @@ button *:hover {
 
 Using the ampersand directly appends the selector that follows to the parent selector. So instead of matching the `:hover` state of _all_ button children, we can use `&` to match hovering just the button itself.
 
-So you do need it sometimes (which, like, why would it exist if you didn't need it sometimes, I guess).
+So you do need it sometimes (which, like, why would it exist if you didn’t need it sometimes, I guess).
