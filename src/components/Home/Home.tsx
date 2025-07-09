@@ -1,70 +1,40 @@
-import { useMemo } from "react";
 import Link from "next/link";
-import styled from "styled-components";
-import { PostParams } from "@/helpers/garden.helpers";
-import SearchCta from "./SearchCta";
+import Code from "@/components/Code";
+import useIsWindowsOrFirefox from "@/hooks/useIsWindowsOrFirefox.hook";
+import styles from "./Home.module.css";
 
-const Home = ({ postPaths }: { postPaths: PostParams[] }) => {
-  const randomSlug = useMemo(() => {
-    const index = Math.floor(Math.random() * postPaths.length);
-    const slug = postPaths[index].params.slug;
-    return slug;
-  }, [postPaths]);
+const Home = () => {
+  const isWindowsOrFirefox = useIsWindowsOrFirefox();
 
   return (
-    <StyledHome data-pagefind-ignore>
-      <StyledH1>
-        <Firstname>Pete</Firstname>
-        <Lastname>Millspaugh</Lastname>
-      </StyledH1>
-      <StyledCta>
-        <SearchCta />
-        <em>
-          Or, read <Link href={`/${randomSlug}`}>something random</Link>
-        </em>
-      </StyledCta>
-    </StyledHome>
+    <div className={styles.intro}>
+      <h1 className={styles.h1}>I’m Pete, and this is my digital garden.</h1>
+      <p className={styles.p}>
+        A digital garden is like a blog except that much of what I’ve planted
+        (written) is raw and unfinished. You can read more about{" "}
+        <Link href="/about#me">me</Link> and{" "}
+        <Link href="/about#garden">my garden</Link> if you’d like. Tug on the
+        Edison bulb in the top right if you prefer nighttime.
+      </p>
+      <p className={styles.p}>
+        Of my writing, programmers have liked{" "}
+        <Link href="/edison-bulb">Edison bulb</Link>,{" "}
+        <Link href="/weeks-of-your-life">Weeks of your life</Link>,{" "}
+        <Link href="/cultivating-emails">Cultivating emails</Link>,{" "}
+        <Link href="/malleable-garden">Malleable garden</Link>, and{" "}
+        <Link href="/think-small">Think small</Link>. Non-coders seem to enjoy{" "}
+        <a href="https://weeksofyour.life">weeksofyour.life</a>,{" "}
+        <Link href="/37-states">37 states</Link>, and{" "}
+        <Link href="/my-next-next-next">My next, next, next job</Link>.
+      </p>
+      <p className={styles.p}>
+        Wander through the <Link href="/garden">garden</Link> to browse all my
+        writing, press <Code>{isWindowsOrFirefox ? "⌃" : "⌘"}+K</Code> to
+        search, or scroll down below the trees and see what you find. P.S. tug
+        on the light bulb in the top right if you prefer nighttime.
+      </p>
+    </div>
   );
 };
-
-const StyledHome = styled.div`
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-const StyledH1 = styled.h1`
-  padding-bottom: 32px;
-  text-align: center;
-`;
-
-const Firstname = styled.div`
-  font-size: 5rem;
-  font-weight: 400;
-  line-height: 0.875;
-`;
-
-const Lastname = styled.div`
-  font-size: 3rem;
-  font-weight: 200;
-`;
-
-const StyledCta = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  font-family: var(--font-petrona);
-
-  & > em > a {
-    transition: color var(--base-timing) ease-out;
-  }
-
-  @media (min-width: 1200px) {
-    font-size: 1.25rem;
-  }
-`;
 
 export default Home;

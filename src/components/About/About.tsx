@@ -4,23 +4,44 @@ import styled from "styled-components";
 const About = () => {
   return (
     <>
-      <StyledH1>About</StyledH1>
-      <StyledH2>Me</StyledH2>
+      <StyledH1>About . . .</StyledH1>
+
+      <StyledH2 id="me">...me</StyledH2>
       <StyledP>
-        I’m Pete. I am a programmer who likes to design and write. Right now I’m
-        a founding engineer at <a href="https://www.membrane.io/">Membrane</a>,{" "}
-        making it easier to write your own internal tools in TypeScript.
+        I’m Pete. I’m a programmer and writer, mostly. Right now I am writing a
+        book about Internet domains, <em>dot com et al</em>. I also freelance,
+        making good-looking websites for small businesses, restaurants, writers,
+        artists, actors, startups...and maybe you? Email me at{" "}
+        <a href="mailto:pete@petemillspaugh.com">pete@petemillspaugh.com</a> if
+        you’d like to work together or share domain tales.
       </StyledP>
       <StyledP>
-        I used to work at SeedFi (and then Credit Karma{" "}
+        I love frontend-y Web stuff (HTML/CSS/JS), and I enjoy working with
+        server-side JavaScript and SQL. I also keep a{" "}
+        <Link href="/wishlist">list</Link> of technologies I’d like to learn.
+      </StyledP>
+      <StyledP>
+        My last job was founding engineer at{" "}
+        <a href="https://www.membrane.io/">Membrane</a>, working on devtools in
+        Rust and TypeScript. Before that, I worked at SeedFi (and then Credit
+        Karma{" "}
         <a href="https://www.intuit.com/company/press-room/press-releases/2022/intuit-to-acquire-financial-health-startup-seedfi/">
           via acquisition
         </a>
-        ) helping Americans build credit and savings. I write Rust and
-        TypeScript for my day job, and I love frontend Web tech. I also keep a{" "}
-        <Link href="/wishlist">list</Link> of things I'd like to learn.
+        ), working on credit- and savings-building products for Americans.
+        Before I started making websites for a living, I worked as a tech
+        investment banker (briefly) and a summer camp counselor at{" "}
+        <a href="https://pasquaney.org">Camp Pasquaney</a> (send your boys
+        there!), leading backpacking trips and directing theater plays.
       </StyledP>
-      <StyledH2 id="this-site">My digital garden</StyledH2>
+      <StyledP>
+        Outside of coding and writing, I often run,{" "}
+        <Link href="/bookshelf">read</Link>, cook, and boulder indoors (cliché,
+        I know, but it’s fun). I live in Cincinnati, Ohio, and I really like it
+        here.
+      </StyledP>
+
+      <StyledH2 id="garden">...my digital garden</StyledH2>
       <StyledP>
         This website is a digital garden, which is a bit different than a blog
         where each post is a “finished” work ready for public eyes. Instead,

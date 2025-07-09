@@ -1,11 +1,9 @@
 import Head from "next/head";
-import type { GetStaticProps } from "next";
 import { getPostPaths } from "@/helpers/garden.helpers";
 import Home from "@/components/Home";
-import { ComponentProps } from "react";
 import { generateRssFeed } from "@/helpers/rss.helpers";
 
-const HomePage = ({ postPaths }: ComponentProps<typeof Home>) => {
+const HomePage = () => {
   return (
     <>
       <Head>
@@ -13,17 +11,19 @@ const HomePage = ({ postPaths }: ComponentProps<typeof Home>) => {
         <meta name="title" property="og:title" content="Pete Millspaugh" />
         <meta property="og:url" content="https://petemillspaugh.com/" />
       </Head>
-      <Home postPaths={postPaths} />
+      <Home />
     </>
   );
 };
 
-export const getStaticProps = (async () => {
+/**
+ * Generate RSS feed.
+ * TODO: move to post-build script?
+ */
+export const getStaticProps = async () => {
   const postPaths = getPostPaths();
-
   await generateRssFeed(postPaths);
-
-  return { props: { postPaths } };
-}) satisfies GetStaticProps;
+  return { props: {} };
+};
 
 export default HomePage;
