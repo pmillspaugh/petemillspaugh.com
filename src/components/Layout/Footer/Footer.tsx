@@ -48,7 +48,6 @@ const Footer = () => {
                   >
                     Clippings
                   </StyledGardenLink>
-                  <StyledGardenLink href={"/tour"}>Tour</StyledGardenLink>
                 </StyledGardenLi>
               </StyledGardenUl>
             </StyledLeftColumn>
@@ -68,6 +67,9 @@ const Footer = () => {
                 </li>
                 <li>
                   <StyledLink href="/blogroll">Blogroll</StyledLink>
+                </li>
+                <li>
+                  <StyledLink href="/words">(Sh)words</StyledLink>
                 </li>
                 <li>
                   <StyledExternalLink href="https://weeksofyour.life">
