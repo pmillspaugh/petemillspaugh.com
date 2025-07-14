@@ -1,11 +1,11 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, ReactElement } from "react";
 import styled from "styled-components";
 import VisuallyHidden from "@/components/VisuallyHidden";
 import Dialog from "@/components/Dialog";
 import SearchResults from "./SearchResults";
 import Nav from "./Nav";
 
-const CommandBar = ({ children }) => {
+const CommandBar = ({ children }: { children?: ReactElement }) => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [dialogIsOpen, setDialogIsOpen] = useState(false);

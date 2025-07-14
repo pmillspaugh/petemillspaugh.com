@@ -5,7 +5,11 @@
   justify-content: center;
 }
 
-.h1,
+.h1 {
+  font-size: 1.5rem;
+  margin-block: 24px;
+}
+
 .p {
   font-size: 1rem;
   margin-bottom: 16px;
@@ -20,7 +24,10 @@
     justify-content: end;
   }
 
-  .h1,
+  .h1 {
+    font-size: 1.75rem;
+  }
+
   .p {
     font-size: 1.25rem;
     line-height: 1.75;

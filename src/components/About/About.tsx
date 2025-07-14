@@ -9,9 +9,13 @@ const About = () => {
       <StyledH2 id="me">...me</StyledH2>
       <StyledP>
         I’m Pete. I’m a programmer and writer, mostly. Right now I am writing a
-        book about Internet domains, <em>dot com et al</em>. I also freelance,
-        making good-looking websites for small businesses, restaurants, writers,
-        artists, actors, startups...and maybe you? Email me at{" "}
+        book about Internet domains,{" "}
+        <a href="https://dotcom.press">
+          <em>dot com et al</em>
+        </a>
+        . I also freelance, making good-looking websites for small businesses,
+        restaurants, writers, artists, actors, startups...and maybe you? Email
+        me at{" "}
         <a href="mailto:pete@petemillspaugh.com">pete@petemillspaugh.com</a> if
         you’d like to work together or share domain tales.
       </StyledP>
@@ -45,8 +49,8 @@ const About = () => {
       <StyledP>
         This website is a digital garden, which is a bit different than a blog
         where each post is a “finished” work ready for public eyes. Instead,
-        writing is made public early on while it’s still being cultivated and
-        growing. I owe most of my gardening inspiration to Maggie Appleton for{" "}
+        writing is planted, watered, pruned, re-potted, and always growing. I
+        owe most of my gardening inspiration to Maggie Appleton for{" "}
         <a href="https://maggieappleton.com/">her amazing digital garden</a> and{" "}
         <a href="https://maggieappleton.com/garden-history">
           essay on its history and ethos
