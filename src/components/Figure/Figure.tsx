@@ -7,6 +7,7 @@ import GraceHopper from "./gallery/GraceHopper";
 import DunningKruger from "./gallery/DunningKruger";
 import Battleship from "./gallery/Battleship";
 import Mandelbrot from "./gallery/Mandelbrot";
+import Mercantile from "./gallery/Mercantile";
 
 interface FigureProps {
   caption: string;
@@ -46,5 +47,6 @@ Figure.GraceHopper = GraceHopper;
 Figure.DunningKruger = DunningKruger;
 Figure.Battleship = Battleship;
 Figure.Mandelbrot = Mandelbrot;
+Figure.Mercantile = Mercantile;
 
 export default Figure;
