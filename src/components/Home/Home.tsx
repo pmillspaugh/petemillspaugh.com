@@ -15,8 +15,8 @@ const Home = () => {
         <Link href="/about#garden">digital garden</Link>. Visit the{" "}
         <Link href="/garden">garden</Link> to browse all my writing, press{" "}
         <Code>{isWindowsOrFirefox ? "⌃" : "⌘"}+K</Code> to search, or scroll
-        down below the trees and see what you find. Tug on the light bulb in the
-        top right if you’re more of a night owl.
+        down below the trees and see what you find. Oh, and tug on the light
+        bulb in the top right if you’re more of a night owl.
       </p>
       <p className={styles.p}>
         Of my writing, programmers have liked{" "}
@@ -29,14 +29,15 @@ const Home = () => {
         <Link href="/vegan-dissonance">Vegan dissonance</Link>. For book recs,
         visit <Link href="/bookshelf">my bookshelf</Link>. For a career thought
         exercise, read{" "}
-        <Link href="/my-next-next-next">My next, next, next job</Link>.
+        <Link href="/my-next-next-next-job">My next, next, next job</Link>.
       </p>
       <p className={styles.p}>
         I’m writing a book about Internet domains:{" "}
         <a href="https://dotcom.press">
           <em>dot com et al</em>
         </a>
-        . Email me with domain stories at <Code>pete@petemillspaugh.com</Code>.
+        . Email me with domain stories at{" "}
+        <a href="mailto:pete@petemillspaugh.com">pete@petemillspaugh.com</a>.
       </p>
       <CommandBar />
     </div>
