@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { PostFormatDescription, PostMetadata } from "@/components/Post";
 import Tag from "@/components/Post/Tag";
 
-const PlantRow = ({ title, slug, format, status, updatedAt }: PostMetadata) => {
+const PlantRow = ({ title, slug, format, status, watered }: PostMetadata) => {
   return (
     <>
       <StyledLink href={`/${slug}`}>
@@ -22,9 +22,9 @@ const PlantRow = ({ title, slug, format, status, updatedAt }: PostMetadata) => {
           trigger={<StyledTagLabel>{status}</StyledTagLabel>}
         />
         <StyledTimestamp>
-          <time dateTime={new Date(updatedAt).toISOString()}>
+          <time dateTime={new Date(watered).toISOString()}>
             Last watered:{" "}
-            {new Date(updatedAt)
+            {new Date(watered)
               .toLocaleString("en-US", { month: "short", year: "2-digit" })
               .replace(" ", " ’")}
           </time>

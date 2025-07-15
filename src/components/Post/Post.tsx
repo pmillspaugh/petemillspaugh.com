@@ -16,7 +16,7 @@ export interface PostProps {
 }
 
 const Post = ({ mdxSource, metadata, backlinks }: PostProps) => {
-  const { title, createdAt, updatedAt, format, status } = metadata;
+  const { title, planted, watered, format, status } = metadata;
 
   return (
     <>
@@ -24,14 +24,12 @@ const Post = ({ mdxSource, metadata, backlinks }: PostProps) => {
       <MetadataList data-pagefind-ignore>
         <li>
           Planted:{" "}
-          <time dateTime={new Date(createdAt).toISOString()}>{createdAt}</time>
+          <time dateTime={new Date(planted).toISOString()}>{planted}</time>
         </li>
-        {createdAt !== updatedAt && (
+        {planted !== watered && (
           <li>
             Last watered:{" "}
-            <time dateTime={new Date(createdAt).toISOString()}>
-              {updatedAt}
-            </time>
+            <time dateTime={new Date(planted).toISOString()}>{watered}</time>
           </li>
         )}
         <TagsContainer>
