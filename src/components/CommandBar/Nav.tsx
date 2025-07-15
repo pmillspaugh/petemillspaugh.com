@@ -16,8 +16,8 @@ const Nav = ({ handleClick }) => {
           </StyledNavLink>
         </li>
         <li>
-          <StyledNavLink href="/talks" onClick={handleClick}>
-            Talks
+          <StyledNavLink href="/bookshelf" onClick={handleClick}>
+            Bookshelf
           </StyledNavLink>
         </li>
         <li>
@@ -59,7 +59,7 @@ const StyledNavLink = styled(Link)`
   outline-offset: 8px;
 
   &:after {
-    content: " →";
+    content: " ";
   }
 
   &:hover {

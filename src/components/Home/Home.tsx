@@ -23,7 +23,7 @@ const Home = () => {
         <Link href="/edison-bulb">Edison bulb</Link>,{" "}
         <Link href="/cultivating-emails">Cultivating emails</Link>,{" "}
         <Link href="/malleable-garden">Malleable garden</Link>, and{" "}
-        <Link href="/think-small">Think small</Link>. Non-coders seem to enjoy{" "}
+        <Link href="/think-small">Think small</Link>. Others seem to enjoy{" "}
         <a href="https://weeksofyour.life">weeksofyour.life</a>,{" "}
         <Link href="/anki">Choosing to remember with Anki</Link>, and{" "}
         <Link href="/vegan-dissonance">Vegan dissonance</Link>. For book recs,

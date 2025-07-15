@@ -1,0 +1,61 @@
+.h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 24px;
+}
+
+.p {
+  margin-bottom: 16px;
+}
+
+@media (min-width: 768px) {
+  .h1 {
+    font-size: 4rem;
+  }
+  .p {
+    font-size: 1.25rem;
+    line-height: 1.75;
+    margin-bottom: 24px;
+  }
+}
+
+.shelf {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  column-gap: 10%;
+  row-gap: 32px;
+
+  .li {
+    width: 90%;
+  }
+}
+
+@media (min-width: 768px) {
+  .shelf .li {
+    width: 45%;
+  }
+}
+
+.book {
+  position: relative;
+  height: 150px;
+  margin-bottom: 8px;
+}
+
+.cover {
+  object-fit: contain;
+  /* Override next/image element styling */
+  width: unset !important;
+  border: 1px solid var(--black);
+  border-radius: 2px;
+}
+
+.figcaption {
+  font-weight: 700;
+}
+
+.links {
+  font-weight: 700;
+}

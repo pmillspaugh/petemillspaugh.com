@@ -57,6 +57,9 @@ const Footer = () => {
                   <StyledLink href="/about">About</StyledLink>
                 </li>
                 <li>
+                  <StyledLink href="/bookshelf">Bookshelf</StyledLink>
+                </li>
+                <li>
                   <StyledLink href="/talks">Talks</StyledLink>
                 </li>
                 <li>
@@ -67,9 +70,6 @@ const Footer = () => {
                 </li>
                 <li>
                   <StyledLink href="/blogroll">Blogroll</StyledLink>
-                </li>
-                <li>
-                  <StyledLink href="/words">(Sh)words</StyledLink>
                 </li>
                 <li>
                   <StyledExternalLink href="https://weeksofyour.life">
