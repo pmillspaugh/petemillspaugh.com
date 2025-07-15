@@ -20,9 +20,7 @@ I rely on unstyled component libraries like [Radix UI](https://radix-ui.com) for
 
 ## Styled Components
 
-I like the flexibility of CSS-in-JS and the colocation of markup + styles with [`styled-components`](https://styled-components.com/). I also prefer writing vanilla CSS to writing utility classes, e.g. with Tailwind. I'm considering moving away from CSS-in-JS, though, maybe to CSS modules.
-
-> Note: I've converted one component to CSS modules so far. I might adopt gradually, using modules for new components and converting old ones here and there.
+I like the flexibility of CSS-in-JS and the colocation of markup + styles with [`styled-components`](https://styled-components.com/). I also prefer writing vanilla CSS to writing utility classes, e.g. with Tailwind. I've started incrementally moving away from CSS-in-JS, though, to CSS modules.
 
 ## Code snippets
 
