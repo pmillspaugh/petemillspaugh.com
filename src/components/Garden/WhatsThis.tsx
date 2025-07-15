@@ -17,8 +17,7 @@ const WhatsThis = () => {
         <em>Buddings</em>, <em>Evergreens</em>.
       </StyledP>
       <StyledP>
-        You can start with a <Link href="/tour">tour</Link> of the garden or
-        read about my gardening habits in full on the{" "}
+        You can read about my gardening habits in full on the{" "}
         <Link href="/about#garden">about</Link> page. Or, if you want to jump
         directly to a historical tour of digital gardening, read{" "}
         <a href="https://maggieappleton.com/garden-history">
