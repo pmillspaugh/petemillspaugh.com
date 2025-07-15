@@ -7,10 +7,9 @@ export default function Bookshelf() {
     <>
       <h1 className={styles.h1}>Bookshelf</h1>
       <p className={styles.p}>
-        These are books I’ve read and would read again, listed alphabetically. I
-        generally read non-fiction, but I’ve included good fiction, too. There’s
-        a <Link href="/present-you">present me</Link> bias toward books I’ve
-        read recently and care about now (summer ’25).{" "}
+        These are books I’ve read and would read again, listed alphabetically.
+        There’s a <Link href="/present-you">present me</Link> bias toward books
+        I’ve read recently and care about now (summer ’25).{" "}
       </p>
       <p className={styles.p}>
         More books are listed on my{" "}
