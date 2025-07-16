@@ -25,8 +25,8 @@ export enum PostStatus {
 export interface PostMetadata {
   slug: string;
   title: string;
-  createdAt: string;
-  updatedAt: string;
+  planted: string;
+  watered: string;
   format: PostFormat;
   status: PostStatus;
 }

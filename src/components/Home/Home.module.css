@@ -1,0 +1,36 @@
+.intro {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.h1 {
+  font-size: 1.5rem;
+  margin-block: 24px;
+}
+
+.p {
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.p:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 600px) {
+  .intro {
+    justify-content: end;
+  }
+
+  .h1 {
+    font-size: 1.75rem;
+  }
+
+  .p {
+    font-size: 1.25rem;
+    line-height: 1.75;
+    margin-bottom: 24px;
+  }
+}

@@ -19,15 +19,15 @@ export async function generateRssFeed(postPaths: PostParams[]) {
     const { metadata, mdxSource } = await getPostData(params.slug);
     posts.push({ metadata, mdxSource });
 
-    if (new Date(metadata.createdAt) > lastPublished) {
-      lastPublished = new Date(metadata.createdAt);
+    if (new Date(metadata.planted) > lastPublished) {
+      lastPublished = new Date(metadata.planted);
     }
   }
 
   posts.sort(
     (a, b) =>
-      new Date(b.metadata.createdAt).getTime() -
-      new Date(a.metadata.createdAt).getTime()
+      new Date(b.metadata.planted).getTime() -
+      new Date(a.metadata.planted).getTime()
   );
 
   const baseURL =
@@ -72,7 +72,7 @@ export async function generateRssFeed(postPaths: PostParams[]) {
       link: url,
       content: markup,
       author: [author],
-      date: new Date(metadata.createdAt),
+      date: new Date(metadata.planted),
       image: `${baseURL}/images/p-logo-green.png`,
     });
   }

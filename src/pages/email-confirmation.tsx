@@ -13,7 +13,7 @@ const EmailConfirmationPage = () => {
         />
       </Head>
       <EmailConfirmation
-        confirmationUrl="https://petermillspaugh-emailSubscription.web.val.run/confirm-verification"
+        confirmationUrl="https://garden.val.run/confirm-verification"
         heading="You’re all set!"
         body={
           <>

@@ -34,15 +34,16 @@ const EmailConfirmation = ({
   }, [email, token, confirmationUrl]);
 
   // Optimistic success UI, but show message if confirmation fails
-  // This state will also occur if the token has expired (>30min)
+  // This state will also occur if the token has expired (>24hr)
   if (confirmationError) {
-    heading = "Looks like email confirmation is incomplete";
+    heading = "Whoops, email confirmation failed";
     body = (
       <>
         Check your email for another confirmation link. If that still doesn't
         work I'll get a notification of the error, but please feel free to email
-        me directly at pete@petemillspaugh.com so I can sort things out quickly.
-        Thanks!
+        me directly at{" "}
+        <a href="mailto:pete@petemillspaugh.com">pete@petemillspaugh.com</a> so
+        I can sort things out quickly. Thanks!
       </>
     );
   }
@@ -64,7 +65,6 @@ const StyledWrapper = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
 
   & > h1 {

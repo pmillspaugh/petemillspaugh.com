@@ -2,8 +2,7 @@ import { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import VisuallyHidden from "@/components/VisuallyHidden";
 
-const SEND_VERIFICATION_URL =
-  "https://petermillspaugh-emailSubscription.web.val.run/send-verification";
+const SEND_VERIFICATION_URL = "https://garden.val.run/send-verification";
 
 const EmailSignup = () => {
   const [name, setName] = useState("");

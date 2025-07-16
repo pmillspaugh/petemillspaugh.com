@@ -9,9 +9,10 @@ import {
   PostStatus,
   PostFormatDescription,
 } from "@/components/Post";
+import Select from "@/components/Select";
 import PlantRow from "./PlantRow";
 import WhatsThis from "./WhatsThis";
-import Select from "@/components/Select";
+import styles from "./Garden.module.css";
 
 export interface GardenProps {
   posts: PostMetadata[];
@@ -89,9 +90,9 @@ const Garden = ({ posts }: GardenProps) => {
   };
 
   return (
-    <StyledGarden data-pagefind-ignore>
-      <StyledH1>Garden</StyledH1>
-      <StyledBarWrapper>
+    <div className={styles.garden} data-pagefind-ignore>
+      <h1 className={styles.h1}>Garden</h1>
+      <div className={styles.bar}>
         <Popover
           trigger={
             <OuterWrapper>
@@ -101,7 +102,7 @@ const Garden = ({ posts }: GardenProps) => {
         >
           <WhatsThis />
         </Popover>
-        <StyledFiltersWrapper>
+        <div className={styles.filters}>
           <Select
             placeholder="Format"
             value={PostFormatDescription[format] ?? ""}
@@ -114,8 +115,8 @@ const Garden = ({ posts }: GardenProps) => {
             onValueChange={handleStatusChange}
             items={Object.values(PostStatus)}
           />
-        </StyledFiltersWrapper>
-      </StyledBarWrapper>
+        </div>
+      </div>
       <ul>
         {filteredPosts.map((post) => (
           <li key={post.slug}>
@@ -124,40 +125,15 @@ const Garden = ({ posts }: GardenProps) => {
         ))}
       </ul>
       {!filteredPosts.length && (
-        <StyledP>
+        <p className={styles.p}>
           Nothing planted is both a {PostFormatDescription[format]} and a{" "}
           {status}. You can <Link href="/garden">reset</Link> or choose another
           filter.
-        </StyledP>
+        </p>
       )}
-    </StyledGarden>
+    </div>
   );
 };
-
-const StyledGarden = styled.div`
-  flex-grow: 1;
-`;
-
-const StyledH1 = styled.h1`
-  font-size: 4rem;
-  font-weight: 900;
-  line-height: 1.3;
-  margin-top: 16px;
-`;
-
-const StyledBarWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding-bottom: 36px;
-`;
-
-const StyledFiltersWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-`;
 
 export const OuterWrapper = styled.div`
   border-radius: 4px;
@@ -180,11 +156,6 @@ export const InnerWrapper = styled.div`
   font-family: var(--font-mono);
   font-size: 0.875rem;
   font-weight: 700;
-`;
-
-const StyledP = styled.p`
-  font-family: var(--font-open-sans);
-  font-style: italic;
 `;
 
 export default Garden;
