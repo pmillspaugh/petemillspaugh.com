@@ -1,15 +1,15 @@
 import { useContext } from "react";
 import Link from "next/link";
-import VisuallyHidden from "@/components/VisuallyHidden";
 import styled from "styled-components";
 import { LightModeContext } from "pages/_app";
+import EmailSignup from "@/components/EmailSignup";
 import { PostFormat } from "@/components/Post";
+import VisuallyHidden from "@/components/VisuallyHidden";
 import NewfoundLake from "./NewfoundLake";
 import RssIcon from "./RssIcon";
 import GitHubIcon from "./GitHubIcon";
 import ValTownIcon from "./ValTownIcon";
 import TwitterIcon from "./TwitterIcon";
-import EmailSignup from "@/components/EmailSignup";
 
 const Footer = () => {
   const { lightMode } = useContext(LightModeContext);

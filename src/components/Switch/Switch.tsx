@@ -71,7 +71,7 @@ const Thumb = styled(RadixSwitch.Thumb)`
   border: 2px solid ${(p) => p.theme.textColor};
   outline: 2px solid ${(p) => p.theme.primaryBg};
   transform: translateX(0%);
-  transition: transform var(--fast-timing) ease-in-out;
+  transition: transform var(--base-timing) ease-in-out;
   will-change: transform;
 
   &[data-state="checked"] {

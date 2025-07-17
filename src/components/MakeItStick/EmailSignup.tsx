@@ -166,7 +166,7 @@ const StyledForm = styled.form`
     font-family: inherit;
     font-weight: 700;
     cursor: pointer;
-    transition: all var(--fast-timing) ease-in-out;
+    transition: all var(--base-timing) ease-in-out;
 
     &:not(:disabled):hover {
       background: var(--gold);
@@ -191,7 +191,7 @@ const StyledConfirmation = styled.p`
   font-weight: 0.875rem;
   font-family: inherit;
   font-weight: 700;
-  animation: ${fadeIn} var(--slow-timing) ease-in-out;
+  animation: ${fadeIn} var(--base-timing) ease-in-out;
 `;
 
 export default MakeItStickEmailSignup;

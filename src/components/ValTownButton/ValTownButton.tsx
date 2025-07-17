@@ -157,12 +157,12 @@ const StyledButton = styled.button`
 
   &:hover > span {
     transform: translateY(-4px);
-    transition: transform var(--fast-timing) ease-in-out;
+    transition: transform var(--base-timing) ease-in-out;
   }
 
   &:active > span {
     transform: translateY(-1px);
-    transition: transform var(--fast-timing) ease-in-out;
+    transition: transform var(--base-timing) ease-in-out;
   }
 
   &:focus:not(:focus-visible) {
@@ -185,7 +185,7 @@ const StyledDiv = styled.span.withConfig({
   & > span {
     opacity: ${(p) => (p.loading ? 0 : 1)};
     transition: opacity var(--base-timing) ease-in-out;
-    animation: ${fadeIn} var(--slow-timing) ease-in-out;
+    animation: ${fadeIn} var(--base-timing) ease-in-out;
   }
 
   /* TODO: transitioning width for unknown max num of digits */
