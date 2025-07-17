@@ -2,15 +2,33 @@
   "compilerOptions": {
     "baseUrl": "src/",
     "paths": {
-      "@/images/*": ["../public/images/*"],
-      "@/audio/*": ["../public/audio/*"],
-      "@/components/*": ["components/*"],
-      "@/styles/*": ["styles/*"],
-      "@/helpers/*": ["server/helpers/*"],
-      "@/hooks/*": ["hooks/*"],
-      "@/constants": ["constants"]
+      "@/images/*": [
+        "../public/images/*"
+      ],
+      "@/audio/*": [
+        "../public/audio/*"
+      ],
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/styles/*": [
+        "styles/*"
+      ],
+      "@/helpers/*": [
+        "server/helpers/*"
+      ],
+      "@/hooks/*": [
+        "hooks/*"
+      ],
+      "@/constants": [
+        "constants"
+      ]
     },
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -22,8 +40,16 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "target": "ES2017"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.mdx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.mdx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
