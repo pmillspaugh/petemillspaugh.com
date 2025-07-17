@@ -23,9 +23,7 @@ export const GlobalStyle = createGlobalStyle`
     --aqua: ${COLORS.Aqua};
 
     /* Animations */
-    --base-timing: 500ms;
-    --fast-timing: 150ms;
-    --slow-timing: 1000ms;
+    --base-timing: 200ms;
   }
 
   /*
@@ -56,7 +54,6 @@ export const GlobalStyle = createGlobalStyle`
     color: ${(p) => p.theme.linkTextColor};
     text-decoration-thickness: 1.5px;
     text-underline-offset: 0.125em;
-    transition: all var(--fast-timing) ease-in-out;
 
     &:hover {
       text-decoration-color: ${(p) => p.theme.linkTextColorHover};

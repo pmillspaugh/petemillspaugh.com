@@ -83,7 +83,7 @@ const StyledWrapper = styled.div`
 
   & > h1,
   & > p {
-    animation: ${fadeIn} var(--slow-timing) ease-in-out;
+    animation: ${fadeIn} var(--base-timing) ease-in-out;
   }
 `;
 

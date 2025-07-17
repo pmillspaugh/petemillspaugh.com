@@ -22,7 +22,7 @@ const StyledCode = styled.code`
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
     box-shadow: 0px 1.5px 0px ${(p) => p.theme.linkTextColor};
-    transition: all var(--fast-timing) ease-in-out;
+    transition: all var(--base-timing) ease-in-out;
   }
 
   a:hover > & {

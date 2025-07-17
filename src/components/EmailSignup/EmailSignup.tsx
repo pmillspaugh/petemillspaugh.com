@@ -113,7 +113,7 @@ const StyledForm = styled.form`
     font-size: 0.8em;
     font-weight: 700;
     cursor: pointer;
-    transition: all var(--fast-timing) ease-in-out;
+    transition: all var(--base-timing) ease-in-out;
 
     &:not(:disabled):hover {
       background: var(--white);
@@ -144,7 +144,7 @@ const StyledConfirmation = styled.p`
   font-family: var(--font-mono), monospace;
   font-size: 0.8rem;
   font-weight: 700;
-  animation: ${fadeIn} var(--slow-timing) ease-in-out;
+  animation: ${fadeIn} var(--base-timing) ease-in-out;
 `;
 
 export default EmailSignup;
