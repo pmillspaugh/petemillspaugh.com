@@ -9,7 +9,8 @@ export default function Bookshelf() {
       <p className={styles.p}>
         These are books I’ve read and would read again, listed alphabetically.
         There’s a <Link href="/present-you">present me</Link> bias toward books
-        I’ve read recently and care about now (summer ’25).{" "}
+        I’ve read recently or care about now (when I set up this bookshelf in
+        summer 2025).{" "}
       </p>
       <p className={styles.p}>
         More books are listed on my{" "}
@@ -112,6 +113,13 @@ export default function Bookshelf() {
           blurb="For non-fiction readers"
           affliateLink="https://bookshop.org/a/115276/9780063422018"
         /> */}
+        <Book
+          title="The Anxious Generation"
+          author="Jonathan Haidt"
+          image="/images/the-anxious-generation.webp"
+          blurb="For parents, teachers"
+          affliateLink="https://bookshop.org/a/115276/9780593655030"
+        />
         <Book
           title="The Art of Doing Science and Engineering"
           author="Richard Hamming"
