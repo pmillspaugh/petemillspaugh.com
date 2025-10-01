@@ -2,16 +2,16 @@
 slug: nextjs-search-with-pagefind
 title: Add search to your Next.js static site with Pagefind
 planted: October 25, 2023
-watered: October 25, 2023
+watered: October 1, 2025
 format: ShowNTell
 status: Evergreen
 ---
 
-[Pagefind](https://pagefind.app/) is a neat OSS client-side search library that just recently reached `v1.0.0` in September ’23. From the docs:
+[Pagefind](https://pagefind.app/) is a neat open source client-side search library. From the docs:
 
 > Pagefind is a fully static search library that aims to perform well on large sites, while using as little of your users’ bandwidth as possible, and without hosting any infrastructure.
 
-The docs do a terrific job of explaining things, and the search experience feels really snappy (hit `⌘+K` to give it a try). To get Pagefind working with Next.js, it takes a few extra steps.
+The docs do a terrific job explaining things, and the search UX feels really snappy (hit `cmd/ctrl+k` to test it out). To get Pagefind working with Next.js, it takes a few extra steps.
 
 ## Run pagefind after build
 
@@ -21,9 +21,9 @@ Start by installing Pagefind as a dev dependency:
 npm i -D pagefind
 ```
 
-The Pagefind CLI generates a static search index from your site’s static files after building. The [`--site`](https://pagefind.app/docs/config-options/#site) flag indicates the output dir of your built static files, and the [`--output-path`](https://pagefind.app/docs/config-options/#output-path) option is where the search bundle will be written—more on that below. I’m on Next `13.4.9` and the `/pages` router, so adjust as needed.
+The Pagefind CLI generates a static search index from your site’s static files after building. The [`--site`](https://pagefind.app/docs/config-options/#site) flag indicates the output directory of your built static files, and the [`--output-path`](https://pagefind.app/docs/config-options/#output-path) option is where the search bundle will be written.
 
-```json package.json focus=4
+```json
 {
   "scripts": {
     "build": "next build",
@@ -32,19 +32,19 @@ The Pagefind CLI generates a static search index from your site’s static files
 }
 ```
 
-I’m using pnpm, which [doesn’t support](https://pnpm.io/cli/run#differences-with-npm-run) `pre-` and `post-` scripts by default, so I just appended `&& <pagefind-script>` to my build script. You can also [enable pre- and post- scripts](https://pnpm.io/cli/run#enable-pre-post-scripts) with pnpm.
+I initially wrote these instructions for Next v13.4.9 using the pages router, but I've also set up Pagefind for Next v15.3.4 using the app router—just swap out `/pages` for `/app` in the postbuild script.
 
-Depending on how you build and deploy, you might be able to avoid adding the dependency and postbuild script altogether by running `npx pagefind` instead.
+On this site I’m using pnpm, which [doesn’t support](https://pnpm.io/cli/run#differences-with-npm-run) `pre-` and `post-` scripts by default, so I just appended the script to my build command using the `&&` operator. You can also [enable pre- and post- scripts](https://pnpm.io/cli/run#enable-pre-post-scripts) with pnpm. Depending on how you build and deploy, you might be able to avoid adding the dependency and postbuild script altogether by running `npx pagefind` instead.
 
 ## Dynamically import search bundle
 
-The tricky bits that tripped me up were (1) handling errors in development, and (2) configuring Webpack to allow the import to resolve correctly.
+A couple tricky wrinkles to handle are (1) handling errors in development, and (2) configuring Webpack to allow the import to resolve correctly.
 
 The first one is an issue because the Pagefind search index is generated _after_ build, so it doesn’t exist when running `next dev`. One way to solve this is creating a `/pagefind/pagefind.js` file that returns some mock search results in development, or you can add a try-catch and `@ts-expect-error` comment to avoid creating the extra file ([thanks to noxify](https://github.com/pmillspaugh/petemillspaugh.com/pull/15#discussion_r1371544139) for the tip!).
 
-The second problem is that Webpack will bundle `/pagefind/pagefind.js` and output the contents into a new file, so the import path will hit a dead end. That’s where the [`webpackIgnore`](https://webpack.js.org/api/module-methods/#webpackignore) comment comes in handy, preserving the initial path. Files in the `/pages` directory (in `v13.4.9`, at least) will end up in the `.next/static/chunks/pages` folder upon build, hence the custom `--output-path` discussed above.
+The second problem is that Webpack will bundle `/pagefind/pagefind.js` and output the contents into a new file, so the import path will hit a dead end. That’s where the [`webpackIgnore`](https://webpack.js.org/api/module-methods/#webpackignore) comment comes in handy, preserving the initial path. Files in the `/pages` directory will end up in the `.next/static/chunks/pages` folder upon build, and `/app` router files will end up in `.next/static/chunks/app`.
 
-```tsx pages/search.tsx
+```tsx
 export default function SearchPage() {
   const [query, setQuery] = React.useState("");
   const [results, setResults] = React.useState([]);
@@ -58,6 +58,7 @@ export default function SearchPage() {
             /* webpackIgnore: true */ "./pagefind/pagefind.js"
           );
         } catch (e) {
+          // Empty or dummy results for local dev
           window.pagefind = { search: () => ({ results: [] }) };
         }
       }
@@ -92,11 +93,17 @@ export default function SearchPage() {
 
 function Result({ result }) {
   const [data, setData] = useState(null);
+  const [path, setPath] = useState("");
 
   React.useEffect(() => {
     async function fetchData() {
       const data = await result.data();
       setData(data);
+
+      const normalized = data.url
+        .replace(/^\/_next\/static\/chunks\/app\/server\/app/, "")
+        .replace(/\.html$/, "");
+      setPath(normalized);
     }
     fetchData();
   }, [result]);
@@ -104,7 +111,7 @@ function Result({ result }) {
   if (!data) return null;
 
   return (
-    <Link href={data.url}>
+    <Link href={path}>
       <h3>{data.meta.title}</h3>
       <p>{data.excerpt}</p>
     </Link>
@@ -112,11 +119,13 @@ function Result({ result }) {
 }
 ```
 
-The search implementation on this website is [public](https://github.com/pmillspaugh/petemillspaugh.com), so feel free to poke around (and suggest anything I could improve upon!).
+The search implementation on this website is [public](https://github.com/pmillspaugh/petemillspaugh.com), as is [my book website's source code](https://github.com/pmillspaugh/dotcom.press), so feel free to poke around (and suggest anything I could improve upon).
 
 ## Bells ’n whistles
 
-Pagefind exposes some handy options for refining your index and polishing search UI. I am using both the [`data-pagefind-body`](https://pagefind.app/docs/indexing/#limiting-what-sections-of-a-page-are-indexed) and [`data-pagefind-ignore`](https://pagefind.app/docs/indexing/#removing-individual-elements-from-the-index) attributes to exclude certain content from my search index (e.g. header, 404 page, homepage, etc.). I also swapped [`pagefind.debouncedSearch()`](https://pagefind.app/docs/api/#debounced-search) in place of the standard `pagefind.search()` to cut down on resource usage and prevent jarring flashes of results before you finish typing a search query.
+Pagefind exposes some handy options for refining your index and polishing search UI. I am using both the [`data-pagefind-body`](https://pagefind.app/docs/indexing/#limiting-what-sections-of-a-page-are-indexed) and [`data-pagefind-ignore`](https://pagefind.app/docs/indexing/#removing-individual-elements-from-the-index) attributes to exclude certain content from my search index (e.g. header, 404 page, homepage, etc.).
+
+You can also swap out [`pagefind.debouncedSearch()`](https://pagefind.app/docs/api/#debounced-search) in place of the standard `pagefind.search()` to cut down on resource usage and prevent jarring flashes of results before you finish typing a search query. I used to do this, but I’ve since moved camps.
 
 There are options to [filter](https://pagefind.app/docs/api/#filtering) and [sort](https://pagefind.app/docs/api/#sorting-results) results, too, which I may tap into down the road. Check out the docs for other neat options, like [multilingual support](https://pagefind.app/docs/multilingual/).
 
