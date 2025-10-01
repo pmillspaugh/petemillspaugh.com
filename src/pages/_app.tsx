@@ -30,15 +30,19 @@ const App = ({ Component, pageProps }) => {
           );
         } catch (error) {
           window.pagefind = {
-            debouncedSearch: () => ({
+            search: () => ({
               results: [
                 {
                   id: "pretzels",
                   data: async () => ({
                     url: "/pretzels.html",
                     meta: { title: "These pretzels are making me thirsty" },
-                    excerpt:
-                      "these <mark>pretzels</mark> are making me thirsty",
+                    sub_results: [
+                      {
+                        excerpt:
+                          "these <mark>pretzels</mark> are making me thirsty",
+                      },
+                    ],
                   }),
                 },
               ],
