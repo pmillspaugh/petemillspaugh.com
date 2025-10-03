@@ -114,7 +114,7 @@ const Footer = () => {
                 </li>
               </StyledIconUl>
               <StyledCopyright>
-                © 2023{" "}
+                © {new Date().getFullYear()}{" "}
                 <a href="mailto:pete@petemillspaugh.com" rel="me">
                   Pete Millspaugh
                 </a>
