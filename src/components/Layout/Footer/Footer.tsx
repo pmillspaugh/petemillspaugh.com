@@ -69,7 +69,9 @@ const Footer = () => {
                   <StyledLink href="/wishlist">Wishlist</StyledLink>
                 </li>
                 <li>
-                  <StyledLink href="/blogroll">Blogroll</StyledLink>
+                  <StyledExternalLink href="https://dotcom.press/tld-wiki">
+                    TLD wiki
+                  </StyledExternalLink>
                 </li>
                 <li>
                   <StyledExternalLink href="https://weeksofyour.life">

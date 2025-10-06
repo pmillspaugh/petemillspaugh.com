@@ -26,8 +26,8 @@ export default function Home() {
           <h2>Now</h2>
           <p className={styles.p}>
             I’m writing a book,{" "}
-            <em>dot com et al: The secret life of Internet domains</em>. Follow
-            along at <a href="https://dotcom.press">dotcom.press</a>.
+            <em>dot com et al: the secret life of domains</em>. Follow along at{" "}
+            <a href="https://dotcom.press">dotcom.press</a>.
           </p>
         </section>
 
