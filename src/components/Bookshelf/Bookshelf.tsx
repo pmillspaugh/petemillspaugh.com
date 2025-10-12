@@ -8,20 +8,11 @@ export default function Bookshelf() {
       <h1 className={styles.h1}>Bookshelf</h1>
       <p className={styles.p}>
         These are books I’ve read and would read again, listed alphabetically.
-        There’s a <Link href="/present-you">present me</Link> bias toward books
-        I’ve read recently or care about now (when I set up this bookshelf in
-        summer 2025).{" "}
-      </p>
-      <p className={styles.p}>
-        More books are listed on my{" "}
-        <a href="https://bookshop.org/shop/pete-millspaugh">
-          Bookshop.org affiliate page
-        </a>
-        .{" "}
-        <em>
-          If you purchase a book through an affiliate link, I’ll earn a 10%
-          commission on the profit.
-        </em>
+        There are so many amazing books I’ve excluded because I’m not sure I’d
+        read them again, but that might not be the best filter. There’s also a{" "}
+        <Link href="/present-you">present me</Link> bias toward books I’ve read
+        recently or care about now (when I set up this bookshelf in summer
+        2025).{" "}
       </p>
       <ul className={styles.shelf}>
         <Book
@@ -30,45 +21,30 @@ export default function Bookshelf() {
           image="/images/a-small-matter-of-programming.webp"
           blurb="For programmers"
           noteLink="/a-small-matter-of-programming"
-          affliateLink="https://bookshop.org/a/115276/9780262292368"
+          goodreadsLink="https://www.goodreads.com/book/show/581700.A_Small_Matter_of_Programming"
         />
-        {/* <Book
-          title="All the Light We Cannot See"
-          author="Anthony Doerr"
-          image="/images/all-the-light-we-cannot-see.jpg"
-          blurb="For fiction readers"
-          affliateLink="https://bookshop.org/a/115276/9781501173219"
-        /> */}
         <Book
           title="Born to Run"
           author="Christopher McDougall"
           image="/images/born-to-run.jpg"
           blurb="For runners"
           noteLink="/born-to-run"
-          affliateLink="https://bookshop.org/a/115276/9780307279187"
+          goodreadsLink="https://www.goodreads.com/book/show/6289283-born-to-run"
         />
         <Book
           title="Demon Copperhead"
           author="Barbara Kingsolver"
           image="/images/demon-copperhead.jpg"
           blurb="For Dickens readers"
-          affliateLink="https://bookshop.org/a/115276/9780063251984"
+          goodreadsLink="https://www.goodreads.com/book/show/60194162-demon-copperhead"
         />
         <Book
-          title="Don't Sweat the Small Stuff"
+          title="Don’t Sweat the Small Stuff"
           author="Richard Carlson"
           image="/images/dont-sweat-the-small-stuff.webp"
           blurb="For humans"
           noteLink="/dont-sweat-the-small-stuff"
-          affliateLink="https://bookshop.org/a/115276/9780786881857"
-        />
-        <Book
-          title="Hackers & Painters"
-          author="Paul Graham"
-          image="/images/hackers-and-painters.webp"
-          blurb="For programmers"
-          noteLink="/hackers-and-painters"
-          affliateLink="https://bookshop.org/a/115276/9781449389550"
+          goodreadsLink="https://www.goodreads.com/book/show/170548.Don_t_Sweat_the_Small_Stuff_and_It_s_All_Small_Stuff"
         />
         <Book
           title="How Not to Die"
@@ -76,87 +52,44 @@ export default function Bookshelf() {
           image="/images/how-not-to-die.jpg"
           blurb="For the vegan-interested"
           noteLink="/how-not-to-die"
-          affliateLink="https://bookshop.org/a/115276/9781250066114"
+          goodreadsLink="https://www.goodreads.com/book/show/25663961-how-not-to-die"
         />
         <Book
           title="Make It Stick"
           author="Brown, Roediger, McDaniel"
           image="/images/make-it-stick.webp"
           blurb="For lifelong learners"
-          affliateLink="https://bookshop.org/a/115276/9780674729018"
+          goodreadsLink="https://www.goodreads.com/book/show/18770267-make-it-stick"
         />
-        {/* <Book
-          title="Moneyball"
-          author="Michael Lewis"
-          image="/images/moneyball.jpg"
-          blurb="For sports fans"
-          affliateLink="https://bookshop.org/a/115276/9780393324815"
-        /> */}
-        {/* <Book
-          title="Rocket Boys"
-          author="Homer Hickam, Jr."
-          image="/images/rocket-boys.jpg"
-          blurb="For boys and crafty learners"
-          affliateLink="https://bookshop.org/a/115276/9780385333214"
-        /> */}
-        {/* <Book
-          title="Rules of Civility"
-          author="Amor Towles"
-          image="/images/rules-of-civility.jpg"
-          blurb="For fiction readers, New Yorkers"
-          affliateLink="https://bookshop.org/a/115276/9780143121169"
-        /> */}
-        {/* <Book
-          title="Sapiens"
-          author="Yuval Noah Harari"
-          image="/images/sapiens.webp"
-          blurb="For non-fiction readers"
-          affliateLink="https://bookshop.org/a/115276/9780063422018"
-        /> */}
         <Book
           title="The Anxious Generation"
           author="Jonathan Haidt"
           image="/images/the-anxious-generation.webp"
           blurb="For parents, teachers"
-          affliateLink="https://bookshop.org/a/115276/9780593655030"
+          goodreadsLink="https://www.goodreads.com/book/show/171681821-the-anxious-generation"
         />
         <Book
-          title="The Art of Doing Science and Engineering"
-          author="Richard Hamming"
-          image="/images/the-art-of-doing-science-and-engineering.webp"
-          blurb="For programmers"
-          noteLink="/the-art-of-doing-science-and-engineering"
-          affliateLink="https://bookshop.org/a/115276/9781732265172"
-        />
-        <Book
-          title="The Artist's Way"
+          title="The Artist’s Way"
           author="Julia Cameron"
           image="/images/the-artists-way.jpg"
           blurb="For (aspiring) artists"
           noteLink="/the-artists-way"
-          affliateLink="https://bookshop.org/a/115276/9780143129257"
+          goodreadsLink="https://www.goodreads.com/book/show/615570.The_Artist_s_Way"
         />
-        {/* <Book
-          title="The Boys in the Boat"
-          author="Daniel James Brown"
-          image="/images/boys-in-the-boat.jpg"
-          blurb="For sport, history, and sport history fans"
-          affliateLink="https://bookshop.org/a/115276/9780143125471"
-        /> */}
         <Book
           title="The Business of Being a Writer"
           author="Jane Friedman"
           image="/images/the-business-of-being-a-writer.jpg"
           blurb="For writers and bloggers"
           noteLink="/the-business-of-being-a-writer"
-          affliateLink="https://bookshop.org/a/115276/9780226838656"
+          goodreadsLink="https://www.goodreads.com/book/show/219627375-the-business-of-being-a-writer-second-edition"
         />
         <Book
           title="The Coddling of the American Mind"
           author="Jonathan Haidt & Greg Lukianoff"
           image="/images/the-coddling-of-the-american-mind.jpg"
           blurb="For Gen Z and Gen Z-interested"
-          affliateLink="https://bookshop.org/a/115276/9780735224919"
+          goodreadsLink="https://www.goodreads.com/book/show/36556202-the-coddling-of-the-american-mind"
         />
         <Book
           title="The Creative Act"
@@ -164,7 +97,7 @@ export default function Bookshelf() {
           image="/images/the-creative-act.jpg"
           blurb="For creatives, artists"
           noteLink="/the-creative-act"
-          affliateLink="https://bookshop.org/a/115276/9780593652886"
+          goodreadsLink="https://www.goodreads.com/book/show/60965426-the-creative-act"
         />
         <Book
           title="The David Foster Wallace Reader"
@@ -172,70 +105,35 @@ export default function Bookshelf() {
           image="/images/dfw-reader.jpg"
           blurb="For anyone, really"
           noteLink="/on-dfw"
-          affliateLink="https://bookshop.org/a/115276/9780316182409"
+          goodreadsLink="https://www.goodreads.com/book/show/21423291-the-david-foster-wallace-reader"
         />
         <Book
           title="The Dream Machine"
           author="Mitchell Waldrop"
           image="/images/the-dream-machine.webp"
           blurb="For programmers"
-          affliateLink="https://bookshop.org/a/115276/9781732265110"
+          goodreadsLink="https://www.goodreads.com/book/show/722412.The_Dream_Machine"
         />
         <Book
           title="The Food Lab"
           author="Kenji López-Alt"
           image="/images/the-food-lab.webp"
           blurb="For science-y cooks"
-          affliateLink="https://bookshop.org/a/115276/9780393081084"
+          goodreadsLink="https://www.goodreads.com/book/show/24861842-the-food-lab"
         />
         <Book
           title="The Last Traverse"
           author="Ty Gagne"
           image="/images/the-last-traverse.jpg"
           blurb="For hikers, skiers, White Mountaineers"
-          affliateLink="https://bookshop.org/a/115276/9781734930832"
+          goodreadsLink="https://www.goodreads.com/book/show/55946570-the-last-traverse"
         />
-        {/* <Book
-          title="The Power of Habit"
-          author="Charles Duhigg"
-          image="/images/the-power-of-habit.webp"
-          blurb="For pretty much anyone"
-          affliateLink="https://bookshop.org/a/115276/9780812981605"
-        /> */}
-        {/* <Book
-          title="Thinking, Fast and Slow"
-          author="Daniel Kahneman"
-          image="/images/thinking-fast-and-slow.webp"
-          blurb="For the behavioral psych-interested"
-          affliateLink="https://bookshop.org/a/115276/9780674729018"
-        /> */}
-        {/* <Book
-          title="Unbroken"
-          author="Laura Hillenbrand"
-          image="/images/unbroken.jpg"
-          blurb="For fans of improbable stories"
-          affliateLink="https://bookshop.org/a/115276/9780812974492"
-        /> */}
-        {/* <Book
-          title="Where the Crawdads Sing"
-          author="Delia Owens"
-          image="/images/where-the-crawdads-sing.webp"
-          blurb="For fiction readers"
-          affliateLink="https://bookshop.org/a/115276/9780735219106"
-        /> */}
         <Book
           title="Why We Sleep"
           author="Matthew Walker"
           image="/images/why-we-sleep.webp"
           blurb="For humans"
-          affliateLink="https://bookshop.org/a/115276/9781501144325"
-        />
-        <Book
-          title="Word By Word"
-          author="Kory Stamper"
-          image="/images/word-by-word.jpg"
-          blurb="For word nerds"
-          affliateLink="https://bookshop.org/a/115276/9781101970263"
+          goodreadsLink="https://www.goodreads.com/book/show/34466963-why-we-sleep"
         />
       </ul>
     </>
@@ -248,13 +146,13 @@ const Book = ({
   image,
   blurb,
   noteLink,
-  affliateLink,
+  goodreadsLink,
 }: {
   title: string;
   author: string;
   image: string;
   blurb: string;
-  affliateLink: string;
+  goodreadsLink: string;
   noteLink?: string;
 }) => {
   return (
@@ -280,7 +178,7 @@ const Book = ({
             ~{" "}
           </>
         )}
-        <a href={affliateLink}>Buy on Bookshop.org</a>
+        <a href={goodreadsLink}>Goodreads</a>
       </p>
     </li>
   );

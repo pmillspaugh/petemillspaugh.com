@@ -1,0 +1,49 @@
+.h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-top: 16px;
+}
+
+@media (min-width: 768px) {
+  .h1 {
+    font-size: 4rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .h1 {
+    margin-bottom: 24px;
+  }
+}
+
+.p {
+  margin-bottom: 16px;
+}
+
+@media (min-width: 1200px) {
+  .p {
+    font-size: 1.25rem;
+    line-height: 1.75;
+    margin-bottom: 24px;
+  }
+}
+
+.ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 1200px) {
+  .ul {
+    font-size: 1.25rem;
+  }
+}
+
+.title {
+  font-weight: 700;
+}
+
+.date {
+  font-style: italic;
+}

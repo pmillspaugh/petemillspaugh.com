@@ -11,7 +11,6 @@ import Ol from "./Ol";
 import Ul from "./Ul";
 
 import AudioSwitch from "./AudioSwitch";
-import Bookshop from "./Bookshop";
 import Callout from "./Callout";
 import Figure from "./Figure";
 import ForgettingCurve from "./ForgettingCurve";
@@ -31,7 +30,6 @@ export const components = {
   ul: Ul,
   // custom components
   AudioSwitch,
-  Bookshop,
   Callout,
   Details,
   Figure,
