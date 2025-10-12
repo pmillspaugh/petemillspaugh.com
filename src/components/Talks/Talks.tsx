@@ -1,54 +1,60 @@
-import styled from "styled-components";
+import Link from "next/link";
+import styles from "./Talks.module.css";
 
 const Talks = () => {
   return (
     <>
-      <StyledH1>Talks</StyledH1>
-      <StyledP>
-        I've only ever given one public, recorded talk as you can see below. I'd
-        like to give more talks, mainly because preparing for one (“talk-driven
-        development”) encourages thorough learning much like teaching and
+      <h1 className={styles.h1}>Talks</h1>
+      <p className={styles.p}>
+        I like talks, mainly because preparing for one (“talk-driven
+        development”) encourages thorough learning, much like teaching and
         writing.
-      </StyledP>
-      <StyledUl>
+      </p>
+      <ul className={styles.ul}>
         <li>
-          <a href="https://www.youtube.com/watch?v=pPX0Gk0l6Vo&t=12s">
-            Introduction to Web Accessibility (July 2021)
-          </a>
+          <time className={styles.date} dateTime="2025-10-06">
+            October 8, 2025
+          </time>
+          <p className={styles.title}>
+            Claim your name @ StartupCincy Week 2025
+          </p>
+          <p>
+            My talk website is still live at{" "}
+            <a href="https://dotcom.press/cincy">dotcom.press/cincy</a>, and I
+            also wrote a{" "}
+            <Link href="/domains-for-startups">blog post version</Link> of the
+            talk that covers the same ground.
+          </p>
         </li>
-      </StyledUl>
+        <li>
+          <time className={styles.date} dateTime="2025-10-06">
+            October 6, 2025
+          </time>
+          <p className={styles.title}>
+            Best of Demo Night @ StartupCincy Week 2025
+          </p>
+          <p>
+            I demo’d{" "}
+            <a href="https://dotcom.press/tld-wiki">dotcom.press/tld-wiki</a>{" "}
+            for a crowd at the Woodward Theater.
+          </p>
+        </li>
+        <li>
+          <time className={styles.date} dateTime="2021-0724">
+            July 24, 2021
+          </time>
+          <p className={styles.title}>Introduction to Web Accessibility</p>
+          <p>
+            My{" "}
+            <a href="https://www.youtube.com/watch?v=pPX0Gk0l6Vo&t=12s">
+              recorded
+            </a>{" "}
+            talk covered the important basics of accessibility for web devs.
+          </p>
+        </li>
+      </ul>
     </>
   );
 };
-
-const StyledH1 = styled.h1`
-  font-size: 3rem;
-  font-weight: 900;
-  margin-top: 16px;
-
-  @media (min-width: 768px) {
-    font-size: 4rem;
-  }
-
-  @media (min-width: 1200px) {
-    margin-bottom: 24px;
-  }
-`;
-
-const StyledP = styled.p`
-  margin-bottom: 16px;
-
-  @media (min-width: 1200px) {
-    font-size: 1.25rem;
-    line-height: 1.75;
-    margin-bottom: 24px;
-  }
-`;
-
-const StyledUl = styled.ul`
-  @media (min-width: 1200px) {
-    font-size: 1.25rem;
-  }
-`;
 
 export default Talks;
