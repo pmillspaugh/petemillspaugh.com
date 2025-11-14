@@ -1,0 +1,101 @@
+---
+slug: interpreting-crafting-crafting-interpreters
+title: Interpreting Crafting Crafting Interpreters
+planted: November 14, 2025
+watered: November 14, 2025
+format: Note
+status: Seedling
+---
+
+Bob Nystrom is a [programmer-writer](/programmer-writer) who wrote a book titled [_Crafting Interpreters_](https://craftinginterpreters.com/) then wrote a blog post about writing the book called [Crafting “Crafting Interpreters”](https://journal.stuffwithstuff.com/2020/04/05/crafting-crafting-interpreters/). This is a blog post about that blog post.
+
+I’m writing this sort of because I couldn’t pass up the recursive title (credit to my friend Tom Robbins), but really because I’m writing and self-publishing a [book about domains](https://www.dotcom.press/) and want to record some notes on Bob’s process while I’m in the early stages of my own.
+
+## On time to print
+
+Here’s Bob’s opening line:
+
+> It took three years and 200,000 words more than I expected
+
+Three years is a long time! But it’s also a short time, if you ask the right author. I read in Jane Friedman’s newsletter this week that it took Will & Ariel Durant four decades to write and publish _The Story of Civilization_.
+
+How long a book takes depends on the subject matter. Heavily researched nonfiction takes longer than pure fiction. Bob literally wrote his own programming language for _Crafting Interpreters_. His book is much more technically ambitious than mine, but I’m guessing he didn’t spend time interviewing lots of people. It also depends on the author’s other commitments, whether you’re writing full time or only nights and weekends. The publisher may have a deadline. I recently met with an author who said his publisher gave him just six months.
+
+{/* I’d like to print my book in 2026. But I’m also working for a startup part-time, so that changes the math. Like Bob, I plan to self-publish and illustrate my book and make it available in many formats. And I have to write it. When you start to add it all up, it sounds like a lot. */}
+
+## On word count
+
+> I was aiming for 60,000 words and hoped to get it done in about a year. Here I am four years later sitting on a quarter of a million words.
+
+250k words is a lot! I get the sense that most mass market books (which Bob’s is not) aim for ~80k. I’d like to land closer to that. More specifically, I’m aiming for 256 pages on the dot. A perfect byte. 240 pages for the book (16 chapters, 15 pages each, say) and 16 pages for front- and backmatter.
+
+Why 256 pages? I started reading [_The Design of Books_](https://press.uchicago.edu/ucp/books/book/chicago/D/bo213648394.html) by Debbie Berne, and in it she explains what a 16-page signature is (an 8 page grid on both sides of a big piece of paper, folded and stitched up into a little booklet). I realized that her book is 16 of those 16-page signatures, and 16x16=256 (again, a perfect byte!). I really like the form factor of her book in my hand, and I like creative constraints, so 256 it is. With some font- and margin-sizing gymnastics it sounds achievable.
+
+## On serial publishing
+
+> I wrote my first book one chapter at a time. I drafted, edited, illustrated each chapter and put it online before moving to the next one. Serial publishing for the digital age. I really loved that process. It helped build an audience for the book and gave me incremental feedback which made the book better and kept me going. I don’t think I could write a whole book in the dark.
+
+I’ve been doing a version of this with my [email newsletters](https://dotcom.press/archive), but I don’t think I could actually serially publish with each chapter frozen in time. I keep moving stuff around, learning new stuff that I missed, and cutting stuff that isn’t as interesting as I once thought.
+
+I totally agree with the incremental feedback part. It meaningfully shapes the book and encourages me along the way. I don’t think I could write a whole book in the dark, either.
+
+> I intended to publish this book the same way, but the deeply interconnected nature of the chapters made that much harder.
+
+All the code in his book had to actually compile. Figuring out how to order explanations of code with circular dependencies makes narrative dependencies seem easy. But I keep running into this: I want to explain A before B and B before C, but C before A.
+
+## On illustrations
+
+> I went through two full pads of tracing paper, two pads of graph paper, a sketch pad, and several pens. I drew 181 illustrations.
+
+181 illustrations! No wonder the book took four years (that and the homemade programming language). But the illustrations are what makes the book magical at first flip. You can tell someone worked hard on it and that if you stick around to read it you might find more magic in there. I love Bob’s illustrations and think it’s worth the time to make my own, although perhaps just one per chapter.
+
+> I liked the hand-drawn look.
+
+Me too.
+
+> People often ask me what programs I used for the illustrations, assuming I did them all digitally...I went with Pigma Microns in 01 and 005. If I were doing it again, I think I’d do Faber-Castell Pitt pens.
+
+I’ve been considering buying an iPad ([which doesn’t magically make you a good artist](https://maggieappleton.com/still-cant-draw)) to make illustrations with Procreate, but idk. I’ve been making illustrations in a messy hand-drawn style in Excalidraw, like the sketches I drew for [A Brief History of Domains](https://www.dotcom.press/history-of-domains) and the [Val Town MCP](https://blog.val.town/mcp) launch. I do like drawing by hand, but scanning and photoshopping sounds onerous.
+
+> I hand letter everything. It takes a *long* time. I used to do graphic design, and I have this weird tic where any time I see something that looks handwritten, I look for multiple instances of the same letter to see if they are different or if the design just used a handwriting font. It’s almost always a handwriting font and I die a little inside to see the illusion evaporate.
+>
+> Well, this is *my* damned book and no reader will ever feel that disappointment. Every single fucking letter in every one of the illustrations was hand lettered and is unique.
+
+I get a similar ick from the Excalidraw and tldraw handwriting fonts (even though I love both tools). I think hand lettering is worth the time. Maybe I’ll do it for my cover, even. I have not gotten around to typesetting yet. As far as I can tell, [Maggie Appleton](https://maggieappleton.com) also hand letters her illustrated essays—like the one on [digital gardening](https://maggieappleton.com/garden-history) that I link to often—and I’m a big fan of her illustrations.
+
+> ...I spent time *changing my own handwriting* to better match the text font of the book. I taught myself to write double-story “a” and “g” letters...
+
+I also taught myself to write double-story a’s some years ago. I guess I’ll teach myself the double-story g, too. Bob dedicates his attention to many more details than those I’ve mentioned here. He sets a high bar, and I am grateful that he’s shared many of his techniques.
+
+## On Markdown
+
+> ...the text of the book is authored in Markdown, one file per chapter, just like my first book.
+
+I’ve been writing my book in Markdown so far and running some code to produce HTML for my email newsletter and website. One programmer-writer I talked to used Apple Pages for his book. Kevin Nguyen [used](https://www.theverge.com/apps/642131/7-writing-apps-book-scrivener-bear-iawriter) _seven_ different writing apps for his book. Scrivener comes up often. If you’ve written and published a book, what did you use? [Email](mailto:pete@petemillspaugh.com) or reach out on [Bluesky](https://bsky.app/profile/petemillspaugh.com) `:)`
+
+## On writing every day
+
+> I wrote. And wrote. And wrote. Every single day...I’ve been working on this book every day for around 1,400 days.
+
+While writing his books, Bob wrote every day. He did a bit of fancy accounting to make up for days he really couldn’t write, but he pretty much wrote every day. Even the dark ones. It’s better to read his words directly, so I won’t repeat it all here, except this:
+
+> This is not about how disciplined I was. Because during what have been some of the worst years of my life, a weird inversion happened. It’s not that I was going through that shit and still writing *in addition to* it. I *had* to keep writing. Writing was one thing I could still control in the face of many things I could not.
+
+This resonates. Writing has pulled me out of my dark corners. Not just out, but through. Writing through pain is a way out. Like Bob says, writing is in your control.
+
+Stephen King recommends the write-every-day rule in _On Writing_, if memory serves. I’m sure lots of writers swear by it—I didn’t need to wait for Stephen King to tell me. Julia Cameron says you have to write three Morning Pages every day, no excuses, if you’re taking [_The Artist’s Way_](/the-artists-way) seriously.
+
+I have not written every day since I started my book. Well, I probably have written _something_ just about every day, but I mean I haven’t worked on the book itself every day. Maybe I ought to. I buy the idea that if I want to become a good writer I need to write a lot.
+
+## Thank you, Bob
+
+I have a confession: I haven’t actually read Bob’s books. But I did flip through the illustrations in _Crafting Interpreters_ like a child who hasn’t learned to read yet, and I’ve read his blog posts enough to know that I think he’s a good writer. His book is one of many [models](https://stevekrouse.com/model) for mine. I am indebted to Bob for several other useful blog posts he’s written about book writing:
+
+- [640 Pages in 15 Months](https://journal.stuffwithstuff.com/2021/07/29/640-pages-in-15-months/)
+- [Zero to 95,688: How I wrote Game Programming Patterns](https://journal.stuffwithstuff.com/2014/04/22/zero-to-95688-how-i-wrote-game-programming-patterns/)
+- [Zero to 353 Pages: Bringing My Web Book to Print and E-book](https://journal.stuffwithstuff.com/2014/11/03/bringing-my-web-book-to-print-and-ebook/)
+- [How My Book Launch Went](https://journal.stuffwithstuff.com/2014/11/20/how-my-book-launch-went/)
+
+## Footnotes
+
+(1) Not [that Tom Robbins](https://en.wikipedia.org/wiki/Tom_Robbins).
