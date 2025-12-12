@@ -33,8 +33,8 @@ dependencies:
     specifier: ^1.1.0
     version: 1.1.0
   next:
-    specifier: 15.4.8
-    version: 15.4.8(@babel/core@7.23.0)(react-dom@19.1.2)(react@19.1.2)
+    specifier: 15.4.10
+    version: 15.4.10(@babel/core@7.23.0)(react-dom@19.1.2)(react@19.1.2)
   next-mdx-remote:
     specifier: ^5.0.0
     version: 5.0.0(@types/react@18.2.14)(acorn@8.15.0)(react@19.1.2)
@@ -81,7 +81,7 @@ devDependencies:
     version: 4.2.2
   next-sitemap:
     specifier: ^4.2.3
-    version: 4.2.3(next@15.4.8)
+    version: 4.2.3(next@15.4.10)
   pagefind:
     specifier: ^1.0.3
     version: 1.0.3
@@ -1781,8 +1781,8 @@ packages:
     resolution: {integrity: sha512-vuDRK05BOKfmoBYLNi2cujG2jrYbEod/ubSSyqgmEx9n/W3eZaJQdRNhTfumO+qmq/QTzLurW487n/PM/fHOkw==}
     dev: true
 
-  /@next/env@15.4.8:
-    resolution: {integrity: sha512-LydLa2MDI1NMrOFSkO54mTc8iIHSttj6R6dthITky9ylXV2gCGi0bHQjVCtLGRshdRPjyh2kXbxJukDtBWQZtQ==}
+  /@next/env@15.4.10:
+    resolution: {integrity: sha512-knhmoJ0Vv7VRf6pZEPSnciUG1S4bIhWx+qTYBW/AjxEtlzsiNORPk8sFDCEvqLfmKuey56UB9FL1UdHEV3uBrg==}
 
   /@next/eslint-plugin-next@13.4.9:
     resolution: {integrity: sha512-nDtGpa992tNyAkT/KmSMy7QkHfNZmGCBYhHtafU97DubqxzNdvLsqRtliQ4FU04CysRCtvP2hg8rRC1sAKUTUA==}
@@ -4877,7 +4877,7 @@ packages:
       - supports-color
     dev: false
 
-  /next-sitemap@4.2.3(next@15.4.8):
+  /next-sitemap@4.2.3(next@15.4.10):
     resolution: {integrity: sha512-vjdCxeDuWDzldhCnyFCQipw5bfpl4HmZA7uoo3GAaYGjGgfL4Cxb1CiztPuWGmS+auYs7/8OekRS8C2cjdAsjQ==}
     engines: {node: '>=14.18'}
     hasBin: true
@@ -4888,11 +4888,11 @@ packages:
       '@next/env': 13.4.9
       fast-glob: 3.3.1
       minimist: 1.2.8
-      next: 15.4.8(@babel/core@7.23.0)(react-dom@19.1.2)(react@19.1.2)
+      next: 15.4.10(@babel/core@7.23.0)(react-dom@19.1.2)(react@19.1.2)
     dev: true
 
-  /next@15.4.8(@babel/core@7.23.0)(react-dom@19.1.2)(react@19.1.2):
-    resolution: {integrity: sha512-jwOXTz/bo0Pvlf20FSb6VXVeWRssA2vbvq9SdrOPEg9x8E1B27C2rQtvriAn600o9hH61kjrVRexEffv3JybuA==}
+  /next@15.4.10(@babel/core@7.23.0)(react-dom@19.1.2)(react@19.1.2):
+    resolution: {integrity: sha512-itVlc79QjpKMFMRhP+kbGKaSG/gZM6RCvwhEbwmCNF06CdDiNaoHcbeg0PqkEa2GOcn8KJ0nnc7+yL7EjoYLHQ==}
     engines: {node: ^18.18.0 || ^19.8.0 || >= 20.0.0}
     hasBin: true
     peerDependencies:
@@ -4912,7 +4912,7 @@ packages:
       sass:
         optional: true
     dependencies:
-      '@next/env': 15.4.8
+      '@next/env': 15.4.10
       '@swc/helpers': 0.5.15
       caniuse-lite: 1.0.30001727
       postcss: 8.4.31
