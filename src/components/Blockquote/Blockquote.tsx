@@ -8,7 +8,6 @@ const Blockquote = ({ children }: { children: ReactNode }) => {
 const StyledBlockquote = styled.blockquote`
   font-size: 0.875rem;
   font-family: var(--font-open-sans);
-  font-style: italic;
   margin-bottom: 24px;
   padding-left: 16px;
   color: ${(p) => p.theme.blockquoteColor};
