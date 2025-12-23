@@ -9,6 +9,7 @@ import A from "./A";
 import Details from "./Details";
 import Ol from "./Ol";
 import Ul from "./Ul";
+import Sup from "./Sup";
 
 import AudioSwitch from "./AudioSwitch";
 import Callout from "./Callout";
@@ -28,6 +29,7 @@ export const components = {
   a: A,
   ol: Ol,
   ul: Ul,
+  Sup,
   // custom components
   AudioSwitch,
   Callout,
