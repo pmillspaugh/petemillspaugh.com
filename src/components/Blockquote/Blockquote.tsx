@@ -24,7 +24,7 @@ const StyledBlockquote = styled.blockquote`
 
     p,
     ul {
-      font-size: 1.05rem;
+      font-size: 1.1rem;
     }
   }
 `;

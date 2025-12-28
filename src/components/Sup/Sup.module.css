@@ -2,4 +2,8 @@
   font-size: 0.75em;
   line-height: 0;
   padding-left: 1px;
+
+  & > a {
+    text-decoration: none;
+  }
 }
