@@ -1,0 +1,107 @@
+---
+slug: the-nature-of-the-job
+title: The nature of the job
+planted: February 20, 2025
+watered: December 28, 2025
+format: Essay
+status: Budding
+---
+
+For the last three years—through these AI Everything Everywhere times—I’ve felt excited, overwhelmed, optimistic, pessimistic, assured, confused, powerful,.powerless, energized, and fatigued. Definitely _fatigued_. AI has made me feel every which way about the work of a programmer. About programmers in general, but really about me as an individual programmer. Is AI a Good or Bad thing for programmers? As your Staff Engineer would say, it depends. But I’m certain one thing has changed: _the nature of the job_.
+
+## The software engineering identity crisis
+
+This is a cathartic essay about a programmer’s relationship with AI. It’s supposed to help resolve my cognitive dissonance in a writing-as-thinking kind of way. I’ve seen many blog posts of the sort, and my favorite label for the genre is “the software engineering identity crisis,” taken from Annie Vella’s essay by that name. I’ve gathered a dozen of these essays—Annie’s and others I’ve come across in TLDR, Hacker News, Twitter/Bluesky, my RSS feed, etc—into a little collection. This is a small sampling of what’s out there, ordered chronologically:
+
+- [The one about AI](https://macwright.com/2023/04/15/ai), Tom MacWright
+- [A Coder Considers the Waning Days of the Craft](https://www.newyorker.com/magazine/2023/11/20/a-coder-considers-the-waning-days-of-the-craft), James Somers
+- [I’m glad AI didn’t exist when I learned to code](https://blog.shivs.me/im-glad-ai-didnt-exist-when-i-learned-to-code), Shiv Shanmugam
+- [The Software Engineering Identity Crisis](https://annievella.com/posts/the-software-engineering-identity-crisis), Annie Vella
+- [Why I stopped using AI code editors](https://lucianonooijen.com/blog/why-i-stopped-using-ai-code-editors), Luciano Nooijen
+- [Coding as Craft: Going Back to the Old Gym](http://cekrem.github.io/posts/coding-as-craft-going-back-to-the-old-gym), Christian Ekrem
+- [The Hidden Cost of AI Coding](https://terriblesoftware.org/2025/04/23/the-hidden-cost-of-ai-coding), Matheus Lima
+- [LLMs are Making Me Dumber](https://vvvincent.me/llms-are-making-me-dumber/), Vincent Cheng
+- [The Programmer Identity Crisis](https://hojberg.xyz/the-programmer-identity-crisis/), Simon Højberg
+- [After months of coding with LLMs, I’m going back to using my brain](https://albertofortin.com/writing/coding-with-ai), Alberto Fortin
+- [Engineers and AI: ramblings of a small startup founder](https://labadal.com/blogs/ruminations/engineers-and-ai.html), Abhinav
+- [I am a programmer, not a rubber-stamp that approves Copilot generated code](https://prahladyeri.github.io/blog/2025/10/i-am-a-programmer.html), Prahlad Yeri
+
+Annie frames the software engineering identity crisis to open her essay:
+
+> Many of us became software engineers because we found our identity in building things. Not managing things. Not overseeing things. _Building_ things. With our own hands, our own minds, our own code.
+> But that identity is being challenged...Can orchestrating AI ever give us that same sense of identity? Of being a builder, a creator, a problem solver?
+
+The shift from pre-AI to AI is like the shift (er, promotion) from individual contributor to engineering manager. You spend less of your time writing code and more of your time _reviewing_ code. You do have to think in both cases, of course, but the nature of the work is different. That’s why many programmers.prefer to stay on the IC track rather than taking the fork in the road to the EM track. I know many programmers who are well suited to engineering management (or AI overlord) because they like reviewing lots of code. I don’t, particularly. And the _people_ part of engineering management that does appeal to me is noticeably absent with AI. In his talk on [The Role of the Human Brain in Programming](https://www.youtube.com/watch?v=EVHyktjh4ks), Steve Krouse joked, “wouldn’t you love to wake up to a dozen [AI] Pull Requests you have to review?” That doesn’t sound fun to me. Writing code and working with other human people does.
+
+## Type 2 fun
+
+I haven’t been a programmer for that long, but I learned to code early enough (2021) to have already experienced what feels like two distinct periods. The nature of the work felt considerably different in 2021 and 2022 than it has thereafter. Back then, coding was more often _type 2 fun<Sup>[1](#footnotes)</Sup>_. It was slower, more deliberate. It was hard earned wins that led to durable learning. Not all the time, of course. Before LLMs were everywhere, you could still turn your brain off and copy-paste documentation snippets or Stack Overflow answers, or accept a coworker’s PR review suggestion without thinking critically. But those “lazy” (productive?) choices hardly match the pace of coding with LLMs.
+
+When I was first learning JavaScript, I loved going through [Just JavaScript](https://justjavascript.com) and watching Will Sentance’s under-the-hood “Hard Parts” lectures, or wrestling with LeetCode-style exercises. I liked learning how important details are in programming, _and I liked learning those details_. I was surprised and pleased to learn that programming nerds overlap considerably with English language nerds (who also revel in detail). I liked reading and writing documentation. I like the way Christian put it in “Going Back to the Old Gym” from the cathartic collection:
+
+> If people stop the occasional deadlock of grinding teeth, looking at a problem, crying, going for a walk, praying and screaming until suddenly it makes sense (and you learn something!), I’d call it severe regression, not progress.
+
+Slow is smooth, and smooth is fast. Or it was, anyway. I guess I just felt like the right way to do the job back then was also the way that pleased me most. Not much cognitive dissonance there.
+
+## Trading learning for productivity
+
+The most dissonance for me lies in the tradeoff between learning and productivity. Earlier this year I documented one such moment of choice paralysis between short-term productivity and long-term learning. I was writing end-to-end tests for a signup flow, and I needed to write logic for parsing a verification email to extract a confirmation link. Writing the JavaScript to do that is totally trivial for an LLM. Doing it by hand might’ve involved a quick MDN search to remember the interface of some JS API, like `DOMParser` and/or some `String` instance methods. So it would have been silly of me to handwrite it (and I didn’t). _But I like handwriting that sort of thing._ It’s what programming felt like when I started.out.
+
+That kind of task is satisfying, and it feels like better brain exercise than speeding along with LLM completions. There are many JavaScript APIs I could use in combination to extract a URL from an HTML string. It’s fun to figure out which ones I’d like to stitch together and which I should stow away for later. One implementation might be more readable and another more elegant. These programming tasks are satisfying both in isolation and in aggregate. Coding by hand like this every day for weeks, months, and years builds expertise. And I’m not saying leaning on LLMs doesn’t build expertise necessarily—it’s just a different kind. The nature of the job has changed.
+
+I am not totally cynical, not blanket anti-AI. To balance all the examples like that end-to-end test, I have many other moments where AI complements my critical thinking and helps me learn _more_. The learning-for-productivity tradeoff is not clear cut. In practice I try to embrace LLMs in moderation as an individual programmer, and there are applications of AI that I think are terrific for entire fields, like [Elicit](https://elicit.com)’s system that preserves the credibility and trustworthiness of academic research. What I’m getting at is the compounding risk of settling into a default routine on the wrong side of that learning-for-productivity tradeoff.
+
+It’s like offloading manual navigation to a turn-by-turn app. It’s more productive to use Google Maps to get where you’re going conveniently and efficiently. But you learn more about where you live—or where you’re visiting—if you plan out your route ahead of time then recall the directions as you go. I like this reply (which I can’t find now) to Steve’s tweet, “[Are LLMs making us dumber?](https://x.com/stevekrouse/status/1892597830155395137)”:
+
+> Google Maps is definitely making me dumb. I’ve driven places for 10 years and never really learned the layout.
+
+That is so true. I’ve been following turn-by-turn Google Maps less and less in recent years. And I now realize that’s the same underlying instinct that makes me scared of line-by-line code completions. I still use maps—I just like to look at the route ahead of time and figure out what direction I’m going, what streets to follow, when I should turn.
+
+Reaching for AI at your day job feels more _productive_, and you have an expectation or responsibility to be productive<Sup>[2](#footnotes)</Sup>. Prioritizing your own learning over productivity on the job accrues guilt. At least it does for me. Large language models help you build the thing faster, which is the primary end goal _for your company_ but only sometimes for you. My primary goal might be to build the thing faster, but it also might be to learn something durably, to enjoy the work, to look forward to Monday.
+
+## Looking forward to Monday
+
+The whole reason I care about the nature of the job is that I want to enjoy Mondays as much as I enjoy Fridays. That was my career goal when I was deciding what I wanted to do with my life in college: to look forward to Mondays and Fridays alike. I think of it as feeling engaged and energized by my work. You could also call it joy. In [_The World Beyond Your Head_](/the-world-beyond-your-head), Matthew Crawford calls joy “the feeling of one’s powers increasing” (252). And by powers he means agency, acquired through skill:
+
+> To pursue the fantasy of escaping heteronomy through abstraction is to give up on skill, and therefore to substitute technology-as-magic for the possibility of real agency. (72)
+
+Depending on an abstraction instead of your own skill is forfeiting agency. And AI is the ultimate abstraction. I know commanding an army of AI agents feels like “one’s powers increasing” to some, and I get that, but it tends to have the opposite effect on me. I heard about _The World Beyond Your Head_ from Tom MacWright’s blog post, [LLMs pivot to the aesthetics of thinking](https://macwright.com/2025/11/05/llms-thinking-pivot). Here’s Tom:
+
+> Honestly I think it could be interesting for LLMs to generate overviews of codebases, though they’ll often be wrong. But as a way of truly understanding and being accountable for the code, it seems about as useful as a McKinsey consultant creating a slide deck for the executives: you get a semblance of understanding without the real thing. And people actually doing engineering probably need the real thing. I think that getting that, acquiring that real experience and real understanding, will continue to be joyously slow and arduous.
+
+The slide deck example really hits home for me. Before I became a programmer I was briefly an investment banker. I worked ~12-16 hours a day, many of which were spent putting together these slide decks, but all I was left with was a “semblance of understanding” about the companies and deals on those slides. Jack of all trades, master of none. All breadth, no depth. That shallow knowledge base was part of my underlying motivation to make a hard career pivot to software engineering. I had Google’d “what’s an API” one too many times. I craved depth.
+
+> What I cannot create, I do not understand.
+
+That’s what Richard Feynman had [written on his blackboard](https://digital.archives.caltech.edu/collections/Images/1.10-29/) at the time of his death. I don’t like the mental fragility of not fully understanding how my own code works, where AI-generated code is “mine” in that it’s attributed to me in the git blame and I’m its maintainer going forward. I don’t fully understand it because I didn’t create it. I want that “joyously slow and arduous” work. Annie says “what matters most is preserving the essence of who we are: that pure joy of building things.” Tom also talks about that joy in his “The one about AI” essay from the collection:
+
+> I also just don’t especially want to stop thinking about code. I don’t want to stop writing sentences in my own voice. I get a lot of joy from craft. It’s not a universal attitude toward work, but I’ve always been thankful that programming is a craft that pays a good living wage. I’d be a luthier, photographer, or, who knows, if those jobs were as viable and available. But programming lets you write and think all day, and reliably pay my rent. Writing, both code and prose, for me, is both an end product and an end in itself. I don’t want to automate away the things that give me joy.
+
+I, too, want to keep writing prose and code by hand. And I’d like to do that for many decades while comfortably paying rent (or perhaps a mortgage, soon enough). This past summer I [left a job I liked](/july-2025#leaving-membrane) to [write a book](/july-2025#a-book). The nature of the job is different now. I split my time between writing, researching (reading, interviews), and coding (the book’s website, email newsletter system, and [other](https://www.dotcom.press/archive/wordle) [experiments](https://www.dotcom.press/tld-wiki)). The nature of the work suits me because:
+
+- I love writing
+- It’s nice having good reason to read a lot
+- I like talking to people about domains
+- I enjoy the technical and creative challenges of self-publishing
+
+These days I look forward to Monday as much as Friday. It’s the making money part that’s still a question mark (people don’t write books for the money<Sup>[3](#footnotes)</Sup>). I’d also like to still have one foot in the startup world. To that end, next week I’m officially joining [Val Town](https://val.town) part-time while continuing the book.
+
+For the better part of a year I’ve been hesitant to write and publish this essay. I’m an optimist, and thinking about AI makes me feel like a pessimist more often than I’m used to. Even if you’re optimistic about the promise of AI, you can be conflicted about the nature of your own work. Some days I embrace AI and others I unplug the LLM box and work analog. By putting my dissonance into words here, I’m following the example set by my new coworkers at Val Town. Tom [calls](https://macwright.com/2025/11/11/val-town) himself “incurably honest” and calls Steve “a master of saying the truth in situations when other people are afraid to.” They’ve both put forth honest takes on AI, and that’s what I’m trying to do here. I’ll keep writing to reconcile my feelings about AI and the job. It’s my nature.
+
+## Footnotes
+
+_(1) Type 2 fun is the uncomfortable yet satisfying kind of fun that you draw from doing hard things. For me those hard things include programming, running, moving furniture, maybe even eating healthy._
+
+_(2) And there are [doubts](https://arxiv.org/abs/2507.09089) that AI coding even is more productive. It might be an illusion of productivity. A quantity-isn’t-quality situation._
+
+_(3) With the notable exception of memoirs by famous people. Those are mostly cash grabs._
+
+{/* COMPOST ARE RAW NOTES I DIDN’T GET AROUND TO EDITING FOR THIS BLOG POST (I RAN OUT OF STEAM) OR WANTED TO RECORD WITHOUT MAKING THIS BLOG POST ANY LONGER. */}
+
+{/* ## Compost */}
+
+{/* In “Going Back to the Old Gym” (from the cathartic collection above) Christian responded to (Shopify CEO) Tobi Lütke’s announcement that “reflexive AI usage is now a baseline expectation at Shopify” with a defense of the gritty old gym-style Hard Work of coding. Tobi’s announcement left a bad taste in my mouth, too. I covered Shopify while working as an investment banker before becoming a programmer. Back then, I listened to Tobi speak on investor calls for quarterly earnings announcements (like, at my desk, for my job). I also listened to podcasts with Tobi out of interest (like, at the company gym after dinner before going back to my desk to work for many more hours). I remember hearing him say he believes everyone has N creative hours in the day, and he wants 5 of those allocated to Shopify every weekday for his employees. Tobi was a technical founder still getting his hands dirty coding on weekends as CEO. So it’s a bummer that he’d mandate his engineers to go “reflexively” AI-first. It might be the best business decision for Shopify—I don’t know. But I think AI-first makes a lot more sense from the perspective of someone like him whose primary job is _not_ coding. For someone who already reviews more code than they write. But if you never write code yourself and only review it, you’ll atrophy. You’ll rust. You’ll [forget how to drive](https://lucianonooijen.com/blog/why-i-stopped-using-ai-code-editors/), so to speak, as Luciano wrote about in his essay from the collection. I don’t want to review more code and write less of it. */}
+
+{/* I do like LLMs as a conversational partner to test my conceptual understanding, sometimes. Other times I like [talking to my duck](https://en.wikipedia.org/wiki/Rubber_duck_debugging). I generally don’t like multi-line autocompletions and copy-pasta code from chat. I don’t like thinking less. I mean, sometimes I like thinking less! We rely on all sorts of tools and abstractions that we don’t have to think about so that it’s possible to get anything.done. AI is the ultimate abstraction, but obviously programming is full of abstractions. Something something shoulders of giants. That LLMs allow you to skip past the stuff you don’t want to spend time on is not a tradeoff I like. I prefer having to decide what to do about the stuff I don’t want to spend time on. I liked the nature of programming as something that required being detail-oriented, where you have to care and learn about minutia. I am practical, though, so I don’t shun LLM tools now that they exist. So I’m not saying it’s worse from a third-person vantage point—it’s just that I enjoy it less, net. Learning Rust versus learning JavaScript has been different for me. My learning context was very apples and oranges, so it’s hard to truly compare those. But if LLMs didn’t exist, I might have been less lazy about it, less pressured by the productivity potential, forced to dig into the Rust docs and literature more, to wrestle with the Rust compiler more. */}
+
+{/* There’s a new [vibe coding hell](https://blog.boot.dev/education/vibe-coding-hell/) that resembles “tutorial hell” from the previous coding era.(pre-ChatGPT, November 2022). The difference is that tutorial hell means you can’t build anything yourself whereas vibe coding hell means you can build 80%.of a thing fast and struggle indefinitely with the residual 20%. */}
