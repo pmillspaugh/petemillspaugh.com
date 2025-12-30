@@ -10,6 +10,7 @@ import RssIcon from "./RssIcon";
 import GitHubIcon from "./GitHubIcon";
 import ValTownIcon from "./ValTownIcon";
 import TwitterIcon from "./TwitterIcon";
+import BlueskyIcon from "./BlueskyIcon";
 
 const Footer = () => {
   const { lightMode } = useContext(LightModeContext);
@@ -95,6 +96,15 @@ const Footer = () => {
                 </li>
                 <li>
                   <StyledIconLink
+                    href="https://bsky.app/profile/petemillspaugh.com"
+                    rel="me"
+                  >
+                    <BlueskyIcon />
+                    <VisuallyHidden>Pete Millspaugh on Bluesky</VisuallyHidden>
+                  </StyledIconLink>
+                </li>
+                <li>
+                  <StyledIconLink
                     href="https://github.com/pmillspaugh"
                     rel="me"
                   >
@@ -116,7 +126,7 @@ const Footer = () => {
                 </li>
               </StyledIconUl>
               <StyledCopyright>
-                © {new Date().getFullYear()}{" "}
+                © 2021-{new Date().getFullYear()}{" "}
                 <a href="mailto:pete@petemillspaugh.com" rel="me">
                   Pete Millspaugh
                 </a>
@@ -241,6 +251,7 @@ const StyledRowWrapper = styled.div`
 
 const StyledIconUl = styled.ul`
   display: flex;
+  align-items: end;
   gap: 16px;
 `;
 
