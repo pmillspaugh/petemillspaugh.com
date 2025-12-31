@@ -25,27 +25,29 @@ const Footer = () => {
               <StyledGardenUl>
                 <StyledGardenLi>
                   <StyledLink href="/garden">Garden</StyledLink>
-                  <StyledGardenLink href={`/garden?format=${PostFormat.Essay}`}>
+                  <StyledGardenLink
+                    href={`/garden?formats=${PostFormat.Essay}`}
+                  >
                     Essays
                   </StyledGardenLink>
                   <StyledGardenLink
-                    href={`/garden?format=${PostFormat.Brainstorm}`}
+                    href={`/garden?formats=${PostFormat.Brainstorm}`}
                   >
                     Brainstorms
                   </StyledGardenLink>
                   <StyledGardenLink
-                    href={`/garden?format=${PostFormat.ShowNTell}`}
+                    href={`/garden?formats=${PostFormat.ShowNTell}`}
                   >
                     Show 'n tells
                   </StyledGardenLink>
-                  <StyledGardenLink href={`/garden?format=${PostFormat.TIL}`}>
+                  <StyledGardenLink href={`/garden?formats=${PostFormat.TIL}`}>
                     TILs
                   </StyledGardenLink>
-                  <StyledGardenLink href={`/garden?format=${PostFormat.Note}`}>
+                  <StyledGardenLink href={`/garden?formats=${PostFormat.Note}`}>
                     Notes
                   </StyledGardenLink>
                   <StyledGardenLink
-                    href={`/garden?format=${PostFormat.Clipping}`}
+                    href={`/garden?formats=${PostFormat.Clipping}`}
                   >
                     Clippings
                   </StyledGardenLink>

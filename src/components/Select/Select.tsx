@@ -1,102 +1,105 @@
-import * as RadixSelect from "@radix-ui/react-select";
-import styled from "styled-components";
-import ChevronDownIcon from "./ChevronDownIcon";
+import { Select as BaseSelect } from "@base-ui/react/select";
+import styles from "./Select.module.css";
 
 interface SelectProps {
   placeholder: string;
-  value: string;
-  onValueChange: (value: string) => void;
-  items: string[];
+  values: string[];
+  value: string[];
+  onChange?: (value: string[]) => void;
 }
 
-const Select = ({ placeholder, value, onValueChange, items }: SelectProps) => {
+export default function Select({
+  placeholder,
+  values,
+  value,
+  onChange,
+}: SelectProps) {
+  function label(value: string[]) {
+    if (value.length === 0) {
+      return `Select ${placeholder}`;
+    }
+
+    if (value.length === values.length) {
+      return `All ${placeholder}`;
+    }
+
+    const first = value[0];
+    const more = value.length > 1 ? `+${value.length - 1}` : "";
+    return `${first} ${more}`;
+  }
+
   return (
-    <RadixSelect.Root value={value} onValueChange={onValueChange}>
-      <StyledTrigger>
-        <RadixSelect.Value placeholder={placeholder} />
-        <RadixSelect.Icon>
+    <BaseSelect.Root multiple value={value} onValueChange={onChange}>
+      <BaseSelect.Trigger className={styles.trigger}>
+        <BaseSelect.Value data-placeholder={placeholder}>
+          {label}
+        </BaseSelect.Value>
+        <BaseSelect.Icon>
           <ChevronDownIcon />
-        </RadixSelect.Icon>
-      </StyledTrigger>
+        </BaseSelect.Icon>
+      </BaseSelect.Trigger>
 
-      <RadixSelect.Portal>
-        <StyledSelectContent position="popper">
-          <RadixSelect.Viewport>
-            {items.map((item) => (
-              <StyledItem key={item} value={item}>
-                <RadixSelect.ItemText>{item}</RadixSelect.ItemText>
-              </StyledItem>
-            ))}
-            <StyledSeparator />
-            <StyledResetItem value={undefined}>Reset</StyledResetItem>
-          </RadixSelect.Viewport>
-          <RadixSelect.Arrow />
-        </StyledSelectContent>
-      </RadixSelect.Portal>
-    </RadixSelect.Root>
+      <BaseSelect.Portal>
+        <BaseSelect.Positioner
+          sideOffset={8}
+          alignItemWithTrigger={false}
+          className={styles.positioner}
+        >
+          <BaseSelect.Popup className={styles.popup}>
+            {/* <BaseSelect.ScrollUpArrow /> */}
+            <BaseSelect.List>
+              {values.map((item) => (
+                <BaseSelect.Item
+                  key={item}
+                  value={item}
+                  className={styles.item}
+                >
+                  <BaseSelect.ItemIndicator className={styles.indicator}>
+                    <CheckIcon className={styles.check} />
+                  </BaseSelect.ItemIndicator>
+                  <BaseSelect.ItemText className={styles.text}>
+                    {item}
+                  </BaseSelect.ItemText>
+                </BaseSelect.Item>
+              ))}
+            </BaseSelect.List>
+            {/* <Select.ScrollDownArrow /> */}
+          </BaseSelect.Popup>
+        </BaseSelect.Positioner>
+      </BaseSelect.Portal>
+    </BaseSelect.Root>
   );
-};
+}
 
-const StyledTrigger = styled(RadixSelect.Trigger)`
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 7px 8px 5px 8px;
-  background-color: ${(p) => p.theme.primaryBg};
-  border: 1.5px solid ${(p) => p.theme.textColor};
-  border-radius: 4px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  font-family: var(--font-mono);
+function ChevronDownIcon(props: React.ComponentProps<"svg">) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="square"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  );
+}
 
-  &:hover {
-    cursor: pointer;
-    color: ${(p) => p.theme.tagBorderColorHover};
-    border: 1.5px solid ${(p) => p.theme.tagBorderColorHover};
-  }
-`;
-
-const StyledSelectContent = styled(RadixSelect.Content)`
-  padding: 4px;
-  background-color: ${(p) => p.theme.primaryBg};
-  border: 1px solid ${(p) => p.theme.textColor};
-  border-radius: 4px;
-`;
-
-const StyledSeparator = styled(RadixSelect.Separator)`
-  height: 1px;
-  background-color: ${(p) => p.theme.textColor};
-  margin: 4px;
-`;
-
-const StyledItem = styled(RadixSelect.Item)`
-  padding: 4px;
-  border-radius: 2px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  font-family: var(--font-mono);
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  &[data-highlighted] {
-    outline: none;
-    background-color: var(--green);
-    color: var(--white);
-  }
-`;
-
-const StyledResetItem = styled(StyledItem)`
-  font-family: var(--font-open-sans);
-  font-style: italic;
-  font-size: 0.875rem;
-
-  span {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-`;
-
-export default Select;
+function CheckIcon(props: React.ComponentProps<"svg">) {
+  return (
+    <svg
+      fill="currentColor"
+      width="10"
+      height="10"
+      viewBox="0 0 10 10"
+      {...props}
+    >
+      <path d="M9.1603 1.12218C9.50684 1.34873 9.60427 1.81354 9.37792 2.16038L5.13603 8.66012C5.01614 8.8438 4.82192 8.96576 4.60451 8.99384C4.3871 9.02194 4.1683 8.95335 4.00574 8.80615L1.24664 6.30769C0.939709 6.02975 0.916013 5.55541 1.19372 5.24822C1.47142 4.94102 1.94536 4.91731 2.2523 5.19524L4.36085 7.10461L8.12299 1.33999C8.34934 0.993152 8.81376 0.895638 9.1603 1.12218Z" />
+    </svg>
+  );
+}
