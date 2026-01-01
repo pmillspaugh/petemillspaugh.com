@@ -33,7 +33,7 @@ const TriggerButton = styled.button`
 `;
 
 const Content = styled(RadixPopover.Content)`
-  max-width: 300px;
+  max-width: min(400px, calc(100vw - 32px));
   border-radius: 4px;
   border: 1px solid var(--black);
   background-color: ${(p) => p.theme.popoverBorderColor};

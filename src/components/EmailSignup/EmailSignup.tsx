@@ -105,8 +105,8 @@ const StyledForm = styled.form`
   & > button {
     width: 166px;
     margin-top: 8px;
-    color: var(--white);
-    background: var(--dark-green);
+    color: var(--dark-green);
+    background: var(--white);
     border: 1.5px solid var(--white);
     border-radius: 4px;
     font-family: var(--font-mono), monospace;
@@ -116,9 +116,9 @@ const StyledForm = styled.form`
     transition: all var(--base-timing) ease-in-out;
 
     &:not(:disabled):hover {
-      background: var(--white);
+      color: var(--white);
+      background: var(--dark-green);
       border: 1.5px solid var(--white);
-      color: var(--dark-green);
     }
 
     &:disabled {

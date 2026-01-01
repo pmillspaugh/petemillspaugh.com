@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";
@@ -20,72 +19,85 @@ export interface GardenProps {
 
 const Garden = ({ posts }: GardenProps) => {
   const router = useRouter();
-  const { format: queryFormat, status: queryStatus } = router.query;
+  const { formats: queryFormats, stages: queryStages } = router.query;
 
-  const [format, setFormat] = useState<PostFormat | "">("");
-  const [status, setStatus] = useState<PostStatus | "">("");
-  const [filteredPosts, setFilteredPosts] = useState(posts);
+  // Wait for router to be ready before reading query params
+  const selectedFormats =
+    router.isReady && queryFormats
+      ? (typeof queryFormats === "string"
+          ? queryFormats.split(",")
+          : queryFormats
+        ).map((f) => PostFormatDescription[f as PostFormat])
+      : Object.values(PostFormatDescription).filter((f) => f !== "TIL");
 
-  useEffect(() => {
-    if (!queryFormat && !queryStatus) {
-      setFormat("");
-      setStatus("");
-      return;
+  // Derive selected statuses from URL (or use defaults)
+  const selectedStatuses =
+    router.isReady && queryStages
+      ? ((typeof queryStages === "string"
+          ? queryStages.split(",")
+          : queryStages) as PostStatus[])
+      : Object.values(PostStatus);
+
+  // Filter posts based on URL-derived selections
+  const filteredPosts = posts.filter((post) => {
+    // If no formats selected or all formats selected, show all formats
+    const formatMatch =
+      selectedFormats.length === 0 ||
+      selectedFormats.length === Object.values(PostFormatDescription).length ||
+      selectedFormats.includes(PostFormatDescription[post.format]);
+
+    // If no statuses selected or all statuses selected, show all statuses
+    const statusMatch =
+      selectedStatuses.length === 0 ||
+      selectedStatuses.length === Object.values(PostStatus).length ||
+      selectedStatuses.includes(post.status);
+
+    return formatMatch && statusMatch;
+  });
+
+  const handleFormatChange = (value: string[]) => {
+    // Convert PostFormatDescription values to PostFormat enum values for URL
+    const formatEnums = value
+      .map((desc) => {
+        const entry = Object.entries(PostFormatDescription).find(
+          ([_, description]) => description === desc
+        );
+        return entry?.[0];
+      })
+      .filter(Boolean);
+
+    const queryParts: string[] = [];
+    if (formatEnums.length > 0) {
+      queryParts.push(`formats=${formatEnums.join(",")}`);
+    }
+    if (queryStages) {
+      const stages = Array.isArray(queryStages)
+        ? queryStages.join(",")
+        : queryStages;
+      queryParts.push(`stages=${stages}`);
     }
 
-    if (Object.values(PostFormat).includes(queryFormat as PostFormat)) {
-      setFormat(queryFormat as PostFormat);
-    }
-    if (Object.values(PostStatus).includes(queryStatus as PostStatus)) {
-      setStatus(queryStatus as PostStatus);
-    }
-  }, [queryFormat, queryStatus]);
-
-  useEffect(() => {
-    if (!format && !status && !queryFormat && !queryStatus) {
-      setFilteredPosts(posts);
-      return;
-    }
-
-    const filtered = posts.filter((post) => {
-      if (format && post.format !== format) {
-        return false;
-      }
-
-      if (status && post.status !== status) {
-        return false;
-      }
-
-      return true;
-    });
-
-    setFilteredPosts(filtered);
-  }, [posts, format, status, queryFormat, queryStatus]);
-
-  const handleFormatChange = (value: string) => {
-    if (value === PostFormatDescription[PostFormat.ShowNTell]) {
-      setFormat(PostFormat.ShowNTell);
-      router.push({
-        pathname: router.pathname,
-        query: { ...router.query, format: PostFormat.ShowNTell },
-      });
-      return;
-    }
-
-    value === undefined ? setFormat("") : setFormat(value as PostFormat);
-
-    router.push({
-      pathname: router.pathname,
-      query: { ...router.query, format: value },
+    const queryString = queryParts.length > 0 ? `?${queryParts.join("&")}` : "";
+    router.push(`${router.pathname}${queryString}`, undefined, {
+      shallow: true,
     });
   };
 
-  const handleStatusChange = (value: string) => {
-    value === undefined ? setStatus("") : setStatus(value as PostStatus);
+  const handleStatusChange = (value: string[]) => {
+    const queryParts: string[] = [];
+    if (queryFormats) {
+      const formats = Array.isArray(queryFormats)
+        ? queryFormats.join(",")
+        : queryFormats;
+      queryParts.push(`formats=${formats}`);
+    }
+    if (value.length > 0) {
+      queryParts.push(`stages=${value.join(",")}`);
+    }
 
-    router.push({
-      pathname: router.pathname,
-      query: { ...router.query, status: value },
+    const queryString = queryParts.length > 0 ? `?${queryParts.join("&")}` : "";
+    router.push(`${router.pathname}${queryString}`, undefined, {
+      shallow: true,
     });
   };
 
@@ -104,16 +116,16 @@ const Garden = ({ posts }: GardenProps) => {
         </Popover>
         <div className={styles.filters}>
           <Select
-            placeholder="Format"
-            value={PostFormatDescription[format] ?? ""}
-            onValueChange={handleFormatChange}
-            items={Object.values(PostFormatDescription)}
+            placeholder="formats"
+            values={Object.values(PostFormatDescription)}
+            value={selectedFormats}
+            onChange={handleFormatChange}
           />
           <Select
-            placeholder="Status"
-            value={status}
-            onValueChange={handleStatusChange}
-            items={Object.values(PostStatus)}
+            placeholder="stages"
+            values={Object.values(PostStatus)}
+            value={selectedStatuses}
+            onChange={handleStatusChange}
           />
         </div>
       </div>
@@ -126,9 +138,8 @@ const Garden = ({ posts }: GardenProps) => {
       </ul>
       {!filteredPosts.length && (
         <p className={styles.p}>
-          Nothing planted is both a {PostFormatDescription[format]} and a{" "}
-          {status}. You can <Link href="/garden">reset</Link> or choose another
-          filter.
+          No posts match the selected filters. You can{" "}
+          <Link href="/garden">reset</Link> or choose other filters.
         </p>
       )}
     </div>

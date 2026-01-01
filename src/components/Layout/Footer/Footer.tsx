@@ -10,6 +10,7 @@ import RssIcon from "./RssIcon";
 import GitHubIcon from "./GitHubIcon";
 import ValTownIcon from "./ValTownIcon";
 import TwitterIcon from "./TwitterIcon";
+import BlueskyIcon from "./BlueskyIcon";
 
 const Footer = () => {
   const { lightMode } = useContext(LightModeContext);
@@ -24,27 +25,29 @@ const Footer = () => {
               <StyledGardenUl>
                 <StyledGardenLi>
                   <StyledLink href="/garden">Garden</StyledLink>
-                  <StyledGardenLink href={`/garden?format=${PostFormat.Essay}`}>
+                  <StyledGardenLink
+                    href={`/garden?formats=${PostFormat.Essay}`}
+                  >
                     Essays
                   </StyledGardenLink>
                   <StyledGardenLink
-                    href={`/garden?format=${PostFormat.Brainstorm}`}
+                    href={`/garden?formats=${PostFormat.Brainstorm}`}
                   >
                     Brainstorms
                   </StyledGardenLink>
                   <StyledGardenLink
-                    href={`/garden?format=${PostFormat.ShowNTell}`}
+                    href={`/garden?formats=${PostFormat.ShowNTell}`}
                   >
                     Show 'n tells
                   </StyledGardenLink>
-                  <StyledGardenLink href={`/garden?format=${PostFormat.TIL}`}>
+                  <StyledGardenLink href={`/garden?formats=${PostFormat.TIL}`}>
                     TILs
                   </StyledGardenLink>
-                  <StyledGardenLink href={`/garden?format=${PostFormat.Note}`}>
+                  <StyledGardenLink href={`/garden?formats=${PostFormat.Note}`}>
                     Notes
                   </StyledGardenLink>
                   <StyledGardenLink
-                    href={`/garden?format=${PostFormat.Clipping}`}
+                    href={`/garden?formats=${PostFormat.Clipping}`}
                   >
                     Clippings
                   </StyledGardenLink>
@@ -95,6 +98,15 @@ const Footer = () => {
                 </li>
                 <li>
                   <StyledIconLink
+                    href="https://bsky.app/profile/petemillspaugh.com"
+                    rel="me"
+                  >
+                    <BlueskyIcon />
+                    <VisuallyHidden>Pete Millspaugh on Bluesky</VisuallyHidden>
+                  </StyledIconLink>
+                </li>
+                <li>
+                  <StyledIconLink
                     href="https://github.com/pmillspaugh"
                     rel="me"
                   >
@@ -116,7 +128,7 @@ const Footer = () => {
                 </li>
               </StyledIconUl>
               <StyledCopyright>
-                © {new Date().getFullYear()}{" "}
+                © 2021-{new Date().getFullYear()}{" "}
                 <a href="mailto:pete@petemillspaugh.com" rel="me">
                   Pete Millspaugh
                 </a>
@@ -241,6 +253,7 @@ const StyledRowWrapper = styled.div`
 
 const StyledIconUl = styled.ul`
   display: flex;
+  align-items: end;
   gap: 16px;
 `;
 

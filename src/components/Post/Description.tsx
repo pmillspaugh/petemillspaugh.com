@@ -24,7 +24,7 @@ function EssayDescription() {
       </StyledP>
       <StyledP>
         You can find all Essays{" "}
-        <Link href={`/garden?format=${PostFormat.Essay}`}>in the garden</Link>{" "}
+        <Link href={`/garden?formats=${PostFormat.Essay}`}>in the garden</Link>{" "}
         and an explanation of my writing formats{" "}
         <Link href="/about#garden">on the about page</Link>.
       </StyledP>
@@ -47,7 +47,7 @@ function BrainstormDescription() {
       </StyledP>
       <StyledP>
         You can find all Brainstorms{" "}
-        <Link href={`/garden?format=${PostFormat.Brainstorm}`}>
+        <Link href={`/garden?formats=${PostFormat.Brainstorm}`}>
           in the garden
         </Link>{" "}
         and an explanation of my writing formats{" "}
@@ -67,7 +67,7 @@ function ShowNTellDescription() {
         with more code snippets than my Essays.
         <StyledP></StyledP>
         You can find all Show n' tells{" "}
-        <Link href={`/garden?format=${PostFormat.ShowNTell}`}>
+        <Link href={`/garden?formats=${PostFormat.ShowNTell}`}>
           in the garden
         </Link>{" "}
         and an explanation of my writing formats{" "}
@@ -92,8 +92,8 @@ function TILDescription() {
       </StyledP>
       <StyledP>
         You can find all TILs{" "}
-        <Link href={`/garden?format=${PostFormat.TIL}`}>in the garden</Link> and
-        an explanation of my writing formats{" "}
+        <Link href={`/garden?formats=${PostFormat.TIL}`}>in the garden</Link>{" "}
+        and an explanation of my writing formats{" "}
         <Link href="/about#garden">on the about page</Link>.
       </StyledP>
     </>
@@ -111,7 +111,7 @@ function NoteDescription() {
       </StyledP>
       <StyledP>
         You can find all Notes{" "}
-        <Link href={`/garden?format=${PostFormat.Note}`}>in the garden</Link>{" "}
+        <Link href={`/garden?formats=${PostFormat.Note}`}>in the garden</Link>{" "}
         and an explanation of my writing formats{" "}
         <Link href="/about#garden">on the about page</Link>.
       </StyledP>
@@ -130,7 +130,7 @@ function ClippingDescription() {
       <StyledP>
         You can sign up to receive clippings in the{" "}
         <Link href="#footer">footer</Link>, see all clippings in the{" "}
-        <Link href={`/garden?format=${PostFormat.Clipping}`}>garden</Link> , or
+        <Link href={`/garden?formats=${PostFormat.Clipping}`}>garden</Link> , or
         read an explanation of my writing formats on the{" "}
         <Link href="/about#garden">about</Link> page.
       </StyledP>
@@ -148,7 +148,7 @@ function SeedlingDescription() {
       </StyledP>
       <StyledP>
         You can find all Seedlings{" "}
-        <Link href={`/garden?status=${PostStatus.Seedling}`}>
+        <Link href={`/garden?stages=${PostStatus.Seedling}`}>
           in the garden
         </Link>{" "}
         and an explanation of my writing growth stages{" "}
@@ -169,7 +169,7 @@ function BuddingDescription() {
       </StyledP>
       <StyledP>
         You can find all Buddings{" "}
-        <Link href={`/garden?status=${PostStatus.Budding}`}>in the garden</Link>{" "}
+        <Link href={`/garden?stages=${PostStatus.Budding}`}>in the garden</Link>{" "}
         and an explanation of my writing growth stages{" "}
         <Link href="/about#garden">on the about page</Link>.
       </StyledP>
@@ -187,7 +187,7 @@ function EvergreenDescription() {
       </StyledP>
       <StyledP>
         You can find all Evergreens{" "}
-        <Link href={`/garden?status=${PostStatus.Evergreen}`}>
+        <Link href={`/garden?stages=${PostStatus.Evergreen}`}>
           in the garden
         </Link>{" "}
         and an explanation of my writing growth stages{" "}

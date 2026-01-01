@@ -1,0 +1,59 @@
+.h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-top: 1rem;
+}
+
+.h2 {
+  font-size: 1.75rem;
+  font-weight: 300;
+  margin-top: 0.75em;
+  margin-bottom: 0.5em;
+}
+
+.h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-block: 0.5em;
+}
+
+.p {
+  margin-bottom: 1em;
+}
+
+.ul {
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+
+  li {
+    margin-bottom: 0.75em;
+  }
+
+  & > li::before {
+    content: "✦ ";
+    padding-right: 4px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .h1 {
+    font-size: 4rem;
+  }
+
+  .h2 {
+    font-size: 2.75rem;
+  }
+
+  .h3 {
+    font-size: 1.75rem;
+  }
+
+  .p {
+    font-size: 1.25rem;
+    line-height: 1.75;
+  }
+
+  .ul {
+    font-size: 1.25rem;
+  }
+}

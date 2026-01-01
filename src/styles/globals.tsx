@@ -22,6 +22,23 @@ export const GlobalStyle = createGlobalStyle`
     --gold: ${COLORS.Gold};
     --aqua: ${COLORS.Aqua};
 
+    /* Theme colors */
+    --primary-bg: ${(p) => p.theme.primaryBg};
+    --text-color: ${(p) => p.theme.textColor};
+    --link-text-color: ${(p) => p.theme.linkTextColor};
+    --link-text-color-hover: ${(p) => p.theme.linkTextColorHover};
+    --date-text-color: ${(p) => p.theme.dateTextColor};
+    --code-bg: ${(p) => p.theme.codeBg};
+    --code-color: ${(p) => p.theme.codeColor};
+    --blockquote-color: ${(p) => p.theme.blockquoteColor};
+    --tag-border-color: ${(p) => p.theme.tagBorderColor};
+    --tag-border-color-hover: ${(p) => p.theme.tagBorderColorHover};
+    --popover-bg: ${(p) => p.theme.popoverBg};
+    --popover-border-color: ${(p) => p.theme.popoverBorderColor};
+    --switch-enabled-bg: ${(p) => p.theme.switchEnabledBg};
+    --vt-logo-bg: ${(p) => p.theme.vtLogoBg};
+    --vt-logo-color: ${(p) => p.theme.vtLogoColor};
+
     /* Animations */
     --base-timing: 200ms;
   }
