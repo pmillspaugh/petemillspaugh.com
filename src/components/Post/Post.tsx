@@ -6,8 +6,6 @@ import { OuterWrapper, InnerWrapper } from "@/components/Garden";
 import { PostFormatDescription, PostMetadata } from "./types";
 import Tag from "./Tag";
 import Backlinks from "./Backlinks";
-import Feedback from "./Feedback";
-import Divider from "./Divider";
 
 export interface PostProps {
   mdxSource: MDXRemoteSerializeResult;
@@ -58,9 +56,7 @@ const Post = ({ mdxSource, metadata, backlinks }: PostProps) => {
       <div>
         <MDXRemote {...mdxSource} components={components} />
       </div>
-      <Divider />
       {Boolean(backlinks.length) && <Backlinks backlinks={backlinks} />}
-      <Feedback />
     </>
   );
 };
