@@ -17,6 +17,9 @@ const PostPage = ({ mdxSource, metadata, backlinks }: PostProps) => {
           property="og:url"
           content={`https://petemillspaugh.com/${metadata.slug}`}
         />
+        {metadata.canonical && (
+          <link rel="canonical" href={metadata.canonical} />
+        )}
       </Head>
       <Post mdxSource={mdxSource} metadata={metadata} backlinks={backlinks} />
     </>
