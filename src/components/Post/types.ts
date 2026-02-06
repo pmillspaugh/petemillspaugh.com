@@ -29,4 +29,5 @@ export interface PostMetadata {
   watered: string;
   format: PostFormat;
   status: PostStatus;
+  canonical?: string;
 }
