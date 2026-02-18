@@ -70,6 +70,8 @@ export async function getPostData(slug: string) {
       useDynamicImport: true,
     },
     parseFrontmatter: true,
+    blockJS: false,
+    blockDangerousJS: true,
   });
 
   const backlinks = await getBacklinks(slug);
