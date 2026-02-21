@@ -34,7 +34,7 @@ The Pagefind CLI generates a static search index from your site’s static files
 
 I initially wrote these instructions for Next v13.4.9 using the pages router, but I've also set up Pagefind for Next v15.3.4 using the app router—just swap out `/pages` for `/app` in the postbuild script.
 
-On this site I’m using pnpm, which [doesn’t support](https://pnpm.io/cli/run#differences-with-npm-run) `pre-` and `post-` scripts by default, so I just appended the script to my build command using the `&&` operator. You can also [enable pre- and post- scripts](https://pnpm.io/cli/run#enable-pre-post-scripts) with pnpm. Depending on how you build and deploy, you might be able to avoid adding the dependency and postbuild script altogether by running `npx pagefind` instead.
+If you’re using pnpm, which [doesn’t support](https://pnpm.io/cli/run#differences-with-npm-run) `pre-` and `post-` scripts by default, you can append the script to your build command using the `&&` operator. You can also [enable pre- and post- scripts](https://pnpm.io/cli/run#enable-pre-post-scripts) with pnpm. Depending on how you build and deploy, you might be able to avoid adding the dependency and postbuild script altogether by running `npx pagefind` instead.
 
 ## Dynamically import search bundle
 

@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 interface CurveProps {
-  repetitions: number;
+  $repetitions: number;
 }
 
-const Curves = ({ repetitions }: CurveProps) => (
+const Curves = ({ $repetitions }: CurveProps) => (
   <Wrapper>
     <StyledSvg
       width="302"
@@ -12,7 +12,7 @@ const Curves = ({ repetitions }: CurveProps) => (
       viewBox="0 0 302 301"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      repetitions={repetitions}
+      $repetitions={$repetitions}
     >
       <g id="zero-repetitions">
         <path
@@ -105,32 +105,32 @@ const StyledSvg = styled.svg<CurveProps>`
   }
 
   & > g[id="zero-repetitions"] {
-    opacity: ${({ repetitions }) => (repetitions === 0 ? 1 : 0)};
+    opacity: ${({ $repetitions }) => ($repetitions === 0 ? 1 : 0)};
     transform: translateX(
-      ${({ repetitions }) => (repetitions === 0 ? "0px" : "-300px")}
+      ${({ $repetitions }) => ($repetitions === 0 ? "0px" : "-300px")}
     );
   }
 
   & > g[id="one-repetition"] {
-    opacity: ${({ repetitions }) => (repetitions === 1 ? 1 : 0)};
+    opacity: ${({ $repetitions }) => ($repetitions === 1 ? 1 : 0)};
     transform: translateX(
-      ${({ repetitions }) =>
-        repetitions === 1 ? "0px" : repetitions > 1 ? "-300px" : "300px"}
+      ${({ $repetitions }) =>
+        $repetitions === 1 ? "0px" : $repetitions > 1 ? "-300px" : "300px"}
     );
   }
 
   & > g[id="two-repetitions"] {
-    opacity: ${({ repetitions }) => (repetitions === 2 ? 1 : 0)};
+    opacity: ${({ $repetitions }) => ($repetitions === 2 ? 1 : 0)};
     transform: translateX(
-      ${({ repetitions }) =>
-        repetitions === 2 ? "0px" : repetitions > 2 ? "-300px" : "300px"}
+      ${({ $repetitions }) =>
+        $repetitions === 2 ? "0px" : $repetitions > 2 ? "-300px" : "300px"}
     );
   }
 
   & > g[id="three-repetitions"] {
-    opacity: ${({ repetitions }) => (repetitions === 3 ? 1 : 0)};
+    opacity: ${({ $repetitions }) => ($repetitions === 3 ? 1 : 0)};
     transform: translateX(
-      ${({ repetitions }) => (repetitions === 3 ? "0px" : "300px")}
+      ${({ $repetitions }) => ($repetitions === 3 ? "0px" : "300px")}
     );
   }
 
