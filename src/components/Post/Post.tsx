@@ -16,18 +16,30 @@ export interface PostProps {
 const Post = ({ mdxSource, metadata, backlinks }: PostProps) => {
   const { title, planted, watered, format, status } = metadata;
 
+  function formatDate(date) {
+    return new Intl.DateTimeFormat("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }).format(date);
+  }
+
   return (
     <>
       <StyledH1>{title}</StyledH1>
       <MetadataList data-pagefind-ignore>
         <li>
           Planted:{" "}
-          <time dateTime={new Date(planted).toISOString()}>{planted}</time>
+          <time dateTime={planted}>
+            {formatDate(new Date(`${planted}T00:00:00`))}
+          </time>
         </li>
         {planted !== watered && (
           <li>
             Last watered:{" "}
-            <time dateTime={new Date(planted).toISOString()}>{watered}</time>
+            <time dateTime={watered}>
+              {formatDate(new Date(`${watered}T00:00:00`))}
+            </time>
           </li>
         )}
         <TagsContainer>
