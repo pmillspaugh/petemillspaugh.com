@@ -15,7 +15,7 @@ const ForgettingCurve = () => {
             <span>100%</span>
           </YLabel>
           <XLabel>Time</XLabel>
-          <Curves repetitions={repetitions} />
+          <Curves $repetitions={repetitions} />
         </Graph>
 
         <SliderLabel>Number of repetitions</SliderLabel>

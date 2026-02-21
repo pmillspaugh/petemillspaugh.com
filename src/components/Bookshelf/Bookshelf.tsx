@@ -82,7 +82,7 @@ export default function Bookshelf() {
           image="/images/the-business-of-being-a-writer.jpg"
           blurb="For writers and bloggers"
           noteLink="/the-business-of-being-a-writer"
-          goodreadsLink="https://www.goodreads.com/book/show/219627375-the-business-of-being-a-writer-second-edition"
+          goodreadsLink="https://businessofwriting.org/"
         />
         <Book
           title="The Coddling of the American Mind"

@@ -1,8 +1,8 @@
 ---
-slug: html-content-editable
+slug: html-contenteditable
 title: HTML contenteditable
-planted: December 23, 2023
-watered: December 23, 2023
+planted: 2023-12-23
+watered: 2023-12-23
 format: TIL
 status: Evergreen
 ---
@@ -11,9 +11,9 @@ While working on [weeksofyour.life](https://weeksofyour.life), I experimented wi
 
 It can be set to `"true"` or an empty string to make an element editable, `"false"` (default) to disable editing, or `"plaintext-only"` to enable plaintext editing only. The rich text editing is actually very cool, I think. Play around with the demo below.
 
-<h2 contentEditable="true">Demo</h2>
+<h2 contentEditable="true" suppressContentEditableWarning>Demo</h2>
 
-<span contentEditable="true">
+<span contentEditable="true" suppressContentEditableWarning>
   Try editing this paragraph and its heading! You can **bold**, _italicize_, or{" "}
   <u>underline</u> text. You can even add emojis like this: 🥞
 </span>
