@@ -1,54 +1,56 @@
-.intro {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-@media (min-width: 900px) {
-  .intro {
-    justify-content: end;
-  }
-}
-
 .h1 {
+  text-align: center;
   margin-block: 0.5em;
-  font-size: 3rem;
-  font-weight: 600;
+  font-size: clamp(2rem, 8vw, 4rem);
+  font-weight: 900;
   line-height: 1.25;
-
-  span {
-    font-weight: 900;
-  }
+  text-wrap: balance;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .h1 {
-    font-size: 2rem;
+    text-align: initial;
   }
-}
-
-.h2 {
-  font-size: 4rem;
 }
 
 .p {
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 4vw, 1.25rem);
   line-height: 1.75;
   margin-bottom: 1em;
   text-wrap: pretty;
 }
 
-@media (max-width: 768px) {
-  .p {
-    font-size: 1rem;
+.hr {
+  margin-block: 1rem;
+  border: unset;
+  text-align: center;
+
+  &::before {
+    content: "***";
+    color: initial;
+    font-weight: 700;
+  }
+}
+
+.h2 {
+  margin-top: 1em;
+  font-size: clamp(1.25rem, 8vw, 2rem);
+}
+
+.h3 {
+  margin-top: 1rem;
+  font-size: clamp(1rem, 4vw, 1.5rem);
+}
+
+.ul {
+  font-size: clamp(1rem, 4vw, 1.25rem);
+
+  li {
+    margin-bottom: 0.25rem;
   }
 }
 
 .form {
-  padding-inline: 4rem;
-  margin-top: 1.25rem;
-  margin-bottom: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -111,67 +113,6 @@
 
     input {
       flex-grow: 1;
-    }
-  }
-}
-
-.featured {
-  margin-block: 1rem;
-  border: 1.5px solid var(--code-bg);
-  border-radius: 4px;
-
-  & > a {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    text-decoration: none;
-    color: var(--text-color);
-
-    &:not(:last-child) {
-      border-bottom: 1.5px dashed var(--code-bg);
-    }
-
-    img {
-      margin: 4px;
-      background-color: var(--white);
-      border-right: 1.5px solid var(--code-bg);
-      border-radius: 2px;
-    }
-
-    h3 {
-      font-size: 2.5rem;
-      line-height: 1;
-      text-wrap: pretty;
-      margin-bottom: 0.5rem;
-    }
-
-    p {
-      font-size: 1.25rem;
-      font-style: italic;
-      text-wrap: pretty;
-      padding-right: 2rem;
-    }
-
-    &:hover {
-      opacity: 0.75;
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .featured {
-    & > a {
-      flex-direction: column;
-      gap: 0;
-
-      img {
-        border-right: none;
-        margin-bottom: -3rem;
-      }
-
-      div {
-        padding: 2rem;
-      }
     }
   }
 }

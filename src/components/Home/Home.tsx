@@ -1,103 +1,135 @@
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import Code from "@/components/Code";
 import CommandBar from "@/components/CommandBar";
 import VisuallyHidden from "@/components/VisuallyHidden";
 import useIsWindowsOrFirefox from "@/hooks/useIsWindowsOrFirefox.hook";
 import styles from "./Home.module.css";
-import cake from "@/images/cake.svg";
-import nature from "@/images/nature.svg";
-import malleable from "@/images/malleable.svg";
-import yu from "@/images/yu.svg";
-import weeks from "@/images/weeks-of-your-life.svg";
 
-export default function Home() {
+export default function Home({ numPosts }) {
   const isWindowsOrFirefox = useIsWindowsOrFirefox();
 
   return (
-    <div className={styles.intro}>
-      <h1 className={styles.h1}>
-        <span>Pete Millspaugh</span> » Programmer & writer in Cincinnati, Ohio.
-      </h1>
+    <div>
+      <h1 className={styles.h1}>Pete Millspaugh—programmer, writer</h1>
 
       <p className={styles.p}>
-        I’m writing a book about{" "}
-        <a href="https://dotcom.press">the secret life of internet domains</a>{" "}
-        and working part-time on the joy of programming at{" "}
-        <a href="https://val.town">Val Town</a>. You’ve found my digital
-        garden—welcome.
+        I’m writing a <a href="https://dotcom.press">book</a> about{" "}
+        <em>The Secret Life of Internet Domains</em> and working at{" "}
+        <a href="https://val.town">val.town</a>. This is my{" "}
+        <Link href="/about#garden">digital garden</Link>—welcome! Tug on the
+        edison bulb to turn off the lights,{" "}
+        <Code>{isWindowsOrFirefox ? "⌃" : "⌘"}+K</Code> to search, trees and
+        links in the footer.
       </p>
+
+      <h2 className={styles.h2}>Writing</h2>
+      <p className={styles.p}>
+        There are {numPosts} pieces of writing planted in{" "}
+        <Link href="/garden">the garden</Link>. Here’s a sampling of my work
+        from the garden and elsewhere.
+      </p>
+
+      <h3 className={styles.h3}>Domains</h3>
+      <ul className={styles.ul}>
+        <li>
+          <a href="https://dotcom.press/history-of-domains">
+            A Brief History of Domains
+          </a>{" "}
+          ✦
+        </li>
+        <li>
+          <a href="https://www.dotcom.press/archive/anguilla">
+            You can’t spell Anguilla without AI
+          </a>
+        </li>
+        <li>
+          <a href="https://www.dotcom.press/archive/icann84">
+            ICANN is not a boring bureaucracy
+          </a>
+        </li>
+        <li>
+          <a href="https://www.dotcom.press/archive/internet-handle">
+            Your domain is your “internet handle”
+          </a>
+        </li>
+      </ul>
+
+      <h3 className={styles.h3}>Programming</h3>
+      <ul className={styles.ul}>
+        <li>
+          <Link href="/the-nature-of-the-job">The nature of the job</Link>
+        </li>
+        <li>
+          <a href="https://dotcom.press/tld-wiki">TLD Wiki</a> ✦
+        </li>
+        <li>
+          <a href="https://weeksofyour.life">Weeks of your life</a> ✦
+        </li>
+        <li>
+          <Link href="/malleable-garden">A malleable garden</Link>
+        </li>
+        <li>
+          <Link href="/edison-bulb">Edison bulb</Link>
+        </li>
+      </ul>
+
+      <h3 className={styles.h3}>Concepts</h3>
+      <ul className={styles.ul}>
+        <li>
+          <Link href="/unhurried-ambition">Unhurried ambition</Link>
+        </li>
+        <li>
+          <Link href="/present-you">Present you</Link>
+        </li>
+        <li>
+          <Link href="/think-small">Think small</Link>
+        </li>
+        <li>
+          <Link href="/slippery-scope">Slippery scope</Link>
+        </li>
+        <li>
+          <Link href="/words">Shwords</Link>
+        </li>
+        <li>
+          <Link href="/editorial-rigor">Editorial rigor</Link>
+        </li>
+        <li>
+          <Link href="/my-next-next-next-job">My next, next, next job</Link>
+        </li>
+      </ul>
+
+      <h3 className={styles.h3}>Books</h3>
+      <ul className={styles.ul}>
+        <li>
+          <Link href="/write-your-book-like-youd-run-a-startup">
+            Write your book like you’d run a startup
+          </Link>{" "}
+          ✦
+        </li>
+        <li>
+          <Link href="/a-small-matter-of-programming">
+            A Small Matter of Programming
+          </Link>
+        </li>
+        <li>
+          <Link href="/on-writing-stephen-king">On Writing</Link>
+        </li>
+        <li>
+          <Link href="/take-it-from-me">Take It From Me</Link>
+        </li>
+        <li>
+          <Link href="/the-design-of-books">The Design of Books</Link>
+        </li>
+      </ul>
+
+      <h2 className={styles.h2}>Newsletter</h2>
+      <p className={styles.p}>
+        Subscribe to read <Link href="/garden?formats=Clipping">clippings</Link>{" "}
+        from the garden every ~few months.
+      </p>
+
       <Newsletter />
-
-      <p className={styles.p}>
-        You’re welcome to explore the full <Link href="/garden">garden</Link> or{" "}
-        read more <Link href="/about">about</Link> it. Tug on the edison bulb
-        (top right) to turn off the lights, and press{" "}
-        <Code>{isWindowsOrFirefox ? "⌃" : "⌘"}+K</Code> to search. You’ll find
-        over 100 scraps of writing planted in the garden—here’s a selection that
-        readers seem to like:
-      </p>
-
-      <section className={styles.featured}>
-        <a href="https://dotcom.press/history-of-domains">
-          <Image
-            src={cake}
-            alt="illustration of a birthday cake for the 40th anniversary of .com"
-            width={300}
-            height={300}
-          />
-          <div>
-            <h3>A brief history of domains</h3>
-            <p>This year, dot com turned 40.</p>
-          </div>
-        </a>
-        <Link href="/the-nature-of-the-job">
-          <Image src={nature} alt="illustration of" width={300} height={300} />
-          <div>
-            <h3>The nature of the job</h3>
-            <p>A cathartic essay about a programmer’s relationship with AI.</p>
-          </div>
-        </Link>
-        <a href="https://dotcom.press/archive/eminent-domains">
-          <Image
-            src={yu}
-            alt="illustration of a gravestone for Yugoslavia's internet domain"
-            width={300}
-            height={300}
-          />
-          <div>
-            <h3>Eminent domains</h3>
-            <p>
-              When domains go dark and countries reclaim their digital land.
-            </p>
-          </div>
-        </a>
-        <Link href="/malleable-garden">
-          <Image
-            src={malleable}
-            alt="illustration of"
-            width={300}
-            height={300}
-          />
-          <div>
-            <h3>A malleable garden</h3>
-            <p>What could you plant in a malleable garden?</p>
-          </div>
-        </Link>
-        <a href="https://weeksofyour.life">
-          <Image
-            src={weeks}
-            alt="illustration of a grid of blocks spelling out weeks of your life"
-            width={300}
-            height={300}
-          />
-          <div>
-            <h3>Weeks of your life</h3>
-            <p>An interactive visualization of your life, week by week.</p>
-          </div>
-        </a>
-      </section>
 
       <CommandBar />
     </div>

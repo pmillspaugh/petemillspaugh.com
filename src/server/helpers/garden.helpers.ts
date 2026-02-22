@@ -12,6 +12,18 @@ export interface PostParams {
   params: { slug: string };
 }
 
+export function getNumPosts() {
+  let num = 0;
+
+  const subdirs = readdirSync(POSTS_DIR);
+  for (const subdir of subdirs) {
+    const files = readdirSync(join(POSTS_DIR, subdir));
+    num += files.length;
+  }
+
+  return num;
+}
+
 export function getPostPaths() {
   const postFilenames = [];
 
@@ -37,7 +49,7 @@ export async function getPostData(slug: string) {
   const subdirs = readdirSync(POSTS_DIR);
   for (const subdir of subdirs) {
     const match = readdirSync(join(POSTS_DIR, subdir)).find((path) =>
-      path.includes(slug)
+      path.includes(slug),
     );
 
     if (match) {
