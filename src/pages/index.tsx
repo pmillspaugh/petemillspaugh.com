@@ -1,9 +1,9 @@
 import Head from "next/head";
-import { getPostPaths } from "@/helpers/garden.helpers";
+import { getNumPosts, getPostPaths } from "@/helpers/garden.helpers";
 import Home from "@/components/Home";
 import { generateRssFeed } from "@/helpers/rss.helpers";
 
-const HomePage = () => {
+const HomePage = ({ numPosts }) => {
   return (
     <>
       <Head>
@@ -11,7 +11,7 @@ const HomePage = () => {
         <meta name="title" property="og:title" content="Pete Millspaugh" />
         <meta property="og:url" content="https://petemillspaugh.com/" />
       </Head>
-      <Home />
+      <Home numPosts={numPosts} />
     </>
   );
 };
@@ -23,7 +23,9 @@ const HomePage = () => {
 export const getStaticProps = async () => {
   const postPaths = getPostPaths();
   await generateRssFeed(postPaths);
-  return { props: {} };
+
+  const numPosts = getNumPosts();
+  return { props: { numPosts } };
 };
 
 export default HomePage;
