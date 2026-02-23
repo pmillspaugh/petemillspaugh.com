@@ -53,15 +53,15 @@ export default function Home({ numPosts }) {
             Your domain is your “internet handle”
           </a>
         </li>
+        <li>
+          <a href="https://dotcom.press/tld-wiki">TLD Wiki</a> ✦
+        </li>
       </ul>
 
       <h3 className={styles.h3}>Programming</h3>
       <ul className={styles.ul}>
         <li>
           <Link href="/the-nature-of-the-job">The nature of the job</Link>
-        </li>
-        <li>
-          <a href="https://dotcom.press/tld-wiki">TLD Wiki</a> ✦
         </li>
         <li>
           <a href="https://weeksofyour.life">Weeks of your life</a> ✦
@@ -71,6 +71,9 @@ export default function Home({ numPosts }) {
         </li>
         <li>
           <Link href="/edison-bulb">Edison bulb</Link>
+        </li>
+        <li>
+          <Link href="/cultivating-emails">Cultivating email</Link>
         </li>
       </ul>
 
@@ -84,9 +87,6 @@ export default function Home({ numPosts }) {
         </li>
         <li>
           <Link href="/think-small">Think small</Link>
-        </li>
-        <li>
-          <Link href="/slippery-scope">Slippery scope</Link>
         </li>
         <li>
           <Link href="/words">Shwords</Link>
@@ -114,9 +114,6 @@ export default function Home({ numPosts }) {
         </li>
         <li>
           <Link href="/on-writing-stephen-king">On Writing</Link>
-        </li>
-        <li>
-          <Link href="/take-it-from-me">Take It From Me</Link>
         </li>
         <li>
           <Link href="/the-design-of-books">The Design of Books</Link>
