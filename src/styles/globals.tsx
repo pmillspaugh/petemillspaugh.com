@@ -113,7 +113,11 @@ export const GlobalStyle = createGlobalStyle`
     margin-top: 24px;
     margin-bottom: 36px;
   }
-  .ch-code-scroll-parent, .ch-code-scroll-content {
-    width: calc(100vw - 32px);
+  .ch-code-scroll-parent {
+    width: 100% !important;
   }
+  .ch-code-scroll-content {
+    overflow: auto !important;
+  }
+}
 `;
