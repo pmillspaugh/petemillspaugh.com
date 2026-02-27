@@ -20,7 +20,7 @@ export default function Home({ numPosts }) {
         <Link href="/about#garden">digital garden</Link>—welcome! Tug on the
         edison bulb to turn off the lights,{" "}
         <Code>{isWindowsOrFirefox ? "⌃" : "⌘"}+K</Code> to search, trees and
-        links in the footer.
+        links in the footer. Contact me at pete@petemillspaugh.com
       </p>
 
       <h2 className={styles.h2}>Writing</h2>
