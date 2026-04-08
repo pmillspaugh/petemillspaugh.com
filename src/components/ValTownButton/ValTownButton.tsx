@@ -4,8 +4,8 @@ import VisuallyHidden from "@/components/VisuallyHidden";
 import ValTownLogo from "./ValTownLogo";
 import useDebounce from "@/hooks/useDebounce.hook";
 
-const GET_URL = "https://petermillspaugh-getValTownButtonClicks.web.val.run";
-const SET_URL = "https://petermillspaugh-setValTownButtonClicks.web.val.run";
+const VAL_URL =
+  "https://pmillspaugh--69f6a2c6277211f0b46e569c3dd06744.web.val.run";
 const INTERVAL = 1000;
 const TIMEOUT = 10000;
 
@@ -19,7 +19,7 @@ const ValTownButton = () => {
   // TODO: could move to RSC with Suspense + Streaming SSR
   // so that the count is streamed in on load rather than extra round trip
   async function getValTownButtonClicks() {
-    const response = await fetch(GET_URL);
+    const response = await fetch(VAL_URL);
     const { valTownButtonClicks } = await response.json();
     setValTownButtonClicks(valTownButtonClicks);
     setLoading(false);
@@ -27,7 +27,7 @@ const ValTownButton = () => {
 
   const incrementValTownButtonClicks = useDebounce(async () => {
     setLoading(true);
-    const response = await fetch(SET_URL, { method: "POST" });
+    const response = await fetch(VAL_URL, { method: "POST" });
     const { valTownButtonClicks } = await response.json();
     setValTownButtonClicks(valTownButtonClicks);
     setLoading(false);

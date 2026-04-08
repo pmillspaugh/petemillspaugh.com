@@ -2,10 +2,20 @@
 slug: val-town-button
 title: The Val Town Button
 planted: 2023-11-14
-watered: 2023-11-19
+watered: 2026-04-08
 format: ShowNTell
-status: Seedling
+status: Budding
 ---
+
+<Callout>
+  I wrote this show 'n' tell in November 2023 about the first val I ever made on
+  Val Town. That was around when I wrote that I hoped [my next, next
+  job](/my-next-next-next-job) would be at Val Town and two years before I ended
+  up [joining Val Town](/december-2025#joining-val-town). I've since refactored
+  the original val because vals are now versioned folders of code instead of
+  single files, but I'm preserving this blog post as a snapshot of that moment
+  in time.
+</Callout>
 
 [val.town](https://www.val.town/) makes it really easy to run JavaScript. Their homepage does a better job explaining it than I would, so I’ll go straight to a demo.
 
@@ -15,37 +25,31 @@ Try pressing the button below this paragraph. Each button click triggers an API 
 
 Here’s the Val that persists the count:
 
-<iframe
-  style={{ border: "none", marginBottom: "24px" }}
-  id="the-val-town-button"
-  title="The Val Town Button: valTownButtonClicks"
-  width="100%"
-  height="180"
-  src="https://www.val.town/embed/petermillspaugh/valTownButtonClicks"
-  loading="lazy"
-/>
+```js
+export let valTownButtonClicks = 377;
+```
 
 And here are the Vals that fetch and increment the count:
 
-<iframe
-  style={{ border: "none", marginBottom: "16px" }}
-  id="the-val-town-button-getter"
-  title="The Val Town Button: getValTownButtonClicks"
-  width="100%"
-  height="300"
-  src="https://www.val.town/embed/petermillspaugh/getValTownButtonClicks"
-  loading="lazy"
-/>
+```js
+import { valTownButtonClicks } from "https://esm.town/v/petermillspaugh/valTownButtonClicks";
 
-<iframe
-  style={{ border: "none", marginBottom: "24px" }}
-  id="the-val-town-button-setter"
-  title="The Val Town Button: setValTownButtonClicks"
-  width="100%"
-  height="400"
-  src="https://www.val.town/embed/petermillspaugh/setValTownButtonClicks"
-  loading="lazy"
-/>
+export async function getValTownButtonClicks(request: Request): Promise<Response> {
+  return Response.json({ valTownButtonClicks });
+}
+```
+
+```js
+import { valTownButtonClicks } from "https://esm.town/v/petermillspaugh/valTownButtonClicks";
+import { set } from "https://esm.town/v/std/set?v=14";
+
+export async function setValTownButtonClicks(request: Request): Promise<Response> {
+  if (request.method !== "POST") return Response.json({ valTownButtonClicks });
+
+  const result = await set("valTownButtonClicks", valTownButtonClicks + 1);
+  return Response.json({ valTownButtonClicks: result });
+}
+```
 
 Vals are composable, so the getter and setter import the click count from the first Val. And since I made these Vals public, anyone can run them or import them into their own Vals. You can also like and fork Vals, making Val Town very much a social coding space.
 
