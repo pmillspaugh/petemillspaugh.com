@@ -29,21 +29,30 @@ const MakeItStickEmailSignup = () => {
     <>
       <StyledH1>Make It Stick (in 10 days, via email)</StyledH1>
       <StyledP>
-        I’m making an email-based course on{" "}
+        <em>Not actively maintained.</em>
+      </StyledP>
+      <StyledP>
+        In January 2024, I spent part of a weekend on a prototype for an
+        email-based course on{" "}
         <em>
-          <a href="https://www.goodreads.com/book/show/18770267-make-it-stick">
+          <a href="https://www.hup.harvard.edu/books/9780674729018">
             Make It Stick
           </a>
         </em>
         , a book about effective learning grounded in cognitive psychology
-        research.
+        research. I wrote about{" "}
+        <Link href="/email-course-creator">
+          the <em>how</em> of making the course
+        </Link>
+        , which I designed to be easily copied by anyone who knows some
+        JavaScript and wants to make an email-based course.
       </StyledP>
-      <StyledP>
+      {/* <StyledP>
         It’s 10 lessons, delivered over 10 days. The course is a
         work-in-progress, so the content is incomplete, but feel free to sign up
         and lmk what you think.
-      </StyledP>
-      <StyledForm onSubmit={handleSubmit}>
+      </StyledP> */}
+      {/* <StyledForm onSubmit={handleSubmit}>
         {success ? (
           <StyledConfirmation>
             Check your email to confirm. Thanks!
@@ -77,22 +86,13 @@ const MakeItStickEmailSignup = () => {
         <button type="submit" disabled={success}>
           Subscribe
         </button>
-      </StyledForm>
-      <StyledP>
-        I’m also writing about{" "}
-        <Link href="/email-course-creator">
-          the <em>how</em> of making the course
-        </Link>
-        , which I designed to be easily copied by anyone who knows some
-        JavaScript and wants to make an email-based course.
-      </StyledP>
+      </StyledForm> */}
       <StyledP>
         As a disclaimer, I am not a learning expert. I like to learn, and I like
-        learning about learning. This course is a distillation of{" "}
-        <em>Make It Stick</em>, supported by some follow-up research I did. It's
-        meant to spread the word about effective, research-backed learning
-        techniques, and it's also a way for me to strengthen what I learned from
-        the book.
+        learning about learning. The course was meant to be a distillation of{" "}
+        <em>Make It Stick</em> to spread the word about effective,
+        research-backed learning techniques. It was also a way for me to
+        strengthen what I learned from the book.
       </StyledP>
     </>
   );

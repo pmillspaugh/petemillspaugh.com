@@ -2,7 +2,7 @@
 slug: cultivating-emails
 title: Cultivating email with Val Town
 planted: 2023-11-18
-watered: 2024-02-02
+watered: 2026-04-13
 format: ShowNTell
 status: Budding
 ---
@@ -23,17 +23,120 @@ I went with Val Town, but if I ever want to turn to a more feature-rich solution
 
 ## Val Town
 
-I wrote a Val for [email subscription signup](https://www.val.town/v/petermillspaugh/emailSubscription)—feel free to fork and remix if you’d like. I’ll explain a few things, but if you want to jump to demo + code, my newsletter signup is in the footer and the code is below. You can also view the [README](https://www.val.town/v/petermillspaugh/emailSubscription).
+<Callout>
+  I wrote this show ’n’ tell in November 2023 around when I wrote that I hoped
+  [my next, next job](/my-next-next-next-job) would be at Val Town. That was two
+  years before I ended up [joining Val Town](/december-2025#joining-val-town).
+  Dan Levine [linked to this
+  post](https://www.accel.com/noteworthies/our-seed-investment-in-val-town-making-programming-accessible-collaborative-and-fun)
+  in Accel's announcement for Val Town's Seed round. I’ve since refactored the
+  original val because vals are now versioned folders of code instead of single
+  files, but I’m preserving this blog post with static code as a snapshot of
+  that moment in time.
+</Callout>
 
-<iframe
-  style={{ border: "none", marginBottom: "24px" }}
-  id="email-subscription-val"
-  title="Email subscription with Val Town"
-  width="100%"
-  height="500"
-  src="https://www.val.town/embed/petermillspaugh/emailSubscription"
-  loading="lazy"
-/>
+I wrote a Val for [email subscription signup](https://www.val.town/x/pmillspaugh/garden)—feel free to fork and remix if you’d like. I’ll explain a few things, but if you want to jump to demo + code, my newsletter signup is in the footer and the code is below. You can also view the val’s [README](https://www.val.town/x/pmillspaugh/garden/code/README.md) (which, at this point, is a much tighter explanation of how it works—although it’s missing the [Why Val Town](#why-go-with-val-town) at the bottom of this post).
+
+```tsx
+import { fetchVerificationEmailHtml } from "https://esm.town/v/petermillspaugh/fetchVerificationEmailHtml";
+import { refreshVerificationToken } from "https://esm.town/v/petermillspaugh/refreshVerificationToken";
+import { sendVerificationEmail } from "https://esm.town/v/petermillspaugh/sendVerificationEmail";
+import { upsertEmailSubscriber } from "https://esm.town/v/petermillspaugh/upsertEmailSubscriber";
+import { email as sendEmail } from "https://esm.town/v/std/email?v=11";
+import { sqlite } from "https://esm.town/v/std/sqlite?v=4";
+import { Hono } from "npm:hono";
+
+export async function emailSubscription(req: Request) {
+  const app = new Hono();
+
+  app.post("/send-verification", async (c) => {
+    const formData = await c.req.formData();
+    const name = formData.get("name");
+    const email = formData.get("email");
+
+    if (typeof name !== "string" || typeof email !== "string") {
+      return Response.json({
+        message: "Unexpected missing value for name or email.",
+      });
+    }
+
+    const token = crypto.randomUUID();
+    await upsertEmailSubscriber({ name, email, token });
+
+    // Lack of await is intentional: send optimistic success response, then send email and notify myself async
+    sendVerificationEmail({
+      emailAddress: email,
+      html: fetchVerificationEmailHtml({ email, token }),
+    });
+
+    return Response.json({
+      success: true,
+      message: "Sent verification email.",
+    });
+  });
+
+  app.put("/confirm-verification", async (c) => {
+    const email = c.req.query("email");
+    const token = c.req.query("token");
+
+    const { newToken, didRefresh } = await refreshVerificationToken({
+      email,
+      token,
+    });
+    if (didRefresh) {
+      // Lack of await is intentional: send optimistic success response, then send email and notify myself async
+      sendVerificationEmail({
+        emailAddress: email,
+        html: fetchVerificationEmailHtml({
+          email,
+          token: newToken,
+          reVerifying: true,
+        }),
+      });
+
+      return Response.json({ message: "Resent confirmation email." });
+    }
+
+    await sqlite.execute({
+      sql: `UPDATE subscribers SET verified = 1 WHERE email = ?;`,
+      args: [email],
+    });
+
+    // No need to await: just emailing myself a notification
+    sendEmail({
+      subject: `${email} verified for petemillspaugh.com subscription`,
+      text: `Verification complete for ${email}’s subscription to petemillspaugh.com`,
+    });
+
+    return Response.json({
+      confirmed: true,
+      message: "Verified email address.",
+    });
+  });
+
+  app.get("/", async (c) => {
+    return c.html(`
+      <html>
+        <head>
+          <title>Sign up for petemillspaugh.com</title>
+        </head>
+        <body>
+          <h2>Sign up for clippings from Pete’s garden</h2>
+          <form action="https://petermillspaugh-emailSubscription.web.val.run/send-verification" method="post">
+            <label for="name">First name:</label><br>
+            <input type="text" id="name" name="name" required><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+            <input type="submit" value="Sign up">
+          </form>
+        </body>
+      </html>
+    `);
+  });
+
+  return app.fetch(req);
+}
+```
 
 The Val is a [Hono](https://hono.dev/) router with two endpoints: `/send-verification` and `/confirm-verification`. The first route (called from my frontend—more on that below):
 
@@ -54,15 +157,52 @@ I also added a simple HTML form on `GET /`, which you can see in action by openi
 
 To tidy up, I pulled out a handful of helper Vals that the main router Val imports. This one sends emails and alerts me about new signups or errors:
 
-<iframe
-  style={{ border: "none", marginBottom: "24px" }}
-  id="send-email-verification-val"
-  title="Email subscription with Val Town: sendVerificationEmail"
-  width="100%"
-  height="500"
-  src="https://www.val.town/embed/petermillspaugh/sendVerificationEmail"
-  loading="lazy"
-/>
+```tsx
+import { email as sendEmail } from "https://esm.town/v/std/email?v=11";
+
+interface VerificationEmailParams {
+  emailAddress: string;
+  html: string;
+}
+
+export async function sendVerificationEmail({
+  emailAddress,
+  html,
+}: VerificationEmailParams) {
+  try {
+    // email a confirmation link to the subscriber
+    await sendEmail({
+      to: emailAddress,
+      from: {
+        name: "Pete Millspaugh",
+        email: "petermillspaugh.sendVerificationEmail@valtown.email",
+      },
+      replyTo: "pete@petemillspaugh.com",
+      subject: "Confirm your subscription to petemillspaugh.com",
+      html,
+    });
+
+    // email myself a success notification
+    await sendEmail({
+      subject: `${emailAddress} subscribed to petemillspaugh.com`,
+      text: `A notification for ${emailAddress} verification should come in any minute now.`,
+    });
+  } catch (error) {
+    const { name, message, stack } = error;
+    await sendEmail({
+      subject: `Error sending email verification to ${emailAddress}`,
+      html: `         <pre>
+          <code>
+            ${name}
+            ${message}
+            ${stack}
+          </code>
+        </pre>
+      `,
+    });
+  }
+}
+```
 
 Sending emails to people other than yourself is a paid feature, but if you want to stay on the free plan, you can go with a package like [nodemailer](https://www.npmjs.com/package/nodemailer) or [@sendgrid/mail](https://www.npmjs.com/package/@sendgrid/mail).
 
@@ -72,33 +212,73 @@ Originally I was awaiting the `@std/email` invocation before sending a success r
 
 As mentioned, Val Town comes with your own SQLite database courtesy of Turso. Here’s the Val that `/send-verification` invokes to upsert a subscriber:
 
-<iframe
-  style={{ border: "none", marginBottom: "24px" }}
-  id="send-email-verification-val"
-  title="Email subscription with Val Town: upsertEmailSubscriber"
-  width="100%"
-  height="500"
-  src="https://www.val.town/embed/petermillspaugh/upsertEmailSubscriber"
-  loading="lazy"
-/>
+```tsx
+import { sqlite } from "https://esm.town/v/std/sqlite?v=4";
+
+interface UpsertEmailSubscriberParams {
+  name: string;
+  email: string;
+  token: string;
+}
+
+export async function upsertEmailSubscriber({ name, email, token }) {
+  return sqlite.execute({
+    sql: `
+      INSERT INTO subscribers (name, email, verification_token)
+      VALUES (?, ?, ?)
+      ON CONFLICT(email)
+      DO UPDATE SET
+        name = excluded.name,
+        verification_token = excluded.verification_token,
+        subscribed_at = CURRENT_TIMESTAMP;
+    `,
+    args: [name, email, token],
+  });
+}
+```
 
 And here’s the Val that `/confirm-verification` calls to refresh the token if it’s been over 30 minutes:
 
-<iframe
-  style={{ border: "none", marginBottom: "24px" }}
-  id="send-email-verification-val"
-  title="Email subscription with Val Town: refreshVerificationToken"
-  width="100%"
-  height="500"
-  src="https://www.val.town/embed/petermillspaugh/refreshVerificationToken"
-  loading="lazy"
-/>
+```tsx
+import { sqlite } from "https://esm.town/v/std/sqlite?v=4";
+
+interface RefreshVerificationTokenParams {
+  email: string;
+  token: string;
+}
+
+export async function refreshVerificationToken({
+  email,
+  token,
+}: RefreshVerificationTokenParams) {
+  const newToken = crypto.randomUUID();
+
+  const { rowsAffected } = await sqlite.execute({
+    sql: `
+        UPDATE subscribers
+        SET verification_token = CASE
+            WHEN datetime(subscribed_at) < datetime(’now’, ’-30 minutes’) THEN ?
+            ELSE verification_token
+          END,
+          subscribed_at = CASE
+            WHEN datetime(subscribed_at) < datetime(’now’, ’-30 minutes’) THEN CURRENT_TIMESTAMP
+            ELSE subscribed_at
+          END
+        WHERE email = ? AND verification_token = ?
+        AND (datetime(subscribed_at) < datetime(’now’, ’-30 minutes’));
+      `,
+    args: [newToken, email, token],
+  });
+
+  return { newToken, didRefresh: rowsAffected === 1 };
+}
+```
 
 ### Signup form
 
 Here’s a simplified example of a signup form using React. My full implementation is [here](https://github.com/pmillspaugh/petemillspaugh.com/blob/main/src/components/EmailSignup/.EmailSignup.tsx). As mentioned, the `GET /` handler returns an HTML form that fires a `POST /send-verification`, so it is possible to skip your own frontend and just fork the Val.
 
-```tsx EmailSignup.tsx
+```tsx
 const EmailSignupForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -117,7 +297,7 @@ const EmailSignupForm = () => {
       {
         method: "POST",
         body: formData,
-      }
+      },
     );
   }
 
@@ -149,7 +329,7 @@ const EmailSignupForm = () => {
 
 And here’s a simplified example of a confirmation page. Full implementation [here](https://github.com/pmillspaugh/petemillspaugh.com/blob/main/src/components/EmailConfirmation/.EmailConfirmation.tsx). As a stretch feature, I’d like to move this confirmation UI into a Val so that full email subscriptions work out of the box just by forking a handful of Vals.
 
-```tsx EmailConfirmation.tsx
+```tsx
 const EmailConfirmationPage = () => {
   const router = useRouter(); // Next.js page directory router
   const { email, token } = router.query;
@@ -161,7 +341,7 @@ const EmailConfirmationPage = () => {
 
       const response = await fetch(
         `https://petermillspaugh-emailSubscription.web.val.run/confirm-verification?email=${email}&token=${token}`,
-        { method: "PUT" }
+        { method: "PUT" },
       );
       const { confirmed } = await response.json();
       if (confirmed) setIsConfirmed(true);
@@ -182,12 +362,10 @@ const EmailConfirmationPage = () => {
 
 ### Sending emails
 
-<Callout>
-  Btw, I built the Vals for email signup and verification a couple months before
-  building out the logic to actually send emails. That is to say—if you’re
-  unsure how you’d like to use email for your blog, but you at least want to
-  start cultivating subscriber emails, that’s definitely an option.
-</Callout>
+I built the vals for email signup and verification a couple months before
+building out the logic to actually send emails. That is to say—if you’re
+unsure how you’d like to use email for your blog, but you at least want to
+start cultivating subscriber emails, that’s definitely an option.
 
 Here’s the feature set of my <Link href="/think-small">SLC</Link> email newsletter:
 
@@ -201,15 +379,118 @@ The emails themselves are just unstyled HTML, but I link to the Web version for 
 
 Here’s the Val that sends newsletters on a `0 12 1 * *` cron (first of the month at 12pm UTC):
 
-<iframe
-  style={{ border: "none", marginBottom: "24px" }}
-  id="send-email-val"
-  title="Email subscription with Val Town: sendEmailNewsletter"
-  width="100%"
-  height="500"
-  src="https://www.val.town/embed/petermillspaugh/sendEmailNewsletter"
-  loading="lazy"
-/>
+```tsx
+/** @jsxImportSource https://esm.sh/preact */
+import { generateNewsletterJsx } from "https://esm.town/v/petermillspaugh/generateNewsletterJsx";
+import { newsletters } from "https://esm.town/v/petermillspaugh/newsletters";
+import { email as sendEmail } from "https://esm.town/v/std/email?v=11";
+import { sqlite } from "https://esm.town/v/std/sqlite?v=4";
+import { render } from "npm:preact-render-to-string";
+
+type SubscriberRow = [subscriberId: number, emailAddress: string];
+
+export async function sendEmailNewsletter(interval: Interval) {
+  const {
+    jsx: newsletterContent,
+    subject,
+    webUrl,
+    targetSendDate,
+  } = newsletters[newsletters.length - 1];
+
+  // no-op and alert if the current timestamp isn’t within five minutes of the targetSendDate
+  const fiveMinutes = 5 * 60 * 1000;
+  if (Math.abs(new Date(targetSendDate).getTime() - Date.now()) > fiveMinutes) {
+    return await sendEmail({
+      subject: "Alert! Unexpected error in sendEmailNewsletter",
+      html: `Send attempt for newsletter_id=${newsletters.length} is not within 5 minutes of target send date`,
+    });
+  }
+
+  // no-op and alert if interval was run <28 days ago (enforce max one newsletter per month)
+  const twentyEightDaysAgo = Date.now() - 28 * 24 * 60 * 60 * 1000;
+  if (
+    !interval.lastRunAt ||
+    interval.lastRunAt.getTime() > twentyEightDaysAgo
+  ) {
+    return await sendEmail({
+      subject: "Alert! Unexpected error in sendEmailNewsletter",
+      html: "Val fired twice in <28 days",
+    });
+  }
+
+  const { rows: newsletterEmailLogs } = await sqlite.execute({
+    sql: `SELECT * FROM email_logs WHERE newsletter_id = ?;`,
+    args: [newsletters.length],
+  });
+
+  // no-op and alert if there’s already a log of the latest newsletter
+  if (newsletterEmailLogs.length > 0) {
+    return await sendEmail({
+      subject: "Alert! Unexpected error in sendEmailNewsletter",
+      html: `Duplicate send attempt for newsletter_id=${newsletters.length}`,
+    });
+  }
+
+  const { rows: subscribers } = await sqlite.execute(
+    `
+      SELECT id, email
+      FROM subscribers
+      WHERE verified = 1
+      AND subscribed_at IS NOT NULL;
+    `,
+  );
+
+  for (const [
+    subscriberId,
+    emailAddress,
+  ] of subscribers as unknown as SubscriberRow[]) {
+    const { rows: subscriberEmailLogs } = await sqlite.execute({
+      sql: `
+        SELECT *
+        FROM email_logs
+        WHERE newsletter_id = ?
+        AND subscriber_id = ?;
+      `,
+      args: [newsletters.length, subscriberId],
+    });
+
+    // skip subscriber and alert if log exists for newsletter + subscriber
+    if (subscriberEmailLogs.length > 0) {
+      await sendEmail({
+        subject: "Alert! Unexpected error in sendEmailNewsletter",
+        html: `Duplicate send attempt for subscriber_id=${subscriberId} and newsletter_id=${newsletters.length}`,
+      });
+      continue;
+    }
+
+    const jsx = generateNewsletterJsx({
+      webUrl,
+      newsletterContent,
+      emailAddress,
+    });
+
+    await sendEmail({
+      subject,
+      html: render(jsx),
+      to: emailAddress,
+      from: {
+        name: "Pete Millspaugh",
+        email: "petermillspaugh.sendEmailNewsletter@valtown.email",
+      },
+      replyTo: "pete@petemillspaugh.com",
+    });
+
+    // log sent email
+    await sqlite.execute({
+      sql: `
+        INSERT INTO email_logs (newsletter_id, subscriber_id)
+        VALUES (?, ?);
+      `,
+      args: [newsletters.length, subscriberId],
+    });
+  }
+}
+```
 
 This Val has several layers of protection to avoid double sending emails. It no-ops and alerts me if:
 
@@ -226,29 +507,85 @@ Those mechanisms feel a bit hacky, so any suggestions are welcome! Feel free to 
 
 I also have a Val to send test emails. When you’re writing up a newsletter to send to subscribers, it’s helpful to send it to yourself ahead of time to proofread, see how it looks in different email clients, etc.
 
-<iframe
-  style={{ border: "none", marginBottom: "24px" }}
-  id="send-test-email-val"
-  title="Email subscription with Val Town: sendTestEmailNewsletter"
-  width="100%"
-  height="500"
-  src="https://www.val.town/embed/petermillspaugh/sendTestEmailNewsletter"
-  loading="lazy"
-/>
+```tsx
+/** @jsxImportSource https://esm.sh/preact */
+import { generateNewsletterJsx } from "https://esm.town/v/petermillspaugh/generateNewsletterJsx";
+import { getJune2024Newsletter } from "https://esm.town/v/petermillspaugh/june2024";
+import { email as sendEmail } from "https://esm.town/v/std/email?v=11";
+import { render } from "npm:preact-render-to-string";
+
+export function sendTestEmailNewsletter(interval: Interval) {
+  /*
+   * Since this is a public Val, anyone can run it.
+   * This early return prevents spamming me with test emails.
+   * Comment out the early return to actually test.
+   */
+  if (interval.lastRunAt) {
+    return console.log("early return");
+  }
+
+  const { jsx: newsletterContent, subject, webUrl } = getJune2024Newsletter();
+  const jsx = generateNewsletterJsx({
+    webUrl,
+    newsletterContent,
+    emailAddress: "test",
+  });
+
+  sendEmail({
+    subject,
+    html: render(jsx),
+    from: {
+      name: "Pete Millspaugh",
+      email: "petermillspaugh.sendTestEmailNewsletter@valtown.email",
+    },
+    replyTo: "pete@petemillspaugh.com",
+  });
+}
+```
 
 ### Publishing process
 
 I write and publish the Web version first, either the day or morning before the newsletter goes out. So creating a fresh newsletter means forking the Val for a prior one—like the one below from January—and converting my MDX to JSX. I could also go directly from MDX to HTML in the Val with an npm package like I do in my garden, but it’s pretty easy to have Copilot convert from MDX to JSX for me.
 
-<iframe
-  style={{ border: "none", marginBottom: "24px" }}
-  id="newsletter-val-january"
-  title="Email subscription with Val Town: january2024"
-  width="100%"
-  height="500"
-  src="https://www.val.town/embed/petermillspaugh/january2024"
-  loading="lazy"
-/>
+```tsx
+/** @jsxImportSource https://esm.sh/preact */
+import { sqlite } from "https://esm.town/v/std/sqlite?v=4";
+
+export function getJanuary2024Newsletter() {
+  const subject = "#1 — January 2024";
+  const webUrl = "https://petemillspaugh.com/january-2024";
+  const targetSendDate = "2024-02-01 23:40:00";
+
+  const jsx = (
+    <main>
+      <h1>{subject}</h1>
+      <p>...</p>
+    </main>
+  );
+
+  return {
+    jsx,
+    subject,
+    webUrl,
+    targetSendDate,
+  };
+}
+
+async function insertIntoNewslettersTable() {
+  const { subject, webUrl, targetSendDate } = getJanuary2024Newsletter();
+
+  await sqlite.execute({
+    sql: `
+      INSERT INTO newsletters (subject, web_url, target_send_date)
+      VALUES (?, ?, ?);
+    `,
+    args: [subject, webUrl, targetSendDate],
+  });
+}
+
+// await insertIntoNewslettersTable();
+// console.log(await sqlite.execute(`SELECT * from newsletters;`));
+```
 
 I also considered writing the newletter in a Val first then fetching it the garden at runtime. That way I wouldn’t have to copy-paste-convert, and there’d be one source of truth for the newsletter content. That felt a bit heavy, though, and I wanted to maintain the snappy load times of my static site for the Web version.
 
@@ -256,35 +593,62 @@ I also considered writing the newletter in a Val first then fetching it the gard
 
 As mentioned, I have a few SQLite tables for subscribers, each newsletter version, and logs for all sent emails.
 
-<iframe
-  style={{ border: "none", marginBottom: "24px" }}
-  id="val-createSubscribers"
-  title="Email subscription with Val Town: createSubscribers"
-  width="100%"
-  height="400"
-  src="https://www.val.town/embed/petermillspaugh/createSubscribers"
-  loading="lazy"
-/>
+```ts
+import { sqlite } from "https://esm.town/v/std/sqlite?v=4";
 
-<iframe
-  style={{ border: "none", marginBottom: "24px" }}
-  id="val-createNewsletters"
-  title="Email subscription with Val Town: createNewsletters"
-  width="100%"
-  height="400"
-  src="https://www.val.town/embed/petermillspaugh/createNewsletters"
-  loading="lazy"
-/>
+export async function createSubscribers() {
+  await sqlite.execute(
+    `
+      CREATE TABLE IF NOT EXISTS subscribers (
+        id INTEGER PRIMARY KEY,
+        name TEXT NOT NULL,
+        email TEXT NOT NULL UNIQUE,
+        verified BOOLEAN DEFAULT 0,
+        verification_token TEXT UNIQUE,
+        subscribed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+    `,
+  );
+}
+```
 
-<iframe
-  style={{ border: "none", marginBottom: "24px" }}
-  id="val-createEmailLogs"
-  title="Email subscription with Val Town: createEmailLogs"
-  width="100%"
-  height="400"
-  src="https://www.val.town/embed/petermillspaugh/createEmailLogs"
-  loading="lazy"
-/>
+```ts
+import { sqlite } from "https://esm.town/v/std/sqlite?v=4";
+
+export async function createNewslettersTable() {
+  await sqlite.execute(
+    `
+      CREATE TABLE IF NOT EXISTS newsletters (
+        id INTEGER PRIMARY KEY,
+        subject TEXT NOT NULL UNIQUE,
+        web_url TEXT NOT NULL UNIQUE,
+        target_send_date TIMESTAMP NOT NULL UNIQUE
+      );
+    `,
+  );
+}
+```
+
+```ts
+import { sqlite } from "https://esm.town/v/std/sqlite?v=4";
+
+export async function createEmailLogsTable() {
+  await sqlite.execute(
+    `
+      CREATE TABLE IF NOT EXISTS email_logs (
+        id INTEGER PRIMARY KEY,
+        subscriber_id INTEGER NOT NULL,
+        newsletter_id INTEGER NOT NULL,
+        sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (subscriber_id) REFERENCES subscribers (id) ON DELETE CASCADE,
+        FOREIGN KEY (newsletter_id) REFERENCES newsletters (id) ON DELETE CASCADE
+      );
+    `,
+  );
+}
+
+await createEmailLogsTable();
+```
 
 In `email_logs`, the `ON DELETE CASCADE` clause means if a subscriber or newsletter record was deleted it would delete all related logs. I don’t expect this to come up, but maybe if someone asked me to hard delete their personal info.
 
@@ -294,15 +658,47 @@ Over time it’s possible the `email_logs` table could become big enough that I�
 
 I also wrote an unsubscribe Val that sets `subscribed_at` to null and alerts me via email. I thought about omitting the alert so I don’t get sad if a stranger or friend unsubscribes, but that hasn’t happened yet (phew). And I would want to know if people started dropping like flies so I could consider slowing down newsletter frequency, for example.
 
-<iframe
-  style={{ border: "none", marginBottom: "24px" }}
-  id="unsubscribe-val"
-  title="Email subscription with Val Town: unsubscribeFromNewsletter"
-  width="100%"
-  height="500"
-  src="https://www.val.town/embed/petermillspaugh/unsubscribeFromNewsletter"
-  loading="lazy"
-/>
+```tsx
+import { email as sendEmail } from "https://esm.town/v/std/email?v=11";
+import { sqlite } from "https://esm.town/v/std/sqlite?v=4";
+
+export async function unsubscribe(req: Request) {
+  const searchParams = new URL(req.url).searchParams;
+  const emailAddress = searchParams.get("email");
+
+  if (!emailAddress) {
+    // No-op if email query param is missing
+    return Response.json(
+      "Email address missing in unsubscribe URL. If you tried to unsubscribe and are still getting emails, send me a note at pete@petemillspaugh.com",
+    );
+  }
+
+  await sqlite.execute({
+    sql: `
+      UPDATE subscribers
+      SET subscribed_at = NULL
+      WHERE email = ?
+    `,
+    args: [emailAddress],
+  });
+
+  sendEmail({
+    subject: `Someone unsubscribed from petemillspaugh.com clippings`,
+    text: `${emailAddress} unsubscribed 😢`,
+  });
+
+  const responseHtml = `
+    <main>
+      <p>You’ve successfully unsubscribed.</p>
+      <p>Take care, Pete</p>
+    </main>
+  `;
+
+  return new Response(responseHtml, {
+    headers: { "Content-Type": "text/html" },
+  });
+}
+```
 
 ## Why go with Val Town
 

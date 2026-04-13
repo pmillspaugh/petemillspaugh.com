@@ -2,15 +2,15 @@
 slug: email-course-creator
 title: Building an email-based course creator with Val Town
 planted: 2024-01-22
-watered: 2024-01-22
+watered: 2026-04-13
 format: ShowNTell
 status: Seedling
 ---
 
 <Callout>
-  This Show ’n tell is a <Link href="/garden?formats=Seedling">"Seedling"</Link>
-  , which means I still have lots of writing to do. I’ll tend to it as I
-  complete the course tool and wrap up my first course. More on that below...
+  This Show ’n’ tell is a <Link href="/garden?formats=Seedling">Seedling</Link>
+  that I planted a couple years ago. I’m not actively working on the project,
+  but I’ve preserved this writeup for posterity.
 </Callout>
 
 I recently read [_Make It Stick_](https://www.goodreads.com/book/show/18770267-make-it-stick), a book written by cognitive psychologists about effective learning techniques, backed by research. One of the topics covered is [spaced repetition](https://en.wikipedia.org/wiki/Spaced_repetition), which I <Link href="/anki">started practicing in my own learning</Link> this summer using flashcard software [Anki](https://apps.ankiweb.net/).
@@ -32,20 +32,140 @@ As an example (and hopefully a useful resource), I’m using the course creator 
 
 ## Signing up
 
-For signup and email verification, I forked a Hono router Val that I wrote for `petemillspaugh.com` subscribers (signup for that is in the footer). See the Val Town iframe below. I added a root endpoint `/` that returns a signup form for the course, which you can test out in the "Browser preview" at the bottom of the iframe. I also set up a <Link href="/make-it-stick">landing page for the course</Link> that hits the `/send-verification` endpoint. I cover signup and verfication in more detail in my Show ’n Tell <Link href="/cultivating-emails">on cultivating emails</Link>.
+<Callout>
+  Note that when I first wrote this, vals were single JavaScript/TypeScript
+  files. Now vals are versioned folders of code, so the architecture of a
+  project like this wouldn’t be quite as modular. I’ve kept the original
+  implementation here.
+</Callout>
 
-<iframe
-  style={{ border: "none", marginBottom: "24px" }}
-  id="email-course-creator-val"
-  title="Email course creator Hono router via Val Town"
-  width="100%"
-  height="1500"
-  src="https://www.val.town/embed/petermillspaugh/emailCourseCreator"
-  loading="lazy"
-/>
+For signup and email verification, I forked a Hono router Val that I wrote for `petemillspaugh.com` subscribers (signup for that is in the footer). See the code below. I added a root endpoint `/` that returns a signup form for the course, which you can test out in the "Browser preview" at the bottom of the iframe. I also set up a <Link href="/make-it-stick">landing page for the course</Link> that hits the `/send-verification` endpoint (update: I’ve removed the form since I’m not actively maintaining the project). I cover signup and verfication in more detail in my Show ’n Tell <Link href="/cultivating-emails">on cultivating emails</Link>.
 
-{/* ## Cron Val for daily email lesson */}
+```ts
+import { fetchConfirmationHtml } from "https://esm.town/v/petermillspaugh/fetchConfirmationHtml";
+import { fetchSignupHtml } from "https://esm.town/v/petermillspaugh/fetchSignupHtml";
+import { markLessonComplete } from "https://esm.town/v/petermillspaugh/markLessonComplete";
+import { refreshToken } from "https://esm.town/v/petermillspaugh/refreshToken";
+import { sendLesson } from "https://esm.town/v/petermillspaugh/sendLesson";
+import { sendLessonResponses } from "https://esm.town/v/petermillspaugh/sendLessonResponses";
+import { sendVerification } from "https://esm.town/v/petermillspaugh/sendVerification";
+import { upsertStudent } from "https://esm.town/v/petermillspaugh/upsertStudent";
+import { email as sendEmail } from "https://esm.town/v/std/email?v=11";
+import { sqlite } from "https://esm.town/v/std/sqlite?v=4";
+import { Hono } from "npm:hono";
+import { JSX } from "npm:react";
 
-## To be written
+export async function emailSubscription(req: Request) {
+  const app = new Hono();
 
-_I’ll add code examples and descriptions for storing subscribers with SQLite, sending lessons via email with a cron, handling unsubscribe, emailing student responses, and more. In the meantime, feel free to [reach out](mailto:pete@petemillspaugh.com) with any comments, questions, or feedback._
+  app.get("/", async (c) => {
+    return c.html(fetchSignupHtml());
+  });
+
+  app.post("/send-verification", async (c) => {
+    const formData = await c.req.formData();
+    const name = formData.get("name");
+    const email = formData.get("email");
+
+    if (typeof name !== "string" || typeof email !== "string") {
+      return Response.json({
+        message: "Unexpected missing value for name or email.",
+      });
+    }
+
+    const token = crypto.randomUUID();
+    await upsertStudent({ name, email, token });
+
+    // Lack of await is intentional: send optimistic success response, then send email and notify myself async
+    sendVerification({
+      emailAddress: email,
+      html: fetchConfirmationHtml({ email, token }),
+    });
+
+    return Response.json({
+      success: true,
+      message: "Sent verification email.",
+    });
+  });
+
+  app.put("/confirm-verification", async (c) => {
+    const email = c.req.query("email");
+    const token = c.req.query("token");
+
+    const { newToken, didRefresh } = await refreshToken({ email, token });
+    if (didRefresh) {
+      // Lack of await is intentional: send optimistic success response, then send email and notify myself async
+      sendVerification({
+        emailAddress: email,
+        html: fetchConfirmationHtml({
+          email,
+          token: newToken,
+          reVerifying: true,
+        }),
+      });
+
+      return Response.json({ message: "Resent confirmation email." });
+    }
+
+    await sqlite.execute({
+      sql: `UPDATE students SET verified = 1 WHERE email = ?;`,
+      args: [email],
+    });
+
+    // Send the first lesson
+    await sendLesson({ emailAddress: email, lesson: 0 });
+
+    // No need to await: just emailing myself a notification
+    sendEmail({
+      subject: `${email} verified for subscription to: Make It Stick (in 10 days, via email)`,
+      text: `Verification complete for ${email}’s subscription to: Make It Stick (in 10 days, via email)`,
+    });
+
+    return Response.json({
+      confirmed: true,
+      message: "Verified email address.",
+    });
+  });
+
+  /*
+   * TODO: POST requests are blocked for security reasons on mobile email clients.
+   * I could use a GET request with a req body, but that’s a hack/anti-pattern.
+   * I don’t want to move the form to a webpage because it should be in the lesson flow.
+   * TBD how to handle this. Perhaps an email handler Val?
+   */
+  app.post("/complete-lesson", async (c) => {
+    const email = c.req.query("email");
+    if (typeof email !== "string") {
+      // Notify myself of the unexpected case
+      sendEmail({
+        subject: "Unexpected missing email query param on /complete-lesson",
+        text: "Email query param should be populated: check lesson form submission.",
+      });
+      return;
+    }
+
+    await markLessonComplete(email);
+
+    const lesson = c.req.query("lesson");
+    const formData = await c.req.formData();
+    await sendLessonResponses({ email, lesson, formData });
+
+    const responseHtml = `
+      <main>
+        <p>Thanks for completing the lesson! Your responses should be in your inbox any second, and the next lesson will go out tomorrow.</p>
+        <p>In the meantime, feel free to send any feedback to <a href="mailto:pete@petemillspaugh.com">pete@petemillspaugh.com</a>, or by replying directly to any lesson email.</p>
+      </main>
+    `;
+
+    return new Response(responseHtml, {
+      headers: { "Content-Type": "text/html" },
+    });
+  });
+
+  return app.fetch(req);
+}
+```
+
+## To be written (maybe)
+
+The rest of the code stores subscribers with SQLite, send lessons via email with a cron, handles unsubscribe, emails student responses, and more. I don’t plan to continue working on this anytime soon, although I do still like the idea and think it sounds fun. That said, feel free to [reach out](mailto:pete@petemillspaugh.com) if you’re interested in talking about it. I’m interested in interactive education, and I generally like email as a medium.
