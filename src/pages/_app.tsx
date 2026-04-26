@@ -26,7 +26,7 @@ const App = ({ Component, pageProps }) => {
         try {
           window.pagefind = await import(
             // @ts-expect-error pagefind generated after build
-            /* webpackIgnore: true */ "./pagefind/pagefind.js"
+            /* webpackIgnore: true */ "./pagefind/pagefind.js?v=1.4.0"
           );
         } catch (error) {
           window.pagefind = {
