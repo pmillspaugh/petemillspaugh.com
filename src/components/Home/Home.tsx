@@ -49,8 +49,8 @@ export default function Home({ numPosts }) {
           </a>
         </li>
         <li>
-          <a href="https://www.dotcom.press/archive/internet-handle">
-            Your domain is your “internet handle”
+          <a href="https://www.dotcom.press/archive/dot-meow">
+            Dot meow: like selling Subarus to lesbians
           </a>
         </li>
         <li>
@@ -77,7 +77,7 @@ export default function Home({ numPosts }) {
         </li>
       </ul>
 
-      <h3 className={styles.h3}>Concepts</h3>
+      <h3 className={styles.h3}>Concepts and such</h3>
       <ul className={styles.ul}>
         <li>
           <Link href="/unhurried-ambition">Unhurried ambition</Link>
@@ -99,7 +99,7 @@ export default function Home({ numPosts }) {
         </li>
       </ul>
 
-      <h3 className={styles.h3}>Books</h3>
+      <h3 className={styles.h3}>Book things</h3>
       <ul className={styles.ul}>
         <li>
           <Link href="/write-your-book-like-youd-run-a-startup">
@@ -114,9 +114,6 @@ export default function Home({ numPosts }) {
         </li>
         <li>
           <Link href="/on-writing-stephen-king">On Writing</Link>
-        </li>
-        <li>
-          <Link href="/the-design-of-books">The Design of Books</Link>
         </li>
       </ul>
 
