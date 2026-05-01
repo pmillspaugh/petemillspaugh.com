@@ -1,0 +1,5 @@
+.hr {
+  margin-block: 1rem;
+  border: none;
+  border-top: 1.5px solid color-mix(in srgb, var(--text-color) 20%, transparent);
+}
