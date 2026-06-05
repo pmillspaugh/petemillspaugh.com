@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled, { keyframes } from "styled-components";
+import NewsletterHoneypot from "@/components/NewsletterHoneypot";
 import VisuallyHidden from "@/components/VisuallyHidden";
 
 const SEND_VERIFICATION_URL = "https://garden.val.run/send-verification";
@@ -14,9 +15,7 @@ const EmailSignup = () => {
     e.preventDefault();
     setLoading(true);
 
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("email", email);
+    const formData = new FormData(e.currentTarget);
 
     const response = await fetch(SEND_VERIFICATION_URL, {
       method: "POST",
@@ -31,7 +30,7 @@ const EmailSignup = () => {
   }
 
   return (
-    <StyledForm onSubmit={handleSubmit}>
+    <StyledForm onSubmit={handleSubmit} style={{ position: "relative" }}>
       {success ? (
         <StyledConfirmation>
           Check your email to confirm. Thanks!
@@ -43,17 +42,20 @@ const EmailSignup = () => {
           </VisuallyHidden>
           <input
             id="name"
+            name="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             type="text"
             placeholder="First name"
             required={true}
           />
+          <NewsletterHoneypot />
           <VisuallyHidden>
             <label htmlFor="email">Email</label>
           </VisuallyHidden>
           <input
             id="email"
+            name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"

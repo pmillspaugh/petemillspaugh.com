@@ -2,6 +2,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Code from "@/components/Code";
 import CommandBar from "@/components/CommandBar";
+import NewsletterHoneypot from "@/components/NewsletterHoneypot";
 import VisuallyHidden from "@/components/VisuallyHidden";
 import useIsWindowsOrFirefox from "@/hooks/useIsWindowsOrFirefox.hook";
 import styles from "./Home.module.css";
@@ -140,9 +141,7 @@ const Newsletter = () => {
     e.preventDefault();
     setLoading(true);
 
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("email", email);
+    const formData = new FormData(e.currentTarget);
 
     const response = await fetch("https://garden.val.run/send-verification", {
       method: "POST",
@@ -167,17 +166,20 @@ const Newsletter = () => {
           </VisuallyHidden>
           <input
             id="name"
+            name="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             type="text"
             placeholder="First name"
             required={true}
           />
+          <NewsletterHoneypot />
           <VisuallyHidden>
             <label htmlFor="email">Email</label>
           </VisuallyHidden>
           <input
             id="email"
+            name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"
