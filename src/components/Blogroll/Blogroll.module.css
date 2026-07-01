@@ -1,0 +1,57 @@
+.h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-top: 16px;
+  margin-left: -2px;
+}
+
+.h2 {
+  font-size: 1.75rem;
+  font-weight: 300;
+  margin-top: 24px;
+  margin-left: -2px;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.p {
+  margin-bottom: 16px;
+}
+
+.ul {
+  margin-top: 16px;
+
+  & > li {
+    padding-bottom: 8px;
+  }
+}
+
+@media (min-width: 768px) {
+  .h1 {
+    font-size: 4rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .h1 {
+    margin-bottom: 24px;
+  }
+
+  .h2 {
+    font-size: 2.75rem;
+  }
+
+  .p {
+    font-size: 1.25rem;
+    line-height: 1.75;
+    margin-bottom: 24px;
+  }
+
+  .ul {
+    font-size: 1.25rem;
+
+    & > li {
+      padding-bottom: 16px;
+    }
+  }
+}
