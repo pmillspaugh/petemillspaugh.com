@@ -15,11 +15,10 @@ export default function Home({ numPosts }) {
       <h1 className={styles.h1}>Pete Millspaugh—programmer, writer</h1>
 
       <p className={styles.p}>
-        I’m writing a <a href="https://dotcom.press">book</a> about{" "}
-        <em>The Secret Life of Internet Domains</em> and working at{" "}
-        <a href="https://val.town">val.town</a>. This is my{" "}
-        <Link href="/about#garden">digital garden</Link>—welcome! Tug on the
-        edison bulb to turn off the lights,{" "}
+        I’m writing a <a href="https://dotcom.press">book</a> about internet
+        domains and working at <a href="https://val.town">val.town</a>. This is
+        my digital garden (my <Link href="/about#garden">what</Link>?). Welcome!
+        Tug on the edison bulb to turn off the lights,{" "}
         <Code>{isWindowsOrFirefox ? "⌃" : "⌘"}+K</Code> to search, trees and
         links in the footer. Contact me at pete@petemillspaugh.com
       </p>
@@ -35,9 +34,8 @@ export default function Home({ numPosts }) {
       <ul className={styles.ul}>
         <li>
           <a href="https://dotcom.press/history-of-domains">
-            A Brief History of Domains
+            A brief history of domains
           </a>{" "}
-          ✦
         </li>
         <li>
           <a href="https://www.dotcom.press/archive/anguilla">
@@ -51,11 +49,11 @@ export default function Home({ numPosts }) {
         </li>
         <li>
           <a href="https://www.dotcom.press/archive/dot-meow">
-            Dot meow: like selling Subarus to lesbians
+            Dot meow, like selling Subarus to lesbians
           </a>
         </li>
         <li>
-          <a href="https://dotcom.press/tld-wiki">TLD Wiki</a> ✦
+          <a href="https://dotcom.press/tld-wiki">TLD Wiki</a>
         </li>
       </ul>
 
@@ -65,7 +63,7 @@ export default function Home({ numPosts }) {
           <Link href="/the-nature-of-the-job">The nature of the job</Link>
         </li>
         <li>
-          <a href="https://weeksofyour.life">Weeks of your life</a> ✦
+          <a href="https://weeksofyour.life">Weeks of your life</a>
         </li>
         <li>
           <Link href="/malleable-garden">A malleable garden</Link>
@@ -98,23 +96,10 @@ export default function Home({ numPosts }) {
         <li>
           <Link href="/my-next-next-next-job">My next, next, next job</Link>
         </li>
-      </ul>
-
-      <h3 className={styles.h3}>Book things</h3>
-      <ul className={styles.ul}>
         <li>
           <Link href="/write-your-book-like-youd-run-a-startup">
             Write your book like you’d run a startup
-          </Link>{" "}
-          ✦
-        </li>
-        <li>
-          <Link href="/a-small-matter-of-programming">
-            A Small Matter of Programming
           </Link>
-        </li>
-        <li>
-          <Link href="/on-writing-stephen-king">On Writing</Link>
         </li>
       </ul>
 
