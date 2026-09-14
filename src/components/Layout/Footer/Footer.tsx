@@ -7,9 +7,7 @@ import { PostFormat } from "@/components/Post";
 import VisuallyHidden from "@/components/VisuallyHidden";
 import NewfoundLake from "./NewfoundLake";
 import RssIcon from "./RssIcon";
-import GitHubIcon from "./GitHubIcon";
 import ValTownIcon from "./ValTownIcon";
-import TwitterIcon from "./TwitterIcon";
 import BlueskyIcon from "./BlueskyIcon";
 
 const Footer = () => {
@@ -103,21 +101,6 @@ const Footer = () => {
                   >
                     <BlueskyIcon />
                     <VisuallyHidden>Pete Millspaugh on Bluesky</VisuallyHidden>
-                  </StyledIconLink>
-                </li>
-                <li>
-                  <StyledIconLink
-                    href="https://github.com/pmillspaugh"
-                    rel="me"
-                  >
-                    <GitHubIcon />
-                    <VisuallyHidden>Pete Millspaugh on GitHub</VisuallyHidden>
-                  </StyledIconLink>
-                </li>
-                <li>
-                  <StyledIconLink href="https://twitter.com/pete_millspaugh">
-                    <TwitterIcon />
-                    <VisuallyHidden>Pete Millspaugh on Twitter</VisuallyHidden>
                   </StyledIconLink>
                 </li>
                 <li>
@@ -253,6 +236,7 @@ const StyledRowWrapper = styled.div`
 
 const StyledIconUl = styled.ul`
   display: flex;
+  justify-content: end;
   align-items: end;
   gap: 16px;
 `;
