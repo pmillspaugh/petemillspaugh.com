@@ -13,13 +13,13 @@ const StyledArticle = styled.article`
   font-family: var(--font-mono), monospace;
 
   & > p {
-    font-size: 0.75rem;
+    font-size: calc(12 / 16 * 1rem);
     margin-bottom: 0px;
   }
 
   @media (min-width: 1200px) {
     & > p {
-      font-size: 0.875rem;
+      font-size: calc(15 / 16 * 1rem);
     }
   }
 `;
