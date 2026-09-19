@@ -1,7 +1,8 @@
+import type { ComponentPropsWithoutRef } from "react";
 import styled from "styled-components";
 
-const A = ({ href, children }) => {
-  return <StyledA href={href}>{children}</StyledA>;
+const A = ({ children, ...props }: ComponentPropsWithoutRef<"a">) => {
+  return <StyledA {...props}>{children}</StyledA>;
 };
 
 const StyledA = styled.a`

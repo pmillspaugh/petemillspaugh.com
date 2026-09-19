@@ -1,5 +1,6 @@
 import { serialize } from "next-mdx-remote/serialize";
 import { remarkCodeHike } from "@code-hike/mdx";
+import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { readFileSync, readdirSync } from "fs";
@@ -70,6 +71,7 @@ export async function getPostData(slug: string) {
         [rehypeAutolinkHeadings, { behavior: "wrap" }],
       ],
       remarkPlugins: [
+        remarkGfm,
         [
           remarkCodeHike,
           {
