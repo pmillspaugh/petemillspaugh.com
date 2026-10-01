@@ -4,6 +4,9 @@ import { PostFormatDescription, PostMetadata } from "@/components/Post";
 import Tag from "@/components/Post/Tag";
 
 const PlantRow = ({ title, slug, format, status, watered }: PostMetadata) => {
+  const [year, month, day] = watered.split("-").map((str) => Number(str));
+  const updated = new Date(year, month - 1, day); // month is zero-indexed
+
   return (
     <>
       <StyledLink href={`/${slug}`}>
@@ -22,9 +25,9 @@ const PlantRow = ({ title, slug, format, status, watered }: PostMetadata) => {
           trigger={<StyledTagLabel>{status}</StyledTagLabel>}
         />
         <StyledTimestamp>
-          <time dateTime={new Date(watered).toISOString()}>
+          <time dateTime={updated.toISOString()}>
             Last watered:{" "}
-            {new Date(watered)
+            {updated
               .toLocaleString("en-US", { month: "short", year: "2-digit" })
               .replace(" ", " ’")}
           </time>
