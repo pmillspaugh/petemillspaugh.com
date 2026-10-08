@@ -18,20 +18,25 @@ export default function Home({ numPosts }) {
         I’m writing a <a href="https://dotcom.press">book</a> about internet
         domains and working at <a href="https://val.town">val.town</a>. This is
         my digital garden (my <Link href="/about#garden">what</Link>?). Welcome!
-        Tug on the edison bulb to turn off the lights,{" "}
-        <Code>{isWindowsOrFirefox ? "⌃" : "⌘"}+K</Code> to search, trees and
-        links in the footer. Contact me at pete@petemillspaugh.com
+        Contact me at pete@petemillspaugh.com.
       </p>
 
       <h2 className={styles.h2}>Writing</h2>
       <p className={styles.p}>
         There are {numPosts} pieces of writing planted in{" "}
-        <Link href="/garden">the garden</Link>. Here’s a sampling of my work
-        from the garden and elsewhere.
+        <Link href="/garden">the garden</Link>—
+        {isWindowsOrFirefox ? "ctrl" : "cmd"}+k to search. Here’s a sampling of
+        my work from the garden, WIRED magazine, and elsewhere.
       </p>
 
       <h3 className={styles.h3}>Domains</h3>
       <ul className={styles.ul}>
+        <li>
+          <a href="https://www.wired.com/story/icann-top-level-domains-meow/">
+            Top-level domains and the people who make them
+          </a>{" "}
+          <em>(WIRED)</em>
+        </li>
         <li>
           <a href="https://dotcom.press/history-of-domains">
             A brief history of domains
@@ -43,22 +48,18 @@ export default function Home({ numPosts }) {
           </a>
         </li>
         <li>
-          <a href="https://www.dotcom.press/archive/icann84">
-            ICANN is not a boring bureaucracy
-          </a>
-        </li>
-        <li>
-          <a href="https://www.dotcom.press/archive/dot-meow">
-            Dot meow, like selling Subarus to lesbians
-          </a>
-        </li>
-        <li>
           <a href="https://dotcom.press/tld-wiki">TLD Wiki</a>
         </li>
       </ul>
 
       <h3 className={styles.h3}>Programming</h3>
       <ul className={styles.ul}>
+        <li>
+          <a href="https://www.wired.com/story/justice-for-css/">
+            Justice for CSS
+          </a>{" "}
+          <em>(WIRED)</em>
+        </li>
         <li>
           <Link href="/the-nature-of-the-job">The nature of the job</Link>
         </li>
