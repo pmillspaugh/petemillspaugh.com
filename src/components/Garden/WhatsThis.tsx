@@ -7,7 +7,7 @@ const WhatsThis = () => {
       <H2>This is my digital garden.</H2>
       <StyledP>
         A digital garden is a bit different than a blog where each post is a
-        "finished" work ready for public eyes. Instead, writing is made public
+        “finished” work ready for public eyes. Instead, writing is made public
         early on while it's still being cultivated and growing.
       </StyledP>
       <StyledP>

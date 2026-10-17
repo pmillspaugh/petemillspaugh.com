@@ -60,7 +60,7 @@ const Garden = ({ posts }: GardenProps) => {
     const formatEnums = value
       .map((desc) => {
         const entry = Object.entries(PostFormatDescription).find(
-          ([_, description]) => description === desc
+          ([_, description]) => description === desc,
         );
         return entry?.[0];
       })
@@ -166,7 +166,7 @@ export const InnerWrapper = styled.div`
   transition: background-color var(--base-timing) ease-in-out;
   font-family: var(--font-mono);
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
 `;
 
 export default Garden;

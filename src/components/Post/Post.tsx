@@ -105,7 +105,6 @@ const MetadataList = styled.ul`
 
   & > li {
     font-style: italic;
-    font-weight: 300;
   }
 
   @media (min-width: 1200px) {

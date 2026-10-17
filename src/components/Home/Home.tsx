@@ -17,8 +17,11 @@ export default function Home({ numPosts }) {
       <p className={styles.p}>
         I’m writing a <a href="https://dotcom.press">book</a> about internet
         domains and working at <a href="https://val.town">val.town</a>. This is
-        my digital garden (my <Link href="/about#garden">what</Link>?). Welcome!
-        Contact me at pete@petemillspaugh.com.
+        my digital garden (
+        <em>
+          my <Link href="/about#garden">what</Link>?
+        </em>
+        ). Welcome! Contact me at pete@petemillspaugh.com.
       </p>
 
       <h2 className={styles.h2}>Writing</h2>
@@ -26,7 +29,7 @@ export default function Home({ numPosts }) {
         There are {numPosts} pieces of writing planted in{" "}
         <Link href="/garden">the garden</Link>—
         {isWindowsOrFirefox ? "ctrl" : "cmd"}+k to search. Here’s a sampling of
-        my work from the garden, WIRED magazine, and elsewhere.
+        my work from the garden, <em>WIRED</em> magazine, and elsewhere.
       </p>
 
       <h3 className={styles.h3}>Domains</h3>
