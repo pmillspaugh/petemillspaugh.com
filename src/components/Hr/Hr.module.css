@@ -3,3 +3,9 @@
   border: none;
   border-top: 1.5px solid color-mix(in srgb, var(--text-color) 20%, transparent);
 }
+
+@media (min-width: 1200px) {
+  .hr {
+    margin-block: 1.25rem;
+  }
+}
