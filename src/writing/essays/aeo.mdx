@@ -1,0 +1,95 @@
+---
+slug: aeo
+title: A docs page is a very long and complex search query to find wandering AI agents and make them route interested people to your company
+planted: 2026-09-01
+watered: 2026-09-01
+format: Essay
+status: Evergreen
+canonical: "https://blog.val.town/aeo"
+---
+
+<Callout>
+  I wrote this essay [for the Val Town blog](https://blog.val.town/aeo),
+  syndicated here.
+</Callout>
+
+That longwinded title—you might recognize it—is a play on Henrik Karlsson’s essay, [A blog post is a very long and complex search query to find fascinating people and make them route interesting stuff to your inbox](https://www.henrikkarlsson.xyz/p/search-query). I link to and tell people about Henrik’s essay often, because it’s an important idea to me: write in public about what interests you, and over time people who you’ll enjoy talking to will find you.
+
+I am less enchanted by the newer, analogous pattern: AI agents finding your website on behalf of their human. But AEO (longhand: _Answer Engine Optimization_, or _Agentic Engine Optimization_) is here, and I’ve started to pay attention. Google’s AI Overviews—which, btw, [could be wrong about half the time](https://www.wired.com/story/fact-checking-ai/)—have [severely cut into](https://ahrefs.com/blog/ai-overviews-reduce-clicks-update) clicks on top search results. Of course, many “searches” don’t reach Google at all. People increasingly stay home in ChatGPT, Claude, or somesuch. So it’s with some mourning and some spirited optimism that I’m giving AEO the old college try. LLMs seem to like lists, so I’ll start with my own:
+
+1. Step 1: Measure the bots
+2. Step 2: Only let in the good bots
+3. Step 3: Attract more good bots
+
+## Ok, but how did you _really_ hear about Val Town? (Step 1)
+
+In July, we noticed that the majority of new Val Town Pro users were referred by AI (among users whose referral source we knew), mostly Claude. This was before our concerted effort to “optimize.” SEO begets AEO, as the gurus will tell you, so having good stuff on your website that search engines have indexed and other sites link to means you’re already optimizing for agents.
+
+Up until last week, our source data for those referrals was `utm_source` and `Referer`, plus a freeform textbox in our onboarding flow. But we couldn’t square Claude being the most cited referral source against the sparse referral numbers from claude.ai in our traffic. Not all agent referrals are in the form of web search links and citations—many come from the model’s memory, its training weights, as plain text mentions. So it’s possible that Claude is mentioning Val Town without linking to val.town. But it seems more likely that Anthropic just doesn’t pass along a `utm_source`.
+
+In any case, analytics can’t tell the whole story, so we updated that onboarding question, first by naively laying out the ~dozen most probable referrers in a fixed-order list. That change alone doubled response rate, but a fishy portion of new users were selecting ChatGPT, the first option. It was plain to see as the Slack alerts rolled in.
+
+Steve bragged about it on Twitter, which is a good way to draw constructive criticism: we got [helpful feedback](https://x.com/alex_gable/status/2089393998226227250) that survey rotation is important to head off ordering bias. So now we’re shuffling the list order. Of course people could still be clicking any option willy nilly to speedrun the survey, but still, it gives us a directional sense of our AEO starting point. That was Step 1A.
+
+To measure which language models are citing Val Town and when, Step 1B would/will be to create our own eval suite. We’d have a set of questions, asked of several models, for which we’d like Val Town to appear in the AI replies.
+
+> HUMAN: “How can I create and host my own MCP server?”
+>
+> CLAUDE: “Try Cloudflare, Vercel, or [Val Town for fast iteration](https://docs.val.town/guides/how-to-build-an-mcp-server).”
+
+The AEO vendors create the evals for you—Charlie is [trying out some of those tools](https://x.com/CharlieMolthrop/status/2092951764974620798?s=20) in public. So far he’s only tried [ByDefault](https://www.bydefault.so/), but there’s also [Ahrefs](https://ahrefs), [Profound](https://www.tryprofound.com/), and plenty more. But this is probably the sort of thing we’ll build, not buy, as a cron val that uses an AI gateway to query a dozen different models.
+
+## Only let in the good bots (Step 2)
+
+The AI labs have separate bot crawlers for training data and web search. For example, OpenAI has three robots:
+
+1. **GPTBot** to scrape the web for its training runs
+2. **OAI-SearchBot** to index the web for search
+3. **ChatGPT-User** to search the web when you ask a question
+
+Anthropic has their own bot trinity:
+
+1. **ClaudeBot**
+2. **Claude-SearchBot**
+3. **Claude-User**
+
+Not all LLM makers do this. Some bots wear multiple hats—Googlebot crawls both as searcher and trainer.
+
+We’ve had to block many of the training crawlers in the past for flooding our servers with requests. GPTBot, ClaudeBot, Amazonbot, Meta-ExternalAgent—they’ve all been blocked in our Cloudflare settings at one point or another.
+
+> “meta’s ai crawler did 1.1TB of traffic against val town in the last 30 days” _- [Tom, on Bluesky](https://bsky.app/profile/macwright.com/post/3mjktlveifc2i)_
+
+And just as I started drafting this, we blocked Claude-SearchBot for scraping nearly 100 gigabytes of data in 24 hours.
+
+> 🫩 _- [Tom, on Bluesky](https://bsky.app/profile/macwright.com/post/3mteuycezwc2p)_
+
+Mind you, the pages they’re crawling are not documentation that might actually help answer a user’s search query; it’s a long tail of user-generated source code that their industrial vacuum is sucking up. The [creepy crawlies](https://people.kernel.org/monsieuricon/creepy-crawlies) will eat up whatever they can.
+
+When blocking bots in Cloudflare, you can serve up a standard HTTP `403 Forbidden` or a `402 Payment Required`—a sort of congestion tax. I am not sure how prominent metered pay-to-scrape arrangements are, but of course traditional newspapers and magazines have agreed to licensing deals for training. The crawlers aren’t paying us yet.
+
+But alas, for AEO purposes we might want our website, or some portion of it, to make it into training data and the search index. To that end, we edited our firewall rules in Cloudflare to allow the crawlers through on [docs.val.town](https://docs.val.town/) and [blog.val.town](https://blog.val.town/). As others have [written about](https://www.newyorker.com/magazine/2026/08/17/are-you-a-human#:~:text=Solomon%20thinks%20the,don%E2%80%99t%20understand%20anymore.%E2%80%9D), it’s a new game of cat and mouse trying to let in the good bots and keep out the bad ones. And once you let the good ones in, you’ll want more.
+
+## Attract more good bots (Step 3)
+
+So, should we let the AI write for us?
+
+One thing we just can’t stomach, won’t do, is optimize for agents at the expense of humans. [UX over AX](https://blog.jim-nielsen.com/2025/thoughts-on-ax/), as Jim says. Slop may ruin the internet, but we’d like to preserve our corner.
+
+There is a gray area—gray for me, at least—wherein we’d publish accurate material written by language models and reviewed by humans. I don’t take issue with others doing this, [ethically](/ethical-cold-outreach). Like Charlotte at Octolens, who published a [Claude skill](https://github.com/octolens/seo-page-builder) that, when given a keyword like “social listening”:
+
+1. Fans it out into many related keywords (“social mentions,” etc.)
+2. Uses the Ahrefs API to pull real search volume and results
+3. Uses the Octolens API to pull real customer quotes
+4. Opens a blog draft PR for a human to review, edit, and publish
+
+That approach seems well thought out and reasonable, but I kind of can’t stand to be the one doing it. It gives me a heartache to let AI do the writing, which I think of as _my job_. First the code, and now the plain English? In a way, I guess that makes me the right person for the job—kind of like how Travis has to be the one to shoot Old Yeller.
+
+And so I let Claude write for me. Its questions paralyzed me: did I want to “keep my voice” and brevity or go with “full maximalist roundups” that rank well? Letting the model write like me felt more like I’d be _losing_ my voice than keeping it. Maximizing word count felt wrong in the “brevity is the soul of wit” sense (or the “I would have written a shorter letter, but I did not have the time” sense). Still, I held Claude’s hand (or did Claude hold mine?) and let it write something. I added a loud disclosure that the article was written by AI and heavily reviewed by a human, me. I even listed my name and email for accountability.
+
+But I couldn’t do it!
+
+I couldn’t manage to publish something that was so unlike what I would’ve written. I also found myself heavily rewriting, such that it would have been faster to write from scratch myself. So that’s what I did: I remixed steps 1-3 of Charlotte’s skill into an [AEO research template](https://www.val.town/x/templates/aeo-research) val, then wrote something myself. The Ahrefs data turned up some search whitespace around building your own MCP server, which Val Town is legitimately excellent for, so I wrote a [How to build an MCP server](https://docs.val.town/guides/how-to-build-an-mcp-server) guide. I’ll admit to writing partially for an assumed robot audience—I wouldn’t have explained what an MCP server is to my assumed developer reader—but without sacrificing human experience, I hope.
+
+## This blog post is a very long and complex search query to find knowledgeable people and make them route helpful stuff to our inbox
+
+We’re obviously early in figuring out AEO. That is to say, we haven’t figured it out. In our specific devtools bubble of the internet, it feels like a lot of people are talking about AEO, but it also feels like it hasn’t been solved. So this blog post is a beacon, the kind Henrik was talking about, to ask for your help. Email me at [pete@val.town](mailto:pete@val.town) if you know a thing or two.

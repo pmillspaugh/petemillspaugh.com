@@ -8,6 +8,9 @@ import DunningKruger from "./gallery/DunningKruger";
 import Battleship from "./gallery/Battleship";
 import Mandelbrot from "./gallery/Mandelbrot";
 import Mercantile from "./gallery/Mercantile";
+import CRUD from "./gallery/CRUD";
+import CodePacman from "./gallery/CodePacman";
+import CodeMeme from "./gallery/CodeMeme";
 
 interface FigureProps {
   caption: string;
@@ -48,5 +51,8 @@ Figure.DunningKruger = DunningKruger;
 Figure.Battleship = Battleship;
 Figure.Mandelbrot = Mandelbrot;
 Figure.Mercantile = Mercantile;
+Figure.CRUD = CRUD;
+Figure.CodePacman = CodePacman;
+Figure.CodeMeme = CodeMeme;
 
 export default Figure;
