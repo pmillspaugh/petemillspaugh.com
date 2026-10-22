@@ -1,0 +1,87 @@
+---
+slug: slow-mode
+title: "Slow Mode: The Salt Fat Acid Heat of vibe coding"
+planted: 2026-05-19
+watered: 2026-05-19
+format: Essay
+status: Seedling
+canonical: "https://blog.val.town/slow-mode"
+---
+
+<Callout>
+  I wrote this essay [for the Val Town blog](https://blog.val.town/slow-mode),
+  syndicated here.
+</Callout>
+
+> Despite the countless failed attempts at trying to democratize coding while not understanding coding, we’re faced with the reality that you cannot understand code without engaging with it. _-Lars Faye, [Agentic Coding is a Trap](https://larsfaye.com/articles/agentic-coding-is-a-trap)_
+
+Lars’s blog post got me thinking: what if we designed a deliberately slow, hand-holding agent? One that keeps the human programmer involved, to understand and learn. One that doesn’t paint you into a corner with slop. No one-shotting, no agentic looping, but instead moving at a human pace to match your particular human knowledge at the time. I use the word _programmer_ on purpose because I think even vibe coders should at least be learning programming concepts, like what data their app needs to store and how, or where that data travels (say, from their laptop to a data center in Ohio then into a database somewhere else).
+
+We’ll call this _Slow Mode_.
+
+## Slow Mode 1.0 with Claude Code
+
+As a low stakes experiment, I first wrote Slow Mode 1.0 as instructions in `CLAUDE.md` for [using Claude Code + the Val Town MCP server](https://docs.val.town/guides/prompting/claude-code/):
+
+```md
+You are in “Slow Mode,” which emphasizes human learning and decision making, not
+speed and productivity.
+
+- Do not agentically loop and iterate.
+- Keep the human (me, Pete) involved every step along the way.
+- Hold me accountable. Ask me to make decisions. Make sure I understand the
+  tradeoffs of those decisions.
+- Don’t generate code right away. Plan first, together with me. When you do
+  generate code, do it incrementally, one step at a time, just as I would,
+  testing whether it’s working as expected after each step.
+- Ask me what to name functions. Ask me whether some code should go in a new
+  file or an existing one, and how I’d like my folders organized.
+- You can use the accompanying preferences so that you don’t have to ask
+  repetitively for straightforward things. Those preferences should give you a
+  ballpark sense of what I know about programming.
+- When necessary or helpful, pause to teach me something, but don’t be too
+  verbose up front. I can ask when I’d like to learn more and let you know when
+  I’d like to move forward instead.
+```
+
+## Stop and think
+
+Of course, when an LLM _thinks_ or _reasons_, it is really just generating more and more text.
+
+> ...the models can only “think” by spooling out more text—while human thinking often does the opposite: retreats into silence, because it doesn’t have words yet to say what it wants to say. _-Robin Sloan, [Thinking Modes](https://www.robinsloan.com/lab/ungrounded/)_
+
+LLM “thinking” can be problematic, assuming it’s important to me to understand what’s happening. I’d actually like to see the thought process, if you can call it that. In some ways, I think it’s a feature, not a bug, that a slow mode agent would brainstorm linearly, token by token. It’s the machine’s way of [rubber ducking](https://en.wikipedia.org/wiki/Rubber_duck_debugging), and I think we should be doing it together. I should be talking aloud and then dictating or typing the next decision or question back to my robot collaborator-teacher. I should be making some edits in the code myself, extracting a helper function here, renaming a variable there, running the code, poking around the database. I like that my slow agent keeps me in the weeds, so I can keep the whole program in my head.
+
+I find coding in Slow Mode to be more pleasant. It’s partially the prompt enforcing Slow Mode, but in large part it’s also me self-enforcing by staying focused and thinking (much easier when your agent doesn’t run off for 10 minutes in a loop!). Slow is smooth, and smooth is fast.
+
+## Slow Mode 2.0 (Slow Townie)
+
+After experimenting with Slow Mode using Claude Code + Val Town MCP, we’ve started privately testing Slow Townie within Val Town.
+
+The instructions are pretty much the same as above in `CLAUDE.md` for now, but an ideal slow mode would factor in your particular knowledge and preferences, building on the “memory” feature that many agents currently use. We should have a lot to learn from prior art when it comes to personalization.
+
+## YOLO Mode
+
+The polar opposite of Slow Mode is YOLO Mode, where your agent loops again and again without stopping to ask for permission. It fulfills vibe coding’s original definition. In Townie we do have YOLO Mode (a.k.a. “Allow all”) because, well, to each her own. I enjoy YOLO’ing sometimes, typically when the stakes are low and time is short.
+
+But more often than not, it’s important to me that when I need a break—when I shut the laptop to go for a walk or cook dinner or sleep—_my robot takes a break, too._ Contrary to what seems like consensus among tech workers in San Fransisco, I think my agent should mostly stop working when I do (and I myself should probably stop working around dinnertime most nights!). Plenty of developers I respect feel the opposite—fair enough.
+
+## Trading productivity for learning
+
+Val Town’s end goal is end-user programming, the dream that anyone should be able to customize their own software. Like a spreadsheet, there should be a natural gradient from beginners making something useful in the first hour to experts spending hundreds of hours on complex models. Users progress along that gentle slope by learning continuously over time. But is end-user programming about learning, or about building the thing? I think it’s about both: the more you learn while building, the better you get at building.
+
+There’s an inherent learning-versus-productivity tradeoff when using AI. I am no stranger to [sacrificing my own learning](https://addyosmani.com/blog/dont-outsource-learning/) or solid understanding of an implementation to prioritize shipping. When you have a lot on your plate, that can be the right side of the tradeoff. But there’s also a [short-term gains versus long-term maintenance](https://www.jamesshore.com/v2/blog/2026/you-need-ai-that-reduces-your-maintenance-costs) tradeoff, and I’m betting Slow Mode will help with that.
+
+## Learn to cook
+
+I know many people think moving more slowly means falling behind, or worse, that by insisting on understanding code we’re gatekeeping. By embracing Slow Mode at Val Town, we’re telling vibe coders we believe in your ability to learn fundamentals about code that might’ve previously seemed unreachable. Building in Val Town (or elsewhere) with Slow Mode should empower you. You should feel like you know what you’re doing, not like you’re dependent on your agent and helpless if there’s downtime.
+
+It’s like cooking with recipes versus learning about food fundamentals so you can improvise in the kitchen and create food that’s all your own. Val Town is the _Salt Fat Acid Heat_ of vibe coding platforms.
+
+<Figure.CRUD />
+
+## Prior art
+
+We’re not the first to propose something like Slow Mode. It turns out Claude itself already has a “[Learning mode](https://www.anthropic.com/news/introducing-claude-for-education#learning-mode),” ostensibly for education but also relevant to professional and hobbyist (vibe) coders. ChatGPT has “[study mode](https://openai.com/index/chatgpt-study-mode/)” (also more geared toward students). Just last week, the same day I wrote the first draft of this very essay, a Claude/Codex Skill for “deliberate skill development” attracted a bunch of GitHub stars and Hacker News comments.
+
+Just like Val Town [fast-followed all the best coding assistants](https://blog.val.town/blog/fast-follow) while building Townie, we’d like to learn from others and share our own improvements to Slow Mode along the way.
