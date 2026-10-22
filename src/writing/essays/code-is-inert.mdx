@@ -1,0 +1,60 @@
+---
+slug: code-is-inert
+title: Code is inert. Val Town makes it ert
+planted: 2026-04-09
+watered: 2026-04-09
+format: Essay
+status: Evergreen
+canonical: "https://blog.val.town/aeo"
+---
+
+<Callout>
+  I wrote this essay [for the Val Town blog](https://blog.val.town/aeo),
+  syndicated here.
+</Callout>
+
+> Code is inert. How do you make it ert? _-Paul Ford, [What is Code](https://www.bloomberg.com/graphics/2015-paul-ford-what-is-code/).<sup>[1](#footnotes)</sup>_
+
+Right now, there is more inert code in the world than at any other point in history. Tomorrow even more inert code will exist, only to be one-upped again every day after that. I wouldn’t be surprised if soon one of the leading AI labs claims something like, “90% of all the code there ever was has been produced in the last week.” _Produced_, mostly generated, not written.
+
+<Figure.CodePacman />
+
+90% might be an exaggeration. Paul Kinlan’s [napkin math](https://aifoc.us/damn-claude-thats-a-lot-of-commits/) has language models taking credit for 5% of public commits on GitHub, but that doesn’t count uncommitted nor unattributed LLM code. Either way, written or generated, much of that code is inert.
+
+What does it mean for code to be inert?
+
+One reasonable answer is that code is inert whenever it’s not going brrr, not _running_, not “being executed.” And of course, code can _run_ locally on your personal computer or elsewhere on some server. But in this essay, I mean code is inert when it’s not deployed. Code that isn’t deployed can’t be easily shared and run, at least not without friction.
+
+There was a meme in the early ChatGPT days where a programmer gets a text from a non-programmer friend. It goes something like this:
+
+<Figure.CodeMeme />
+
+The non-programmer friend’s smile fades (one imagines) upon realizing they have no clue how to actually bring that code to life, how to make it ert. Since that meme, companies like Lovable, Replit, and Bolt have largely solved that particular disconnect for vibe coders, but even for you the programmer and your collaborators there’s still often a bridge of friction from inert code to deployed code.
+
+Well, Val Town makes code ert.
+
+## Val Town makes code ert
+
+Concretely, Val Town lets you write and run JavaScript. It’s a code editor in your browser, synced to our servers to run that code “in the cloud” (read: an AWS data center in Ohio). And whenever you save a file with your code in it, we sync that code to our servers in 100 milliseconds.
+
+There’s no localhost, which means there’s no deployment bridge to cross from localhost to production. Steve (one of Val Town’s cofounders) told me that my first draft of this essay severely undersold this point about skipping localhost. He gave that feedback in a video articulating Val Town’s core bet (on the browser, against localhost) in a raw, honest sort of way that is hard to replicate on a podcast or scripted video. With his permission, [here’s a clip](https://player.mux.com/7hcC4jeDEZEtMix7uO02JOoiqH009QczG4BqeBNY00QBUg?metadata-video-title=code-is-inert&video-title=code-is-inert).
+
+When code is always deployed, you get a satisfying instant feedback loop. And as importantly, it’s trivial to share your code and collaborate. It’s why Val Town suits a Computer Science professor [teaching web dev fundamentals](https://www.val.town/x/ceculbe/html-css-js-template) to university students; OpenAI’s Head of Realtime [launching their new voice model](https://x.com/juberti/status/2026038008240337101); and Kilo Code engineers [collaborating on a support agent](https://blog.kilo.ai/p/we-wasted-4-weeks-on-a-1000month).
+
+## Whether or not you read the code, it’s gotta be ert
+
+Our industry is in the middle of a debate over whether the code itself matters at all. Whether you the programmer need to read and review your LLM’s code. Historically, Val Town has defended the position that code does matter. Steve wrote a blog post a couple weeks ago that floated right up to the front page of Hacker News with over 400 comments: [Reports of code’s death are greatly exaggerated](https://news.ycombinator.com/item?id=47476315).
+
+_But whether or not you think code matters, it must be ert._
+
+Unsurprisingly, a lot of our users are vibe coding internal automations, agents, prototypes, and demos. They’re _writing_ less code than ever but _generating_ more code than ever (remember, “90% of all code...”). Many archetypes are doing this sort of work: technical founders, go-to-market engineers, forward deployed engineers, product engineers and PMs, business analytics teams, and internal devtools teams.
+
+A common sentiment is that it’s super easy to produce the code, asymptotically approaching zero cost. Or at least it’s getting faster, smarter and cheaper all the time. But then the gotcha or bottleneck—the hard, slow part—is deployment. We hear people say deploying is where they got stuck, or where their less technical teammate or friend gave up. And that’s the whole point of Val Town. There isn’t any deployment because it’s already, automatically, always deployed.
+
+The code is ert.
+
+\*\*\*
+
+## Footnotes
+
+`[1]` _What is Code_ is Paul Ford’s famous essay in the June 2015 issue of Bloomberg Businessweek. B-list famous in some programmer circles, anyway. The essay is practically a novella: 38,000 words divided across seven sections (chapters?). The scrollbar on the web version is stubby, hard to even see, and you get a sardonic “Certificate of Completion” at the bottom for reading it. The web version also has all sorts of interactivity and easter eggs. Scroll through the paragraphs too quickly and you’ll see, “Are you reading my essay, or looking at my essay?” I’ve never read the print version, but I’ve searched around for an old copy more than once, so please do [email me](mailto:pete@petemillspaugh.com) if you know where I could get my hands on one (seriously).
