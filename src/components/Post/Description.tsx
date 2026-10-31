@@ -123,8 +123,8 @@ function ClippingDescription() {
   return (
     <>
       <StyledP>
-        <strong>Clippings</strong> are email newsletters that I send every month
-        or two (ish). I write about what's been on my mind and propagate a
+        <strong>Clippings</strong> are email newsletters that I send every few
+        months (ish). I write about what's been on my mind and propagate a
         selection of things I've planted since the last clipping.
       </StyledP>
       <StyledP>
