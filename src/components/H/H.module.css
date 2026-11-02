@@ -27,7 +27,6 @@
   position: absolute;
   top: -0.05em;
   left: -0.75em;
-  transition: opacity var(--base-timing) ease-in-out;
 }
 
 .h2 > a:hover::before,
