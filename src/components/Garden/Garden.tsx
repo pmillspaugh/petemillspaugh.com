@@ -148,13 +148,13 @@ const Garden = ({ posts }: GardenProps) => {
 
 export const OuterWrapper = styled.div`
   border-radius: 4px;
-  border: 1.5px solid ${(p) => p.theme.textColor};
+  border: 1.5px solid var(--text-color);
   padding: 3px;
-  background-color: ${(p) => p.theme.tagBorderColor};
+  background-color: var(--tag-border-color);
   transition: background-color var(--base-timing) ease-in-out;
 
   &:hover {
-    background-color: ${(p) => p.theme.tagBorderColorHover};
+    background-color: var(--tag-border-color-hover);
   }
 `;
 
@@ -162,7 +162,7 @@ export const InnerWrapper = styled.div`
   padding: 2px 8px;
   border-radius: 4px;
   border: 1.5px solid var(--black);
-  background-color: ${(p) => p.theme.primaryBg};
+  background-color: var(--primary-bg);
   transition: background-color var(--base-timing) ease-in-out;
   font-family: var(--font-mono);
   font-size: 0.875rem;

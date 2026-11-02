@@ -10,8 +10,8 @@ const StyledBlockquote = styled.blockquote`
   font-family: var(--font-open-sans);
   margin-bottom: 24px;
   padding-left: 16px;
-  color: ${(p) => p.theme.blockquoteColor};
-  border-left: 3px solid ${(p) => p.theme.blockquoteColor};
+  color: var(--blockquote-color);
+  border-left: 3px solid var(--blockquote-color);
   transition: all var(--base-timing) ease-in-out;
 
   p,

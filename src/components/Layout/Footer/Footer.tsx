@@ -1,7 +1,5 @@
-import { useContext } from "react";
 import Link from "next/link";
 import styled from "styled-components";
-import { LightModeContext } from "pages/_app";
 import EmailSignup from "@/components/EmailSignup";
 import { PostFormat } from "@/components/Post";
 import VisuallyHidden from "@/components/VisuallyHidden";
@@ -11,11 +9,9 @@ import ValTownIcon from "./ValTownIcon";
 import BlueskyIcon from "./BlueskyIcon";
 
 const Footer = () => {
-  const { lightMode } = useContext(LightModeContext);
-
   return (
     <footer id="footer">
-      <NewfoundLake lightMode={lightMode} />
+      <NewfoundLake />
       <StyledWrapper>
         <StyledNav>
           <StyledColumnWrapper>

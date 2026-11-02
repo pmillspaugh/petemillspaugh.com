@@ -134,20 +134,20 @@ const StyledArticle = styled.article`
 const StyledButton = styled.button`
   position: relative;
   padding: 0;
-  border: 2px solid ${(p) => p.theme.textColor};
+  border: 2px solid var(--text-color);
   border-radius: 6px;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
-  border-top: 3px solid ${(p) => p.theme.textColor};
-  background: ${(p) => p.theme.textColor};
+  border-top: 3px solid var(--text-color);
+  background: var(--text-color);
   outline-offset: 4px;
   cursor: pointer;
 
   & > span {
     position: relative;
     display: block;
-    background: ${(p) => p.theme.textColor};
-    border: 2px solid ${(p) => p.theme.textColor};
+    background: var(--text-color);
+    border: 2px solid var(--text-color);
     border-top-width: 2.5px;
     border-radius: 5px;
     will-change: transform;
@@ -195,9 +195,9 @@ const StyledDiv = styled.span.withConfig({
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${(p) => p.theme.textColor};
+  background: var(--text-color);
   border-radius: 4px;
-  color: ${(p) => p.theme.primaryBg};
+  color: var(--primary-bg);
   font-size: 1.35rem;
   font-family: var(--font-mono), monospace;
   font-weight: 900;

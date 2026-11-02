@@ -149,9 +149,9 @@ const StyledForm = styled.form`
   & > input {
     width: 200px;
     padding: 4px;
-    border: 1.5px solid ${(p) => p.theme.textColor};
+    border: 1.5px solid var(--text-color);
     border-radius: 4px;
-    background-color: ${(p) => p.theme.primaryBg};
+    background-color: var(--primary-bg);
     text-align: center;
     outline-offset: 4px;
   }

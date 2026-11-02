@@ -29,7 +29,7 @@ const StyledUl = styled.ul`
   & > li::before {
     content: "✦";
     padding-right: 8px;
-    color: ${(p) => p.theme.linkTextColor};
+    color: var(--link-text-color);
   }
 
   @media (min-width: 1200px) {

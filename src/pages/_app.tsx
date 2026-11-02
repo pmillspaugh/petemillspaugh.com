@@ -1,11 +1,10 @@
 import { createContext, useEffect } from "react";
-import { ThemeProvider } from "styled-components";
 import { Analytics } from "@vercel/analytics/react";
 import "@code-hike/mdx/dist/index.css";
 import Layout from "@/components/Layout";
 import { CSSReset } from "@/styles/cssReset";
 import { GlobalStyle } from "@/styles/globals";
-import { lightTheme, darkTheme } from "@/styles/themes";
+import "@/styles/themes.css";
 import useLightMode from "@/hooks/useLightMode.hook";
 
 // TODO: move this to a shared /types/index.d.ts file included in tsconfig.json
@@ -56,14 +55,12 @@ const App = ({ Component, pageProps }) => {
 
   return (
     <LightModeContext.Provider value={{ lightMode, setLightMode }}>
-      <ThemeProvider theme={lightMode ? lightTheme : darkTheme}>
-        <Layout>
-          <Component {...pageProps} />
-          <Analytics />
-        </Layout>
-        <CSSReset />
-        <GlobalStyle />
-      </ThemeProvider>
+      <Layout>
+        <Component {...pageProps} />
+        <Analytics />
+      </Layout>
+      <CSSReset />
+      <GlobalStyle />
     </LightModeContext.Provider>
   );
 };

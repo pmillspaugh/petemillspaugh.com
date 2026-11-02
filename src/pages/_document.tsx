@@ -1,5 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
+import { LocalStorageKey } from "@/constants";
 
 class GardenDocument extends Document {
   static async getInitialProps(ctx) {
@@ -32,7 +33,17 @@ class GardenDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head />
+        <Head>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `try {
+                if (JSON.parse(localStorage.getItem(${JSON.stringify(LocalStorageKey.PreferredTheme)})) === "dark") {
+                  document.documentElement.dataset.theme = "dark";
+                }
+              } catch {}`,
+            }}
+          />
+        </Head>
         <meta property="og:type" content="website" />
         <meta
           name="description"

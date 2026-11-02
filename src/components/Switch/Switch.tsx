@@ -50,12 +50,12 @@ const Root = styled(RadixSwitch.Root)`
     bottom: 0;
     margin: auto;
     height: 2px;
-    background: ${(p) => p.theme.textColor};
+    background: var(--text-color);
     border-radius: 10px;
   }
 
   &:focus-visible {
-    outline: 2px auto ${(p) => p.theme.textColor};
+    outline: 2px auto var(--text-color);
     outline-offset: 4px;
   }
 `;
@@ -67,15 +67,18 @@ const Thumb = styled(RadixSwitch.Thumb)`
   width: var(--size);
   height: var(--size);
   border-radius: 50%;
-  background: ${(p) => p.theme.primaryBg};
-  border: 2px solid ${(p) => p.theme.textColor};
-  outline: 2px solid ${(p) => p.theme.primaryBg};
+  background: var(--primary-bg);
+  border: 2px solid var(--text-color);
+  outline: 2px solid var(--primary-bg);
   transform: translateX(0%);
-  transition: transform var(--base-timing) ease-in-out;
+  transition:
+    transform var(--base-timing) ease-in-out,
+    background-color var(--base-timing) ease-in-out,
+    border-color var(--base-timing) ease-in-out;
   will-change: transform;
 
   &[data-state="checked"] {
-    background: ${(p) => p.theme.switchEnabledBg};
+    background: var(--switch-enabled-bg);
     transform: translateX(100%);
   }
 `;

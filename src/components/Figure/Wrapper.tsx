@@ -10,9 +10,9 @@ export const StyledWrapper = styled.div`
 export const StyledImageWrapper = styled.div`
   flex-shrink: 0;
   max-width: 100%;
-  border: 2px solid ${(p) => p.theme.dateTextColor};
+  border: 2px solid var(--date-text-color);
   border-radius: 4px;
-  background-color: ${(p) => p.theme.tagBorderColor};
+  background-color: var(--tag-border-color);
   padding: 4px;
 
   @media (min-width: 1200px) {
@@ -23,5 +23,5 @@ export const StyledImageWrapper = styled.div`
 export const StyledImage = styled(Image)`
   height: auto;
   padding: 8px;
-  background-color: ${(p) => p.theme.primaryBg};
+  background-color: var(--primary-bg);
 `;

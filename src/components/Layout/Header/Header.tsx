@@ -9,7 +9,7 @@ const Header = () => {
 
   return (
     <StyledHeader>
-      <Logo lightMode={lightMode} />
+      <Logo />
       <nav>{/* TODO: */}</nav>
       <LightSwitch lightMode={lightMode} setLightMode={setLightMode} />
     </StyledHeader>

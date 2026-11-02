@@ -7,12 +7,12 @@
   color: inherit;
   text-decoration: none;
   text-wrap: balance;
-  transition: color var(--base-timing) ease-in;
+  transition: color var(--base-timing) ease-in-out;
 }
 
 .h2:hover,
 .h3:hover {
-  color: var(--color-link-text);
+  color: var(--link-text-color);
   cursor: pointer;
 }
 
@@ -23,7 +23,7 @@
   position: absolute;
   top: -0.05em;
   left: -0.75em;
-  transition: opacity var(--base-timing) ease-in;
+  transition: opacity var(--base-timing) ease-in-out;
 }
 
 .h2 > a:hover::before,

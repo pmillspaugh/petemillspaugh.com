@@ -43,7 +43,7 @@ const StyledLink = styled(Link)`
   font-size: 1.5rem;
   font-weight: 800;
   line-height: 1.2;
-  color: ${(p) => p.theme.textColor};
+  color: var(--text-color);
   text-decoration: none;
 
   & > div {
@@ -55,7 +55,7 @@ const StyledMetadata = styled.div`
   font-family: var(--font-mono);
   font-weight: 600;
   font-size: 0.75rem;
-  color: ${(p) => p.theme.textColor};
+  color: var(--text-color);
   padding-bottom: 24px;
 
   @media (min-width: 768px) {
@@ -66,10 +66,10 @@ const StyledMetadata = styled.div`
 
 const StyledTagLabel = styled.span`
   font-family: var(--font-mono);
-  color: ${(p) => p.theme.linkTextColor};
+  color: var(--link-text-color);
 
   &:hover {
-    color: ${(p) => p.theme.linkTextColorHover};
+    color: var(--link-text-color-hover);
   }
 `;
 
@@ -78,7 +78,7 @@ const StyledTimestamp = styled.span`
   font-size: 0.75rem;
   font-style: italic;
   font-weight: 400;
-  color: ${(p) => p.theme.dateTextColor};
+  color: var(--date-text-color);
 
   &::before {
     content: " ◆ ";

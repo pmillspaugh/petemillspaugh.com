@@ -89,8 +89,8 @@ const CommandBar = ({ children }: { children?: ReactElement }) => {
 
 const StyledInput = styled.input`
   width: calc(100% - 52px);
-  background-color: ${(p) => p.theme.primaryBg};
-  border: 2px solid ${(p) => p.theme.textColor};
+  background-color: var(--primary-bg);
+  border: 2px solid var(--text-color);
   border-radius: 4px;
   padding: 8px;
   font-family: var(--font-mono);
@@ -98,7 +98,7 @@ const StyledInput = styled.input`
   font-weight: 700;
 
   &::placeholder {
-    color: ${(p) => p.theme.textColor};
+    color: var(--text-color);
     opacity: 0.75;
   }
 `;

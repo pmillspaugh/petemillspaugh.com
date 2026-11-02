@@ -63,7 +63,7 @@ const StyledNavLink = styled(Link)`
   }
 
   &:hover {
-    color: ${(p) => p.theme.linkTextColorHover};
+    color: var(--link-text-color-hover);
   }
 `;
 

@@ -1,0 +1,51 @@
+:root {
+  color-scheme: light;
+  --primary-bg: hsl(209, 33%, 96%);
+  --text-color: hsl(207, 43%, 16%);
+  --link-text-color: hsl(172, 54%, 32%);
+  --link-text-color-hover: hsl(43, 60%, 68%);
+  --date-text-color: hsl(223, 24%, 32%);
+  --code-bg: hsl(157, 6%, 90%);
+  --code-color: hsl(165, 41.94%, 24.31%);
+  --blockquote-color: hsl(165, 41.94%, 24.31%);
+  --tag-border-color: hsl(43, 60%, 68%);
+  --tag-border-color-hover: hsl(172, 54%, 32%);
+  --popover-bg: hsl(209, 33%, 96%);
+  --popover-border-color: hsl(172, 54%, 32%);
+  --switch-enabled-bg: hsl(43, 60%, 68%);
+  --vt-logo-bg: hsl(0, 0%, 100%);
+  --vt-logo-color: hsl(0, 0%, 0%);
+  --bulb: hsl(209, 33%, 96%);
+  --bulb-rope: hsl(209, 33%, 96%);
+  --logo-back: hsl(43, 60%, 68%);
+  --logo-front: hsl(172, 54%, 32%);
+  --mountains-3: hsl(223, 38%, 89%);
+  --mountains-2: hsl(223, 37%, 80%);
+  --lake: hsl(191, 26%, 77%);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --primary-bg: hsl(207, 43%, 16%);
+  --text-color: hsl(209, 33%, 96%);
+  --link-text-color: hsl(43, 60%, 68%);
+  --link-text-color-hover: hsl(172, 54%, 32%);
+  --date-text-color: hsl(223, 38%, 89%);
+  --code-bg: hsl(223, 24%, 32%);
+  --code-color: hsl(209, 33%, 96%);
+  --blockquote-color: hsl(223, 37%, 80%);
+  --tag-border-color: hsl(172, 54%, 32%);
+  --tag-border-color-hover: hsl(43, 60%, 68%);
+  --popover-bg: hsl(207, 43%, 16%);
+  --popover-border-color: hsl(43, 60%, 68%);
+  --switch-enabled-bg: hsl(172, 54%, 32%);
+  --vt-logo-bg: hsl(0, 0%, 0%);
+  --vt-logo-color: hsl(0, 0%, 100%);
+  --bulb: hsl(43, 60%, 68%);
+  --bulb-rope: hsl(223, 37%, 80%);
+  --logo-back: hsl(172, 54%, 32%);
+  --logo-front: hsl(43, 60%, 68%);
+  --mountains-3: hsl(223, 24%, 32%);
+  --mountains-2: hsl(223, 19%, 39%);
+  --lake: hsl(191, 20%, 49%);
+}

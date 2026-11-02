@@ -56,10 +56,10 @@ const Overlay = styled(RadixDialog.Overlay)`
   inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
-  animation: ${fadeIn} 300ms ease-in-out;
+  animation: ${fadeIn} var(--base-timing) ease-in-out;
 
   &[data-state="closed"] {
-    animation: ${fadeOut} 300ms ease-in-out;
+    animation: ${fadeOut} var(--base-timing) ease-in-out;
   }
 `;
 
@@ -82,11 +82,11 @@ const Content = styled(RadixDialog.Content)`
   width: 90vw;
   max-width: 450px;
   max-height: 85vh;
-  background-color: ${(p) => p.theme.primaryBg};
-  border: 2px solid ${(p) => p.theme.textColor};
+  background-color: var(--primary-bg);
+  border: 2px solid var(--text-color);
   border-radius: 4px;
   padding: 16px;
-  animation: ${slideIn} 300ms ease-out;
+  animation: ${slideIn} var(--base-timing) ease-in-out;
   overflow-y: auto;
 `;
 
