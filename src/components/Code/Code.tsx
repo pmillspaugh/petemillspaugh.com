@@ -15,14 +15,12 @@ const StyledCode = styled.code`
   border-radius: 4px;
   background-color: var(--code-bg);
   color: var(--code-color);
-  transition: all var(--base-timing) ease-in-out;
 
   a > & {
     color: var(--link-text-color);
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
     box-shadow: 0px 1.5px 0px var(--link-text-color);
-    transition: all var(--base-timing) ease-in-out;
   }
 
   a:hover > & {

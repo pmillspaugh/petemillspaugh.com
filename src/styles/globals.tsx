@@ -66,17 +66,8 @@ export const GlobalStyle = createGlobalStyle`
   html {
     color: var(--text-color);
     background-color: var(--primary-bg);
-    transition:
-      color var(--base-timing) ease-in-out,
-      background-color var(--base-timing) ease-in-out;
   }
-
-  a {
-    transition:
-      color var(--base-timing) ease-in-out,
-      text-decoration-color var(--base-timing) ease-in-out;
-  }
-
+  
   /*
     OVERRIDES
   */

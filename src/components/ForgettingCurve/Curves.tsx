@@ -99,9 +99,7 @@ const StyledSvg = styled.svg<CurveProps>`
   transform: translate(-2px, 8px);
 
   & > g {
-    transition:
-      opacity var(--base-timing) ease-in-out,
-      transform var(--base-timing) ease-in-out;
+    transition: opacity var(--base-timing) ease-in-out, transform var(--base-timing) ease-in-out;
   }
 
   & > g[id="zero-repetitions"] {

@@ -72,8 +72,6 @@ const EdisonBulb = () => {
   );
 };
 
-const StyledPath = styled.path`
-  transition: fill var(--base-timing) ease-in-out;
-`;
+const StyledPath = styled.path``;
 
 export default EdisonBulb;

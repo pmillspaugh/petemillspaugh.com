@@ -71,10 +71,7 @@ const Thumb = styled(RadixSwitch.Thumb)`
   border: 2px solid var(--text-color);
   outline: 2px solid var(--primary-bg);
   transform: translateX(0%);
-  transition:
-    transform var(--base-timing) ease-in-out,
-    background-color var(--base-timing) ease-in-out,
-    border-color var(--base-timing) ease-in-out;
+  transition: transform var(--base-timing) ease-in-out;
   will-change: transform;
 
   &[data-state="checked"] {

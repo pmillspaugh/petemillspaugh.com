@@ -66,14 +66,8 @@ const StyledLink = styled(Link)`
     margin-left: 0px;
   }
 
-  .back-p {
-    transition: fill var(--base-timing) ease-in-out;
-  }
-
   .front-p {
-    transition:
-      transform var(--base-timing) ease-in-out,
-      fill var(--base-timing) ease-in-out;
+    transition: transform var(--base-timing) ease-in-out;
     transform: translate(0);
   }
 

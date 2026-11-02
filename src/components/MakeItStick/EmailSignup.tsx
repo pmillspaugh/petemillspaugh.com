@@ -166,7 +166,6 @@ const StyledForm = styled.form`
     font-family: inherit;
     font-weight: 700;
     cursor: pointer;
-    transition: all var(--base-timing) ease-in-out;
 
     &:not(:disabled):hover {
       background: var(--gold);

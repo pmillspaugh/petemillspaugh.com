@@ -12,7 +12,6 @@ const StyledBlockquote = styled.blockquote`
   padding-left: 16px;
   color: var(--blockquote-color);
   border-left: 3px solid var(--blockquote-color);
-  transition: all var(--base-timing) ease-in-out;
 
   p,
   ul {

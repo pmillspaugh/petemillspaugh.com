@@ -65,12 +65,6 @@ const StyledSVG = styled.svg`
   height: 300px;
   transform: scaleX(1.01) translateY(4px);
 
-  & path {
-    transition:
-      fill var(--base-timing) ease-in-out,
-      stroke var(--base-timing) ease-in-out;
-  }
-
   @media (min-width: 768px) {
     height: 393px;
   }

@@ -71,9 +71,6 @@ const Thumb = styled(RadixSlider.Thumb)`
   background-color: var(--primary-bg);
   border: 2px solid var(--text-color);
   border-radius: 10px;
-  transition:
-    background-color var(--base-timing) ease-in-out,
-    border-color var(--base-timing) ease-in-out;
 
   &:hover {
     background-color: var(--tag-border-color-hover);
