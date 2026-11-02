@@ -56,15 +56,15 @@ const ResultRow = ({ result, handleClick }) => {
 const StyledLink = styled(Link)`
   display: block;
   padding: 16px;
-  border: 2px solid ${(p) => p.theme.linkTextColor};
+  border: 2px solid var(--link-text-color);
   border-radius: 4px;
-  color: ${(p) => p.theme.textColor};
+  color: var(--text-color);
   text-decoration: none;
 
   &:hover,
   &:focus {
-    background-color: ${(p) => p.theme.linkTextColor};
-    color: ${(p) => p.theme.primaryBg};
+    background-color: var(--link-text-color);
+    color: var(--primary-bg);
   }
 `;
 
@@ -85,8 +85,8 @@ const StyledP = styled.p`
   }
 
   & mark {
-    color: ${(p) => p.theme.textColor};
-    background-color: ${(p) => p.theme.linkTextColorHover};
+    color: var(--text-color);
+    background-color: var(--link-text-color-hover);
     padding: 2px;
     border-radius: 2px;
   }

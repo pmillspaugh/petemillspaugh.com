@@ -36,7 +36,7 @@ const StyledFigcaption = styled.figcaption`
   font-style: italic;
   text-align: center;
   padding-top: 16px;
-  color: ${(p) => p.theme.dateTextColor};
+  color: var(--date-text-color);
 
   @media (min-width: 1200px) {
     font-size: 1rem;

@@ -41,9 +41,9 @@ const StyledWrapper = styled.div`
 
 const StyledImageWrapper = styled.div`
   flex-shrink: 0;
-  border: 2px solid ${(p) => p.theme.dateTextColor};
+  border: 2px solid var(--date-text-color);
   border-radius: 4px;
-  background-color: ${(p) => p.theme.tagBorderColor};
+  background-color: var(--tag-border-color);
   padding: 4px;
 `;
 

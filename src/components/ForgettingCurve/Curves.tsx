@@ -99,9 +99,7 @@ const StyledSvg = styled.svg<CurveProps>`
   transform: translate(-2px, 8px);
 
   & > g {
-    transition:
-      opacity 500ms ease,
-      transform 500ms ease;
+    transition: opacity var(--base-timing) ease-in-out, transform var(--base-timing) ease-in-out;
   }
 
   & > g[id="zero-repetitions"] {
@@ -135,11 +133,11 @@ const StyledSvg = styled.svg<CurveProps>`
   }
 
   & > g > path[data-is-filled="true"] {
-    fill: ${({ theme }) => theme.textColor};
+    fill: var(--text-color);
   }
 
   & > g > path[data-has-stroke="true"] {
-    stroke: ${({ theme }) => theme.textColor};
+    stroke: var(--text-color);
     stroke-width: 1.5;
   }
 `;

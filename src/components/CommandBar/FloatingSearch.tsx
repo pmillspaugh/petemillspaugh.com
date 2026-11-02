@@ -39,10 +39,10 @@ const StyledTrigger = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${(p) => p.theme.primaryBg};
-  border: 2px solid ${(p) => p.theme.textColor};
+  background-color: var(--primary-bg);
+  border: 2px solid var(--text-color);
   border-radius: 4px;
-  outline: 2px solid ${(p) => p.theme.tagBorderColor};
+  outline: 2px solid var(--tag-border-color);
 
   @media (min-width: 768px) {
     padding: 8px;
@@ -55,8 +55,8 @@ const StyledTrigger = styled.button`
 
   &:hover {
     cursor: pointer;
-    color: ${(p) => p.theme.linkTextColor};
-    border-color: ${(p) => p.theme.linkTextColor};
+    color: var(--link-text-color);
+    border-color: var(--link-text-color);
   }
 `;
 
@@ -78,12 +78,12 @@ const StyledShortcut = styled.div`
 
   & > span {
     padding: 0px 4px;
-    border: 1.5px solid ${(p) => p.theme.textColor};
+    border: 1.5px solid var(--text-color);
     border-radius: 2px;
   }
 
   button:hover > & > span {
-    border: 1.5px solid ${(p) => p.theme.linkTextColor};
+    border: 1.5px solid var(--link-text-color);
   }
 `;
 

@@ -22,25 +22,8 @@ export const GlobalStyle = createGlobalStyle`
     --gold: ${COLORS.Gold};
     --aqua: ${COLORS.Aqua};
 
-    /* Theme colors */
-    --primary-bg: ${(p) => p.theme.primaryBg};
-    --text-color: ${(p) => p.theme.textColor};
-    --link-text-color: ${(p) => p.theme.linkTextColor};
-    --link-text-color-hover: ${(p) => p.theme.linkTextColorHover};
-    --date-text-color: ${(p) => p.theme.dateTextColor};
-    --code-bg: ${(p) => p.theme.codeBg};
-    --code-color: ${(p) => p.theme.codeColor};
-    --blockquote-color: ${(p) => p.theme.blockquoteColor};
-    --tag-border-color: ${(p) => p.theme.tagBorderColor};
-    --tag-border-color-hover: ${(p) => p.theme.tagBorderColorHover};
-    --popover-bg: ${(p) => p.theme.popoverBg};
-    --popover-border-color: ${(p) => p.theme.popoverBorderColor};
-    --switch-enabled-bg: ${(p) => p.theme.switchEnabledBg};
-    --vt-logo-bg: ${(p) => p.theme.vtLogoBg};
-    --vt-logo-color: ${(p) => p.theme.vtLogoColor};
-
     /* Animations */
-    --base-timing: 200ms;
+    --base-timing: 150ms;
   }
 
   /*
@@ -68,24 +51,23 @@ export const GlobalStyle = createGlobalStyle`
   
   a {
     font-weight: 500;
-    color: ${(p) => p.theme.linkTextColor};
+    color: var(--link-text-color);
     text-decoration-thickness: 1.5px;
     text-underline-offset: 0.125em;
 
     &:hover {
-      text-decoration-color: ${(p) => p.theme.linkTextColorHover};
+      text-decoration-color: var(--link-text-color-hover);
     }
   }
 
   /*
     THEME
   */
-  html, body, #__next {
-    color: ${(p) => p.theme.textColor};
-    background-color: ${(p) => p.theme.primaryBg};
-    transition: color var(--base-timing) ease-in-out, background-color var(--base-timing) ease-in-out;
+  html {
+    color: var(--text-color);
+    background-color: var(--primary-bg);
   }
-
+  
   /*
     OVERRIDES
   */
@@ -119,5 +101,4 @@ export const GlobalStyle = createGlobalStyle`
   .ch-code-scroll-content {
     overflow: auto !important;
   }
-}
 `;

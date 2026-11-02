@@ -130,7 +130,7 @@ const LightSwitch = ({ lightMode, setLightMode }: LightSwitchProps) => {
       <VisuallyHidden>
         {lightMode ? "Switch to dark mode" : "Switch to light mode"}
       </VisuallyHidden>
-      <EdisonBulb lightMode={lightMode} />
+      <EdisonBulb />
     </StyledButton>
   );
 };

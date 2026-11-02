@@ -24,11 +24,11 @@ const StyledSvg = styled.svg`
   border-radius: 5px;
 
   & > path:first-child {
-    fill: ${(p) => p.theme.vtLogoBg};
+    fill: var(--vt-logo-bg);
   }
 
   & > path:not(:first-child) {
-    fill: ${(p) => p.theme.vtLogoColor};
+    fill: var(--vt-logo-color);
   }
 `;
 

@@ -36,13 +36,13 @@ const Content = styled(RadixPopover.Content)`
   max-width: min(400px, calc(100vw - 32px));
   border-radius: 4px;
   border: 1px solid var(--black);
-  background-color: ${(p) => p.theme.popoverBorderColor};
+  background-color: var(--popover-border-color);
   padding: 3px;
   transform-origin: var(--radix-popover-content-transform-origin);
-  animation: scaleIn var(--base-timing) ease-out;
+  animation: scaleIn var(--base-timing) ease-in-out;
 
   &[data-state="closed"] {
-    animation: scaleOut var(--base-timing) ease-out;
+    animation: scaleOut var(--base-timing) ease-in-out;
   }
 
   @keyframes scaleIn {
@@ -72,7 +72,7 @@ const InnerContent = styled.div`
   border-radius: 4px;
   border: 1px solid var(--black);
   padding: 12px 16px;
-  background-color: ${(p) => p.theme.popoverBg};
+  background-color: var(--popover-bg);
 `;
 
 export default Popover;

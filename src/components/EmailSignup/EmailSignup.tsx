@@ -115,7 +115,6 @@ const StyledForm = styled.form`
     font-size: 0.8em;
     font-weight: 700;
     cursor: pointer;
-    transition: all var(--base-timing) ease-in-out;
 
     &:not(:disabled):hover {
       color: var(--white);

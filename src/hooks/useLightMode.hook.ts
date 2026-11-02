@@ -1,38 +1,28 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { LocalStorageKey } from "@/constants";
 
 const useLightMode = (): {
   lightMode: boolean;
   setLightMode: (isLightMode: boolean) => void;
 } => {
-  const [lightMode, setLightModeState] = useState(false);
+  const [lightMode, setLightModeState] = useState(true);
 
   useEffect(() => {
-    const storedThemePreference = JSON.parse(
-      localStorage.getItem(LocalStorageKey.PreferredTheme)
-    );
-
-    if (storedThemePreference !== null) {
-      setLightModeState(storedThemePreference === "light" ? true : false);
-      return;
-    }
-
-    const userPrefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-
-    setLightModeState(!userPrefersDark);
+    setLightModeState(document.documentElement.dataset.theme !== "dark");
   }, []);
 
   const setLightMode = (isLightMode: boolean) => {
+    document.documentElement.dataset.theme = isLightMode ? "light" : "dark";
     setLightModeState(isLightMode);
-    localStorage.setItem(
-      LocalStorageKey.PreferredTheme,
-      JSON.stringify(`${isLightMode ? "light" : "dark"}`)
-    );
+    try {
+      localStorage.setItem(
+        LocalStorageKey.PreferredTheme,
+        JSON.stringify(isLightMode ? "light" : "dark"),
+      );
+    } catch {}
   };
 
-  return useMemo(() => ({ lightMode, setLightMode }), [lightMode]);
+  return { lightMode, setLightMode };
 };
 
 export default useLightMode;

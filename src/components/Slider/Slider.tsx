@@ -50,7 +50,7 @@ const Root = styled(RadixSlider.Root)`
 `;
 
 const Track = styled(RadixSlider.Track)`
-  background-color: ${(p) => p.theme.textColor};
+  background-color: var(--text-color);
   position: relative;
   flex-grow: 1;
   border-radius: 9999px;
@@ -59,7 +59,7 @@ const Track = styled(RadixSlider.Track)`
 
 const Range = styled(RadixSlider.Range)`
   position: absolute;
-  background-color: ${(p) => p.theme.textColor};
+  background-color: var(--text-color);
   border-radius: 9999px;
   height: 100%;
 `;
@@ -68,18 +68,17 @@ const Thumb = styled(RadixSlider.Thumb)`
   display: block;
   width: 20px;
   height: 20px;
-  background-color: ${(p) => p.theme.primaryBg};
-  border: 2px solid ${(p) => p.theme.textColor};
+  background-color: var(--primary-bg);
+  border: 2px solid var(--text-color);
   border-radius: 10px;
-  transition: background-color 250ms;
 
   &:hover {
-    background-color: ${(p) => p.theme.tagBorderColorHover};
+    background-color: var(--tag-border-color-hover);
     cursor: pointer;
   }
 
   &:focus {
-    background-color: ${(p) => p.theme.tagBorderColorHover};
+    background-color: var(--tag-border-color-hover);
     outline-offset: 2px;
   }
 `;
@@ -96,7 +95,7 @@ const StyledLabel = styled.label`
   font-weight: 600;
 
   transform: translateX(var(--label-offset));
-  transition: transform 500ms ease;
+  transition: transform var(--base-timing) ease-in-out;
 `;
 
 export default Slider;

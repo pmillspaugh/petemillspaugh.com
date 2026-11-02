@@ -13,20 +13,18 @@ const StyledCode = styled.code`
   font-weight: 600;
   padding: 2px 4px 1px 4px;
   border-radius: 4px;
-  background-color: ${(p) => p.theme.codeBg};
-  color: ${(p) => p.theme.codeColor};
-  transition: all var(--base-timing) ease-in-out;
+  background-color: var(--code-bg);
+  color: var(--code-color);
 
   a > & {
-    color: ${(p) => p.theme.linkTextColor};
+    color: var(--link-text-color);
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
-    box-shadow: 0px 1.5px 0px ${(p) => p.theme.linkTextColor};
-    transition: all var(--base-timing) ease-in-out;
+    box-shadow: 0px 1.5px 0px var(--link-text-color);
   }
 
   a:hover > & {
-    color: ${(p) => p.theme.linkTextColorHover};
+    color: var(--link-text-color-hover);
     box-shadow: none;
   }
 

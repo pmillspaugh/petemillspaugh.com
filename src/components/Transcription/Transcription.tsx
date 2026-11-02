@@ -8,8 +8,8 @@ const Transcription = ({ children }: { children: ReactNode }) => {
 const StyledSection = styled.section`
   padding: 16px;
   border-radius: 4px;
-  background-color: ${(p) => p.theme.codeBg};
-  color: ${(p) => p.theme.codeColor};
+  background-color: var(--code-bg);
+  color: var(--code-color);
   font-family: var(--font-mono), monospace;
   font-size: 0.75rem;
 

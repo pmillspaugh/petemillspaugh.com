@@ -18,39 +18,3 @@ export enum COLORS {
   MountainsDark2 = "hsl(223, 19%, 39%)",
   MountainsDark3 = "hsl(223, 24%, 32%)",
 }
-
-export const lightTheme = {
-  primaryBg: COLORS.Frost,
-  textColor: COLORS.Charcoal,
-  linkTextColor: COLORS.Green,
-  linkTextColorHover: COLORS.Gold,
-  dateTextColor: COLORS.MountainsDark3,
-  codeBg: COLORS.Gray,
-  codeColor: COLORS.DarkGreen,
-  blockquoteColor: COLORS.DarkGreen,
-  tagBorderColor: COLORS.Gold,
-  tagBorderColorHover: COLORS.Green,
-  popoverBg: COLORS.Frost,
-  popoverBorderColor: COLORS.Green,
-  switchEnabledBg: COLORS.Gold,
-  vtLogoBg: COLORS.White,
-  vtLogoColor: COLORS.Black,
-};
-
-export const darkTheme = {
-  primaryBg: COLORS.Charcoal,
-  textColor: COLORS.Frost,
-  linkTextColor: COLORS.Gold,
-  linkTextColorHover: COLORS.Green,
-  dateTextColor: COLORS.Mountains3,
-  codeBg: COLORS.MountainsDark3,
-  codeColor: COLORS.Frost,
-  blockquoteColor: COLORS.Mountains2,
-  tagBorderColor: COLORS.Green,
-  tagBorderColorHover: COLORS.Gold,
-  popoverBg: COLORS.Charcoal,
-  popoverBorderColor: COLORS.Gold,
-  switchEnabledBg: COLORS.Green,
-  vtLogoBg: COLORS.Black,
-  vtLogoColor: COLORS.White,
-};

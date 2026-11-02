@@ -51,8 +51,8 @@ const GraphContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: ${(p) => p.theme.tagBorderColor};
-  border: 1.5px solid ${(p) => p.theme.textColor};
+  background-color: var(--tag-border-color);
+  border: 1.5px solid var(--text-color);
   border-radius: 4px;
 
   &::before {
@@ -62,15 +62,15 @@ const GraphContainer = styled.div`
     bottom: 6px;
     left: 6px;
     right: 6px;
-    background-color: ${(p) => p.theme.primaryBg};
+    background-color: var(--primary-bg);
   }
 `;
 
 const Graph = styled.div`
   position: relative;
-  background-color: ${(p) => p.theme.codeBg};
-  border-left: 1.5px solid ${(p) => p.theme.textColor};
-  border-bottom: 1.5px solid ${(p) => p.theme.textColor};
+  background-color: var(--code-bg);
+  border-left: 1.5px solid var(--text-color);
+  border-bottom: 1.5px solid var(--text-color);
 `;
 
 const YLabel = styled.div`
